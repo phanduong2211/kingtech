@@ -15,6 +15,4 @@ Route::group(['prefix'=>'admin'],function(){
 	Route::get("/","Admin\IndexController@index");
 });
 
-Route::get('/', function () {
-    return view('fontend.index');
-});
+Route::get('/',"Controller@getCategoryMenu");

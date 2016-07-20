@@ -3,24 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="content-language" content="vi" />
-  <title>kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth </title>
-  <meta name='description' content='KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất ' >
-  <meta name='keywords' content='kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth | Pin du phong | bo phat wifi' >
+  @yield("title")
+  @yield("meta")
   <link rel="canonical" href='/' />
   <link rel="alternate" media="handheld" href='/' />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
-  <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />
-  <meta property="og:description" content="KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất " />
-  <meta property="og:site_name" content="kingtech" />
-  <meta property="og:image" content="images/logo_jpg.jpg" />
-  <meta property="fb:app_id" content="1700293566862288" />
-
-  <meta name='robots' content='INDEX,FOLLOW' />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-  <link rel="shortcut icon" href="http://lovadweb.com/images/logo.ico"/>
-  <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
   <link href="public/kingtech/css/cp/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="shortcut icon" href="http://lovadweb.com/images/logo.ico"/>
   <script src="public/kingtech/js/jquery-1.7.2.min.js" type="text/javascript"></script>
     <link href="public/kingtech/css/cssWeb.css" rel="stylesheet" type="text/css">
     <link href="public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
@@ -198,148 +186,21 @@
     <div class="fl_section">
       <nav class="">
         <ul>
-                      <li><a href="/c/93-dang-cap-digital" title="KINGTECH">KINGTECH                                  <i class="fa fa-caret-down"></i>
+          @for($i=0;$i<count($categorys);$i++)
+            @if($categorys[$i]->parent==0)
+                      <li><a href="/c/93-dang-cap-digital" title="{{$categorys[$i]->name}}">{{$categorys[$i]->name}}                                  <i class="fa fa-caret-down"></i>
                               </a>
                               <ul class="left">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/405-may-bay-dieu-khien" title="Máy bay điều khiển">Máy bay điều khiển</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/392-robot-bien-hinh" title="Robot biến hình">Robot biến hình</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/371-sac-khong-day" title="Sạc không dây">Sạc không dây</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/366-dong-ho-led-thoi-trang" title="Đồng hồ Led thời trang">Đồng hồ Led thời trang</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/369-kinh-thuc-te-ao" title="Kính thực tế ảo">Kính thực tế ảo</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/383-san-pham-doc-khac" title="Sản phẩm độc khác">Sản phẩm độc khác</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/384-xe-thang-bang" title="Xe thăng bằng">Xe thăng bằng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/385-thiet-bi-nha-thong-minh" title="Thiết bị nhà thông minh">Thiết bị nhà thông minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/402-loa-wifi" title="Loa Wifi">Loa Wifi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/407-phu-kien-gopro" title="Phụ Kiện GoPro">Phụ Kiện GoPro</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/408-may-hut-bui-thong-minh" title="Máy hút bụi thông minh">Máy hút bụi thông minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/409-dinh-vi-xuyen-viet" title="Định Vị Xuyên Việt">Định Vị Xuyên Việt</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/205-thuoc-la-dien-tu" title="Thuốc lá điện tử">Thuốc lá điện tử</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/209-camera-sieu-nho" title="Camera siêu nhỏ">Camera siêu nhỏ</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/308-camera-the-thao" title="Camera thể thao">Camera thể thao</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/326-phu-kien-android-box" title="Phụ kiện Android Box">Phụ kiện Android Box</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/94-camera-hanh-trinh" title="Camera hành trình">Camera hành trình</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/334-smart-watch" title="Smart Watch">Smart Watch</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/214-den-pin-sieu-sang" title="Đèn pin siêu sáng">Đèn pin siêu sáng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/98-loa-bluetooth" title="Loa Bluetooth">Loa Bluetooth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/217-tai-nghe-bluetooth" title="Tai nghe bluetooth">Tai nghe bluetooth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/288-hdmi-khong-day" title="Hdmi không dây">Hdmi không dây</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/204-khung-anh-so" title="Khung ảnh số">Khung ảnh số</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/210-ong-nhom" title="Ống nhòm">Ống nhòm</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/363-but-trinh-chieu" title="Bút Trình Chiếu">Bút Trình Chiếu</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/211-may-ghi-am" title="Máy ghi âm">Máy ghi âm</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/213-may-scan-cam-tay" title="Máy scan cầm tay">Máy scan cầm tay</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/221-o-cam-da-nang" title="Ổ cắm đa năng">Ổ cắm đa năng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/222-day-hdmi--hub-hdmi" title="Dây HDMI / Hub HDMI">Dây HDMI / Hub HDMI</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/223-router-wifi-3g" title="ROUTER WIFI 3G">ROUTER WIFI 3G</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/224-may-tro-giang" title="Máy trợ giảng">Máy trợ giảng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/225-phu-kien-do-choi-apple" title="Phụ kiện - Đồ chơi Apple">Phụ kiện - Đồ chơi Apple</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/226-tai-nghe-sieu-nho" title="Tai nghe siêu nhỏ">Tai nghe siêu nhỏ</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/273-thiet-bi-ket-noi-bluetooth" title="Thiết bị kết nối Bluetooth">Thiết bị kết nối Bluetooth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/275-pin-du-phong" title="Pin dự phòng">Pin dự phòng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/276-tai-nghe-ba-bau" title="Tai nghe bà bầu">Tai nghe bà bầu</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/277-kinh-hien-vi" title="Kính hiển vi">Kính hiển vi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/279-dien-thoai-mo-hinh" title="Điện thoại mô hình">Điện thoại mô hình</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/295-cap-optical-audio" title="Cáp optical audio">Cáp optical audio</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/306-may-nghe-tim-thai" title="Máy nghe tim thai">Máy nghe tim thai</a></li>
-                                  </ul>
+                                  @for($j=0;$j<count($categorys);$j++)
+                                    @if($categorys[$j]->parent!=0 && $categorys[$j]->parent==$categorys[$i]->id)
+                                      <li><i class="fa fa-circle"></i> <a href="/c/405-may-bay-dieu-khien" title="{{$categorys[$j]->name}}">{{$categorys[$j]->name}}</a></li>
+                                    @endif
+                                  @endfor
+                              </ul>
                           </li>
-                      <li><a href="/c/96-android-tv-box" title="Android Tv Box">Android Tv Box                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="left">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/410-dangcaphd" title="DangcapHD">DangcapHD</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/192-minix" title="Minix">Minix</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/283-skyboxtv" title="Skyboxtv">Skyboxtv</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/228-kaiboer" title="Kaiboer">Kaiboer</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/263-mygica" title="Mygica">Mygica</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/332-android-box-gia-re" title="Android Box Gía Rẻ">Android Box Gía Rẻ</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/246-measy" title="Measy">Measy</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/262-himedia" title="Himedia">Himedia</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/294-tronsmart" title="Tronsmart">Tronsmart</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/373-pipo" title="PIPO">PIPO</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/290-mele" title="Mele">Mele</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/390-zidoo" title="Zidoo">Zidoo</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/285-ttvpad" title="TTVPad">TTVPad</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/403-enybox" title="Enybox">Enybox</a></li>
-                                  </ul>
-                          </li>
-                      <li><a href="/c/393-may-chieu" title="Máy chiếu">Máy chiếu                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="left">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/397-may-chieu-gia-re" title="Máy chiếu giá rẻ">Máy chiếu giá rẻ</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/398-may-chieu-jmgo" title="Máy chiếu JmGO">Máy chiếu JmGO</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/399-may-chieu-unic" title="Máy chiếu Unic">Máy chiếu Unic</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/400-may-chieu-xgimi" title="Máy chiếu XgiMi">Máy chiếu XgiMi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/401-may-chieu-icodis" title="Máy chiếu ICODIS">Máy chiếu ICODIS</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/404-phu-kien-may-chieu" title="Phụ kiện máy chiếu">Phụ kiện máy chiếu</a></li>
-                                  </ul>
-                          </li>
-                      <li><a href="/c/298-camera-ip-hd" title="Camera IP HD">Camera IP HD                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="left">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/394-camera-siepem" title="Camera SIEPEM">Camera SIEPEM</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/396-camera-hismart" title="Camera HISMART">Camera HISMART</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/395-camera-sricam" title="Camera SRICAM">Camera SRICAM</a></li>
-                                  </ul>
-                          </li>
-                      <li><a href="/c/384-xe-thang-bang" title="Xe thăng bằng">Xe thăng bằng                              </a>
-                          </li>
-                      <li><a href="/c/329-sjcam" title="SJCAM">SJCAM                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="right">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/353-phu-kien-sjcam" title="Phụ kiện Sjcam">Phụ kiện Sjcam</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/355-camera-the-thao-sjcam" title="Camera thể thao Sjcam">Camera thể thao Sjcam</a></li>
-                                  </ul>
-                          </li>
-                      <li><a href="/c/335-xiaomi" title="Xiaomi">Xiaomi                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="right">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/391-phu-kien-camera-the-thao-xiaomi-yi" title="Phụ Kiện Camera Thể Thao Xiaomi Yi">Phụ Kiện Camera Thể Thao Xiaomi Yi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/388-pin-tieu-xiaomi" title="Pin Tiểu Xiaomi">Pin Tiểu Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/389-dien-thoai-xiaomi" title="Điện thoại Xiaomi">Điện thoại Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/336-pin-du-phong-xiaomi" title="Pin Dự Phòng XiaoMi">Pin Dự Phòng XiaoMi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/337-tai-nghe-xiaomi" title="Tai Nghe XiaoMi">Tai Nghe XiaoMi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/338-can-xiaomi-smart-scale" title="Cân Xiaomi Smart Scale">Cân Xiaomi Smart Scale</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/339-camera-xiaomi-yi" title="Camera Xiaomi Yi">Camera Xiaomi Yi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/340-den-led-usb-xiaomi" title="Đèn LED USB Xiaomi">Đèn LED USB Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/341-o-cam-thong-minh" title="Ổ Cắm Thông Minh">Ổ Cắm Thông Minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/343-smart-watch-xiaomi" title="Smart Watch Xiaomi">Smart Watch Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/342-may-loc-khong-khi" title="Máy Lọc Không Khí">Máy Lọc Không Khí</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/345-loa-bluetooth-xiaomi" title="Loa Bluetooth Xiaomi">Loa Bluetooth Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/346-thiet-bi-gia-dinh" title="Thiết Bị Gia Đình">Thiết Bị Gia Đình</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/347-den-ngu-thong-minh" title="Đèn Ngủ Thông Minh">Đèn Ngủ Thông Minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/348-thiet-bi-phat-wifi" title="Thiết Bị Phát Wifi">Thiết Bị Phát Wifi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/349-tay-game-bluetooth" title="Tay Game Bluetooth">Tay Game Bluetooth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/350-bong-den-thong-minh" title="Bóng Đèn Thông Minh">Bóng Đèn Thông Minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/351-android-tv-box" title="Android TV Box">Android TV Box</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/357-vong-deo-thong-minh" title="Vòng Đeo Thông Minh">Vòng Đeo Thông Minh</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/359-but-kiem-tra-nuoc" title="Bút Kiểm Tra Nước">Bút Kiểm Tra Nước</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/368-gay-phao-nuoc-camera" title="Gậy phao nước Camera">Gậy phao nước Camera</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/370-quat-usb-xiaomi" title="Quạt USB Xiaomi">Quạt USB Xiaomi</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/374-thiet-bi-do-huyet-ap-di-dong-ihealth" title="Thiết Bị Đo Huyết Áp Di Động Ihealth">Thiết Bị Đo Huyết Áp Di Động Ihealth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/406-phu-kien-gopro" title="Phụ Kiện GoPro">Phụ Kiện GoPro</a></li>
-                                  </ul>
-                          </li>
-                      <li><a href="/c/98-loa-bluetooth" title="Loa Bluetooth">Loa Bluetooth                                  <i class="fa fa-caret-down"></i>
-                              </a>
-                              <ul class="right">
-                                      <li><i class="fa fa-circle"></i> <a href="/c/310-loa-bluetooth" title="Loa bluetooth">Loa bluetooth</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/307-harman-kardon" title="Harman Kardon">Harman Kardon</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/361-blutooth-ket-noi-am-li" title="Blutooth Kết Nối Âm Li">Blutooth Kết Nối Âm Li</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/312-loa--logitech" title="Loa  Logitech">Loa  Logitech</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/248-loa-beatbox" title="Loa Beatbox">Loa Beatbox</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/328-loa-keo-loa-tro-giang" title="Loa Kéo, Loa Trợ Giảng">Loa Kéo, Loa Trợ Giảng</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/258-loa-blues" title="Loa Blues">Loa Blues</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/291-loa-bose" title="Loa Bose">Loa Bose</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/257-loa-doss" title="Loa Doss">Loa Doss</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/280-loa-fighter" title="Loa Fighter">Loa Fighter</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/251-loa-huyndai" title="Loa Huyndai">Loa Huyndai</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/292-loa-jy" title="Loa JY">Loa JY</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/252-loa-kingone" title="Loa Kingone">Loa Kingone</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/289-loa-ssk" title="Loa SSK">Loa SSK</a></li>
-                                      <li><i class="fa fa-circle"></i> <a href="/c/293-smart-led" title="Smart LED">Smart LED</a></li>
-                                  </ul>
-                          </li>
-                  </ul>
+            @endif
+          @endfor  
+        </ul>
       </nav>
     </div>
     <section>
