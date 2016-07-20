@@ -56,10 +56,6 @@ class CreateWebsiteTable extends Migration
                 [
                     'name' => 'sdt_dai_ly',
                     'content' => '0168885547'
-                ],
-                [
-                    'name' => 'sdt_dai_ly',
-                    'content' => '0168885547'
                 ]
                 ,
                 [
