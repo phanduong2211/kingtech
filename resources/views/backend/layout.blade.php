@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <noscript>
+        <meta http-equiv="refresh" content="0; URL=@Url.Content("~/Error/Script")" />
+    </noscript>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="{{Asset("public/images/ApplicationIcon.bmp")}}" rel="icon" />
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@yield('title')</title>
+    <link href="{{Asset("public/css/bootstrap.min.css")}}" rel="stylesheet" />
+    <link href="{{Asset("public/fonts/css/font-awesome.min.css")}}" rel="stylesheet" />
+    <link href="{{Asset("public/css/style.css")}}" rel="stylesheet" />
+    @yield('css')
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+</head>
+
+<body>
+
+    <div id="wrapper" class="clearfix">
+
+        <!--col left-->
+       <div id="col-left">
+            <header id="left_header">
+                <a href="{{url('/')}}">ACP</a>
+            </header>
+            <!--#left header-->
+            <div id="content-col-left">
+                <div class="logo">
+                    <div class="pull-left profile">
+                        <img src="{{Asset('public/images/noavatar.png')}}" />
+                        <br />
+                    </div>
+                    <div class="pull-left white">
+                        <div>
+                            Admin
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                   <small style="color:white">Lần truy cập cuối: </small>
+                </div>
+                <div id="userrolesdata" style="display:none"><!--role data-->
+                </div>
+                <nav id="menu">
+                    <li id="menu_home">
+                        <a href="{{url('admin')}}">
+                            <i class="fa fa-home"></i> <span>Trang chủ</span>
+                        </a>
+                    </li>
+                    <li id="menu_account" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-user"></i> <span>Người dùng</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/user')}}">Danh sách</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/user/create')}}" >Thêm mới</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                </nav>
+
+            </div>
+            <footer id="footer-colleft">
+                <div class="row">
+                    <div class="col-xs-4">
+                       <a href="{{url('admin')}}" title="Trang chủ"><i class="fa fa-home"></i></a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="{{url('admin/user/changepass')}}" title="Đổi mật khẩu"><i class="fa fa-key"></i></a>
+                    </div>
+                    <div class="col-xs-4">
+                        <a href="{{url('admin/logout')}}" title="Thoát" class="logout"><i class="fa fa-power-off"></i></a>
+                    </div>
+                </div>
+            </footer>
+            <div id="areasubmenu">
+            
+            </div>
+        </div>
+
+        <!--col left-->
+
+
+        <div id="col-main">
+            <!--header-->
+            <header id="right_header">
+                <div class="padding-content">
+                    <div class="pull-left">
+                        <div id="togglemenu">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                    </div>
+                    <!--.pull-left-->
+                    <div class="pull-right">
+
+                        <li id="notification" class="dropdown">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span>0</span>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header"></li>
+                                
+                            </ul>
+                        </li>
+                        <li id="userlogin" class="dropdown">
+                            <div class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="{{Asset('public/images/noavatar.png')}}"  class="img-circle" width="30" height="30"  />
+                                
+                                Admin
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                            <ul class="dropdown-menu" style="width:180px">
+                                <li><a href="@Url.Content("~/user/profile")"><i class="fa fa-fw fa-user"></i> Thông tin cá nhân</a></li>
+                                <li><a href="@Url.Content("~/user/changepass")"><i class="fa fa-fw fa-key"></i> Đổi mật khẩu</a></li>
+                                <div class="divider"></div>
+                                <li><a href="@Url.Content("~/logout")"><i class="fa fa-fw fa-power-off"></i> Thoát</a></li>
+                            </ul>
+                        </li>
+                    </div>
+                    <!--.pull-right-->
+                </div>
+
+               
+            </header>
+            <!--#right header-->
+
+
+            <div id="main">
+                <div id="brea">
+                    @yield('breadcrumb')
+                </div>
+                <div class="padding-content">
+                    @yield('content')
+                 </div>
+            </div><!--#main-->
+        </div>
+        <!--col main-->
+
+        <footer id="footer">
+            Copyright &copy; 2016 | Lần truy cập trước của bạn <b></b> | <a href="javascript:void(0)" id="RemoveCookie">Xóa Cookie</a>
+        </footer>
+
+    </div>
+    <!--#Wrapper-->
+    <!--confirmdialog-->
+    <div class="modal fade" id="confirmbox" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title">Thông Báo</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage">Any confirmation message?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" id="confirmFalse">Cancel</button>
+                    <button class="btn btn-primary" id="confirmTrue">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/confirmdialog-->
+    <div class="modal fade" id="alterdialog" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thông Báo</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Any confirmation message?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ajaxloader" style="display:none;position: fixed; top: 20px; left: 45%; z-index: 9999; box-shadow: 0px 0px 3px #1ABB9C ; border-radius: 3px; background-color: #1ABB9C ; width: 100px; padding: 10px 0px; opacity: 0.8; color: white; text-align: center">
+        <img src="{{Asset("public/images/ajax-loader.gif")}}" />
+        <div style="height: 5px"></div>
+        Đang Xử Lý
+    </div>
+
+
+    <script type="text/javascript">
+        var base_url = "{{url('admin')}}";
+    </script>
+    <script src="{{Asset("public/js/jquery.min.js")}}" type="text/javascript"></script>
+    <!--<script src="{{Asset("public/js/t_role.js")}}" type="text/javascript"></script>-->
+    <script src="{{Asset("public/js/bootstrap.min.js")}}" type="text/javascript"></script>
+    <script src="{{Asset("public/js/js.js")}}" type="text/javascript"></script>
+    <script src="{{Asset("public/js/menu.js")}}" type="text/javascript"></script>
+    @yield('script')
+   <script src="{{Asset("public/js/currentPage.js")}}" type="text/javascript"></script>
+</body>
+</html>

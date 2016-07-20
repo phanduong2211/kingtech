@@ -11,6 +11,10 @@
 |
 */
 
+Route::group(['prefix'=>'admin'],function(){
+	Route::get("/","Admin\IndexController@index");
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
