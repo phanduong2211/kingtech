@@ -206,8 +206,8 @@ function tremoves(message, target,options,result) {
         });
     }
     if (options.showcount != null) {
-        var target = target.parents(".ttable");
-        options.showcount(target, target.find("table tbody tr").size());
+        var tar = target.parents(".ttable");
+        options.showcount(tar, tar.find("table tbody tr").size());
     }
 
     
@@ -219,8 +219,8 @@ function tremove(message, target, options,result) {
         if (result.idSuccess.length > 0) {
             target.parents("tr").remove();
             if (options.showcount != null) {
-                var target = target.parents(".ttable");
-                options.showcount(target, target.find("table tbody tr").size());
+                var tar = target.parents(".ttable").eq(0);
+                options.showcount(tar, tar.find("table tbody tr").size());
             }
 
             changePage(target.parents(".ttable"), tcurrent_page);
@@ -228,13 +228,19 @@ function tremove(message, target, options,result) {
     } else {
         target.parents("tr").remove();
         if (options.showcount != null) {
-            var target = target.parents(".ttable");
-            options.showcount(target, target.find("table tbody tr").size());
+            var targ = target.parents(".ttable").eq(0);
+            
+            options.showcount(targ, targ.find("table tbody tr").size());
         }
 
         changePage(target.parents(".ttable"), tcurrent_page);
     }
-    options.alert(message);
+    if(message.indexOf('{name}')!==-1){
+        message=message.replace('{name}',target.attr('data-name'));
+        options.alert(message);
+    }else{
+        options.alert(message);
+    }
 }
 
 function fdataajax(url, data, target, options, value) {

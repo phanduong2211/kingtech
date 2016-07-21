@@ -294,6 +294,22 @@
     display:none !important;
 }
 
+.ttable table tbody .inputTable{
+	border:1px solid #fff;
+	width:96%;
+	padding:3px 2%;
+	outline: none;
+	display: block;
+	margin-top:-5px;
+	background-color: transparent;
+}
+.ttable table tbody .inputTable:hover{
+	border:1px solid #ddd;
+	width:96%;
+	padding:3px 2%;
+
+}
+
 @media (max-width: 768px) {
 
     .ttable .captiontable .captionright {

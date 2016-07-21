@@ -54,6 +54,27 @@
                             <i class="fa fa-home"></i> <span>Trang chủ</span>
                         </a>
                     </li>
+
+                    <li id="menu_product" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-cube"></i> <span>Quản lý sản phẩm</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/user')}}">Danh sách</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/user/create')}}" >Thêm mới</a>
+                            </li>
+
+                            <li data-role="admin/category" class="trole" data-action="category"> 
+                                <a href="{{url('admin/category')}}" >Loại sản phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li id="menu_account" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-user"></i> <span>Người dùng</span>

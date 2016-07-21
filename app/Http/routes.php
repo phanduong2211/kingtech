@@ -11,8 +11,16 @@
 |
 */
 
-Route::group(['prefix'=>'admin'],function(){
-	Route::get("/","Admin\IndexController@index");
+Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
+	Route::get("/","IndexController@index");
+
+	Route::group(['prefix'=>'category'],function(){
+		Route::get("/","CategoryController@index");
+		Route::get("create","CategoryController@create");
+		Route::post("create","CategoryController@postCreate");
+
+		Route::post("delete","CategoryController@postDelete");
+	});
 });
 
 Route::get('/',"Controller@getCategoryMenu");

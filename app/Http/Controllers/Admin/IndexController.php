@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Routing\Controller;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
 	public function index()
 	{
-	 	return view("backend.index");
+		
+		return view("backend.index");
 	}
 }
 
