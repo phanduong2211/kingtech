@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CategoryRequest extends Request
+class MenuRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,16 +26,16 @@ class CategoryRequest extends Request
         return [
             'name'=>'required',
             'url'=>'required',
-            'parent'=>'numeric|min:0'
+            'parent_id'=>'numeric|min:0'
         ];
     }
 
     public function messages(){
         return [
-            'name.required'=>'Vui lòng nhập tên loại sản phẩm',
+            'name.required'=>'Vui lòng nhập tên menu',
             'url.required'=>'Vui lòng nhập url',
-            'parent.numeric'=>'Vui lòng chọn loại sản phẩm cha',
-            'parent.min'=>'Vui lòng chọn loại sản phẩm cha'
+            'parent_id.numeric'=>'Vui lòng chọn menu cha',
+            'parent_id.min'=>'Vui lòng chọn menu cha'
         ];
 
     }

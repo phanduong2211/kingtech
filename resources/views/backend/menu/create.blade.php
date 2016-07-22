@@ -1,8 +1,8 @@
 @extends('backend.layout')
-@section('title','Thêm loại sản phẩm - ACP')
+@section('title','Thêm menu - ACP')
 
 @section('breadcrumb')
-<h2><a href="{{url('admin/category')}}">Loại sản phẩm</a></h2>
+<h2><a href="{{url('admin/menu')}}">Menu</a></h2>
     <span>Tạo mới</span>
 @endsection
 
@@ -23,7 +23,7 @@
               <span class="red">*</span>
               <input type="text" name="name" id="namec" value="{{old('name')}}" class="form-control" />
               <span class="desc">
-                Tên loại sản phẩm. Hiển thị trên web
+                Tên menu. Hiển thị trên web
               </span>
             </div>
           </div>
@@ -37,7 +37,7 @@
                 <span class="red">*</span>
                 <input type="text" name="url" id="urlc" value="{{old('url')}}" class="form-control" />
                 <span class="desc">
-                  Url truy cập vào trang loại sản phẩm. Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: camera-giam-sat
+                  Url truy cập vào trang menu. Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: gioi-thieu
                 </span>
               </div>
             </div>
@@ -49,18 +49,18 @@
         <div class="col-sm-6">
             <div class="row">
               <div class="col-sm-4">
-                <label>Loại sản phẩm cha:</label>
+                <label>Menu cha:</label>
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <select name="parent" class="form-control">
+                <select name="parent_id" class="form-control">
                   <option value="0">-- Không thuộc --</option>
                   
                         <?php 
                                 function dequy($parentid,$arr,$text = ''){
                                     $temp=array();
                                     foreach ($arr as $key => $value) {
-                                        if($value->parent==$parentid){
+                                        if($value->parent_id==$parentid){
                                           $temp[]=$value;
 
                                           unset($arr[$key]);  
@@ -81,7 +81,7 @@
 
                 </select>
                 <span class="desc">
-                  Loại sản phẩm này thuộc loại sản phẩm nào?
+                  Menu này thuộc menu nào?
                 </span>
               </div>
             </div>
@@ -90,45 +90,13 @@
         <div class="col-sm-6">
             <div class="row">
               <div class="col-sm-4">
-                <label for="show_home">Hiển thị trang chủ:</label>
+                <label for="show_menu_top">Hiển thị menu top:</label>
               </div>
               <div class="col-sm-8">
-                <input type="checkbox" id="show_home" name="show_home" />
+                <input type="checkbox" id="show_menu_top" checked="checked" name="show_menu_top" />
               </div>
             </div>
         </div>
-      </div><!--.row-->
-
-      <div class="row margin">
-
-        <div class="col-sm-6">
-            <div class="row">
-              <div class="col-sm-4">
-                <label>Mô tả:</label>
-              </div>
-              <div class="col-sm-8">
-                <textarea name="meta_description" rows="4" class="form-control">{{old('meta_description')}}</textarea>
-                <span class="desc">
-                  Mô tả về loại sản phẩm này. Dùng cho SEO
-                </span>
-              </div>
-            </div>
-        </div>
-
-        <div class="col-sm-6">
-            <div class="row">
-              <div class="col-sm-4">
-                <label>Từ khóa:</label>
-              </div>
-              <div class="col-sm-8">
-                <textarea name="meta_keywords" rows="4" class="form-control">{{old('meta_keywords')}}</textarea>
-          <span class="desc">
-            Từ khóa tìm kiếm loại sản phẩm trên google. Dùng cho SEO
-          </span>
-              </div>
-            </div>
-        </div>
-
       </div><!--.row-->
 
        <hr />
@@ -149,8 +117,7 @@
 <script src="{{Asset('public/js/validate.js')}}" ></script>
 <script type="text/javascript">
   
-  var currentPage = "#menu_product";
-  var subPage = 'category';
+  var currentPage = "#menu_menu";
 
   function change_alias(alias)
   {
@@ -171,11 +138,11 @@
       return str;
   }
 
-  var isShowHome="{{old('show_home')}}";
+  var isShowHome="{{old('show_menu_top')}}";
 
   $(document).ready(function(){
     if(isShowHome==='on'){
-      $("#show_home").prop('checked',true);
+      $("#show_menu_top").prop('checked',true);
     }
     var urlc=$("#urlc");
     var isChange=true;

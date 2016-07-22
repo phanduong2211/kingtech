@@ -30,6 +30,22 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("sort","CategoryController@sort");
 	});
 
+	Route::group(['prefix'=>'menu'],function(){
+		Route::get("/","MenuController@index");
+		Route::get("create","MenuController@create");
+		Route::post("create","MenuController@postCreate");
+
+		Route::get("{id}","MenuController@update")->where('id','[0-9]+');
+		Route::post("update","MenuController@postUpdate");
+
+		Route::post("delete","MenuController@postDelete");
+
+		Route::post("show_menu_top","MenuController@show_menu_top");
+		Route::post("show_footer","MenuController@show_footer");
+
+		Route::post("sort","MenuController@sort");
+	});
+
 	Route::group(['prefix'=>'branch'],function(){
 		Route::get("/","BranchController@index");
 
@@ -44,6 +60,23 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 
 		Route::post("sort","BranchController@sort");
 	});
+
+	Route::group(['prefix'=>'agency'],function(){
+		Route::get("/","AgencyController@index");
+
+		Route::get("create","AgencyController@create");
+		Route::post("create","AgencyController@postCreate");
+
+		Route::get("{id}","AgencyController@update")->where('id','[0-9]+');
+		Route::post("update","AgencyController@postUpdate");
+		
+		Route::post("delete","AgencyController@postDelete");
+		Route::post("deletes","AgencyController@postDeletes");
+
+		Route::post("display_footer","AgencyController@display_footer");
+	});
+
+
 });
 
 Route::get('/',"Controller@getIndex");

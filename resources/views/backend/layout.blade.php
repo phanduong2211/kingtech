@@ -75,6 +75,12 @@
                         </ul>
                     </li>
 
+                    <li id="menu_menu">
+                        <a href="{{url('admin/menu')}}">
+                            <i class="fa fa-list"></i> <span>Quản lý menu</span>
+                        </a>
+                    </li>
+
                     <li id="menu_branch" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-sitemap"></i> <span>Quản lý chi nhánh</span>
@@ -89,7 +95,7 @@
                                 <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
                             </li>
 
-                            <li data-role="admin/category" class="trole" data-action="category"> 
+                            <li data-role="admin/category" class="trole" data-action="agency"> 
                                 <a href="{{url('admin/agency')}}" >Đại lý</a>
                             </li>
                         </ul>
