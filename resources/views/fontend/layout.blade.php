@@ -14,21 +14,21 @@
     <link href="public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
- @include("fontend.home.headerTop")
+ @include("fontend.layout.headerTop")
 
   <article>
-    @include("fontend.home.headMenu")
-    @include("fontend.home.categoryMenu")
+    @include("fontend.layout.headMenu")
+    @include("fontend.layout.categoryMenu")
     <section>
     	@yield("index")
     </section>
 
   </article>
 
-  @include("fontend.home.footer")
+  @include("fontend.layout.footer")
 
   <!--html time and face-->
-  @include("fontend.home.ads")
+  @include("fontend.layout.ads")
   <a href="#" class="top" style="display: none;"></a>
   <!--end html-->
   <script type='text/javascript' src="public/kingtech/flexslider/scripts.min.js"></script>
