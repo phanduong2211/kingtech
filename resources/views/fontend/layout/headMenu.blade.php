@@ -6,8 +6,8 @@
           </div>
           <div class="article_header_right">
             <div class="header_cart">
-              <div class="giohang">
-                                <a href="/gio-hang.html">GIỎ HÀNG <span class="fl_cart">0</span> SẢN PHẨM</a> </div>
+              <!-- <div class="giohang">
+                                <a href="/gio-hang.html">GIỎ HÀNG <span class="fl_cart">0</span> SẢN PHẨM</a> </div> -->
               <div class="login"><a href="/bang-gia-si.html"><span>Bảng Giá Sỉ</span></a></div>
               <div class="hotro"> <img src="public/kingtech/images/icon_support.png" alt="Hỗ trợ trực tuyến">
                 <aside>

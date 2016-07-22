@@ -90,6 +90,10 @@ class CreateWebsiteTable extends Migration
                 [
                     'name' => 'giay_phep',
                     'content' => 'GPKD số : 41C8012283 đăng ký ngày 26 tháng 3 năm 2010'
+                ],
+                [
+                    'name' => 'twitter',
+                    'content' => 'twitter.com/'
                 ]
             ]
         );
