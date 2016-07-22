@@ -21,7 +21,7 @@
       <div class="body_pages">
         <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
 
-@include("fontend.slide")
+@include("fontend.home.slide")
 <div class="box_tieudem">
   <div class="box_tieudem_title">
     <aside> <strong>Tiêu điểm:</strong>
