@@ -46,4 +46,4 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	});
 });
 
-Route::get('/',"Controller@getCategoryMenu");
+Route::get('/',"Controller@getIndex");
