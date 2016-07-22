@@ -75,9 +75,29 @@
                         </ul>
                     </li>
 
+                    <li id="menu_branch" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-sitemap"></i> <span>Quản lý chi nhánh</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/branch')}}">Chi nhánh</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
+                            </li>
+
+                            <li data-role="admin/category" class="trole" data-action="category"> 
+                                <a href="{{url('admin/agency')}}" >Đại lý</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li id="menu_account" class="dropdownmenu">
                         <a href="#">
-                            <i class="fa fa-user"></i> <span>Người dùng</span>
+                            <i class="fa fa-user"></i> <span>Quản lý người dùng</span>
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>

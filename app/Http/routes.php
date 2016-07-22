@@ -19,7 +19,30 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::get("create","CategoryController@create");
 		Route::post("create","CategoryController@postCreate");
 
+		Route::get("{id}","CategoryController@update")->where('id','[0-9]+');
+		Route::post("update","CategoryController@postUpdate");
+
 		Route::post("delete","CategoryController@postDelete");
+
+		Route::post("show_home","CategoryController@show_home");
+		Route::post("display","CategoryController@display");
+
+		Route::post("sort","CategoryController@sort");
+	});
+
+	Route::group(['prefix'=>'branch'],function(){
+		Route::get("/","BranchController@index");
+
+		Route::get("create","BranchController@create");
+		Route::post("create","BranchController@postCreate");
+
+		Route::get("{id}","BranchController@update")->where('id','[0-9]+');
+		Route::post("update","BranchController@postUpdate");
+		
+		Route::post("delete","BranchController@postDelete");
+		Route::post("deletes","BranchController@postDeletes");
+
+		Route::post("sort","BranchController@sort");
 	});
 });
 

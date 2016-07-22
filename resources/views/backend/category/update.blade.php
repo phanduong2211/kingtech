@@ -1,9 +1,9 @@
 @extends('backend.layout')
-@section('title','Thêm loại sản phẩm - ACP')
+@section('title','Sửa loại sản phẩm - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/category')}}">Loại sản phẩm</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 
@@ -12,7 +12,7 @@
   
   @include('backend._message')
 
-    <form method="post" action="" id="frm">
+    <form method="post" id="frm" action="{{url('admin/category/update')}}">
       <div class="row">
         <div class="col-sm-6">
           <div class="row">
@@ -21,7 +21,7 @@
             </div>
             <div class="col-sm-8 required">
               <span class="red">*</span>
-              <input type="text" name="name" id="namec" value="{{old('name')}}" class="form-control" />
+              <input type="text" name="name" id="namec" value="{{$data->name}}" class="form-control" />
               <span class="desc">
                 Tên loại sản phẩm. Hiển thị trên web
               </span>
@@ -35,7 +35,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <input type="text" name="url" id="urlc" value="{{old('url')}}" class="form-control" />
+                <input type="text" name="url" id="urlc" value="{{$data->url}}" class="form-control" />
                 <span class="desc">
                   Url truy cập vào trang loại sản phẩm. Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: camera-giam-sat
                 </span>
@@ -53,7 +53,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <select name="parent" class="form-control">
+                <select name="parent" class="form-control" id="parentId">
                   <option value="0">-- Không thuộc --</option>
                   
                         <?php 
@@ -76,7 +76,7 @@
                                         }
                                     }
                                 }
-                            dequy(0,$data);
+                            dequy(0,$listCategory);
                             ?>
 
                 </select>
@@ -107,7 +107,7 @@
                 <label>Mô tả:</label>
               </div>
               <div class="col-sm-8">
-                <textarea name="meta_description" rows="4" class="form-control">{{old('meta_description')}}</textarea>
+                <textarea name="meta_description" rows="4" class="form-control">{{$data->meta_description}}</textarea>
                 <span class="desc">
                   Mô tả về loại sản phẩm này. Dùng cho SEO
                 </span>
@@ -121,7 +121,7 @@
                 <label>Từ khóa:</label>
               </div>
               <div class="col-sm-8">
-                <textarea name="meta_keywords" rows="4" class="form-control">{{old('meta_keywords')}}</textarea>
+                <textarea name="meta_keywords" rows="4" class="form-control">{{$data->meta_keywords}}</textarea>
           <span class="desc">
             Từ khóa tìm kiếm loại sản phẩm trên google. Dùng cho SEO
           </span>
@@ -140,6 +140,7 @@
     </div>
 
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+    <input type="hidden" name="id" value="{{$data->id}}" />
 
     </form>
 
@@ -152,45 +153,15 @@
   var currentPage = "#menu_product";
   var subPage = 'category';
 
-  function change_alias(alias)
-  {
-      var str = alias;
-      str= str.toLowerCase(); 
-      str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ  |ặ|ẳ|ẵ/g,"a"); 
-      str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-      str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-      str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ  |ợ|ở|ỡ/g,"o"); 
-      str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-      str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-      str= str.replace(/đ/g,"d"); 
-      str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
-      /* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
-      str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1-
-      str= str.replace(/^\-+|\-+$/g,""); 
-      //cắt bỏ ký tự - ở đầu và cuối chuỗi 
-      return str;
-  }
+  var isShowHome="{{$data->show_home}}";
+  var parentId="{{$data->parent}}";
 
-  var isShowHome="{{old('show_home')}}";
 
   $(document).ready(function(){
-    if(isShowHome==='on'){
+    if(isShowHome==='1'){
       $("#show_home").prop('checked',true);
     }
-    var urlc=$("#urlc");
-    var isChange=true;
-    $("#namec").on('keyup',function(){
-      if(isChange){
-        urlc.val(change_alias($.trim($(this).val())));
-      }else{
-        $(this).off('keyup');
-      }
-    });
-    urlc.on('keyup',function(){
-      isChange=false;
-      $(this).off('keyup');
-    });
-
+    $("#parentId").val(parentId);
 
     $("#frm").kiemtra([
         {
@@ -202,7 +173,7 @@
           'trong':true
         }
       ]);
-
+    
   });
 
   </script>

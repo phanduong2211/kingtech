@@ -8,5 +8,6 @@ class Branch extends Model
 {
     protected $table='branches';
 
-    protected $fillable = ['zone', 'name', 'city_name'];
+    protected $fillable = ['zone', 'name', 'city_name','index'];
+    public $timestamps=false;
 }
