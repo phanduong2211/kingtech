@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 use App\News;
-use App\Http\Requests\NewsCateRequest;
+use App\NewsCate;
+use App\Http\Requests\NewsRequest;
 
 
 class NewsController extends BaseController
@@ -23,31 +24,41 @@ class NewsController extends BaseController
 		if(!$this->checkPermission('news/create')){
 			return $this->ErrorPermission('Thêm tin tức');
 		}
-		return view("backend.news.create");
+
+		$data=NewsCate::select('id','name')->get();
+
+		return view("backend.news.create",array('data'=>$data));
 	}
 
-	public function postCreate(NewsCateRequest $request){
+	public function postCreate(NewsRequest $request){
 
 		if(!$this->checkPermission('news/create')){
 			return $this->ErrorPermission('Thêm tin tức');
 		}
 
-		$newscate=new NewsCate();
+		$news=new News();
 
-		$newscate->url=$this->formatToUrl(trim($request->url));
-		if(NewsCate::select('id')->where('url',$newscate->url)->count()>0){
-			return redirect()->to('admin/news-category/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+
+		$news->title=str_replace("\"", "'", trim($request->title));
+
+		$news->url=$this->formatToUrl(trim($request->title));
+		if(News::select('id')->where('url',$news->url)->count()>0){
+			return redirect()->to('admin/news/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		
-		$newscate->name=trim($request->name);
-		$newscate->display=1;
-		$newscate->show_home=1;
+		$news->cate_id=(int)$request->cate_id;
+		$news->image=$request->image;
+		$news->hot=0;
+		$news->description=str_replace("\"", "'", trim($request->description));
+		$news->keywords=str_replace("\"", "'", trim($request->keywords));
+		$news->content=$request->content;
+		$news->display=1;
+		$news->viewer=0;
 
-		if($newscate->save()){
-			return redirect()->to('admin/news-category/create')->with('message','Thêm thành công.');
+		if($news->save()){
+			return redirect()->to('admin/news/create')->with('message','Thêm thành công.');
 		}
-		return redirect()->to('admin/news-category/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
+		return redirect()->to('admin/news/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
 	}
 
 	public function update($id){

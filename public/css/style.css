@@ -461,3 +461,11 @@ nav#menu li ul li:hover,#areasubmenu li:hover,nav#menu li ul li.active,#areasubm
     border-radius:8px;
     z-index:9999991;
 }
+
+.uploadimg:hover{
+    cursor: pointer;
+    border-color: #888;
+}
+.nicupload{
+    display: none;
+}

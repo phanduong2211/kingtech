@@ -124,6 +124,16 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	
 	});
 
+	Route::get("uploadimage","UploadController@upload");
+    Route::post("uploadimage","UploadController@upload");
+    Route::post("ajax/loadfolder","UploadController@loadfolder");
+    Route::post("upload/checkfile","UploadController@checkfile");
+    Route::post("ajax/removeimg","UploadController@removeimg");
+    Route::post("ajax/removefolder","UploadController@removefolder");
+    Route::post("ajax/count","IndexController@count");
+    Route::post("ajax/createfolder","UploadController@createfolder");
+    Route::post("ajax/loadonlyfolder","UploadController@loadonlyfolder");
+
 
 });
 
