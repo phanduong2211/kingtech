@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -11,10 +11,11 @@ use App\Category;
 use App\Menu;
 use App\News;
 use App\SlideShow;
+use App\Product;
 use App\NewsCate;
 use App\Website;
 use Illuminate\Database\Eloquent\Model;
-class Controller extends BaseController
+class ControllerDB extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     /* return table in database*/
@@ -57,6 +58,28 @@ class Controller extends BaseController
     {
     	$newsHot = News::orderby("id","asc")->where("hot",1)->get();
     	return $newsHot;
+    }
+    public function getSearch($txtSearch,$priceStart,$priceEnd)
+    {
+        //return 1;
+        $products = 0;
+        if($priceStart==0 && $priceEnd==0)
+        {
+            $products = Product::where("display","=",1)->orderby("index_home","asc")->where("name","like","%".$txtSearch."%")->paginate(16);
+        }
+        elseif($priceStart==0)
+        {
+            $products = Product::where("display","=",1)->orderby("index_home","asc")->where("price","<=",$priceEnd)->where("name","like","%".$txtSearch."%")->paginate(16);
+        }
+        elseif($priceEnd==0)
+        {
+            $products = Product::where("display","=",1)->orderby("index_home","asc")->where("price","<=",$priceStart)->where("name","like","%".$txtSearch."%")->paginate(16);
+        }
+        else 
+        {
+            $products = Product::where("display","=",1)->orderby("index_home","asc")->where("price",">=",$priceStart)->where("price","<=",$priceEnd)->where("name","like","%".$txtSearch."%")->paginate(16);
+        }
+        return $products;
     }
     
 }

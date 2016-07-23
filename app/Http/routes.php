@@ -137,4 +137,10 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 
 });
 
-Route::get('/',"Controller@getIndex");
+
+
+Route::group(['namespace' => 'Auth'], function()
+{
+	Route::get('/',"IndexController@getIndex");
+	Route::get("tim-kiem.html","TimKiemController@getTimKiem");
+});

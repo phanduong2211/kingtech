@@ -26,79 +26,44 @@
   <div class="box_tieudem_title">
     <aside> <strong>Tiêu điểm:</strong>
       <ul class="flv_tieudiem" id="nt-title" style="height: 30px; overflow: hidden;">
-                
-              <li style="margin-top: 0px;"><a href="/n/96-minix-bien-tv-thuong-thanh-smarttv-voi-nhieu-tinh-nang-sieu-hot" title="Minix biến Tv thường thành SmartTV với nhiều tính năng siêu hot.">Minix biến Tv thường thành SmartTV với nhiều tính năng siêu hot.</a></li></ul>
+                @for($i=0;$i< count($newsHot);$i++)
+                  <li style="margin-top: 0px;"><a href="{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
+                @endfor
+              </ul>
     </aside>
-        <span class="tieude_khuyenmai"><a href="/tin-tuc/3-tin-khuyen-mai.html" title="Tin khuyến mãi">Tin khuyến mãi</a></span>
-        <span class="tieude_thuthuat"><a href="/tin-tuc/4-thu-thuat-digital.html" title="Thủ thuật Digital">Thủ thuật Digital</a></span>
-        <span class="tieude_tinmoi"><a href="/tin-tuc/2-tin-tuc-digital.html" title="Tin tức Digital">Tin tức Digital</a></span>
+      @for($i=0;$i< count($news_cate);$i++)        
+
+        @if($i==0)
+        <span class="tieude_khuyenmai"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>        
+        @elseif($i==1)
+        <span class="tieude_thuthuat"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        @elseif($i==2)
+        <span class="tieude_tinmoi"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        @endif
+      @endfor
       </div>
   <div class="slider_item">
-        <div class="item">
-      <figure>
-      <a href="/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15" title="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5"><img src="public/kingtech/images/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15.jpg" alt="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5">
-      </a></figure><a href="/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15" title="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5">
-      
-      </a><h2><a href="/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15" title="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5"></a><a href="/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15" title="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5">Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5 <span>(29/04/2016)</span> </a></h2>
-      <a href="/n/118-shop-dang-cap-digital-xin-tran-trong-thong-bao-toi-quy-khach-lich-nghi-le-304--15" title="Shop Đẳng Cấp Digital xin trân trọng thông báo tới Qúy Khách lịch nghỉ Lễ 30/4 &amp; 1/5">
-      <label>Đọc tiếp</label>
-      </a> </div>
-        <div class="item">
-      <figure>
-      <a href="/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn" title="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN."><img src="public/kingtech/images/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn.jpg" alt="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN.">
-      </a></figure><a href="/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn" title="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN.">
-      
-      </a><h2><a href="/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn" title="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN."></a><a href="/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn" title="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN.">Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN. <span>(21/10/2015)</span> </a></h2>
-      <a href="/n/101-camera-sjcam-camera-ip-hismart-chuan-hd-thong-minh-gay-sot-vn" title="Camera SJCAM, Camera IP HISMART chuẩn HD thông minh gây sốt VN.">
-      <label>Đọc tiếp</label>
-      </a> </div>
-        <div class="item">
-      <figure>
-      <a href="/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi" title="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI"><img src="public/kingtech/images/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi.jpg" alt="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI">
-      </a></figure><a href="/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi" title="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI">
-      
-      </a><h2><a href="/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi" title="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI"></a><a href="/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi" title="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI">Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI <span>(25/04/2016)</span> </a></h2>
-      <a href="/n/117-trai-nghiem-ngay-kodi-160-dang-cap-digital-tu-dong-update-tich-hop-xem-phim-dangcaphd-ngay-tren-kodi" title="Trải Nghiệm ngay KODI 16.0 Đẳng Cấp Digital - Tự động Update, Tích hợp xem phim Dangcaphd ngay trên KODI">
-      <label>Đọc tiếp</label>
-      </a> </div>
+  <!-- begin tin tức hiển thị trang chủ -->
+    @for($i=0;$i< count($news);$i++)
+      <div class="item">
+        
+        <figure>
+          <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
+          </a>
+        </figure>
+        <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>
+        <h2>
+          <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a><a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}<span>({{$news[$i]->updated_at}})</span> </a>
+        </h2>
+        <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}">
+        <label>Đọc tiếp</label>
+        </a> 
+      </div>
+    @endfor
+  <!-- end tin tức hiển thị trang chủ -->
       </div>
 </div>
-<div class="box_search">
-          <div class="search_line">
-          <form action="/tim-kiem.html#1" method="post">
-      <p>
-      <input type="text" name="txtSearch" value="" class="line_input" placeholder="Tên sản phẩm, máy tính bảng, phụ kiện...">
-      </p>
-      <p>
-      <select name="ddStart" class="line_select">
-        <option value="0">Giá từ</option>
-        <option value="50000">50,000 đ</option>
-        <option value="300000">300,000 đ</option>
-        <option value="1000000">1,000,000 đ</option>
-        <option value="3000000">3,000,000 đ</option>
-        <option value="5000000">5,000,000 đ</option>
-        <option value="8000000">8,000,000 đ</option>
-        <option value="11000000">11,000,000 đ</option>
-      </select>
-      </p>
-      <p>
-      <select name="ddEnd" class="line_select">
-        <option value="0">Đến</option>
-        <option value="50000">50,000 đ</option>
-        <option value="300000">300,000 đ</option>
-        <option value="1000000">1,000,000 đ</option>
-        <option value="3000000">3,000,000 đ</option>
-        <option value="5000000">5,000,000 đ</option>
-        <option value="8000000">8,000,000 đ</option>
-        <option value="11000000">11,000,000 đ</option>
-      </select>
-      </p>
-      <p>
-      <input value="Tìm Kiếm" type="submit" class="line_submit">
-      </p>
-          </form>
-    </div>
-</div>
+@include("fontend.home.search")
 <div class="box_pages fl_padding2">
   @include("fontend.home.adsLeft")
   <div class="box_pages_center">

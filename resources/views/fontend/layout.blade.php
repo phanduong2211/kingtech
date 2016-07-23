@@ -3,24 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="content-language" content="vi" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield("title")
   @yield("meta")
   <link rel="canonical" href='/' />
   <link rel="alternate" media="handheld" href='/' />
   <link href="public/kingtech/css/cp/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link rel="shortcut icon" href="http://lovadweb.com/images/logo.ico"/>
+ 
   <script src="public/kingtech/js/jquery-1.11.3.min.js" type="text/javascript"></script>
     <link href="public/kingtech/css/cssWeb.css" rel="stylesheet" type="text/css">
     <!-- <link href="public/kingtech/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
     <link href="public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body>
+
  @include("fontend.layout.headerTop")
  <article>
     @include("fontend.layout.headMenu")
     @include("fontend.layout.categoryMenu")
     <section>
       @yield("index")
+      @yield("search")
     </section>
 
   </article>
