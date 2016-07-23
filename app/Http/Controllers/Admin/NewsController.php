@@ -14,9 +14,11 @@ class NewsController extends BaseController
 			return $this->ErrorPermission('Tin tức');
 		}
 
-		$data=News::all();
+		$data=News::orderBy('id','desc')->get();
+
+		$listNewsCate=NewsCate::select('id','name')->get();
 		
-		return view("backend.news.index",array('data'=>$data));
+		return view("backend.news.index",array('data'=>$data,'listNewsCate'=>$listNewsCate));
 	}
 
 
@@ -43,7 +45,7 @@ class NewsController extends BaseController
 
 		$news->url=$this->formatToUrl(trim($request->title));
 		if(News::select('id')->where('url',$news->url)->count()>0){
-			return redirect()->to('admin/news/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+			return redirect()->to('admin/news/create')->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
 		$news->cate_id=(int)$request->cate_id;
@@ -63,55 +65,56 @@ class NewsController extends BaseController
 
 	public function update($id){
 
-		if(!$this->checkPermission('appcate/update')){
-			return $this->ErrorPermission('Sửa loại ứng dụng');
+		if(!$this->checkPermission('news/update')){
+			return $this->ErrorPermission('Sửa tin tức');
 		}
 
 		$data=array();
-		$data['data']=AppCate::find((int)$id);
+		$data['data']=News::find((int)$id);
 		if($data['data']==null)
-			return redirect()->to('admin/app-category')->with(['message'=>'Loại ứng dụng không tồn tại.','message_type'=>'danger']);
-		if($data['data']->parent!=0){
-			$data['listMenu']=AppCate::select('id','name','parent')->where('id','<>',$id)->where('parent',0)->get();
-		}
-		return view('backend.appcate.update',$data);
+			return redirect()->to('admin/news')->with(['message'=>'Tin tức không tồn tại.','message_type'=>'danger']);
+		$data['listNewsCate']=NewsCate::select('id','name')->get();
+		return view('backend.news.update',$data);
 	}
 
-	public function postUpdate(AppCateRequest $request){
+	public function postUpdate(NewsRequest $request){
 
-		if(!$this->checkPermission('appcate/update')){
-			return $this->ErrorPermission('Sửa loại ứng dụng');
+		if(!$this->checkPermission('news/update')){
+			return $this->ErrorPermission('Sửa tin tức');
 		}
 
-		$appcate=AppCate::find((int)$request->id);
-		if($appcate==null)
-			return redirect()->to('admin/app-category')->with(['message'=>'Loại ứng dụng không tồn tại.','message_type'=>'danger']);
+		$news=News::find((int)$request->id);
+		if($news==null)
+			return redirect()->to('admin/news')->with(['message'=>'Tin tức không tồn tại.','message_type'=>'danger']);
 		
-		$appcate->parent=$request->parent;
-		$appcate->url=$this->formatToUrl(trim($request->url));
-		if(AppCate::select('id')->where('id','<>',(int)$request->id)->where('url',$appcate->url)->count()>0){
-			return redirect()->to('admin/app-category/'.$request->id)->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+		$news->title=str_replace("\"", "'", trim($request->title));
+
+		$news->url=$this->formatToUrl(trim($request->title));
+		if(News::select('id')->where('id','<>',(int)$request->id)->where('url',$news->url)->count()>0){
+			return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
+		$news->cate_id=(int)$request->cate_id;
+		$news->image=$request->image;
+		$news->description=str_replace("\"", "'", trim($request->description));
+		$news->keywords=str_replace("\"", "'", trim($request->keywords));
+		$news->content=$request->content;
 		
-		$appcate->name=trim($request->name);
-		$appcate->display=($request->display=='on')?1:0;
-		
-		if($appcate->save()){
-			return redirect()->to('admin/app-category/'.$request->id)->with('message','Cập nhật thành công.');
+		if($news->save()){
+			return redirect()->to('admin/news/'.$request->id)->with('message','Cập nhật thành công.');
 		}
-		return redirect()->to('admin/app-category/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+		return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
 	}
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('newscate/delete')){
+		if(!$this->checkPermission('news/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=(int)\Input::get('data');
 
-		if(NewsCate::destroy($id)){
+		if(News::destroy($id)){
 			return json_encode(["success"=>true,"message"=>"Xóa thành công loại tin tức {name}"]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa loại tin tức {name} thất bại"]);
@@ -119,16 +122,16 @@ class NewsController extends BaseController
 
 	public function postDeletes(){
 
-		if(!$this->checkPermission('newscate/delete')){
+		if(!$this->checkPermission('news/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=explode(',',\Input::get('data'));
 
-		if(NewsCate::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." loại tin tức."]);
+		if(News::destroy($id)){
+			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." tin tức."]);
 		}
-		return json_encode(["success"=>false,"message"=>"Xóa loại tin tức thất bại"]);
+		return json_encode(["success"=>false,"message"=>"Xóa tin tức thất bại"]);
 	}
 
 	public function display(){
@@ -137,33 +140,44 @@ class NewsController extends BaseController
 
 		$display=($display=='true')?1:0;
 
-		if(NewsCate::where('id',$id)->update(['display'=>$display])){
+		if(News::where('id',$id)->update(['display'=>$display])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
 		return json_encode(["success"=>false,"message"=>"Thất bại"]);
 	}
 
-	public function show_home(){
+	public function hot(){
 		$id=(int)\Input::get('data');
-		$show_home=\Input::get('ischeck');
+		$hot=\Input::get('ischeck');
 
-		$show_home=($show_home=='true')?1:0;
+		$hot=($hot=='true')?1:0;
 
-		if(NewsCate::where('id',$id)->update(['show_home'=>$show_home])){
+		if(News::where('id',$id)->update(['hot'=>$hot])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
 		return json_encode(["success"=>false,"message"=>"Thất bại"]);
 	}
 
-	public function sort(){
-		$data=\Input::get('data');
-		foreach(\Input::get('id') as $key=>$value){
-			AppCate::where('id',$value)->update(['index'=>$data[$key]]);
+	public function hots(){
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			News::where('id',(int)$item)->update(['hot'=>1]);
 		}
 
-		return json_encode(["success"=>true]);
+
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+	}
+
+	public function displays(){
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			News::where('id',(int)$item)->update(['display'=>0]);
+		}
+
+
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 }
 

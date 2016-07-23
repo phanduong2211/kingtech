@@ -50,7 +50,7 @@ use App\Http\Module\detailproduct;
     public function showImage($path){
         if(strpos($path, "http")===0)
             return $path;
-        return Asset('public/image/').'/'.$path;
+        return Asset('public/images/'.$path);
     }
     public function getSize($id)
     {

@@ -119,8 +119,11 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("delete","NewsController@postDelete");
 		Route::post("deletes","NewsController@postDeletes");
 
+		Route::post("hot","NewsController@hot");
 		Route::post("display","NewsController@display");
-		Route::post("show_home","NewsController@show_home");
+
+		Route::post("hots","NewsController@hots");
+		Route::post("displays","NewsController@displays");
 	
 	});
 

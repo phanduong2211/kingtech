@@ -1,18 +1,25 @@
 @extends('backend.layout')
-@section('title','Thêm tin tức - ACP')
+@section('title','Sửa tin tức - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/news')}}">Tin tức</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 
 
 @section('content')
+<?php 
+function showImage($path){
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
   
   @include('backend._message')
 
-    <form method="post" action="" id="frm">
+    <form method="post" action="{{url('admin/news/update')}}" id="frm">
       <div class="row">
 
             <div class="col-md-6">
@@ -22,7 +29,7 @@
                     </div>
                     <div class="col-md-10 required">
                         <span class="red">*</span>
-                        <textarea name="title" class="form-control">{{old('title')}}</textarea>
+                        <textarea name="title" class="form-control">{{$data->title}}</textarea>
                     </div>
                 </div><br />
             </div>
@@ -33,9 +40,9 @@
                     </div>
                     <div class="col-md-10 required">
                         <span class="red">*</span>
-                        <select name="cate_id" class="form-control">
+                        <select name="cate_id" id="cate_id" class="form-control">
                             <option value="-1">-- Chọn Loại --</option>
-                            @foreach($data as $value)
+                            @foreach($listNewsCate as $value)
                             <option value="{{$value->id}}">{{$value->name}}</option>
                             @endforeach
                         </select>
@@ -51,9 +58,9 @@
                     </div>
                     <div class="col-md-10 required boxupload">
                         <span class="red">*</span>
-                        <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
+                        <img src="{{showImage($data->image)}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
                     </div>
                 </div><br />
             </div>
@@ -64,14 +71,14 @@
                     </div>
                     <div class="col-md-10 required">
                         <span class="red">*</span>
-                       <textarea rows="3" name="description" class="form-control">{{old('description')}}</textarea>
+                       <textarea rows="3" name="description" class="form-control">{{$data->description}}</textarea>
                         <span class="desc">Mổ tả ngắn gọn về tin tức. Khoảng 200 ký tự</span>
                     </div>
                     <div class="col-md-2">
                         <label>Từ khóa:</label>
                     </div>
                     <div class="col-md-10">
-                       <textarea rows="2" name="keywords" class="form-control">{{old('keywords')}}</textarea>
+                       <textarea rows="2" name="keywords" class="form-control">{{$data->keywords}}</textarea>
                         <span class="desc">Từ khóa tìm kiếm tin tức, dùng cho SEO</span>
                     </div>
                 </div><br />
@@ -84,7 +91,7 @@
                         <label>Nội Dung:</label>
                     </div>
                     <div class="col-md-11">
-                        <textarea style="width:100%;height:250px" name="content" id="content">{{old('content')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="content" id="content">{{$data->content}}</textarea>
                     </div>
                 </div><br />
             </div>
@@ -96,6 +103,7 @@
         </div>
       </div><br />
       <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+      <input type="hidden" name="id" value="{{$data->id}}"/>
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>
@@ -119,7 +127,10 @@
     
             $("#frm input[name='image']").removeClass("error").next(".errortext").hide();
         }
+        var idCate="{{$data->cate_id}}";
     $(function(){
+$("#cate_id").val(idCate);
+
     
     $("#frm").kiemtra([
         {
@@ -155,7 +166,7 @@
 <script type="text/javascript">
   
   var currentPage = "#menu_news";
-  var subPage="new";
+  var subPage="list";
 
 
   $(document).ready(function(){
