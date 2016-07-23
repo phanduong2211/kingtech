@@ -62,7 +62,7 @@
                         </a>
                         <ul>
                             <li data-role="user/list" class="trole" data-action="list">
-                                <a href="{{url('admin/user')}}">Danh sách</a>
+                                <a href="{{url('admin/user')}}">Sản phẩm</a>
                             </li>
 
                             <li data-role="user/create" class="trole" data-action="new"> 
@@ -79,6 +79,46 @@
                         <a href="{{url('admin/menu')}}">
                             <i class="fa fa-list"></i> <span>Quản lý menu</span>
                         </a>
+                    </li>
+
+                    <li id="menu_news" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-globe"></i> <span>Quản lý tin tức</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/branch')}}">Tin tức</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
+                            </li>
+
+                            <li data-role="admin/category" class="trole" data-action="category"> 
+                                <a href="{{url('admin/news-category')}}" >Loại tin tức</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li id="menu_app" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-th"></i> <span>Quản lý ứng dụng</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/branch')}}">Ứng dụng</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
+                            </li>
+
+                            <li data-role="admin/category" class="trole" data-action="category"> 
+                                <a href="{{url('admin/app-category')}}" >Loại ứng dụng</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li id="menu_branch" class="dropdownmenu">

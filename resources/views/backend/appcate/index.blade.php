@@ -1,10 +1,10 @@
 @extends('backend.layout')
-@section('title','Menu - ACP')
+@section('title','Loại ứng dụng - ACP')
 
 @section('breadcrumb')
-<h2>Menu</h2>
+<h2>Loại ứng dụng</h2>
 <h3 class="trole" data-role="menu/create">
-        <a href="{{url('admin/menu/create')}}">Thêm Mới</a>
+        <a href="{{url('admin/app-category/create')}}">Thêm Mới</a>
     </h3>
 @endsection
 
@@ -19,8 +19,7 @@
     <div id="ttable" class="ttable">
     <ul class="subsubsub">
         <li><a data-filter="all" data-group-filter="a" data-subsubsub="true" href="#" class="current">Tất cả <span class="count"></span></a>|</li>
-        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showmenutop"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị ngoài trang chủ <span class="count"></span></a>|</li>
-        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showfooter"}' data-group-filter="a" data-subsubsub="true" href="#">Ẩn trên menu <span class="count"></span></a></li>
+        <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang Ẩn <span class="count"></span></a></li>
        
     </ul>
     <!--.subsubsub-->
@@ -40,7 +39,7 @@
                 <select id="filter-by-date" data-filter='{"type":"attr","attr_name":"data-parent"}' data-group-filter="a">
                     <option selected="selected" value="-1">- Con của -</option>
                     @foreach($data as $item)
-                      @if($item->parent_id==0)
+                      @if($item->parent==0)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                       @endif
                     @endforeach
@@ -65,17 +64,16 @@
     </div>
     <!--.captiontable-->
   <div style="overflow-x:auto;">
-      <table style="min-width:750px">
+      <table style="min-width:650px">
           <thead>
               <tr>
                   <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                   </th>
                   <th class="tsort" width="100px">Sắp Xếp</th>
-                  <th width="200px">Tên</th>
-                  <th width="150px">Url</th>
-                  <th>H.Thị Menu Top</th>
-                  <th>H.Thị menu Footer</th>
+                  <th width="250px">Tên</th>
+                  <th>Url</th>
+                  <th>Hiện thị</th>
               </tr>
           </thead>
           <tbody>
@@ -84,7 +82,7 @@
                                 function dequy($parentid,$arr,$text = ''){
                                     $temp=array();
                                     foreach ($arr as $key => $value) {
-                                        if($value->parent_id==$parentid){
+                                        if($value->parent==$parentid){
                                           $temp[]=$value;
 
                                           unset($arr[$key]);  
@@ -94,7 +92,7 @@
                                     if(count($temp)>0){
                                         foreach($temp as $item){
                                             ?>
-                                            <tr data-showmenutop="{{$item->show_menu_top}}" data-showfooter="{{$item->show_footer}}" data-parent="{{$item->parent_id}}">
+                                            <tr data-display="{{$item->display}}" data-parent="{{$item->parent}}">
                                           <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                                           <td>
                                             <span>
@@ -102,17 +100,17 @@
                                               <input type="text" class="inputTable" data-id="{{$item->id}}" value="{{$item->index}}" data-old="{{$item->index}}" />
                                             </span>
                                             <div class="row-action">
-                                                    <span title="Sửa thông tin"><a href="{{url('admin/menu/'.$item->id)}}">Sửa</a>
+                                                    <span title="Sửa thông tin"><a href="{{url('admin/app-category/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
                                                     <span class="delete">
                                                         <a class="event" 
                                                                 data-ajax="true" 
-                                                                data-href="{{url('admin/menu/delete')}}"
+                                                                data-href="{{url('admin/app-category/delete')}}"
                                                                  data-value="{{$item->id}}" 
                                                                 data-success-remove="true" 
                                                                 data-name="{{$item->name}}"
-                                                                data-confirm="Bạn có chắc muốn xóa menu <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                                                data-confirm="Bạn có chắc muốn xóa loại ứng dụng <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
                                                                 href="#" title="Xóa ">Xóa</a>
                                                     </span>
                                                 </div>
@@ -128,25 +126,14 @@
                                           </td>
                                           
                                           <td>
-                                                    <span class="ascheckbox checkboxblock {{$item->show_menu_top==1?'checked':''}}"
+                                                    <span class="ascheckbox checkboxblock {{$item->display==1?'checked':''}}"
                                                 data-background="none" 
                                                 data-ajax="true" 
-                                                data-href="{{url('admin/menu/show_menu_top')}}"
+                                                data-href="{{url('admin/app-category/display')}}"
                                                 data-value="{{$item->id}}" 
                                                 data-name="{{$item->name}}"
-                                                data-success="show_menu_top"
-                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> menu <b>{name}</b> trên menu top?"></span>
-                                          </td>
-
-                                          <td>
-                                                    <span class="ascheckbox checkboxblock {{$item->show_footer==1?'checked':''}}"
-                                                data-background="none" 
-                                                data-ajax="true" 
-                                                data-href="{{url('admin/menu/show_footer')}}"
-                                                data-value="{{$item->id}}" 
-                                                data-name="{{$item->name}}"
-                                                data-success="show_footer"
-                                                data-confirm="Bạn có chắc muốn <b>{yes=hiển thị}</b><b>{no=ẩn}</b> menu <b>{name}</b> ở menu footer?"></span>
+                                                data-success="display"
+                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> loại ứng dụng <b>{name}</b>?"></span>
                                           </td>
 
 
@@ -172,8 +159,8 @@
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-	var currentPage = "#menu_menu";
-  
+	var currentPage = "#menu_app";
+  var subPage = 'category';
 	$(document).ready(function(){
     
 
@@ -182,11 +169,9 @@
       'alert':getAlert,
       'confirm':getConfirm,
       "showcount":function(obj,item){
-              var count = obj.find("table tbody tr[data-showmenutop='1']").size();
+              var count = obj.find("table tbody tr[data-display='0']").size();
               obj.find(".subsubsub li:eq(1) .count").html('(' + count + ')');
 
-              count = obj.find("table tbody tr[data-showfooter='1']").size();
-              obj.find(".subsubsub li:eq(2) .count").html('(' + count + ')');
           },
         'action':function(href,arr,target){
           var id=[];
@@ -202,7 +187,7 @@
               }
             });
             if(id.length>0){
-              TRunAjax(base_url+"/menu/sort",{"id":id,"data":data,"_token":this.token},function(result){
+              TRunAjax(base_url+"/app-category/sort",{"id":id,"data":data,"_token":this.token},function(result){
                 $("#ttable table tbody .isChanged").each(function(){
                   var d=parseInt(this.value);
                  
@@ -216,18 +201,11 @@
 
           return false;
         },
-        'show_menu_top':function(target, result){
-              target.parent().parent().attr('data-showmenutop',(target.hasClass('checked')?1:0));
+        'display':function(target, result){
+              target.parent().parent().attr('data-display',(target.hasClass('checked')?1:0));
               target = target.parents(".ttable");
 
-              target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-showmenutop='1']").size() + ")");
-        },
-        'show_footer':function(target, result){
-             
-              target.parent().parent().attr('data-showfooter',(target.hasClass('checked')?1:0));
-              target = target.parents(".ttable");
-
-              target.find(".subsubsub li:eq(2) span.count").html("(" + target.find("table tbody tr[data-showfooter='1']").size() + ")");
+              target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-display='0']").size() + ")");
         }
 
       });

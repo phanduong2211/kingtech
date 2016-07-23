@@ -76,6 +76,54 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("display_footer","AgencyController@display_footer");
 	});
 
+	Route::group(['prefix'=>'app-category'],function(){
+		Route::get("/","AppCateController@index");
+		Route::get("create","AppCateController@create");
+		Route::post("create","AppCateController@postCreate");
+
+		Route::get("{id}","AppCateController@update")->where('id','[0-9]+');
+		Route::post("update","AppCateController@postUpdate");
+
+		Route::post("delete","AppCateController@postDelete");
+
+		Route::post("display","AppCateController@display");
+	
+
+		Route::post("sort","AppCateController@sort");
+	});
+
+	Route::group(['prefix'=>'news-category'],function(){
+		Route::get("/","NewsCateController@index");
+		Route::get("create","NewsCateController@create");
+		Route::post("create","NewsCateController@postCreate");
+
+		Route::get("{id}","NewsCateController@update")->where('id','[0-9]+');
+		Route::post("update","NewsCateController@postUpdate");
+
+		Route::post("delete","NewsCateController@postDelete");
+		Route::post("deletes","NewsCateController@postDeletes");
+
+		Route::post("display","NewsCateController@display");
+		Route::post("show_home","NewsCateController@show_home");
+	
+	});
+
+	Route::group(['prefix'=>'news'],function(){
+		Route::get("/","NewsController@index");
+		Route::get("create","NewsController@create");
+		Route::post("create","NewsController@postCreate");
+
+		Route::get("{id}","NewsController@update")->where('id','[0-9]+');
+		Route::post("update","NewsController@postUpdate");
+
+		Route::post("delete","NewsController@postDelete");
+		Route::post("deletes","NewsController@postDeletes");
+
+		Route::post("display","NewsController@display");
+		Route::post("show_home","NewsController@show_home");
+	
+	});
+
 
 });
 

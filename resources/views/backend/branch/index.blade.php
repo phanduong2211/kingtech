@@ -64,7 +64,7 @@
     </div>
        <!--.captiontable-->
        <div style="overflow-x:auto;">
-          <table style="min-width:900px">
+          <table style="min-width:700px">
              <thead>
                 <tr>
                    <th width="35px">

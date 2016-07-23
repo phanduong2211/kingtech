@@ -1,10 +1,10 @@
 @extends('backend.layout')
-@section('title','Đại lý - ACP')
+@section('title','Loại tin tức - ACP')
 
 @section('breadcrumb')
-<h2>Đại lý</h2>
+<h2>Loại tin tức</h2>
 <h3 class="trole" data-role="agency/create">
-        <a href="{{url('admin/agency/create')}}">Thêm Mới</a>
+        <a href="{{url('admin/news-category/create')}}">Thêm Mới</a>
     </h3>
 @endsection
 
@@ -18,30 +18,22 @@
 <div id="ttable" class="ttable">
        <ul class="subsubsub">
             <li><a data-filter="all" data-group-filter="a" data-subsubsub="true"  href="#" class="current">Tất cả <span class="count"></span></a>|</li>
-            <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-displayfoolter"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị cuối web <span class="count"></span></a></li>
+            <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang Ẩn <span class="count"></span></a>|</li>
+            <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showhome"}' data-group-filter="a" data-subsubsub="true" href="#">Hiện thị trang chủ <span class="count"></span></a></li>
        </ul>
        <!--.subsubsub-->
        <div class="row captiontable">
         <div class="col-sm-8">
 
             <div class="group-action">
-                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/agency/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} đại lý?" data-success-type="option">
+                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/news-category/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} loại tin tức?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
                     <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>
   
-            <div class="group-action">
-                <select id="filter-by-date" data-filter='{"type":"column","column":"select","filtertype":"="}'>
-                    <option selected="selected" value="-1" data-id="-1">- Tất cả chi nhánh -</option>
-                    
-                    @foreach($listBranch as $item)
-                      <option value="{{$item->name}}" data-id="{{$item->id}}" data-column="4">{{$item->name}}</option>
-                    @endforeach
-                </select>
-                <input type="button" class="button fleft" data-target="#filter-by-date" value="Lọc">
-            </div>
+           
             <div class="clearfloat"></div>
         </div>
         <!--col left-->
@@ -50,7 +42,7 @@
                 <input type="button" class="button fright" data-target="#filter-by-search" value="Tìm kiếm" />
                 <div class="searchicon">
                     <input type="text" id="filter-by-search" placeholder="Nhập nội dung cần tìm..." class="searchtable fright"
-                        data-filter='{"type":"column","column":"all","fiter_column":[1,2,3,4]}' />
+                        data-filter='{"type":"column","column":"all","fiter_column":[1,2]}' />
                     <i title="Xóa nội dung tìm kiếm.">&times;</i>
                 </div>
                 <div class="clearfloat"></div>
@@ -66,51 +58,59 @@
                    <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                    </th>
-                   <th class="tsort" width="200px">Tên đại lý</th>
-                   <th>Số điện thoại</th>
-                   <th width="200px">Địa chỉ</th>
-                   <th width="150px">Chi nhánh</th>
-                   <th>H.Thị cuối web</th>
+                   <th class="tsort" width="200px">Tên</th>
+                   <th>url</th>
+                  
+                   <th>H.Thị</th>
+                   <th>H.Thị trang chủ</th>
                 </tr>
              </thead>
              <tbody>
                 @foreach($data as $item)
-                <tr data-displayfoolter="{{$item->display_footer}}">
+                <tr data-display="{{$item->display}}" data-showhome="{{$item->show_home}}">
                   <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                   <td>
                       <span>{{$item->name}}</span>
                                             <div class="row-action">
-                                                    <span title="Sửa thông tin"><a href="{{url('admin/agency/'.$item->id)}}">Sửa</a>
+                                                    <span title="Sửa thông tin"><a href="{{url('admin/news-category/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
                                                     <span class="delete">
                                                         <a class="event" 
                                                                 data-ajax="true" 
-                                                                data-href="{{url('admin/agency/delete')}}"
+                                                                data-href="{{url('admin/news-category/delete')}}"
                                                                  data-value="{{$item->id}}" 
                                                                 data-success-remove="true" 
                                                                 data-name="{{$item->name}}"
-                                                                data-confirm="Bạn có chắc muốn xóa đại lý <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                                                data-confirm="Bạn có chắc muốn xóa loại tin tức <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
                                                                 href="#" title="Xóa">Xóa</a>
                                                     </span>
                                                 </div>
                                           </td>
                                 <td>
-                                  {{$item->phone}}
+                                  {{$item->url}}
                                 </td>
+                                
                                 <td>
-                                  {{$item->address}}
-                                </td>
-                                <td><span class="brand_id" data-id="{{$item->branch_id}}"></span></td>
-                                <td>
-                                    <span class="ascheckbox checkboxblock {{$item->display_footer==1?'checked':''}}"
+                                    <span class="ascheckbox checkboxblock {{$item->display==1?'checked':''}}"
                                                 data-background="none" 
                                                 data-ajax="true" 
-                                                data-href="{{url('admin/agency/display_footer')}}"
+                                                data-href="{{url('admin/news-category/display')}}"
                                                 data-value="{{$item->id}}" 
                                                 data-name="{{$item->name}}"
-                                                data-success="display_footer"
-                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> đại lý <b>{name}</b> dưới cuối trang?"></span>
+                                                data-success="display"
+                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> loại tin tức <b>{name}</b>?"></span>
+                                </td>
+
+                                <td>
+                                    <span class="ascheckbox checkboxblock {{$item->show_home==1?'checked':''}}"
+                                                data-background="none" 
+                                                data-ajax="true" 
+                                                data-href="{{url('admin/news-category/show_home')}}"
+                                                data-value="{{$item->id}}" 
+                                                data-name="{{$item->name}}"
+                                                data-success="show_home"
+                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> loại tin tức <b>{name}</b> trong trang chủ?"></span>
                                 </td>
                 </tr>
                 @endforeach
@@ -127,8 +127,8 @@
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-	var currentPage = "#menu_branch";
-	var subPage = 'agency';
+	var currentPage = "#menu_news";
+	var subPage = 'category';
 
 	$(document).ready(function(){
 
@@ -137,28 +137,28 @@
 			'confirm':getConfirm,
       'token':'{{csrf_token()}}',
       "showcount":function(obj,item){
-              var count = obj.find("table tbody tr[data-displayfoolter='1']").size();
+              var count = obj.find("table tbody tr[data-display='0']").size();
               obj.find(".subsubsub li:eq(1) .count").html('(' + count + ')');
 
-          },
-    	});
-    var bobj=$("#ttable table tbody .brand_id");
-    $("#filter-by-date option").each(function(){
-      var id=$(this).attr('data-id');
-      if(id!=='-1'){
-        var name=$(this).html();
-        //branchlist[$(this).attr('value')]=$(this).html();
-        var count=0;
-        bobj.each(function(){
-          if($(this).attr('data-id')==id){
-            count++;
-            $(this).html(name);
-          }
-        });
+              count = obj.find("table tbody tr[data-showhome='1']").size();
+              obj.find(".subsubsub li:eq(2) .count").html('(' + count + ')');
 
-        $(this).html(name+" ("+count+")");
-      }
-    });
+          },
+        'show_home':function(target, result){
+             
+              target.parent().parent().attr('data-showhome',(target.hasClass('checked')?1:0));
+              target = target.parents(".ttable");
+
+              target.find(".subsubsub li:eq(2) span.count").html("(" + target.find("table tbody tr[data-showhome='1']").size() + ")");
+        },
+        'display':function(target, result){
+              
+              target.parent().parent().attr('data-display',(target.hasClass('checked')?1:0));
+              target = target.parents(".ttable");
+
+              target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-display='0']").size() + ")");
+        }
+    	});
 
 	});
 
