@@ -42,17 +42,28 @@ class ControllerDB extends BaseController
     }
     public function getNews()
     {
-
+        $news = News::orderby("id","desc")->paginate(10);
+        return $news;
     }
     public function getNewsWhere($newscate)
     {
-    	$news = News::orderby("id","asc")->where("cate_id",$newscate)->take(3)->get();
-    	return $news;
+    	$newsShowHome = News::orderby("id","asc")->where("cate_id",$newscate)->take(3)->get();
+    	return $newsShowHome;
     }
-    public function getNew_cate()
+    public function getNewsWhereID($id)
     {
-    	$news_cate = NewsCate::orderby("id","asc")->where("display",1)->where("show_home",1)->get();
-    	return $news_cate;
+        $detailnews = News::where("id",$id)->get();
+        return $detailnews;
+    }
+    public function getNews_cateWhere()
+    {
+    	$news_cateWhere = NewsCate::orderby("id","asc")->where("display",1)->where("show_home",1)->get();
+    	return $news_cateWhere;
+    }
+    public function getNews_cate()
+    {
+        $news_cate = NewsCate::orderby("id","asc")->where("display",1)->get();
+        return $news_cate;
     }
     public function getNews_hot()
     {
@@ -80,6 +91,16 @@ class ControllerDB extends BaseController
             $products = Product::where("display","=",1)->orderby("index_home","asc")->where("price",">=",$priceStart)->where("price","<=",$priceEnd)->where("name","like","%".$txtSearch."%")->paginate(16);
         }
         return $products;
+    }
+    public function getNewsWhereCateID($id,$name)
+    {
+        $newsCate = News::where("cate_id",$id)->paginate(10);
+        return $newsCate;
+    }
+    public function getNewsReferWhereCateID($id)
+    {
+        $newsRefer = News::where("cate_id",$id)->get();
+        return $newsRefer;
     }
     
 }

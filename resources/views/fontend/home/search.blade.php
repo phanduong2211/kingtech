@@ -1,6 +1,6 @@
 <div class="box_search">
   <div class="search_line">
-    <form action="tim-kiem.html" method="get">
+    <form action="{{Asset('')}}tim-kiem.html" method="get">
       <p>
       <input type="text" name="txtSearch" value="" class="line_input" placeholder="Tên sản phẩm, máy tính bảng, phụ kiện...">
       </p>

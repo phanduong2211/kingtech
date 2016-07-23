@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Input;
 use Illuminate\Routing\Controller;
 
-class TimKiemController extends Controller
+class SearchController extends Controller
 {
 	public function getTimKiem()
 	{

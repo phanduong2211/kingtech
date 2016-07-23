@@ -21,7 +21,7 @@ class IndexController extends Controller
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
-        $news_cate = $th->getNew_cate();
+        $news_cate = $th->getNews_cateWhere();
         $cate_id=0;
         if(count($news_cate)>0)
         {

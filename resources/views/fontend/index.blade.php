@@ -17,7 +17,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  
   <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
 @endsection
-@section('index')
+@section('center')
       <div class="body_pages">
         <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
 

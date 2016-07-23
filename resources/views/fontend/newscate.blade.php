@@ -12,13 +12,12 @@
   <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />
   <meta property="og:description" content="KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất " />
   <meta property="og:site_name" content="kingtech" />
-  <meta property="og:image" content="images/logo_jpg.jpg" />
+  <meta property="og:image" content="{{Asset('')}}public/kingtech/images/logo_jpg.jpg" />
   <meta property="fb:app_id" content="1700293566862288" />
   <meta name='robots' content='INDEX,FOLLOW' />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  
   <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
 @endsection
-@section('center')
 <head>
   <style>
   .pagination
@@ -38,41 +37,40 @@
     }
   </style>
 </head>
+@section('center')
 <div class="body_pages">
-           
-    @include("fontend.home.search")
-    <div class="box_pages fl_padding2">
-      @include("fontend.home.adsLeft")
-            <div class="box_pages_center" id="1">
-        <div class="box_sales">
-        <div class="box_pro_title">
-      <aside>
-        <label>Kết quả tìm kiếm : {{count($products)}} sản phẩm </label>
-        <span></span>
-      </aside>
-    </div>
-          <div class="box_pro"> 
-            <div class="th_pro">
-              <ul>
-                @for($i=0;$i< count($products);$i++)
-                  <li>
-                    <figure><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
-                    <h2><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
-                    <aside>
-                        <span><b>{{$products[$i]->price}} đ</b></span> 
-                        <!--<code>Giá công ty: 12,500,000 đ</code> -->
-                    </aside>
-                  </li>
-                  @endfor 
-              </ul>
-                      
+       @include("fontend.home.search")
+      <div class="box_pages fl_padding2">
+        @include("fontend.home.adsLeft")
+        <div class="box_pages_center">
+          <div class="box_sales">
+            <div class="box_news_title">
+              <aside>
+              	@for($i=0;$i< count($NewsCate);$i++)
+                    <label class="fl_positon_label"><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+                @endfor                         
+                
+              </aside>
             </div>
-              <?php echo $products->appends(['sort' => 'votes'])->render(); ?>
+            <div class="box_news">
+            <ul>
+            @for($i=0;$i< count($news);$i++)
+            	@for($j=0;$j< count($NewsCate);$j++)
+                     @if($news[$i]->cate_id==$NewsCate[$j]->id)
+	                <li>
+	                	<figure> <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"> <img src="{{Asset('')}}public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}" /> </a> </figure>
+	                	<h2> <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}</a> </h2>
+	                	<big>{{$news[$i]->description}}</big> 
+	               	</li>
+               		@endif
+                @endfor
+             @endfor       
+            </ul>
+            
           </div>
-            </div>
+          <?php echo $news->appends(['sort' => 'votes'])->render(); ?>
+        </div>
+          @include("fontend.home.centerSupport")
       </div>
-      @include("fontend.home.centerSupport")
-  </div>
-
-</div>
+      </div>
 @endsection
