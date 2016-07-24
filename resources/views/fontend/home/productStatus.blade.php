@@ -4,16 +4,16 @@
       </div>
       <div class="box_left_menu">
         <div class="slider-aside-group" data-dots-container="#list_1">
-        @for($i=0;$i< count($productpromotion);$i+=2)
+        @for($i=0;$i< count($productSelling);$i+=2)
              <div class="item_good">
                 <ul>
                     <li>
-                    <figure><a href="{{$productpromotion[$i]->url}}" title="{{$productpromotion[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productpromotion[$i]->image}}" alt="{{$productpromotion[$i]->name}}" /></a></figure>
-                    <h2><a href="{{$productpromotion[$i]->url}}" title="{{$productpromotion[$i]->name}}">{{$productpromotion[$i]->name}}</a></h2>
+                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productSelling[$i]->image}}" alt="{{$productSelling[$i]->name}}" /></a></figure>
+                    <h2><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}">{{$productSelling[$i]->name}}</a></h2>
                     </li>
                     <li>
-                    <figure><a href="{{$productpromotion[$i+1]->url}}" title="{{$productpromotion[$i+1]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productpromotion[$i+1]->image}}" alt="{{$productpromotion[$i+1]->name}}" /></a></figure>
-                    <h2><a href="{{$productpromotion[$i+1]->url}}" title="{{$productpromotion[$i+1]->name}}">{{$productpromotion[$i+1]->name}}</a></h2>
+                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productSelling[$i+1]->image}}" alt="{{$productSelling[$i+1]->name}}" /></a></figure>
+                    <h2><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}">{{$productSelling[$i+1]->name}}</a></h2>
                     </li>
               
             </ul>

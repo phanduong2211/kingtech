@@ -26,9 +26,9 @@ class IndexController extends Controller
         $news = $th->getNewsWhere($cate_id);
         $newsHot = $th->getNews_hot();
         $ads = $th->getAds();
-        $productpromotion = $th->getProductPromotion();
-        //return $productpromotion;
-        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productpromotion"=>$productpromotion));
+        $productSelling = $th->getProductSelling();
+        //return $productSelling;
+        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling));
     }
 }
 

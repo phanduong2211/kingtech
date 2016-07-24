@@ -13,7 +13,7 @@
                           }
                        ?>
               <!-- end kiểm tra xem có category con không -->
-                      <li><a href="/c/93-dang-cap-digital" title="{{$categorys[$i]->name}}">{{$categorys[$i]->name}}                                  
+                      <li><a href="{{Asset('')}}category/{{$categorys[$i]->id.'-'.$categorys[$i]->url}}" title="{{$categorys[$i]->name}}">{{$categorys[$i]->name}}                                  
                       <?php if($flag) echo '<i class="fa fa-caret-down"></i>';?>
                               </a>
                               <!-- begin nếu có category con -->
@@ -21,7 +21,7 @@
                               <ul class="left">
                                   @for($j=0;$j<count($categorys);$j++)
                                     @if($categorys[$j]->parent!=0 && $categorys[$j]->parent==$categorys[$i]->id)
-                                      <li><i class="fa fa-circle"></i> <a href="/c/405-may-bay-dieu-khien" title="{{$categorys[$j]->name}}">{{$categorys[$j]->name}}</a></li>
+                                      <li><i class="fa fa-circle"></i> <a href="{{Asset('')}}category/{{$categorys[$j]->id.'-'.$categorys[$j]->url}}" title="{{$categorys[$j]->name}}">{{$categorys[$j]->name}}</a></li>
                                     @endif
                                   @endfor
                               </ul>

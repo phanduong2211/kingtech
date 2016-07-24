@@ -17,9 +17,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  
   <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
 @endsection
+<head>
+  <style>
+  .pagination
+  {
+    margin:auto;
+    width:24%;
+  }
+    .pagination li
+    {
+      float:left;
+      list-style: none;
+      width:5px;
+      height: 5px;
+      padding:12px;
+      border:1px solid gray;
+      box-shadow: 5px 5px 16px -5px;
+    }
+    .overi_hotline
+    {
+      margin-top: 13px;
+    }
+  </style>
+</head>
 @section('center')
       <div class="body_pages">
-        <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
+        <link rel="stylesheet" href="{{Asset('')}}public/kingtech/css/TweenMax.css" type="text/css">
 
 
 
@@ -30,21 +53,29 @@
     <div class="box_pro">
       <div class="box_title">
         <aside>
-          <label><a href="/c/298-camera-ip-hd" title="Camera IP HD">Camera IP HD</a></label>
+        @foreach($categorys as $cate)
+          @if($cate->id==$products[0]->cate_id)
+          <label><a href="{{Asset('')}}category/{{$cate->id.'-'.$cate->url}}" title="{{$cate->name}}">{{$cate->name}}</a></label>
+          @endif
+        @endforeach
           <span></span> </aside>
       </div>
       <div class="box_item">
+      @for($i=0;$i< count($products);$i++)
         <div class="item_pro">
-          <figure><a href="/p/1473-camera-ip-thong-minh-wifi-sricam-sp008-onvif-720p-zoom-5x" title="Camera IP thông minh Wifi Sricam SP008 Onvif 720P Zoom 5X"><img src="public/kingtech/images/p/camera-ip-thong-minh-wifi-sricam-sp008-onvif-720p-zoom-5x-0.jpg" alt="Camera IP thông minh Wifi Sricam SP008 Onvif 720P Zoom 5X"></a></figure>
-          <h2><a href="/p/1473-camera-ip-thong-minh-wifi-sricam-sp008-onvif-720p-zoom-5x" title="Camera IP thông minh Wifi Sricam SP008 Onvif 720P Zoom 5X">Camera IP thông minh Wifi Sricam SP008 Onvif ...</a></h2>
-          <span><code>3,590,000 đ</code></span> 
-         </div>          
+          <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}"></a></figure>
+          <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
+          <span><code>{{$products[$i]->price}} đ</code></span> 
+         </div>
+        @endfor
+
         </div>
+<?php echo $products->appends(['sort' => 'votes'])->render(); ?>
     </div>        
   </div>
       @include("fontend.home.centerSupport")
 </div>
-<script src="public/kingtech/js/jquery.newsTicker.js"></script> 
+<script src="{{Asset('')}}public/kingtech/js/jquery.newsTicker.js"></script> 
 <script>
 
                 var nt_title = $('#nt-title').newsTicker({
