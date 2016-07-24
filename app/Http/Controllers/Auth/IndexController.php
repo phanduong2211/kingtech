@@ -4,12 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Routing\Controller;
 use View;
-use App\Category;
-use App\Menu;
-use App\News;
-use App\SlideShow;
-use App\NewsCate;
-use App\Website;
 use Illuminate\Database\Eloquent\Model;
 class IndexController extends Controller
 {
@@ -32,7 +26,9 @@ class IndexController extends Controller
         $news = $th->getNewsWhere($cate_id);
         $newsHot = $th->getNews_hot();
         $ads = $th->getAds();
-        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads));
+        $productpromotion = $th->getProductPromotion();
+        //return $productpromotion;
+        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productpromotion"=>$productpromotion));
     }
 }
 

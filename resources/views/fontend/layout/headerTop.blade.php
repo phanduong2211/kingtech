@@ -3,7 +3,7 @@
       <section>
         <div class="header_top">
           <div class="hotline">
-            <figure><img src="{{Asset('')}}public/kingtech/images/hotline.png" alt="Digital hotline"></figure>
+            <figure class="overi_hotline"><img src="{{Asset('')}}public/kingtech/images/hotline.png" alt="Kingtech hotline"></figure>
             @foreach($website as $phone)
               @if($phone->name=="hotline")
                 <span>{{$phone->content}}</span> </div>

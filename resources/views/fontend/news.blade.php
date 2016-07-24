@@ -34,6 +34,10 @@
       border:1px solid gray;
       box-shadow: 5px 5px 16px -5px;
     }
+    .overi_hotline
+    {
+      margin-top: 13px;
+    }
   </style>
 </head>
 @section('center')
@@ -46,8 +50,10 @@
           <div class="box_sales">
             <div class="box_news_title">
               <aside>
+              <?php $Pleft = 0; ?>
                   @for($i=0;$i< count($NewsCate);$i++)
-                    <label class="fl_positon_label"><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+                    <label style="left:{{$Pleft}}" class=""><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+                    <?php $Pleft += 147; ?>
                   @endfor   
                 
               </aside>

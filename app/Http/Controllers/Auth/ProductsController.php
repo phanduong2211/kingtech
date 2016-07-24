@@ -5,17 +5,18 @@ use Illuminate\Http\Request;
 use Input;
 use Illuminate\Routing\Controller;
 
-class SearchController extends Controller
+class ProductsController extends Controller
 {
-	public function getTimKiem()
+	public function getProductPromotion()
 	{
+
 		$th = new ControllerDB();
 
-		$txtSearch = Input::get('txtSearch');
+		/*$txtSearch = Input::get('txtSearch');
 		$priceStart = Input::get('ddStart');
 		$priceEnd = Input::get('ddEnd');
 		//return $priceStart;
-		$products = $th->getSearch($txtSearch,$priceStart,$priceEnd);
+		$products = $th->getSearch($txtSearch,$priceStart,$priceEnd);*/
 		
         $getCategorys = $th->getCategoryMenu();
         $menus = $th->getMenu();
@@ -24,7 +25,9 @@ class SearchController extends Controller
         $ads = $th->getAds();
         $productpromotion = $th->getProductPromotion();
 
-        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productpromotion"=>$productpromotion));
+        $productdeal = $th->getProductDeal();
+
+        return View("fontend.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productpromotion"=>$productpromotion));
 	}
 }
 

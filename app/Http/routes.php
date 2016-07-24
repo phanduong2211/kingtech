@@ -145,6 +145,7 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 Route::group(['namespace' => 'Auth'], function()
 {
 	Route::get('/',"IndexController@getIndex");
+	Route::get('deal.html','ProductsController@getProductPromotion');
 	Route::get("tim-kiem.html","SearchController@getTimKiem");
 
 	Route::group(['prefix'=>'tin-tuc'],function(){

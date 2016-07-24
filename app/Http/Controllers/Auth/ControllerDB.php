@@ -73,7 +73,7 @@ class ControllerDB extends BaseController
     }
     public function getSearch($txtSearch,$priceStart,$priceEnd)
     {
-        //return 1;
+        
         $products = 0;
         if($priceStart==0 && $priceEnd==0)
         {
@@ -107,6 +107,16 @@ class ControllerDB extends BaseController
     {
         $ads = Ads::where("display","=",1)->get();
         return $ads;
+    }
+    public function getProductPromotion()
+    {
+            $productpromotion = Product::orderby("sold","desc")->where("display",1)->take(10)->get();
+            return $productpromotion;
+    }
+    public function getProductDeal()
+    {
+        $productdeal = Product::orderby("price","asc")->where("display",1)->take(10)->get();
+            return $productdeal;
     }
     
 }
