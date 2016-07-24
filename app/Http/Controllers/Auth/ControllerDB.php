@@ -123,5 +123,14 @@ class ControllerDB extends BaseController
         $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
             return $products;
     }
-    
+    public function getProductRefer($id,$idproduct)
+    {
+        $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->where('id','!=',$idproduct)->take(10)->get();
+            return $products;
+    }
+    public function getProductWhereID($id,$name)
+    {
+        $products = Product::where("display",1)->where("id",$id)->get();
+            return $products;
+    }
 }

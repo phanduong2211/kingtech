@@ -14,6 +14,7 @@
     <link href="{{Asset('')}}public/kingtech/css/cssWeb.css" rel="stylesheet" type="text/css">
     <!-- <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
     <link href="{{Asset('')}}public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 

@@ -37,6 +37,23 @@ class ProductsController extends Controller
         return View("fontend.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling));
 
 	}
+	public function getProduct($id,$name)
+	{
+		$th = new ControllerDB();	
+        $getCategorys = $th->getCategoryMenu();
+        $menus = $th->getMenu();
+        $slides =$th->getSlideShow();
+        $website = $th->getWebsite();
+        $ads = $th->getAds();
+        $productSelling = $th->getProductSelling();
+
+        $products = $th->getProductWhereID($id,$name);
+        $productsRefer=null;
+        if(count($products)>0)
+        	$productsRefer = $th->getProductRefer($products[0]->cate_id,$id);
+
+        return View("fontend.detailproduct",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"productsRefer"=>$productsRefer));
+	}
 }
 
 ?>

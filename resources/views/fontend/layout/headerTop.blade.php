@@ -19,7 +19,7 @@
           <div class="header_share">
           
               <div class="header_social">
-              <figure>
+              <figure class="_social">
               @foreach($website as $fb)
                 @if($fb->name=="facebook")
                    <a href="{{$fb->content}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/icon_face.png" alt="Facebook"></a>

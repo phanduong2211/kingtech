@@ -156,5 +156,8 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::group(["prefix"=>"category"],function(){
 		Route::get("{id}-{name}","ProductsController@getCategory");
 	});
+	Route::group(["prefix"=>"product"],function(){
+		Route::get("{id}-{name}","ProductsController@getProduct");
+	});
 });
 
