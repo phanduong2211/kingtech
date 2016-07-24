@@ -108,15 +108,20 @@ class ControllerDB extends BaseController
         $ads = Ads::where("display","=",1)->get();
         return $ads;
     }
-    public function getProductPromotion()
+    public function getProductSelling()
     {
-            $productpromotion = Product::orderby("sold","desc")->where("display",1)->take(10)->get();
-            return $productpromotion;
+            $productSelling = Product::orderby("sold","desc")->where("display",1)->take(10)->get();
+            return $productSelling;
     }
     public function getProductDeal()
     {
-        $productdeal = Product::orderby("price","asc")->where("display",1)->take(10)->get();
+        $productdeal = Product::orderby("price","asc")->where("display",1)->paginate(30);
             return $productdeal;
+    }
+    public function getProductWhereCategoryID($id,$name)
+    {
+        $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
+            return $products;
     }
     
 }

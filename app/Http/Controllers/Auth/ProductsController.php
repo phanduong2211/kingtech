@@ -7,27 +7,35 @@ use Illuminate\Routing\Controller;
 
 class ProductsController extends Controller
 {
-	public function getProductPromotion()
+	public function getProductSelling()
 	{
 
-		$th = new ControllerDB();
-
-		/*$txtSearch = Input::get('txtSearch');
-		$priceStart = Input::get('ddStart');
-		$priceEnd = Input::get('ddEnd');
-		//return $priceStart;
-		$products = $th->getSearch($txtSearch,$priceStart,$priceEnd);*/
-		
+		$th = new ControllerDB();	
         $getCategorys = $th->getCategoryMenu();
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
         $ads = $th->getAds();
-        $productpromotion = $th->getProductPromotion();
+        $productSelling = $th->getProductSelling();
 
         $productdeal = $th->getProductDeal();
 
-        return View("fontend.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productpromotion"=>$productpromotion));
+        return View("fontend.productdeal",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productSelling"=>$productSelling));
+	}
+	public function getCategory($id,$name)
+	{
+		$th = new ControllerDB();	
+        $getCategorys = $th->getCategoryMenu();
+        $menus = $th->getMenu();
+        $slides =$th->getSlideShow();
+        $website = $th->getWebsite();
+        $ads = $th->getAds();
+        $productSelling = $th->getProductSelling();
+
+        $products = $th->getProductWhereCategoryID($id,$name);
+
+        return View("fontend.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling));
+
 	}
 }
 
