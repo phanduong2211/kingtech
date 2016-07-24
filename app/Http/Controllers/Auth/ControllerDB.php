@@ -14,6 +14,7 @@ use App\SlideShow;
 use App\Product;
 use App\NewsCate;
 use App\Website;
+use App\Ads;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -101,6 +102,11 @@ class ControllerDB extends BaseController
     {
         $newsRefer = News::where("cate_id",$id)->get();
         return $newsRefer;
+    }
+    public function getAds()
+    {
+        $ads = Ads::where("display","=",1)->get();
+        return $ads;
     }
     
 }

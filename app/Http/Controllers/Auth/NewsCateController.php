@@ -22,8 +22,8 @@ class NewsCateController extends Controller
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
-
-        return View("fontend.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate));
+        $ads = $th->getAds();
+        return View("fontend.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads));
 	}
 
 	public function getNews()
@@ -36,13 +36,13 @@ class NewsCateController extends Controller
 
 		$news = $th->getNews();
 		$NewsCate = $th->getNews_cate();
-		
         $getCategorys = $th->getCategoryMenu();
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
+        $ads = $th->getAds();
 
-        return View("fontend.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate));
+        return View("fontend.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads));
 	}
 	public function getDetailNews($catename,$id,$name)
 	{
@@ -65,8 +65,9 @@ class NewsCateController extends Controller
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
+        $ads = $th->getAds();
 
-        return View("fontend.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer));
+        return View("fontend.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads));
 	}
 }
 

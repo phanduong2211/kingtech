@@ -27,38 +27,46 @@
     <aside> <strong>Tiêu điểm:</strong>
       <ul class="flv_tieudiem" id="nt-title" style="height: 30px; overflow: hidden;">
                 @for($i=0;$i< count($newsHot);$i++)
-                  <li style="margin-top: 0px;"><a href="{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
+                  @for($j=0;$j < count($NewsCate);$j++)
+                    @if($newsHot[$i]->cate_id==$NewsCate[$j]->id)
+                    <li style="margin-top: 0px;"><a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
+                    @endif
+                  @endfor
                 @endfor
               </ul>
     </aside>
       @for($i=0;$i< count($news_cate);$i++)        
 
         @if($i==0)
-        <span class="tieude_khuyenmai"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>        
+        <span class="tieude_khuyenmai"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>        
         @elseif($i==1)
-        <span class="tieude_thuthuat"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        <span class="tieude_thuthuat"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
         @elseif($i==2)
-        <span class="tieude_tinmoi"><a href="{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        <span class="tieude_tinmoi"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
         @endif
       @endfor
       </div>
   <div class="slider_item">
   <!-- begin tin tức hiển thị trang chủ -->
     @for($i=0;$i< count($news);$i++)
-      <div class="item">
-        
-        <figure>
-          <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
-          </a>
-        </figure>
-        <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>
-        <h2>
-          <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a><a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}<span>({{$news[$i]->updated_at}})</span> </a>
-        </h2>
-        <a href="{{$news[$i]->url}}" title="{{$news[$i]->title}}">
-        <label>Đọc tiếp</label>
-        </a> 
-      </div>
+      @for($j=0;$j < count($NewsCate);$j++)
+        @if($news[$i]->cate_id==$NewsCate[$j]->id)
+        <div class="item">
+          
+          <figure>
+            <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
+            </a>
+          </figure>
+          <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>
+          <h2>
+            <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a><a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}<span>({{$news[$i]->updated_at}})</span> </a>
+          </h2>
+          <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">
+          <label>Đọc tiếp</label>
+          </a> 
+        </div>
+        @endif
+      @endfor
     @endfor
   <!-- end tin tức hiển thị trang chủ -->
       </div>
@@ -73,80 +81,56 @@
           <label>Sản phẩm mới</label>
           <span></span> </aside>
       </div>
-      <div class="slider-info-items slick-initialized slick-slider"> <span class="span_left"> <a href="" id="slider-nav-back" onclick="return false" style="display: inline;"> <img src="public/kingtech/images/pre.png"></a> </span>
-                <div class="slick-list draggable" tabindex="0"><div class="slick-track" style="opacity: 1; width: 3880px; transform: translate3d(-776px, 0px, 0px);"><div class="item_pro slick-slide slick-cloned" index="-4" style="width: 178px;">
-          <figure><a href="/p/1730-may-nghe-nhac-xe-hoi-bluetooth-egtong" title="Máy nghe nhạc xe hơi Bluetooth EGTONG"><img src="public/kingtech/images/p/may-nghe-nhac-xe-hoi-bluetooth-egtong-8.jpg" alt="Máy nghe nhạc xe hơi Bluetooth EGTONG"></a></figure>
-          <h2><a href="/p/1730-may-nghe-nhac-xe-hoi-bluetooth-egtong" title="Máy nghe nhạc xe hơi Bluetooth EGTONG">Máy nghe nhạc xe hơi Bluetooth EGTONG</a></h2>
-          <span><code>550,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="-3" style="width: 178px;">
-          <figure><a href="/p/1727-dang-cap-hd-box-d8-pro-bao-hanh-2-nam" title="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm"><img src="public/kingtech/images/p/dang-cap-hd-box-d8-pro-4.jpg" alt="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm"></a></figure>
-          <h2><a href="/p/1727-dang-cap-hd-box-d8-pro-bao-hanh-2-nam" title="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm">Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm</a></h2>
-          <span><code>1,790,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="-2" style="width: 178px;">
-          <figure><a href="/p/1726-android-tv-box-m8s-plus-android-51-amlogic-s905-2g" title="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G"><img src="public/kingtech/images/p/android-tv-box-m8s-plus-android-51-amlogic-s905-2g-0.jpg" alt="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G"></a></figure>
-          <h2><a href="/p/1726-android-tv-box-m8s-plus-android-51-amlogic-s905-2g" title="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G">Android TV Box M8S Plus Android 5.1 Amlogic S905 ...</a></h2>
-          <span><code>1,590,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="-1" style="width: 178px;">
-          <figure><a href="/p/1705-vong-deo-tay-thong-minh-wristband-fitbit" title="Vòng đeo tay thông minh Wristband Fitbit"><img src="public/kingtech/images/p/vong-deo-tay-thong-minh-wristband-fitbit-1.jpg" alt="Vòng đeo tay thông minh Wristband Fitbit"></a></figure>
-          <h2><a href="/p/1705-vong-deo-tay-thong-minh-wristband-fitbit" title="Vòng đeo tay thông minh Wristband Fitbit">Vòng đeo tay thông minh Wristband Fitbit</a></h2>
-          <span><code>650,000 đ</code></span> </div><div class="item_pro slick-slide slick-active" index="0" style="width: 178px;">
-          <figure><a href="/p/1757-may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p" title="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P"><img src="public/kingtech/images/p/may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p-1.jpg" alt="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P"></a></figure>
+      <div class="slider-info-items"> <span class="span_left"> <a href="" id="slider-nav-back" onClick="return false" > <img src="public/kingtech/images/pre.png"></a> </span>
+                <div class="item_pro">
+          <figure><a href="/p/1757-may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p" title="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P"><img src="public/kingtech/images/p/may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p-1.jpg" alt="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P" /></a></figure>
           <h2><a href="/p/1757-may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p" title="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P">Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P</a></h2>
-          <span><code>11,900,000 đ</code></span> </div><div class="item_pro slick-slide slick-active" index="1" style="width: 178px;">
-          <figure><a href="/p/1756-pin-du-phong-mp909-5000mah" title="Pin dự phòng MP909 5000mAh"><img src="public/kingtech/images/p/pin-du-phong-mp909-5000mah-1.jpg" alt="Pin dự phòng MP909 5000mAh"></a></figure>
+          <span><code>11,900,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1756-pin-du-phong-mp909-5000mah" title="Pin dự phòng MP909 5000mAh"><img src="public/kingtech/images/p/pin-du-phong-mp909-5000mah-1.jpg" alt="Pin dự phòng MP909 5000mAh" /></a></figure>
           <h2><a href="/p/1756-pin-du-phong-mp909-5000mah" title="Pin dự phòng MP909 5000mAh">Pin dự phòng MP909 5000mAh</a></h2>
-          <span><code>99,000 đ</code></span> </div><div class="item_pro slick-slide slick-active" index="2" style="width: 178px;">
-          <figure><a href="/p/1755-sjcam-sj4000-wifi-20-phien-ban-moi-nhat-mua-1-tang-4" title="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4"><img src="public/kingtech/images/p/sjcam-sj4000-wifi-20-phien-ban-moi-nhat-2.jpg" alt="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4"></a></figure>
+          <span><code>99,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1755-sjcam-sj4000-wifi-20-phien-ban-moi-nhat-mua-1-tang-4" title="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4"><img src="public/kingtech/images/p/sjcam-sj4000-wifi-20-phien-ban-moi-nhat-2.jpg" alt="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4" /></a></figure>
           <h2><a href="/p/1755-sjcam-sj4000-wifi-20-phien-ban-moi-nhat-mua-1-tang-4" title="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4">Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, ...</a></h2>
-          <span><code>2,290,000 đ</code></span> </div><div class="item_pro slick-slide slick-active" index="3" style="width: 178px;">
-          <figure><a href="/p/1754-chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20" title="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20"><img src="public/kingtech/images/p/chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20-1.jpg" alt="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20"></a></figure>
+          <span><code>2,290,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1754-chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20" title="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20"><img src="public/kingtech/images/p/chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20-1.jpg" alt="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20" /></a></figure>
           <h2><a href="/p/1754-chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20" title="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20">CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI ...</a></h2>
-          <span><code>2,990,000 đ</code></span> </div><div class="item_pro slick-slide" index="4" style="width: 178px;">
-          <figure><a href="/p/1748-may-chieu-mini-thong-minh-dlp800w" title="Máy chiếu mini thông minh DLP800W"><img src="public/kingtech/images/p/may-chieu-mini-thong-minh-dlp800w-4.jpg" alt="Máy chiếu mini thông minh DLP800W"></a></figure>
+          <span><code>2,990,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1748-may-chieu-mini-thong-minh-dlp800w" title="Máy chiếu mini thông minh DLP800W"><img src="public/kingtech/images/p/may-chieu-mini-thong-minh-dlp800w-4.jpg" alt="Máy chiếu mini thông minh DLP800W" /></a></figure>
           <h2><a href="/p/1748-may-chieu-mini-thong-minh-dlp800w" title="Máy chiếu mini thông minh DLP800W">Máy chiếu mini thông minh DLP800W</a></h2>
-          <span><code>8,950,000 đ</code></span> </div><div class="item_pro slick-slide" index="5" style="width: 178px;">
-          <figure><a href="/p/1746-vong-deo-tay-thong-minh-xiaomi-miband-2" title="Vòng đeo tay thông minh Xiaomi Miband 2"><img src="public/kingtech/images/p/vong-deo-tay-thong-minh-xiaomi-miband-2-1.jpg" alt="Vòng đeo tay thông minh Xiaomi Miband 2"></a></figure>
+          <span><code>8,950,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1746-vong-deo-tay-thong-minh-xiaomi-miband-2" title="Vòng đeo tay thông minh Xiaomi Miband 2"><img src="public/kingtech/images/p/vong-deo-tay-thong-minh-xiaomi-miband-2-1.jpg" alt="Vòng đeo tay thông minh Xiaomi Miband 2" /></a></figure>
           <h2><a href="/p/1746-vong-deo-tay-thong-minh-xiaomi-miband-2" title="Vòng đeo tay thông minh Xiaomi Miband 2">Vòng đeo tay thông minh Xiaomi Miband 2</a></h2>
-          <span><code>990,000 đ</code></span> </div><div class="item_pro slick-slide" index="6" style="width: 178px;">
-          <figure><a href="/p/1743-bo-chia-hdmi-201-ra-2-1x2-hdmi-splitter-4k2k-co-remote-dolby-truehd-lpcm7" title="Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter (4K*2K) có Remote Dolby TrueHD /LPCM7"><img src="public/kingtech/images/p/bo-chia-hdmi-201-ra-2-1x2-hdmi-splitter-4k2k-co-remote-1.jpg" alt="Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter (4K*2K) có Remote Dolby TrueHD /LPCM7"></a></figure>
+          <span><code>990,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1743-bo-chia-hdmi-201-ra-2-1x2-hdmi-splitter-4k2k-co-remote-dolby-truehd-lpcm7" title="Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter (4K*2K) có Remote Dolby TrueHD /LPCM7"><img src="public/kingtech/images/p/bo-chia-hdmi-201-ra-2-1x2-hdmi-splitter-4k2k-co-remote-1.jpg" alt="Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter (4K*2K) có Remote Dolby TrueHD /LPCM7" /></a></figure>
           <h2><a href="/p/1743-bo-chia-hdmi-201-ra-2-1x2-hdmi-splitter-4k2k-co-remote-dolby-truehd-lpcm7" title="Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter (4K*2K) có Remote Dolby TrueHD /LPCM7">Bộ Chia HDMI 2.0,1 ra 2, 1x2 HDMI Splitter ...</a></h2>
-          <span><code>1,100,000 đ</code></span> </div><div class="item_pro slick-slide" index="7" style="width: 178px;">
-          <figure><a href="/p/1741-huawei-b683-modem-wifi-3g-huawei-b683-toc-do-288mbps-4-port-lan" title="Huawei B683, Modem Wifi 3G Huawei B683 tốc độ 28.8Mbps, 4 port LAN"><img src="public/kingtech/images/p/modem-wifi-3g-huawei-b683-toc-do-288mbps-4-port-lan-rat-phu-hop-cho-xe-khach-co-lon-7.jpg" alt="Huawei B683, Modem Wifi 3G Huawei B683 tốc độ 28.8Mbps, 4 port LAN"></a></figure>
+          <span><code>1,100,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1741-huawei-b683-modem-wifi-3g-huawei-b683-toc-do-288mbps-4-port-lan" title="Huawei B683, Modem Wifi 3G Huawei B683 tốc độ 28.8Mbps, 4 port LAN"><img src="public/kingtech/images/p/modem-wifi-3g-huawei-b683-toc-do-288mbps-4-port-lan-rat-phu-hop-cho-xe-khach-co-lon-7.jpg" alt="Huawei B683, Modem Wifi 3G Huawei B683 tốc độ 28.8Mbps, 4 port LAN" /></a></figure>
           <h2><a href="/p/1741-huawei-b683-modem-wifi-3g-huawei-b683-toc-do-288mbps-4-port-lan" title="Huawei B683, Modem Wifi 3G Huawei B683 tốc độ 28.8Mbps, 4 port LAN">Huawei B683, Modem Wifi 3G Huawei B683 tốc ...</a></h2>
-          <span><code>1,550,000 đ</code></span> </div><div class="item_pro slick-slide" index="8" style="width: 178px;">
-          <figure><a href="/p/1730-may-nghe-nhac-xe-hoi-bluetooth-egtong" title="Máy nghe nhạc xe hơi Bluetooth EGTONG"><img src="public/kingtech/images/p/may-nghe-nhac-xe-hoi-bluetooth-egtong-8.jpg" alt="Máy nghe nhạc xe hơi Bluetooth EGTONG"></a></figure>
+          <span><code>1,550,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1730-may-nghe-nhac-xe-hoi-bluetooth-egtong" title="Máy nghe nhạc xe hơi Bluetooth EGTONG"><img src="public/kingtech/images/p/may-nghe-nhac-xe-hoi-bluetooth-egtong-8.jpg" alt="Máy nghe nhạc xe hơi Bluetooth EGTONG" /></a></figure>
           <h2><a href="/p/1730-may-nghe-nhac-xe-hoi-bluetooth-egtong" title="Máy nghe nhạc xe hơi Bluetooth EGTONG">Máy nghe nhạc xe hơi Bluetooth EGTONG</a></h2>
-          <span><code>550,000 đ</code></span> </div><div class="item_pro slick-slide" index="9" style="width: 178px;">
-          <figure><a href="/p/1727-dang-cap-hd-box-d8-pro-bao-hanh-2-nam" title="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm"><img src="public/kingtech/images/p/dang-cap-hd-box-d8-pro-4.jpg" alt="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm"></a></figure>
+          <span><code>550,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1727-dang-cap-hd-box-d8-pro-bao-hanh-2-nam" title="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm"><img src="public/kingtech/images/p/dang-cap-hd-box-d8-pro-4.jpg" alt="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm" /></a></figure>
           <h2><a href="/p/1727-dang-cap-hd-box-d8-pro-bao-hanh-2-nam" title="Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm">Đẳng Cấp HD Box D8 PRO, Bảo Hành 2 Năm</a></h2>
-          <span><code>1,790,000 đ</code></span> </div><div class="item_pro slick-slide" index="10" style="width: 178px;">
-          <figure><a href="/p/1726-android-tv-box-m8s-plus-android-51-amlogic-s905-2g" title="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G"><img src="public/kingtech/images/p/android-tv-box-m8s-plus-android-51-amlogic-s905-2g-0.jpg" alt="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G"></a></figure>
+          <span><code>1,790,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1726-android-tv-box-m8s-plus-android-51-amlogic-s905-2g" title="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G"><img src="public/kingtech/images/p/android-tv-box-m8s-plus-android-51-amlogic-s905-2g-0.jpg" alt="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G" /></a></figure>
           <h2><a href="/p/1726-android-tv-box-m8s-plus-android-51-amlogic-s905-2g" title="Android TV Box M8S Plus Android 5.1 Amlogic S905 2G">Android TV Box M8S Plus Android 5.1 Amlogic S905 ...</a></h2>
-          <span><code>1,590,000 đ</code></span> </div><div class="item_pro slick-slide" index="11" style="width: 178px;">
-          <figure><a href="/p/1705-vong-deo-tay-thong-minh-wristband-fitbit" title="Vòng đeo tay thông minh Wristband Fitbit"><img src="public/kingtech/images/p/vong-deo-tay-thong-minh-wristband-fitbit-1.jpg" alt="Vòng đeo tay thông minh Wristband Fitbit"></a></figure>
+          <span><code>1,590,000 đ</code></span> </div>
+                <div class="item_pro">
+          <figure><a href="/p/1705-vong-deo-tay-thong-minh-wristband-fitbit" title="Vòng đeo tay thông minh Wristband Fitbit"><img src="public/kingtech/images/p/vong-deo-tay-thong-minh-wristband-fitbit-1.jpg" alt="Vòng đeo tay thông minh Wristband Fitbit" /></a></figure>
           <h2><a href="/p/1705-vong-deo-tay-thong-minh-wristband-fitbit" title="Vòng đeo tay thông minh Wristband Fitbit">Vòng đeo tay thông minh Wristband Fitbit</a></h2>
-          <span><code>650,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="12" style="width: 178px;">
-          <figure><a href="/p/1757-may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p" title="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P"><img src="public/kingtech/images/p/may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p-1.jpg" alt="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P"></a></figure>
-          <h2><a href="/p/1757-may-bay-xiaomi-mi-drone-wifi-fpv-quadcopte-1080p" title="Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P">Máy bay Xiaomi Mi Drone WIFI FPV Quadcopte 1080P</a></h2>
-          <span><code>11,900,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="13" style="width: 178px;">
-          <figure><a href="/p/1756-pin-du-phong-mp909-5000mah" title="Pin dự phòng MP909 5000mAh"><img src="public/kingtech/images/p/pin-du-phong-mp909-5000mah-1.jpg" alt="Pin dự phòng MP909 5000mAh"></a></figure>
-          <h2><a href="/p/1756-pin-du-phong-mp909-5000mah" title="Pin dự phòng MP909 5000mAh">Pin dự phòng MP909 5000mAh</a></h2>
-          <span><code>99,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="14" style="width: 178px;">
-          <figure><a href="/p/1755-sjcam-sj4000-wifi-20-phien-ban-moi-nhat-mua-1-tang-4" title="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4"><img src="public/kingtech/images/p/sjcam-sj4000-wifi-20-phien-ban-moi-nhat-2.jpg" alt="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4"></a></figure>
-          <h2><a href="/p/1755-sjcam-sj4000-wifi-20-phien-ban-moi-nhat-mua-1-tang-4" title="Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, mua 1 tặng 4">Sjcam SJ4000 Wifi 2.0, phiên bản mới nhất, ...</a></h2>
-          <span><code>2,290,000 đ</code></span> </div><div class="item_pro slick-slide slick-cloned" index="15" style="width: 178px;">
-          <figure><a href="/p/1754-chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20" title="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20"><img src="public/kingtech/images/p/chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20-1.jpg" alt="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20"></a></figure>
-          <h2><a href="/p/1754-chuong-trinh-khuyen-mai-cuc-soc-voi-san-pham-dang-hot-nhat-2016-hien-nay--sjcam-m20" title="CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI SẢN PHẨM ĐANG HOT NHẤT 2016 HIỆN NAY- SJCAM M20">CHƯƠNG TRÍNH KHUYẾN MÃI CỰC SỐC VỚI ...</a></h2>
-          <span><code>2,990,000 đ</code></span> </div></div></div>
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                <span class="span_right"><a href="" id="slider-nav-next" onclick="return false" style="display: inline;"> <img src="public/kingtech/images/next.png"></a> </span> </div>
+          <span><code>650,000 đ</code></span> </div>
+                <span class="span_right"><a href="" id="slider-nav-next" onClick="return false" > <img src="public/kingtech/images/next.png"></a> </span> </div >
     </div>
         <div class="box_pro">
       <div class="box_title">

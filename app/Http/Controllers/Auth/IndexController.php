@@ -22,6 +22,7 @@ class IndexController extends Controller
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
         $news_cate = $th->getNews_cateWhere();
+        $NewsCate = $th->getNews_cate();
         $cate_id=0;
         if(count($news_cate)>0)
         {
@@ -30,7 +31,8 @@ class IndexController extends Controller
         //$convertString = new convertString();
         $news = $th->getNewsWhere($cate_id);
         $newsHot = $th->getNews_hot();
-        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot));
+        $ads = $th->getAds();
+        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads));
     }
 }
 

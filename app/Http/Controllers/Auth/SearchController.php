@@ -21,8 +21,9 @@ class SearchController extends Controller
         $menus = $th->getMenu();
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
+        $ads = $th->getAds();
 
-        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products));
+        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads));
 	}
 }
 

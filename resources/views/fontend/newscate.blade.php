@@ -46,8 +46,11 @@
           <div class="box_sales">
             <div class="box_news_title">
               <aside>
+              <?php $Pleft = 0; ?>
               	@for($i=0;$i< count($NewsCate);$i++)
-                    <label class="fl_positon_label"><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+              		
+                    <label style="left:{{$Pleft}}" class=""><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+                    <?php $Pleft += 147; ?>
                 @endfor                         
                 
               </aside>
