@@ -17,6 +17,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  
   <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
 @endsection
+<style type="text/css">
+  ._social
+  {
+    margin-top:-1px !important;
+  }
+  .overi_hotline
+    {
+      margin-top: 13px;
+    }
+</style>
 @section('center')
       <div class="body_pages">
         <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
@@ -29,7 +39,7 @@
                 @for($i=0;$i< count($newsHot);$i++)
                   @for($j=0;$j < count($NewsCate);$j++)
                     @if($newsHot[$i]->cate_id==$NewsCate[$j]->id)
-                    <li style="margin-top: 0px;"><a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
+                    <li style="margin-top: 0px;"><a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
                     @endif
                   @endfor
                 @endfor
@@ -38,11 +48,11 @@
       @for($i=0;$i< count($news_cate);$i++)        
 
         @if($i==0)
-        <span class="tieude_khuyenmai"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>        
+        <span class="tieude_khuyenmai"><a href="{{Asset('')}}tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>        
         @elseif($i==1)
-        <span class="tieude_thuthuat"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        <span class="tieude_thuthuat"><a href="{{Asset('')}}tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
         @elseif($i==2)
-        <span class="tieude_tinmoi"><a href="tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
+        <span class="tieude_tinmoi"><a href="{{Asset('')}}tin-tuc/{{$news_cate[$i]->url}}" title="{{$news_cate[$i]->name}}">{{$news_cate[$i]->name}}</a></span>
         @endif
       @endfor
       </div>
@@ -54,14 +64,14 @@
         <div class="item">
           
           <figure>
-            <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
+            <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
             </a>
           </figure>
-          <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>
+          <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>
           <h2>
-            <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a><a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}<span>({{$news[$i]->updated_at}})</span> </a>
+            <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a><a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}<span>({{$news[$i]->updated_at}})</span> </a>
           </h2>
-          <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">
+          <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}">
           <label>Đọc tiếp</label>
           </a> 
         </div>

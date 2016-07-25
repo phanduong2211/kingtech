@@ -38,6 +38,18 @@
     {
       margin-top: 13px;
     }
+  ._social
+  {
+    margin-top:-1px !important;
+  }
+  .overi_hotline
+    {
+      margin-top: 13px;
+    }
+    .search_line
+    {
+      margin-top:-10px;
+    }
   </style>
 </head>
 @section('center')
@@ -52,7 +64,7 @@
               <aside>
               <?php $Pleft = 0; ?>
                   @for($i=0;$i< count($NewsCate);$i++)
-                    <label style="left:{{$Pleft}}" class=""><a href="tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
+                    <label style="left:{{$Pleft}}" class=""><a href="{{Asset('')}}tin-tuc/{{$NewsCate[$i]->url}}" title="$NewsCate[$i]->name}}">{{$NewsCate[$i]->name}}</a></label>
                     <?php $Pleft += 147; ?>
                   @endfor   
                 
@@ -74,7 +86,7 @@
                     @for($j=0;$j< count($NewsCate);$j++)
                       @if($newsRefer[$i]->cate_id==$NewsCate[$j]->id)
     					        <li>
-                        <a href="tin-tuc/{{$NewsCate[$j]->url}}/{{$newsRefer[$i]->url}}" title="{{$newsRefer[$i]->title}}}">+ {{$newsRefer[$i]->title}}</a>
+                        <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$newsRefer[$i]->url}}" title="{{$newsRefer[$i]->title}}}">+ {{$newsRefer[$i]->title}}</a>
                       </li>
                       @endif
                     @endfor

@@ -36,6 +36,22 @@
       border:1px solid gray;
       box-shadow: 5px 5px 16px -5px;
     }
+    .overi_hotline
+    {
+      margin-top: 13px;
+    }
+  ._social
+  {
+    margin-top:-1px !important;
+  }
+  .overi_hotline
+    {
+      margin-top: 13px;
+    }
+    .search_line
+    {
+      margin-top:-10px;
+    }
   </style>
 </head>
 <div class="body_pages">
@@ -56,8 +72,8 @@
               <ul>
                 @for($i=0;$i< count($products);$i++)
                   <li>
-                    <figure><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
-                    <h2><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
+                    <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
+                    <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
                     <aside>
                         <span><b>{{number_format($products[$i]->price)}} đ</b></span> 
                         <!--<code>Giá công ty: 12,500,000 đ</code> -->

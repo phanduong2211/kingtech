@@ -22,9 +22,9 @@ class SearchController extends Controller
         $slides =$th->getSlideShow();
         $website = $th->getWebsite();
         $ads = $th->getAds();
-        $productpromotion = $th->getProductPromotion();
+        $productSelling = $th->getProductSelling();
 
-        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productpromotion"=>$productpromotion));
+        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling));
 	}
 }
 

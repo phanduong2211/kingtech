@@ -34,6 +34,22 @@
       border:1px solid gray;
       box-shadow: 5px 5px 16px -5px;
     }
+    .overi_hotline
+    {
+      margin-top: 13px;
+    }
+  ._social
+  {
+    margin-top:-1px !important;
+  }
+  .overi_hotline
+    {
+      margin-top: 13px;
+    }
+    .search_line
+    {
+      margin-top:-10px;
+    }
   </style>
 </head>
 @section('center')
