@@ -34,9 +34,9 @@ function showImage($path){
         <div class="col-sm-8">
 
             <div class="group-action">
-                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/news/deletes')}}","đặt là tin hot":"{{url('admin/news/hots')}}","ẩn":"{{url('admin/news/displays')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} tin tức?" data-success-type="option">
+                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/news/deletes')}}","đặt là tin tiêu điểm":"{{url('admin/news/hots')}}","ẩn":"{{url('admin/news/displays')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} tin tức?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="đặt là tin hot" data-success="hots" class="trole" data-role="user/block">Là tin hot</option>
+                    <option value="đặt là tin tiêu điểm" data-success="hots" class="trole" data-role="user/block">Là tin tiêu điểm</option>
                     <option value="ẩn" data-success="displays" class="trole" data-role="user/block">Ẩn</option>
                     <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
                 </select>
@@ -81,7 +81,7 @@ function showImage($path){
                    <th width="100px">Loại tin</th>
                    <th width="150px">Mô tả</th>
                    <th width="150px">Từ khóa</th>
-                   <th>Tin hot</th>
+                   <th>Tiêu điểm</th>
                    <th>H.Thị</th>
                    <th class="tsort">Ngày cập nhật</th>
                 </tr>

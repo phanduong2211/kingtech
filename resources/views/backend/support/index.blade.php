@@ -1,10 +1,10 @@
 @extends('backend.layout')
-@section('title','Đại lý - ACP')
+@section('title','Hỗ trợ - ACP')
 
 @section('breadcrumb')
-<h2>Đại lý</h2>
-<h3 class="trole" data-role="agency/create">
-        <a href="{{url('admin/agency/create')}}">Thêm Mới</a>
+<h2>Hỗ trợ</h2>
+<h3 class="trole" data-role="support/create">
+        <a href="{{url('admin/support/create')}}">Thêm Mới</a>
     </h3>
 @endsection
 
@@ -18,14 +18,14 @@
 <div id="ttable" class="ttable">
        <ul class="subsubsub">
             <li><a data-filter="all" data-group-filter="a" data-subsubsub="true"  href="#" class="current">Tất cả <span class="count"></span></a>|</li>
-            <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-displayfoolter"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị cuối web <span class="count"></span></a></li>
+            <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang ẩn <span class="count"></span></a></li>
        </ul>
        <!--.subsubsub-->
        <div class="row captiontable">
         <div class="col-sm-8">
 
             <div class="group-action">
-                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/agency/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} đại lý?" data-success-type="option">
+                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/support/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} đại lý?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
                     <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
                 </select>
@@ -34,11 +34,9 @@
   
             <div class="group-action">
                 <select id="filter-by-date" data-filter='{"type":"column","column":"select","filtertype":"="}'>
-                    <option selected="selected" value="-1" data-id="-1">- Tất cả chi nhánh -</option>
-                    
-                    @foreach($listBranch as $item)
-                      <option value="{{$item->name}}" data-id="{{$item->id}}" data-column="4">{{$item->name}}</option>
-                    @endforeach
+                    <option selected="selected" value="-1" data-id="-1">- Tất cả nhóm -</option>
+                    <option value="Phân phối" data-column="6">Phân phối</option>
+                    <option value="Hỗ trợ" data-column="6">Hỗ trợ</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#filter-by-date" value="Lọc">
             </div>
@@ -66,31 +64,33 @@
                    <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                    </th>
-                   <th class="tsort" width="200px">Tên đại lý</th>
-                   <th>Số điện thoại</th>
-                   <th width="200px">Địa chỉ</th>
-                   <th width="150px">Chi nhánh</th>
-                   <th>H.Thị cuối web</th>
+                   <th class="tsort" width="200px">Tên</th>
+                   <th>Số đt</th>
+                   <th width="70px">Skype</th>
+                   <th width="70px">Yahoo</th>
+                   <th>Email</th>
+                   <th>Nhóm</th>
+                   <th>Hiển thị</th>
                 </tr>
              </thead>
              <tbody>
                 @foreach($data as $item)
-                <tr data-displayfoolter="{{$item->display_footer}}">
+                <tr data-display="{{$item->display}}">
                   <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                   <td>
                       <span>{{$item->name}}</span>
                                             <div class="row-action">
-                                                    <span title="Sửa thông tin"><a href="{{url('admin/agency/'.$item->id)}}">Sửa</a>
+                                                    <span title="Sửa thông tin"><a href="{{url('admin/support/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
                                                     <span class="delete">
                                                         <a class="event" 
                                                                 data-ajax="true" 
-                                                                data-href="{{url('admin/agency/delete')}}"
+                                                                data-href="{{url('admin/support/delete')}}"
                                                                  data-value="{{$item->id}}" 
                                                                 data-success-remove="true" 
                                                                 data-name="{{$item->name}}"
-                                                                data-confirm="Bạn có chắc muốn xóa đại lý <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                                                data-confirm="Bạn có chắc muốn xóa hỗ trợ <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
                                                                 href="#" title="Xóa">Xóa</a>
                                                     </span>
                                                 </div>
@@ -99,18 +99,28 @@
                                   {{$item->phone}}
                                 </td>
                                 <td>
-                                  {{$item->address}}
+                                  <a href="{{$item->skype}}"><i class="fa fa-skype"></i></a>
                                 </td>
-                                <td><span class="brand_id" data-id="{{$item->branch_id}}"></span></td>
+                                <td><a href="{{$item->yahoo}}"><i class="fa fa-yahoo"></i></a></span></td>
                                 <td>
-                                    <span class="ascheckbox checkboxblock {{$item->display_footer==1?'checked':''}}"
+                                  {{$item->email}}
+                                </td>
+                                <td>
+                                  @if($item->group==1)
+                                  Phân phối
+                                  @else
+                                  Hỗ trợ
+                                  @endif
+                                </td>
+                                <td>
+                                    <span class="ascheckbox checkboxblock {{$item->display==1?'checked':''}}"
                                                 data-background="none" 
                                                 data-ajax="true" 
-                                                data-href="{{url('admin/agency/display_footer')}}"
+                                                data-href="{{url('admin/support/display')}}"
                                                 data-value="{{$item->id}}" 
                                                 data-name="{{$item->name}}"
-                                                data-success="display_footer"
-                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> đại lý <b>{name}</b> dưới cuối trang?"></span>
+                                                data-success="display"
+                                                data-confirm="Bạn có chắc muốn <b>{yes=hiện thị}</b><b>{no=ẩn}</b> hỗ trợ <b>{name}</b>?"></span>
                                 </td>
                 </tr>
                 @endforeach
@@ -127,8 +137,8 @@
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-	var currentPage = "#menu_branch";
-	var subPage = 'agency';
+	var currentPage = "#menu_support";
+	
 
 	$(document).ready(function(){
 
@@ -137,35 +147,19 @@
 			'confirm':getConfirm,
       'token':'{{csrf_token()}}',
       "showcount":function(obj,item){
-              var count = obj.find("table tbody tr[data-displayfoolter='1']").size();
+              var count = obj.find("table tbody tr[data-display='0']").size();
               obj.find(".subsubsub li:eq(1) .count").html('(' + count + ')');
 
           },
-          'display_footer':function(target, result){
+          'display':function(target, result){
               
-              target.parent().parent().attr('data-displayfoolter',(target.hasClass('checked')?1:0));
+              target.parent().parent().attr('data-display',(target.hasClass('checked')?1:0));
               target = target.parents(".ttable");
 
-              target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-displayfoolter='1']").size() + ")");
+              target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-display='0']").size() + ")");
         }
     	});
-    var bobj=$("#ttable table tbody .brand_id");
-    $("#filter-by-date option").each(function(){
-      var id=$(this).attr('data-id');
-      if(id!=='-1'){
-        var name=$(this).html();
-        //branchlist[$(this).attr('value')]=$(this).html();
-        var count=0;
-        bobj.each(function(){
-          if($(this).attr('data-id')==id){
-            count++;
-            $(this).html(name);
-          }
-        });
-
-        $(this).html(name+" ("+count+")");
-      }
-    });
+  
 
 	});
 

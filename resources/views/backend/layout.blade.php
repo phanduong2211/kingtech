@@ -141,6 +141,18 @@
                         </ul>
                     </li>
 
+                    <li id="menu_support">
+                        <a href="{{url('admin/support')}}">
+                            <i class="fa fa-support"></i> <span>Quản lý hỗ trợ</span>
+                        </a>
+                    </li>
+
+                    <li id="menu_tag">
+                        <a href="{{url('admin/tag')}}">
+                            <i class="fa fa-tag"></i> <span>Quản lý tag</span>
+                        </a>
+                    </li>
+
                     <li id="menu_account" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-user"></i> <span>Quản lý người dùng</span>

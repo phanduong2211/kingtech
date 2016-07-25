@@ -138,6 +138,37 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
     Route::post("ajax/loadonlyfolder","UploadController@loadonlyfolder");
 
 
+    Route::group(['prefix'=>'tag'],function(){
+		Route::get("/","TagController@index");
+		Route::get("create","TagController@create");
+		Route::post("create","TagController@postCreate");
+
+		Route::get("{id}","TagController@update")->where('id','[0-9]+');
+		Route::post("update","TagController@postUpdate");
+
+		Route::post("delete","TagController@postDelete");
+
+		Route::post("display","TagController@display");
+	
+
+		Route::post("sort","TagController@sort");
+	});
+
+	Route::group(['prefix'=>'support'],function(){
+		Route::get("/","SupportController@index");
+
+		Route::get("create","SupportController@create");
+		Route::post("create","SupportController@postCreate");
+
+		Route::get("{id}","SupportController@update")->where('id','[0-9]+');
+		Route::post("update","SupportController@postUpdate");
+		
+		Route::post("delete","SupportController@postDelete");
+		Route::post("deletes","SupportController@postDeletes");
+
+		Route::post("display","SupportController@display");
+	});
+
 });
 
 

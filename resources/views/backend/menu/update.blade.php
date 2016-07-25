@@ -21,7 +21,12 @@
             </div>
             <div class="col-sm-8 required">
               <span class="red">*</span>
+              @if(mb_strtolower($data->name)!="kho ứng dụng")
               <input type="text" name="name" id="namec" value="{{$data->name}}" class="form-control" />
+              @else
+              <input type="text" disabled="disabled" value="{{$data->name}}" class="form-control" />
+              <input type="hidden" name="name" value="{{$data->name}}" class="form-control" />
+              @endif
               <span class="desc">
                 Tên menu. Hiển thị trên web
               </span>
