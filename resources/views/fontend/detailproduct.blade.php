@@ -108,7 +108,7 @@
                     <div class="aside_details">
                       <h2>{{$products[0]->name}}</h2>
                       <aside class="code"><strong>Mã sản phẩm :</strong> {{$products[0]->pro_code}}</aside>
-                                            <aside class="giadigital">Giá : <strong>{{$products[0]->price}} vnđ</strong></aside> 
+                                            <aside class="giadigital">Giá : <strong>{{number_format($products[0]->price)}} vnđ</strong></aside> 
                       <aside class="details"></aside>
                       <aside class="code">
                         @if($products[0]->status==0)

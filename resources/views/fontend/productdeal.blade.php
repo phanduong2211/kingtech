@@ -57,7 +57,7 @@
         <div class="item_pro">
           <figure><a href="{{Asset('')}}product/{{$productdeal[$i]->id.'-'.$productdeal[$i]->url}}" title="{{$productdeal[$i]->name}}"><img src="public/kingtech/images/p/{{$productdeal[$i]->image}}" alt="{{$productdeal[$i]->name}}"></a></figure>
           <h2><a href="{{Asset('')}}product/{{$productdeal[$i]->id.'-'.$productdeal[$i]->url}}" title="{{$productdeal[$i]->name}}">{{$productdeal[$i]->name}}</a></h2>
-          <span><code>{{$productdeal[$i]->price}} đ</code></span> 
+          <span><code>{{number_format($productdeal[$i]->price)}} đ</code></span> 
          </div>
         @endfor
 

@@ -103,6 +103,16 @@ class ControllerDB extends BaseController
         $newsRefer = News::where("cate_id",$id)->get();
         return $newsRefer;
     }
+    public function getNewProduct()
+    {
+        $newproducts = Product::orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("status",0)->take(10)->get();
+            return $newproducts;
+    }
+    public function getProductIndex($cate_id)
+    {
+        $productsIndex = Product::orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("cate_id",$cate_id)->get();
+            return $productsIndex;
+    }
     public function getAds()
     {
         $ads = Ads::where("display","=",1)->get();
@@ -123,6 +133,11 @@ class ControllerDB extends BaseController
         $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
             return $products;
     }
+    public function getCategoryMenuIndex()
+    {
+        $categorysIndex = Category::where("display",1)->orderBy("sort_home","asc")->where("show_home",1)->get();
+        return $categorysIndex;
+    }
     public function getProductRefer($id,$idproduct)
     {
         $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->where('id','!=',$idproduct)->take(10)->get();
@@ -130,7 +145,12 @@ class ControllerDB extends BaseController
     }
     public function getProductWhereID($id,$name)
     {
+
         $products = Product::where("display",1)->where("id",$id)->get();
+            if(count($products)>0) //update lượt view product
+            {
+                Product::where("id",$id)->update(['viewer' => ($products[0]->viewer+1)]);
+            }
             return $products;
     }
 }

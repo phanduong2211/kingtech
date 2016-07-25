@@ -2,7 +2,7 @@
       <div class="body_pages">
         <div class="article_header">
           <div class="logo">
-            <figure><a href="/" title="kingtech"><img src="{{Asset('')}}public/kingtech/images/logo_jpg.jpg" alt="kingtech"></a></figure>
+            <figure><a href="{{Asset('')}}" title="kingtech"><img src="{{Asset('')}}public/kingtech/images/logo_jpg.jpg" alt="kingtech"></a></figure>
           </div>
           <div class="article_header_right">
             <div class="header_cart">

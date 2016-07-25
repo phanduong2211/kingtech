@@ -59,7 +59,7 @@
                     <figure><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
                     <h2><a href="{{$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
                     <aside>
-                        <span><b>{{$products[$i]->price}} đ</b></span> 
+                        <span><b>{{number_format($products[$i]->price)}} đ</b></span> 
                         <!--<code>Giá công ty: 12,500,000 đ</code> -->
                     </aside>
                   </li>
