@@ -1,0 +1,33 @@
+
+@extends('fontend.layout_qc')
+@section('box_center')
+
+        <div class="box_sales">
+        <div class="box_pro_title">
+      <aside>
+        <label>Kết quả tìm kiếm : {{count($products)}} sản phẩm </label>
+        <span></span>
+      </aside>
+    </div>
+          <div class="box_pro"> 
+            <div class="th_pro">
+              <ul>
+                @for($i=0;$i< count($products);$i++)
+                  <li>
+                    <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
+                    <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
+                    <aside>
+                        <span><b>{{number_format($products[$i]->price)}} đ</b></span> 
+                        <!--<code>Giá công ty: 12,500,000 đ</code> -->
+                    </aside>
+                  </li>
+                  @endfor 
+              </ul>
+                      
+            </div>
+              <?php echo $products->appends(['sort' => 'votes'])->render(); ?>
+          </div>
+            </div>
+      </div>
+      
+@endsection

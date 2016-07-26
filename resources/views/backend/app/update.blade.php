@@ -1,18 +1,25 @@
 @extends('backend.layout')
-@section('title','Thêm ứng dụng - ACP')
+@section('title','Sửa ứng dụng - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/app')}}">Ứng dụng</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 
 
 @section('content')
+<?php 
+function showImage($path){
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
   
   @include('backend._message')
 
-    <form method="post" action="" id="frm">
+    <form method="post" action="{{url('admin/app/update')}}" id="frm">
       <div class="row">
         <div class="col-sm-6">
           <div class="row">
@@ -21,7 +28,7 @@
             </div>
             <div class="col-sm-8 required">
               <span class="red">*</span>
-              <input type="text" name="name" id="namec" value="{{old('name')}}" class="form-control" />
+              <input type="text" name="name" value="{{$data->name}}" class="form-control" />
               <span class="desc">
                 Tên ứng dụng. Hiển thị trên web
               </span>
@@ -35,7 +42,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <input type="text" name="url" id="urlc" value="{{old('url')}}" class="form-control" />
+                <input type="text" name="url" value="{{$data->url}}" class="form-control" />
                 <span class="desc">
                   Url truy cập vào trang ứng dụng. Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: gioi-thieu
                 </span>
@@ -53,9 +60,9 @@
                     </div>
                     <div class="col-md-8 required boxupload">
                         <span class="red">*</span>
-                        <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
+                        <img src="{{showImage($data->image)}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
                     </div>
                 </div><br />
             </div>
@@ -66,7 +73,7 @@
                         <label>Giới thiệu:</label>
                     </div>
                     <div class="col-md-8">
-                        <textarea rows="6" class="form-control" name="description"></textarea>
+                        <textarea rows="6" class="form-control" name="description">{{$data->description}}</textarea>
                         <span class="desc">Giới thiệu ngắn gọn về ứng dụng. VD: chức năng, công dụng,..</span>
                     </div>
                 </div><br />
@@ -85,7 +92,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <select name="cate_id" class="form-control">
+                <select name="cate_id" id="cate_id" class="form-control">
                   <option value="-1">-- Lựa chọn --</option>
                   
                         <?php 
@@ -108,7 +115,7 @@
                                         }
                                     }
                                 }
-                            dequy(0,$data);
+                            dequy(0,$listAppCate);
                             ?>
 
                 </select>
@@ -150,7 +157,7 @@
                         <label>Dung lượng:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="capacity" class="form-control" value="{{old('capacity')}}" />
+                        <input type="text" name="capacity" class="form-control" value="{{$data->capacity}}" />
                         <span class="desc">VD: 2MB, 500KB</span>
                     </div>
                 </div><br />
@@ -162,7 +169,7 @@
                         <label>Yêu cầu:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" value="{{old('require')}}" name="require" class="form-control" />
+                        <input type="text" value="{{$data->require}}" name="require" class="form-control" />
                         <span class="desc">VD: Android 4.1, dung lượng trống 20MB,...</span>
                     </div>
                 </div><br />
@@ -180,7 +187,7 @@
                         <label>Phiên bản hiện tại:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="version" class="form-control" value="{{old('version')}}" />
+                        <input type="text" name="version" class="form-control" value="{{$data->version}}" />
                         <span class="desc">VD: 2.0</span>
                     </div>
                 </div><br />
@@ -192,7 +199,7 @@
                         <label>Nhóm phát triển:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" value="{{old('developers')}}" name="developers" class="form-control" />
+                        <input type="text" value="{{$data->developers}}" name="developers" class="form-control" />
                         <span class="desc">.</span>
                     </div>
                 </div><br />
@@ -210,7 +217,7 @@
                     </div>
                     <div class="col-md-8 required">
                       <span class="red">*</span>
-                        <input type="text" name="app_url" class="form-control" value="{{old('app_url')}}" />
+                        <input type="text" name="app_url" class="form-control" value="{{$data->app_url}}" />
                         <span class="desc">Url dẫn đến trang tải app hoặc đến file apk</span>
                     </div>
                 </div><br />
@@ -222,7 +229,7 @@
                         <label>Từ khóa tìm kiếm:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" value="{{old('keywords')}}" name="keywords" class="form-control" />
+                        <input type="text" value="{{$data->keywords}}" name="keywords" class="form-control" />
                         <span class="desc">Mỗi từ khóa cách nhau 1 dấu ','</span>
                     </div>
                 </div><br />
@@ -238,7 +245,7 @@
                         <label>Bài viết về ứng dụng:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea style="width:100%;height:250px" name="content" id="content">{{old('content')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="content" id="content">{{$data->content}}</textarea>
                     </div>
                 </div><br />
             </div>
@@ -254,6 +261,7 @@
     </div>
 
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+    <input type="hidden" name="id" value="{{$data->id}}" />
 
     </form>
 @include('backend.upload')
@@ -281,26 +289,25 @@
   
   var currentPage = "#menu_app";
 
-  function change_alias(alias)
-  {
-      var str = alias;
-      str= str.toLowerCase(); 
-      str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-      str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-      str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-      str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-      str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-      str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-      str= str.replace(/đ/g,"d"); 
-      str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
-      /* tìm và thay thế các kí tự đặc biệt trong chuỗi sang kí tự - */
-      str= str.replace(/-+-/g,"-"); //thay thế 2- thành 1-
-      str= str.replace(/^\-+|\-+$/g,""); 
-      //cắt bỏ ký tự - ở đầu và cuối chuỗi 
-      return str;
-  }
+  var cate_id="{{$data->cate_id}}";
+  var status="{{$data->status}}";
 
   $(document).ready(function(){
+
+    $('#cate_id').val(cate_id);
+
+    switch(status){
+     case "Miễn ph&iacute;":
+      $("#status").val("Miễn phí");
+      break;
+     case "C&oacute; ph&iacute;":
+      $("#status").val("Có phí");
+      break;
+      default:
+        $("#status").prepend('<option value="'+status+'">'+status+'</option>').val(status);
+    }
+    
+
   
     var urlc=$("#urlc");
     var isChange=true;

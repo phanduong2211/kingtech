@@ -78,11 +78,10 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("delete","AppController@postDelete");
 		Route::post("deletes","AppController@postDeletes");
 
-		Route::post("hot","AppController@hot");
 		Route::post("display","AppController@display");
 
-		Route::post("hots","AppController@hots");
-		Route::post("displays","AppController@displays");
+		Route::post("hide","AppController@hide");
+		Route::post("show","AppController@show");
 	
 	});
 
@@ -199,6 +198,7 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::get('/',"IndexController@getIndex");
 	Route::get('deal.html','ProductsController@getProductSelling');
 	Route::get("tim-kiem.html","SearchController@getTimKiem");
+	Route::get("dang-nhap.html","DangNhapController@getUser");
 
 	Route::group(['prefix'=>'tin-tuc'],function(){
 		Route::get("/","NewsCateController@getNews");
@@ -211,5 +211,7 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::group(["prefix"=>"product"],function(){
 		Route::get("{id}-{name}","ProductsController@getProduct");
 	});
+
+
 });
 
