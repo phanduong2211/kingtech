@@ -18,6 +18,7 @@ use App\Ads;
 use App\App;
 use App\AppCate;
 use App\User;
+use App\Video;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -176,4 +177,20 @@ class ControllerDB extends BaseController
         $user = User::where("username",$username)->where("password",$pass)->get();
         return $user;
     }
+    public function getVideos()
+    {
+        $videos = Video::where("display",1)->paginate(10);
+        return $videos;
+    }
+    public function getVideo($id,$name)
+    {
+        $video = Video::where("display",1)->where("id",$id)->get();
+        return $video;
+    }
+    public function getVideosRefer($id)
+    {
+        $videosRefer = Video::where("display",1)->where("id","!=",$id)->take(10)->get();
+        return $videosRefer;
+    }
+
 }

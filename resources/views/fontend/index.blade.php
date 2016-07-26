@@ -11,7 +11,7 @@
   <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />
   <meta property="og:description" content="KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất " />
   <meta property="og:site_name" content="kingtech" />
-  <meta property="og:image" content="images/logo_jpg.jpg" />
+  <meta property="og:image" content="images/logo-hao-huan.png" />
   <meta property="fb:app_id" content="1700293566862288" />
   <meta name='robots' content='INDEX,FOLLOW' />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  

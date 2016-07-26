@@ -201,7 +201,12 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::get("dang-nhap.html","DangNhapController@getView");
 	Route::post("dang-nhap.html","DangNhapController@getUser");
 	Route::get("gia-si.html","DangNhapController@checkPriceCompany");
+	
 
+	Route::group(['prefix'=>"video"],function(){
+		Route::get("/","VideoController@getVideo");
+		Route::get("{id}-{name}","VideoController@getDetailVideo");
+	});
 	Route::group(['prefix'=>'tin-tuc'],function(){
 		Route::get("/","NewsCateController@getNews");
 		Route::get("{id}-{name}","NewsCateController@getNewsOfCate");
