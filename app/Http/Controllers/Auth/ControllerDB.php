@@ -17,6 +17,7 @@ use App\Website;
 use App\Ads;
 use App\App;
 use App\AppCate;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -169,5 +170,10 @@ class ControllerDB extends BaseController
     {
         $detailapp = App::where("display",1)->where("id",$id)->get();
         return $detailapp;
+    }
+    public function getUser($username,$pass)
+    {
+        $user = User::where("username",$username)->where("password",$pass)->get();
+        return $user;
     }
 }

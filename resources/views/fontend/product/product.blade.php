@@ -16,7 +16,13 @@
         <div class="item_pro">
           <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}"></a></figure>
           <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
-          <span><code>{{number_format($products[$i]->price)}} đ</code></span> 
+          <span>
+          @if(Session::has("isuser"))
+            <code>{{number_format($products[$i]->price_company)}} đ</code>
+          @elseif(!Session::has("isuser"))
+            <code>{{number_format($products[$i]->price)}} đ</code>
+          @endif
+            </span> 
          </div>
         @endfor
 

@@ -26,7 +26,14 @@
           <div class="item_pro">
             <figure><a href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}"><img src="public/kingtech/images/p/{{$newproducts[$i]->image}}" alt="{{$newproducts[$i]->name}}" /></a></figure>
             <h2><a href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}">{{$newproducts[$i]->name}}</a></h2>
-            <span><code>{{number_format($newproducts[$i]->price)}} đ</code></span> 
+            <span> 
+              @if(Session::has("isuser"))
+                <code>{{number_format($newproducts[$i]->price_company)}} đ</code>
+              @elseif(!Session::has("isuser"))
+                <code>{{number_format($newproducts[$i]->price)}} đ
+                </code>
+              @endif
+            </span> 
           </div>
         @endfor
 

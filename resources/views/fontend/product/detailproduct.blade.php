@@ -39,7 +39,10 @@
                     <div class="aside_details">
                       <h2>{{$products[0]->name}}</h2>
                       <aside class="code"><strong>Mã sản phẩm :</strong> {{$products[0]->pro_code}}</aside>
-                                            <aside class="giadigital">Giá : <strong>{{number_format($products[0]->price)}} vnđ</strong></aside> 
+                                            <aside class="giadigital">Giá : <?php if(Session::has("isuser")) {?><strong>{{number_format($products[0]->price_company)}} vnđ</strong>
+                                              <?php }else {?> 
+                                              <strong>{{number_format($products[0]->price)}} vnđ</strong><?php }?>
+                                            </aside> 
                       <aside class="details"></aside>
                       <aside class="code">
                         @if($products[0]->status==0)
@@ -72,8 +75,14 @@
             @for($i=0;$i< count($productsRefer);$i++)
               <div class="item_pro">
                 <figure><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productsRefer[$i]->image}}" alt="{{$productsRefer[$i]->name}}" /></a></figure>
-                <h2><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}">{{$productsRefer[$i]->name}}</a></h2>
-                <span><code>0 đ</code></span> 
+                <h2 style="margin-top:-27px"><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}">{{$productsRefer[$i]->name}}</a></h2>
+                <span>
+                @if(Session::has("isuser"))
+                  <code>{{number_format($productsRefer[$i]->price_company)}} đ</code>
+                @elseif(!Session::has("isuser"))
+                  <code>{{number_format($productsRefer[$i]->price)}} đ</code>
+                @endif
+          </span> 
               </div>  
             @endfor
             @endif
