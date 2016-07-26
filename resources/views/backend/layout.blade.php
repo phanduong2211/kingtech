@@ -108,11 +108,11 @@
                         </a>
                         <ul>
                             <li data-role="user/list" class="trole" data-action="list">
-                                <a href="{{url('admin/branch')}}">Ứng dụng</a>
+                                <a href="{{url('admin/app')}}">Ứng dụng</a>
                             </li>
 
                             <li data-role="user/create" class="trole" data-action="new"> 
-                                <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
+                                <a href="{{url('admin/app/create')}}" >Thêm mới</a>
                             </li>
 
                             <li data-role="admin/category" class="trole" data-action="category"> 

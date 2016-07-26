@@ -46,6 +46,46 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("sort","MenuController@sort");
 	});
 
+
+
+	Route::group(['prefix'=>'news'],function(){
+		Route::get("/","NewsController@index");
+		Route::get("create","NewsController@create");
+		Route::post("create","NewsController@postCreate");
+
+		Route::get("{id}","NewsController@update")->where('id','[0-9]+');
+		Route::post("update","NewsController@postUpdate");
+
+		Route::post("delete","NewsController@postDelete");
+		Route::post("deletes","NewsController@postDeletes");
+
+		Route::post("hot","NewsController@hot");
+		Route::post("display","NewsController@display");
+
+		Route::post("hots","NewsController@hots");
+		Route::post("displays","NewsController@displays");
+	
+	});
+
+	Route::group(['prefix'=>'app'],function(){
+		Route::get("/","AppController@index");
+		Route::get("create","AppController@create");
+		Route::post("create","AppController@postCreate");
+
+		Route::get("{id}","AppController@update")->where('id','[0-9]+');
+		Route::post("update","AppController@postUpdate");
+
+		Route::post("delete","AppController@postDelete");
+		Route::post("deletes","AppController@postDeletes");
+
+		Route::post("hot","AppController@hot");
+		Route::post("display","AppController@display");
+
+		Route::post("hots","AppController@hots");
+		Route::post("displays","AppController@displays");
+	
+	});
+
 	Route::group(['prefix'=>'branch'],function(){
 		Route::get("/","BranchController@index");
 
@@ -105,25 +145,6 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 
 		Route::post("display","NewsCateController@display");
 		Route::post("show_home","NewsCateController@show_home");
-	
-	});
-
-	Route::group(['prefix'=>'news'],function(){
-		Route::get("/","NewsController@index");
-		Route::get("create","NewsController@create");
-		Route::post("create","NewsController@postCreate");
-
-		Route::get("{id}","NewsController@update")->where('id','[0-9]+');
-		Route::post("update","NewsController@postUpdate");
-
-		Route::post("delete","NewsController@postDelete");
-		Route::post("deletes","NewsController@postDeletes");
-
-		Route::post("hot","NewsController@hot");
-		Route::post("display","NewsController@display");
-
-		Route::post("hots","NewsController@hots");
-		Route::post("displays","NewsController@displays");
 	
 	});
 
