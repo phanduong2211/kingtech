@@ -23,8 +23,9 @@ class SearchController extends Controller
         $website = $th->getWebsite();
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
+        $cateApps = $th->getCateApp();
 
-        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling));
+        return View("fontend.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
 	}
 }
 

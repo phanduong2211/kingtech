@@ -15,6 +15,8 @@ use App\Product;
 use App\NewsCate;
 use App\Website;
 use App\Ads;
+use App\App;
+use App\AppCate;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -152,5 +154,20 @@ class ControllerDB extends BaseController
                 Product::where("id",$id)->update(['viewer' => ($products[0]->viewer+1)]);
             }
             return $products;
+    }
+    public function getCateApp()
+    {
+        $cateApps = AppCate::where("display",1)->orderby("index","asc")->get();
+        return $cateApps;
+    }
+    public function getApp($idCate)
+    {
+        $apps = App::where("display",1)->where("cate_id",$idCate)->paginate(10);
+        return $apps;
+    }
+    public function getDetailApp($id)
+    {
+        $detailapp = App::where("display",1)->where("id",$id)->get();
+        return $detailapp;
     }
 }

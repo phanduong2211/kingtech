@@ -13,10 +13,6 @@ class DangNhapController extends Controller
 	{
 		$th = new ControllerDB();
 
-		$txtSearch = Input::get('txtSearch');
-		$priceStart = Input::get('Start');
-		$priceEnd = Input::get('End');
-
 		$news = $th->getNews();
 		$NewsCate = $th->getNews_cate();
         $getCategorys = $th->getCategoryMenu();
@@ -25,8 +21,9 @@ class DangNhapController extends Controller
         $website = $th->getWebsite();
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
+        $cateApps = $th->getCateApp();
 
-        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling));
+        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
 	}	
 }
 

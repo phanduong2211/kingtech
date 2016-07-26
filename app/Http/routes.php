@@ -211,6 +211,12 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::group(["prefix"=>"product"],function(){
 		Route::get("{id}-{name}","ProductsController@getProduct");
 	});
+	Route::group(["prefix"=>"app"],function(){
+		Route::group(["prefix"=>"detail"],function(){
+			Route::get("{id}-{name}","AppController@getDetailApp");
+		});
+		Route::get("{id}-{name}","AppController@getApp");
+	});
 
 
 });

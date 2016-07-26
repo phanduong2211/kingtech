@@ -82,7 +82,7 @@
                               }
 
                         ?>
-                        <!--end  kiểm tra xem tồn tại menu con cho mực trở giúp không-->
+                        <!--end  kiểm tra xem tồn tại menu con cho mục trở giúp không-->
                       <li class="menu_support">Hỗ trợ
                             
                             @if($flag)
@@ -96,24 +96,26 @@
                             @endif
                     </li>
                     @elseif($menus[$i]->parent_id==0 && (strtolower($menus[$i]->name)=="ứng dụng" || strtolower($menus[$i]->name)=="kho ứng dụng"))
+                          @if(count($cateApps)>0)
                           <li class="menu_line"></li>
                           <li class="menu_ungdung">{{$menus[$i]->name}}
                             <aside>
-                              @for($j=0;$j< count($menus);$j++)
-                                @if($menus[$j]->parent_id!=0 && $menus[$j]->parent_id==$menus[$i]->id)
+                              
+                              @for($j=0;$j< count($cateApps);$j++)
+                                @if($cateApps[$j]->parent==0)
                                   <ul>
-                                      <label><a href="/kho-ung-dung/23-kodi-kingtech" title="KODI kingtech">{{$menus[$j]->name}}</a></label>
-                                        @for($l=0;$l< count($menus);$l++)
-                                          @if($menus[$l]->parent_id!=0 && $menus[$l]->parent_id==$menus[$j]->id)
-                                            <li><a href="/kho-ung-dung/24-addon-kodi-kingtech" title="Addon Kodi kingtech"> <i class="fa fa-caret-right"></i>{{$menus[$l]->name}}</a></li>
+                                      <label><a href="{{Asset('')}}app/{{$cateApps[$j]->id.'-'.$cateApps[$j]->url}}" title="{{$cateApps[$j]->name}}">{{$cateApps[$j]->name}}</a></label>
+                                        @for($l=0;$l< count($cateApps);$l++)
+                                          @if($cateApps[$l]->parent!=0 && $cateApps[$l]->parent==$cateApps[$j]->id)
+                                            <li><a href="{{Asset('')}}app/{{$cateApps[$l]->id.'-'.$cateApps[$l]->url}}" title="{{$cateApps[$l]->name}}"> <i class="fa fa-caret-right"></i>{{$cateApps[$l]->name}}</a></li>
                                         @endif
                                       @endfor
                                   </ul>
-                                    @endif
-                                  @endfor
-                                          
+                                  @endif
+                                  @endfor                                     
                             </aside>
                           </li>
+                          @endif
                     @elseif($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)!="hỗ trợ")
                         <li><a href="/">{{$menus[$i]->name}}</a></li>                      
                     @endif

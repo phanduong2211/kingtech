@@ -11,10 +11,6 @@ class NewsCateController extends Controller
 	{
 		$th = new ControllerDB();
 
-		$txtSearch = Input::get('txtSearch');
-		$priceStart = Input::get('Start');
-		$priceEnd = Input::get('End');
-
 		$news = $th->getNewsWhereCateID($id,$name);
 		$NewsCate = $th->getNews_cate();
 		
@@ -24,16 +20,14 @@ class NewsCateController extends Controller
         $website = $th->getWebsite();
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling));
+        $cateApps = $th->getCateApp();
+
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
 	}
 
 	public function getNews()
 	{
 		$th = new ControllerDB();
-
-		$txtSearch = Input::get('txtSearch');
-		$priceStart = Input::get('Start');
-		$priceEnd = Input::get('End');
 
 		$news = $th->getNews();
 		$NewsCate = $th->getNews_cate();
@@ -43,16 +37,13 @@ class NewsCateController extends Controller
         $website = $th->getWebsite();
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
+        $cateApps = $th->getCateApp();
 
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling));
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
 	}
 	public function getDetailNews($catename,$id,$name)
 	{
 		$th = new ControllerDB();
-
-		$txtSearch = Input::get('txtSearch');
-		$priceStart = Input::get('Start');
-		$priceEnd = Input::get('End');
 
 		$detailnews = $th->getNewsWhereID($id);
 		$newsRefer = 0;
@@ -69,8 +60,9 @@ class NewsCateController extends Controller
         $website = $th->getWebsite();
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
+        $cateApps = $th->getCateApp();
 
-        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling));
+        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
 	}
 }
 
