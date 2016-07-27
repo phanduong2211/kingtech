@@ -23,11 +23,12 @@ class VideoController extends Controller
             $ads = $th->getAds();
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
+            $tags = $th->getTags();
             $convert = new \App\Http\Controllers\convertString();
 
             $videos = $th->getVideos();
 
-        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert));
+        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert,"tags"=>$tags));
         }
 
         public function getDetailVideo($id,$name)
@@ -44,6 +45,7 @@ class VideoController extends Controller
             $ads = $th->getAds();
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
+            $tags = $th->getTags();
             $convert = new \App\Http\Controllers\convertString();
 
             $video = $th->getVideo($id,$name);
@@ -52,7 +54,7 @@ class VideoController extends Controller
                 $videosRefer = $th->getVideosRefer($video[0]->id);
 
 
-        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert));
+        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert,"tags"=>$tags));
         }
 }
 

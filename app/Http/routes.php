@@ -208,7 +208,9 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 
 });
 
-
+Route::get("test",function(){
+	return View('fontend.test');
+});
 
 Route::group(['namespace' => 'Auth'], function()
 {

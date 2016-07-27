@@ -21,6 +21,7 @@ use App\User;
 use App\Branch;
 use App\Video;
 use App\Agency;
+use App\Tag;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -208,6 +209,11 @@ class ControllerDB extends BaseController
     {
         $branche = Branch::where("id",$id)->get();
         return $branche;
+    }
+    public function getTags()
+    {
+        $tags = Tag::where("display",1)->orderby("index","asc")->get();
+        return $tags;
     }
 
 }

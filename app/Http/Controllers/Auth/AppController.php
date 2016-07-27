@@ -24,11 +24,12 @@ class AppController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $tags = $th->getTags();
         $convert = new \App\Http\Controllers\convertString();
 
         $apps = $th->getApp($id);
 
-        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert));
+        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert,"tags"=>$tags));
 	}
 	public function getDetailApp($id,$name)
 	{
@@ -44,11 +45,12 @@ class AppController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $tags = $th->getTags();
         $convert = new \App\Http\Controllers\convertString();
 
         $detailapp = $th->getDetailApp($id);
 
-        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert));
+        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert,"tags"=>$tags));
 	}	
 }
 

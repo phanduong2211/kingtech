@@ -89,7 +89,7 @@
                               <ul>
                                 @for($j=0;$j< count($menus);$j++)
                                   @if($menus[$j]->parent_id!=0 && $menus[$j]->parent_id==$menus[$i]->id)
-                                            <li><a href="/s/1-quy-dinh-bao-hanh" title="Quy định bảo hành"><i class="fa fa-caret-right"></i> Quy định bảo hành</a></li>
+                                            <li><a href="{{Asset($menus[$j]->url)}}" title="{{$menus[$j]->name}}"><i class="fa fa-caret-right"></i> {{$menus[$j]->name}}</a></li>
                                   @endif
                                 @endfor
                               </ul>
@@ -117,7 +117,7 @@
                           </li>
                           @endif
                     @elseif($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)!="hỗ trợ")
-                        <li><a href="/">{{$menus[$i]->name}}</a></li>                      
+                        <li><a href="{{Asset($menus[$i]->url)}}">{{$menus[$i]->name}}</a></li>                      
                     @endif
                   @endif
                 @endfor

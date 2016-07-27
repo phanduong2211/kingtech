@@ -1,50 +1,14 @@
-<footer>
-    <section>
-      <div class="box_pages">
-        <div class="box_static">
-          <ul>
-            <li>
-              <label class="fl_upercase fl_bold">Thống kê</label>
-              <big><strong>
-                  74                </strong> khách online và <strong>5,740,166</strong> lượt truy cập</big> </li>
-            <li>
-              <label class="fl_upercase fl_bold">GIỜ MỞ CỬA</label>
-              <big>Thứ 2 - thứ 7: Từ <strong>8h00</strong> đến <strong>20h00</strong><br>
-                Chủ nhật: Từ <strong>8h00</strong> đến <strong>17h00</strong></big> </li>
-            <li>
-              <label class="fl_upercase fl_bold">BẢO HÀNH</label>
-              <big>Thời gian nhận và trả máy bảo hành<br>
-                Từ <strong>12h00</strong> đến <strong>17h00</strong> hằng ngày, <strong>trừ chủ nhật</strong></big> </li>
-          </ul>
-        </div>
-        <div class="footer_line"></div>
-        <div class="box_system">
-          <aside>
-            <label class="fl_upercase fl_bold">TRUNG TÂM KINGTECH</label>
-                          <big class="fl_size14"><div><font face="%&amp;&amp;&amp;&amp;%Arial%&amp;&amp;&amp;&amp;%" size="%&amp;&amp;&amp;&amp;%2%&amp;&amp;&amp;&amp;%">164 Nguyễn Phúc Nguyên, P.9, Q.3, TP.HCM&nbsp;</font><div><font face="%&amp;&amp;&amp;&amp;%Arial%&amp;&amp;&amp;&amp;%" size="%&amp;&amp;&amp;&amp;%2%&amp;&amp;&amp;&amp;%">Điện thoại&nbsp;<b>0862.788.788</b>&nbsp;- Hotline:&nbsp;<b>0907.9988.38</b></font><div><font face="%&amp;&amp;&amp;&amp;%Arial%&amp;&amp;&amp;&amp;%" size="%&amp;&amp;&amp;&amp;%2%&amp;&amp;&amp;&amp;%">Email: minhnhat@kingtech.com.vn</font></div></div></div><div><br></div></big>
-                          <big class="fl_size14"><div>164 Nguyễn Văn Lượng, Q. Gò Vấp, TP. HCM&nbsp;</div><div><div>Điện thoại:&nbsp;<b>0822.61.3333</b>- Hotline:&nbsp;<b>09091.2222.8</b></div><div><br></div></div></big>
-                          <big class="fl_size14"><div><font face="%&amp;&amp;&amp;&amp;%Arial%&amp;&amp;&amp;&amp;%" size="%&amp;&amp;&amp;&amp;%2%&amp;&amp;&amp;&amp;%"><b><font color="%&amp;&amp;&amp;&amp;%#daa520%&amp;&amp;&amp;&amp;%">HÀ NỘI:&nbsp;</font>87 Xã Đàn, Đống Đa, Hà Nội</b></font></div><div><b><font face="%&amp;&amp;&amp;&amp;%Arial%&amp;&amp;&amp;&amp;%" size="%&amp;&amp;&amp;&amp;%2%&amp;&amp;&amp;&amp;%">Điện thoại:<font color="%&amp;&amp;&amp;&amp;%#daa520%&amp;&amp;&amp;&amp;%">&nbsp;0868.925.925&nbsp;</font>- Hotline:</font><span style="%&amp;&amp;&amp;&amp;%font-family:" arial;%&&&&%="">&nbsp;<font color="%&amp;&amp;&amp;&amp;%#daa520%&amp;&amp;&amp;&amp;%">04.39.179.179 &nbsp;</font></span></b></div></big>
-                      </aside>
-          <code>Copyright© 2015 Bản quyền thuộc về kingtech.com.vn.vn <br>
-            <a href="http://lovadweb.com" title="Thiết kế website" target="_blank">Thiết kế website bởi lovadweb.com</a></code> </div>
-        <div class="footer_line"></div>
-        <div class="footer_about">
-          <label class="fl_upercase fl_bold">KINGTECH</label>
-          <ul>
-            <li><a href="/gioi-thieu.html">Về Chúng Tôi</a></li>
-            <li><a href="/thong-tin-lien-he.html">Liên Hệ</a></li>
-            <li><a href="/tuyen-dung.html">Tuyển Dụng</a></li>
-                          <li><a href="/s/1-quy-dinh-bao-hanh" title="Quy định bảo hành">Quy định bảo hành</a></li>
-                          <li><a href="/s/2-dieu-khoan-su-dung" title="Điều khoản sữ dụng">Điều khoản sữ dụng</a></li>
-                          <li><a href="/s/3-huong-dan-mua-hang" title="Hướng dẫn mua hàng">Hướng dẫn mua hàng</a></li>
-                          <li><a href="/s/4-chinh-sach-bao-mat" title="Chính sách bảo mật">Chính sách bảo mật</a></li>
-                          <li><a href="/s/5-chinh-sach-mua-hang" title="Chính sách mua hàng">Chính sách mua hàng</a></li>
-                          <li><a href="/s/6-chinh-sach-doi-tra-hang" title="Chính sách đổi trả hàng">Chính sách đổi trả hàng</a></li>
-                          <li><a href="/s/7-chinh-sach-van-chuyen" title="Chính sách vận chuyển">Chính sách vận chuyển</a></li>
-                      </ul>
-        </div>
-      </div>
-      <div class="box_pages">
+ <link rel="canonical" href='/' />
+  <link rel="alternate" media="handheld" href='/' />
+  <link href="{{Asset('')}}public/kingtech/css/cp/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+ 
+  <script src="{{Asset('')}}public/kingtech/js/jquery-1.11.3.min.js" type="text/javascript"></script>
+    <link href="{{Asset('')}}public/kingtech/css/cssWeb.css" rel="stylesheet" type="text/css">
+    <!-- <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
+    <link href="{{Asset('')}}public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
+    <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+
+<div class="box_pages">
         <div class="box_trungtam_title">
           <label>DANH SÁCH ĐẠI LÝ KINGTECH TRÊN TOÀN QUỐC</label>
         </div>
@@ -193,19 +157,3 @@
           </div>
         </div>
       </div>
-      <div class="box_pages fl_wfull">
-        <div class="box_tags">
-          <label>Tags :</label>
-            @foreach($tags as $tag)
-                      <h2><a href="{{$tag->url}}" target="_blank">{{$tag->name}}</a></h2>
-            @endforeach
-                  </div>
-        <div class="tags_links">
-          <h1> <a title="Chụp hình cưới" href="http://studioluunguyen.com/prices" target="_blank">Chụp hình cưới</a>, <a title="Chụp hình cưới giá rẻ" href="http://luunguyen.vn/" target="_blank">Chụp hình cưới giá rẻ</a>, <a title="Giấy dán tường" href="http://giaydantuongnguyenmai.com.vn/" target="_blank">Giấy dán tường</a>, <a title="Honda city 2014" href="http://hondasaigon.net/" target="_blank">Honda city 2015</a>, <a title="Sơn mài cao cấp" href="http://sonmaicaocap.com/" target="_blank">Sơn mài</a>, <a title="Vận chuyển hàng hóa quốc tế" href="http://pcsc-cargo.com/" target="_blank">Vận chuyển hàng hóa quốc tế</a>, <a title="Chà là" href="http://sanphamxachtay.net/p/18-cha-la-tu-nhien" target="_blank">Chà là</a>, <a title="Nho khô" href="http://sanphamxachtay.net/p/29-nho-kho-nguyen-canh-uc" target="_blank">Nho khô</a>, <a title="Nội thất quận 7" href="http://noithatnguyenphat.net" target="_blank">Nội thất quận 7</a>, <a title="Nội thất phú mỹ hưng" href="http://noithatnguyenphat.net" target="_blank">Nội thất phú mỹ hưng</a>, <a title="quạt công nghiệp" href="http://cokhitantien.com" target="_blank">quạt công nghiệp</a>, <a title="Đo nồng độ" href="http://berthold.vn" target="_blank">Đo nồng độ</a>, <a href="http://nhadatdaiduong.com" title="Bán nhà trung tâm sài gòn" target="_blank">Bán nhà trung tâm sài gòn</a>, <a href="http://nhadatdaiduong.com" title="Bán nhà trung tâm quận 1" target="_blank">Bán nhà trung tâm quận 1</a> <a href="http://diaocaz.com" title="diaocaz" target="_blank">Địa ốc az</a>, <a href="http://diaocaz.com" title="Bán nhà quận tân bình" target="_blank">Bán nhà quận tân bình</a> <a href="http://diaocaz.com" title="Bán nhà quận gò vấp" target="_blank">Bán nhà quận gò vấp</a>, </h1>
-        </div>
-        <div class="box_coppy"> GPKD số : 41C8012283 đăng ký ngày 26 tháng 3 năm 2010<br>
-          MST số: 0309895525 do Sở KHĐT Tp HCM cấp 29/03/2010<br>
-          <em>Ghi rõ nguồn "kingtech.com.vn" khi phát hành nội dung từ website.</em> </div>
-      </div>
-    </section>
-  </footer>
