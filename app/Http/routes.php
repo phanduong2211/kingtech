@@ -46,7 +46,24 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("sort","MenuController@sort");
 	});
 
+	Route::group(['prefix'=>'product'],function(){
+		Route::get("/","ProductController@index");
+		Route::get("create","ProductController@create");
+		Route::post("create","ProductController@postCreate");
 
+		Route::get("{id}","ProductController@update")->where('id','[0-9]+');
+		Route::post("update","ProductController@postUpdate");
+
+		Route::post("delete","ProductController@postDelete");
+		Route::post("deletes","ProductController@postDeletes");
+
+		Route::post("hot","ProductController@hot");
+		Route::post("display","ProductController@display");
+
+		Route::post("hots","ProductController@hots");
+		Route::post("displays","ProductController@displays");
+	
+	});
 
 	Route::group(['prefix'=>'news'],function(){
 		Route::get("/","NewsController@index");

@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\News;
-use App\NewsCate;
-use App\Http\Requests\NewsRequest;
+use App\Product;
+use App\Category;
+use App\Http\Requests\ProductRequest;
 
 
-class NewsController extends BaseController
+class ProductController extends BaseController
 {
 	public function index()
 	{
@@ -23,44 +23,74 @@ class NewsController extends BaseController
 
 
 	public function create(){
-		if(!$this->checkPermission('news/create')){
-			return $this->ErrorPermission('Thêm tin tức');
+		if(!$this->checkPermission('product/create')){
+			return $this->ErrorPermission('Thêm sản phẩm');
 		}
 
-		$data=NewsCate::select('id','name')->get();
+		$data=Category::select('id','name','parent')->get();
 
-		return view("backend.news.create",array('data'=>$data));
+		return view("backend.product.create",array('data'=>$data));
 	}
 
-	public function postCreate(NewsRequest $request){
+	public function postCreate(ProductRequest $request){
 
-		if(!$this->checkPermission('news/create')){
-			return $this->ErrorPermission('Thêm tin tức');
+		if(!$this->checkPermission('product/create')){
+			return $this->ErrorPermission('Thêm sản phẩm');
 		}
 
-		$news=new News();
+		$product=new Product();
 
+		$product->name=str_replace("\"", "'", trim($request->name));
 
-		$news->title=str_replace("\"", "'", trim($request->title));
-
-		$news->url=$this->formatToUrl(trim($request->url));
-		if(News::select('id')->where('url',$news->url)->count()>0){
-			return redirect()->to('admin/news/create')->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+		$product->url=$this->formatToUrl(trim($request->url));
+		if(Product::select('id')->where('url',$product->url)->count()>0){
+			return redirect()->to('admin/product/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		$news->cate_id=(int)$request->cate_id;
-		$news->image=$request->image;
-		$news->hot=0;
-		$news->description=str_replace("\"", "'", trim($request->description));
-		$news->keywords=str_replace("\"", "'", trim($request->keywords));
-		$news->content=$request->content;
-		$news->display=1;
-		$news->viewer=0;
+		$product->pro_code=trim($request->pro_code);
+		$product->cate_id=$request->cate_id;
 
-		if($news->save()){
-			return redirect()->to('admin/news/create')->with('message','Thêm thành công.');
+		$product->image=trim($request->image);
+
+		$product->description=str_replace("\"", "'", trim($request->description));
+		$product->keywords=str_replace("\"", "'", trim($request->keywords));
+		
+		$product->price=preg_replace("/(\.|-| |\,)*/", "", trim($request->price));
+
+		$product->price_company=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_company));
+
+		$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
+
+		$product->status=$request->status;
+		$product->quantity=$request->quantity;
+		$product->viewer=0;
+		$product->sold=0;
+		$product->display=1;
+		$product->index_home=0;
+
+		$product->overview=$request->overview;
+		$product->specs=$request->specs;
+		$product->accessories=$request->accessories;
+		$product->promotion=$request->promotion;
+
+		$product->show_home=($request->show_home=='on')?1:0;
+		$images="";
+		foreach($request->images as $item){
+			if($item!=""){
+				$images.=$item.",";
+			}
 		}
-		return redirect()->to('admin/news/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
+		if($images!=""){
+			$images=substr($images, 0,strlen($images)-1);
+		}
+
+		$product->images=$images;
+
+
+		if($product->save()){
+			return redirect()->to('admin/product/create')->with('message','Thêm thành công.');
+		}
+		return redirect()->to('admin/product/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
 	}
 
 	public function update($id){
@@ -89,7 +119,7 @@ class NewsController extends BaseController
 		
 		$news->title=str_replace("\"", "'", trim($request->title));
 
-		$news->url=$this->formatToUrl(trim($request->url));
+		$news->url=$this->formatToUrl(trim($request->title));
 		if(News::select('id')->where('id','<>',(int)$request->id)->where('url',$news->url)->count()>0){
 			return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}

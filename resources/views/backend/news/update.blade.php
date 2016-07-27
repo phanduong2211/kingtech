@@ -36,6 +36,16 @@ function showImage($path){
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-2">
+                        <label>Url:</label>
+                    </div>
+                    <div class="col-md-10 required">
+                        <span class="red">*</span>
+                        <input type="text" name="url" id="urlc" value="{{$data->url}}" class="form-control" />
+                        <span class="desc">
+                          Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: gioi-thieu
+                        </span>
+                    </div>
+                    <div class="col-md-2">
                         <label>Loại:</label>
                     </div>
                     <div class="col-md-10 required">
