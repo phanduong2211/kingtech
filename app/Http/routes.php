@@ -218,6 +218,7 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::get("dang-nhap.html","DangNhapController@getView");
 	Route::post("dang-nhap.html","DangNhapController@getUser");
 	Route::get("gia-si.html","DangNhapController@checkPriceCompany");
+
 	
 
 	Route::group(['prefix'=>"video"],function(){
@@ -240,6 +241,10 @@ Route::group(['namespace' => 'Auth'], function()
 			Route::get("{id}-{name}","AppController@getDetailApp");
 		});
 		Route::get("{id}-{name}","AppController@getApp");
+	});
+	Route::group(["prefix"=>"dai-ly-phan-phoi"],function(){
+		Route::get("/","DaiLyController@getBranches");
+		Route::get("{id}-{name}","DaiLyController@getAgencys");
 	});
 
 

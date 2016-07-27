@@ -18,7 +18,9 @@ use App\Ads;
 use App\App;
 use App\AppCate;
 use App\User;
+use App\Branch;
 use App\Video;
+use App\Agency;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -191,6 +193,21 @@ class ControllerDB extends BaseController
     {
         $videosRefer = Video::where("display",1)->where("id","!=",$id)->take(10)->get();
         return $videosRefer;
+    }
+    public function getBranches()
+    {
+        $branches = Branch::orderby("index","asc")->get();
+        return $branches;
+    }
+    public function getAgencys($id)
+    {
+        $agencys = Agency::where("branch_id",$id)->get();
+        return $agencys;
+    }
+    public function getBranche($id)
+    {
+        $branche = Branch::where("id",$id)->get();
+        return $branche;
     }
 
 }
