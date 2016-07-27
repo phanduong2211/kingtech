@@ -62,11 +62,11 @@
                         </a>
                         <ul>
                             <li data-role="user/list" class="trole" data-action="list">
-                                <a href="{{url('admin/user')}}">Sản phẩm</a>
+                                <a href="{{url('admin/product')}}">Sản phẩm</a>
                             </li>
 
                             <li data-role="user/create" class="trole" data-action="new"> 
-                                <a href="{{url('admin/user/create')}}" >Thêm mới</a>
+                                <a href="{{url('admin/product/create')}}" >Thêm mới</a>
                             </li>
 
                             <li data-role="admin/category" class="trole" data-action="category"> 
