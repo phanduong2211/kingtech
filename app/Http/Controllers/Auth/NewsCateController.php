@@ -21,8 +21,9 @@ class NewsCateController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert));
 	}
 
 	public function getNews()
@@ -38,8 +39,9 @@ class NewsCateController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert));
 	}
 	public function getDetailNews($catename,$id,$name)
 	{
@@ -61,8 +63,9 @@ class NewsCateController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
+        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert));
 	}
 }
 

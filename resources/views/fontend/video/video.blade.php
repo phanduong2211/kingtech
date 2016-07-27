@@ -11,7 +11,7 @@
             @foreach($videos as $video)
                 <li>
                     <figure><a href="{{Asset('')}}video/{{$video->id.'-'.$video->url}}" title="{{$video->name}}">
-                    <img src="{{Asset('')}}public/kingtech/images/daily/{{$video->image}}" alt="{{$video->name}}"></a></figure>
+                    <img src="{{$convert->showImage($video->image)}}" alt="{{$video->name}}"></a></figure>
                     <h2><a href="{{Asset('')}}video/{{$video->id.'-'.$video->url}}" title="{{$video->name}}" title="{{$video->name}}">{{$video->name}}</a></h2>
                 </li>
             @endforeach

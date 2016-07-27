@@ -1,7 +1,7 @@
 
 @extends('fontend.layout_qc')
 @section('box_center')
-
+@if(count($products)>0)
             <div class="box_sales">
               <div class="box_title">
                 <aside>
@@ -13,8 +13,8 @@
                   <div class="aside_left">
                     <div class="aside_img">
                       <figure>
-                          <img src="{{Asset('')}}public/kingtech/images/p/{{$products[0]->image}}" alt="{{$products[0]->name}}" /> 
-                       <a class="group1"  href="{{Asset('')}}public/kingtech/images/p/{{$products[0]->image}}" title="{{$products[0]->name}}" >
+                          <img src="{{$convert->showImage($products[0]->image)}}" alt="{{$products[0]->name}}" /> 
+                       <a class="group1"  href="{{$convert->showImage($products[0]->image)}}" title="{{$products[0]->name}}" >
                           <code> <i class="fa fa-search-plus"></i> Xem ảnh</code>
                       </a>
                       <big>
@@ -23,18 +23,14 @@
                       @foreach($images as $img)
                         @if($img!="")
                         <a class="group1"  href="{{Asset('')}}public/kingtech/upload/hinhanh/{{$img}}" title="{{$products[0]->name}}" >
-                          <img src="{{Asset('')}}public/kingtech/upload/hinhanh/{{$img}}" alt="{{$products[0]->name}}" /></a>
+                          <img src="{{$convert->showImage($img)}}" alt="{{$products[0]->name}}" /></a>
                         @endif
                       @endforeach
                       @endif                     
                       </big>
                       </figure>
                       <span class="luotxem">Lượt xem: {{$products[0]->viewer}}</span>
-                     <!--  <span class="buy">
-                          <a id="datmua" class="datmua" data-id="351" title="Ống nhòm đo khoảng cách, đo tốc độ gió LR-600S">
-                              <img src="{{Asset('')}}public/kingtech/images/muahang.gif " alt="Mua hàng" />
-                          </a>
-                      </span>  -->
+                     
                       </div>
                     <div class="aside_details">
                       <h2>{{$products[0]->name}}</h2>
@@ -65,6 +61,7 @@
                 </aside>
                 
         <div class="slider_croll fl_top30">
+        @if(count($productsRefer)>0)
           <div class="box_title">
             <aside>
               <label>Có thể bạn quan tâm</label>
@@ -74,7 +71,7 @@
             @if($productsRefer!=null)
             @for($i=0;$i< count($productsRefer);$i++)
               <div class="item_pro">
-                <figure><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productsRefer[$i]->image}}" alt="{{$productsRefer[$i]->name}}" /></a></figure>
+                <figure><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}"><img src="{{$convert->showImage($productsRefer[$i]->image)}}" alt="{{$productsRefer[$i]->name}}" /></a></figure>
                 <h2 style="margin-top:-27px"><a href="{{Asset('')}}product/{{$productsRefer[$i]->id.'-'.$productsRefer[$i]->url}}" title="{{$productsRefer[$i]->name}}">{{$productsRefer[$i]->name}}</a></h2>
                 <span>
                 @if(Session::has("isuser"))
@@ -87,6 +84,7 @@
             @endfor
             @endif
             <span class="span_right"><a href="" id="slider-nav-next" onClick="return false" > <img src="{{Asset('')}}public/kingtech/images/next.png"></a> </span> </div >
+        @endif
 
         </div>                
                 <div role="tabpanel" class="box_tabs"> 
@@ -120,7 +118,7 @@
               </div>
             </div>
           </div>
-          @include("fontend.home.centerSupport")
       </div>
       </div>
+@endif
 @endsection

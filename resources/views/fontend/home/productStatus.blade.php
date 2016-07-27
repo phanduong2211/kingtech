@@ -8,14 +8,16 @@
              <div class="item_good">
                 <ul>
                     <li>
-                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productSelling[$i]->image}}" alt="{{$productSelling[$i]->name}}" /></a></figure>
+                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}"><img src="{{$convert->showImage($productSelling[$i]->image)}}" alt="{{$productSelling[$i]->name}}" /></a></figure>
                     <h2><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}">{{$productSelling[$i]->name}}</a></h2>
                     </li>
+                    @if(isset($productSelling[$i+1]))
                     <li>
-                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$productSelling[$i+1]->image}}" alt="{{$productSelling[$i+1]->name}}" /></a></figure>
+
+                    <figure><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}"><img src="{{$convert->showImage($productSelling[$i+1]->image)}}" alt="{{$productSelling[$i+1]->name}}" /></a></figure>
                     <h2><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}">{{$productSelling[$i+1]->name}}</a></h2>
                     </li>
-              
+                    @endif
             </ul>
           </div>
       @endfor 

@@ -5,7 +5,7 @@
         <div class="item">
           
           <figure>
-            <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}">
+            <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"><img src="{{$convert->showImage($news[$i]->image)}}" alt="{{$news[$i]->title}}">
             </a>
           </figure>
           <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"></a>

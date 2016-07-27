@@ -25,8 +25,9 @@ class DangNhapController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps));
+        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert));
         }
 	public function getUser()
 	{

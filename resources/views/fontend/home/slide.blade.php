@@ -95,8 +95,8 @@
                         <img border="0" alt="auction slider" width="215" height="50" src="public/kingtech/img/find-out-more-bt.png" />
                     </a>
                 </div>
-                <img style="position: absolute; top: 23px; left: 480px; width: 500px; height: 300px;" src="public/kingtech/img/{{$slides[$i]->image}}" />
-                <img data-u="thumb" src="public/kingtech/img/{{$slides[$i]->image}}" />
+                <img style="position: absolute; top: 23px; left: 480px; width: 500px; height: 300px;" src="{{$convert->showImage($slides[$i]->image)}}" />
+                <img data-u="thumb" src="{{$convert->showImage($slides[$i]->image)}}" />
             </div>
           @endfor
 

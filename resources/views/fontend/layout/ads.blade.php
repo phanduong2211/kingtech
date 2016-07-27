@@ -6,7 +6,7 @@
         <div class="thoigian">
           <div class="box_add">
               <figure>
-                  <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/links/{{$ads[$i]->image}}" alt="{{$ads[$i]->title}}"></a>
+                  <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{$convert->showImage($ads[$i]->image)}}" alt="{{$ads[$i]->title}}"></a>
               </figure>
           </div>
         </div>
@@ -19,7 +19,7 @@
         <div class="add_left">
           <div class="box_add">
               <figure>
-                  <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/links/{{$ads[$i]->image}}" alt="{{$ads[$i]->title}}"></a>
+                  <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{$convert->showImage($ads[$i]->image)}}" alt="{{$ads[$i]->title}}"></a>
               </figure>
           </div>
         </div>

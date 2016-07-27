@@ -10,7 +10,7 @@
       <div class="box_item">
       @for($i=0;$i< count($productdeal);$i++)
         <div class="item_pro">
-          <figure><a href="{{Asset('')}}product/{{$productdeal[$i]->id.'-'.$productdeal[$i]->url}}" title="{{$productdeal[$i]->name}}"><img src="public/kingtech/images/p/{{$productdeal[$i]->image}}" alt="{{$productdeal[$i]->name}}"></a></figure>
+          <figure><a href="{{Asset('')}}product/{{$productdeal[$i]->id.'-'.$productdeal[$i]->url}}" title="{{$productdeal[$i]->name}}"><img src="{{$convert->showImage($productdeal[$i]->image)}}" alt="{{$productdeal[$i]->name}}"></a></figure>
           <h2><a href="{{Asset('')}}product/{{$productdeal[$i]->id.'-'.$productdeal[$i]->url}}" title="{{$productdeal[$i]->name}}">{{$productdeal[$i]->name}}</a></h2>
           <span>
             @if(Session::has("isuser"))

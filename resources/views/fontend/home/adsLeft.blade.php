@@ -9,7 +9,7 @@
         @for($i=0;$i< count($ads);$i++)
         @if($ads[$i]->position==3)
           <figure>
-            <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/links/{{$ads[$i]->image}}" alt="{{$ads[$i]->title}}" /></a>
+            <a href="{{$ads[$i]->url}}" target="_blank"><img src="{{$convert->showImage($ads[$i]->image)}}" alt="{{$ads[$i]->title}}" /></a>
           </figure>
         @endif
         @endfor   

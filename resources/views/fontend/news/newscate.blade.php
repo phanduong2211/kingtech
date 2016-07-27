@@ -19,7 +19,7 @@
             	@for($j=0;$j< count($NewsCate);$j++)
                      @if($news[$i]->cate_id==$NewsCate[$j]->id)
 	                <li>
-	                	<figure> <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->id.'-'.$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"> <img src="{{Asset('')}}public/kingtech/images/n/{{$news[$i]->image}}" alt="{{$news[$i]->title}}" /> </a> </figure>
+	                	<figure> <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->id.'-'.$NewsCate[$j]->url}}/{{$news[$i]->url}}" title="{{$news[$i]->title}}"> <img src="{{$convert->showImage($news[$i]->image)}}" alt="{{$news[$i]->title}}" /> </a> </figure>
 	                	<h2> <a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$NewsCate[$j]->id.'-'.$news[$i]->url}}" title="{{$news[$i]->title}}">{{$news[$i]->title}}</a> </h2>
 	                	<big>{{$news[$i]->description}}</big> 
 	               	</li>

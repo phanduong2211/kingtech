@@ -14,7 +14,7 @@
       <div class="box_item">
       @for($i=0;$i< count($products);$i++)
         <div class="item_pro">
-          <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="{{Asset('')}}public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}"></a></figure>
+          <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="{{$convert->showImage($products[$i]->image)}}" alt="{{$products[$i]->name}}"></a></figure>
           <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
           <span>
           @if(Session::has("isuser"))

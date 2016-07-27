@@ -28,6 +28,7 @@ class IndexController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $convert = new \App\Http\Controllers\convertString();
 
         $newproducts = $th->getNewProduct();
         $categoryMenuIndex = $th->getCategoryMenuIndex();
@@ -36,7 +37,7 @@ class IndexController extends Controller
         
         
         //return $productSelling;
-        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps));
+        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps,"convert"=>$convert));
     }
     public function getProdctCateID($cate_id)
     {

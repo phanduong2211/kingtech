@@ -14,7 +14,7 @@
               <ul>
                 @for($i=0;$i< count($products);$i++)
                   <li>
-                    <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="public/kingtech/images/p/{{$products[$i]->image}}" alt="{{$products[$i]->name}}" /></a></figure>
+                    <figure><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}"><img src="{{$convert->showImage($products[$i]->image)}}" alt="{{$products[$i]->name}}" /></a></figure>
                     <h2><a href="{{Asset('')}}product/{{$products[$i]->id.'-'.$products[$i]->url}}" title="{{$products[$i]->name}}">{{$products[$i]->name}}</a></h2>
                     <aside>
                       <span>
