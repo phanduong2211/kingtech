@@ -101,6 +101,7 @@ function ffilter(th, obj,flag,value) {
                     
                 });
         	}else{
+                filter.value=filter.value.toLowerCase();
         	    trtable.addClass('hide').removeClass("hidepage").each(function () {
         	        var par = $(this);
         	        if (filter.fiter_column != null) {
@@ -117,7 +118,7 @@ function ffilter(th, obj,flag,value) {
         	                    }
         	                }
                             text=text.toLowerCase();
-        	                if ($.trim(text).indexOf(filter.value) !== -1) {
+                            if ($.trim(text).indexOf(filter.value) !== -1) {
         	                    par.removeClass('hide');
         	                }
         	            }

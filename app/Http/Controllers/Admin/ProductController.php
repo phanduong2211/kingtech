@@ -10,15 +10,15 @@ class ProductController extends BaseController
 {
 	public function index()
 	{
-		if(!$this->checkPermission('news/list')){
-			return $this->ErrorPermission('Tin tức');
+		if(!$this->checkPermission('product/list')){
+			return $this->ErrorPermission('Sản phẩm');
 		}
 
-		$data=News::orderBy('id','desc')->get();
+		$data=Product::orderBy('id','desc')->get();
 
-		$listNewsCate=NewsCate::select('id','name')->get();
+		$listCategory=Category::select('id','name')->get();
 		
-		return view("backend.news.index",array('data'=>$data,'listNewsCate'=>$listNewsCate));
+		return view("backend.product.index",array('data'=>$data,'listCategory'=>$listCategory));
 	}
 
 
@@ -138,30 +138,16 @@ class ProductController extends BaseController
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('news/delete')){
+		if(!$this->checkPermission('product/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=(int)\Input::get('data');
 
-		if(News::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công loại tin tức {name}"]);
+		if(Product::destroy($id)){
+			return json_encode(["success"=>true,"message"=>"Xóa thành công sản phẩm {name}"]);
 		}
-		return json_encode(["success"=>false,"message"=>"Xóa loại tin tức {name} thất bại"]);
-	}
-
-	public function postDeletes(){
-
-		if(!$this->checkPermission('news/delete')){
-			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
-		}
-
-		$id=explode(',',\Input::get('data'));
-
-		if(News::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." tin tức."]);
-		}
-		return json_encode(["success"=>false,"message"=>"Xóa tin tức thất bại"]);
+		return json_encode(["success"=>false,"message"=>"Xóa sản phẩm {name} thất bại"]);
 	}
 
 	public function display(){
@@ -170,44 +156,33 @@ class ProductController extends BaseController
 
 		$display=($display=='true')?1:0;
 
-		if(News::where('id',$id)->update(['display'=>$display])){
+		if(Product::where('id',$id)->update(['display'=>$display])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
 		return json_encode(["success"=>false,"message"=>"Thất bại"]);
 	}
 
-	public function hot(){
+	public function show_home(){
 		$id=(int)\Input::get('data');
-		$hot=\Input::get('ischeck');
+		$show_home=\Input::get('ischeck');
 
-		$hot=($hot=='true')?1:0;
+		$show_home=($show_home=='true')?1:0;
 
-		if(News::where('id',$id)->update(['hot'=>$hot])){
+		if(Product::where('id',$id)->update(['show_home'=>$show_home])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
 		return json_encode(["success"=>false,"message"=>"Thất bại"]);
 	}
 
-	public function hots(){
-		$data=explode(',',\Input::get('data'));
-		foreach($data as $item){
-			News::where('id',(int)$item)->update(['hot'=>1]);
+	public function sort(){
+		$data=\Input::get('data');
+		foreach(\Input::get('id') as $key=>$value){
+			Product::where('id',$value)->update(['index_home'=>$data[$key]]);
 		}
 
-
-		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
-	}
-
-	public function displays(){
-		$data=explode(',',\Input::get('data'));
-		foreach($data as $item){
-			News::where('id',(int)$item)->update(['display'=>0]);
-		}
-
-
-		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+		return json_encode(["success"=>true]);
 	}
 }
 

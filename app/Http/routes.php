@@ -55,13 +55,13 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("update","ProductController@postUpdate");
 
 		Route::post("delete","ProductController@postDelete");
-		Route::post("deletes","ProductController@postDeletes");
+	
 
-		Route::post("hot","ProductController@hot");
+		Route::post("show_home","ProductController@show_home");
 		Route::post("display","ProductController@display");
 
-		Route::post("hots","ProductController@hots");
-		Route::post("displays","ProductController@displays");
+		Route::post("sort","ProductController@sort");
+		
 	
 	});
 
