@@ -83,15 +83,14 @@
                 <div style="position: absolute; top: 10px; left: 10px; width: 480px; height: 300px; font-family: Arial, Verdana; font-size: 12px; text-align: left;"><br />
                     <span style="display: block; line-height: 1em; text-transform: uppercase; font-size: 52px; color: #FFFFFF;">{{$slides[$i]->name}}</span><br /><br /><br />
                     <span style="display: block; line-height: 1.1em; font-size: 2.5em; color: #FFFFFF;">
-                                                        iT Solutions & Services
+                                                        {{$slides[$i]->title}}
                                                     
                     </span><br />
                     <span style="display: block; line-height: 1.1em; font-size: 1.5em; color: #FFFFFF;">
-                                                        Our professional services help you address the ever evolving business and technological
-                                                        challenges.
+                                                        {{$slides[$i]->content}}
                                                     
                     </span><br /><br />
-                    <a href="http://www.jssor.com">
+                    <a href="{{$slides[$i]->url}}">
                         <img border="0" alt="auction slider" width="215" height="50" src="public/kingtech/img/find-out-more-bt.png" />
                     </a>
                 </div>
@@ -101,8 +100,7 @@
           @endfor
 
            
-            <a data-u="add" href="http://www.jssor.com" style="display:none">Jssor Slider</a>
-        
+            
         </div>
         <!-- Thumbnail Navigator -->
         <div data-u="thumbnavigator" class="jssort04" style="position:absolute;left:0px;bottom:0px;width:980px;height:60px;" data-autocenter="1">

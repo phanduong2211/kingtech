@@ -23,6 +23,7 @@ use App\Video;
 use App\Agency;
 use App\Tag;
 use App\Support;
+use App\Page;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -225,6 +226,11 @@ class ControllerDB extends BaseController
     {
         $support = Support::where("display",1)->get();
         return $support;
+    }
+    public function getPage($url)
+    {
+        $page = Page::where("display",1)->where("url","=",$url)->get();
+        return $page;
     }
 
 }

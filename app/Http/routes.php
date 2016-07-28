@@ -242,6 +242,7 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::get("dang-nhap.html","DangNhapController@getView");
 	Route::post("dang-nhap.html","DangNhapController@getUser");
 	Route::get("gia-si.html","DangNhapController@checkPriceCompany");
+	
 
 	
 
@@ -271,6 +272,7 @@ Route::group(['namespace' => 'Auth'], function()
 		Route::get("{id}-{name}","DaiLyController@getAgencys");
 	});
 
+	Route::get("{name}","PageController@getPages");
 
 });
 

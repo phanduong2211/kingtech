@@ -2139,7 +2139,7 @@ nav ul li ul li a:hover {
 }
 .box_trungtam aside {
 	float: left;
-	background: #e6e6e6;
+	background: white;
 	padding: 10px;
 	width: calc(100% - 20px);
 }
