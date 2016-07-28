@@ -24,11 +24,13 @@ class VideoController extends Controller
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
             $tags = $th->getTags();
+            $branches = $th->getBranches();
+            $agency = $th->getAgency();
             $convert = new \App\Http\Controllers\convertString();
 
             $videos = $th->getVideos();
 
-        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert,"tags"=>$tags));
+        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
         }
 
         public function getDetailVideo($id,$name)
@@ -46,6 +48,8 @@ class VideoController extends Controller
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
             $tags = $th->getTags();
+            $branches = $th->getBranches();
+            $agency = $th->getAgency();
             $convert = new \App\Http\Controllers\convertString();
 
             $video = $th->getVideo($id,$name);
@@ -54,7 +58,7 @@ class VideoController extends Controller
                 $videosRefer = $th->getVideosRefer($video[0]->id);
 
 
-        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert,"tags"=>$tags));
+        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
         }
 }
 

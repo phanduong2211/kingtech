@@ -25,11 +25,13 @@ class AppController extends Controller
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
         $tags = $th->getTags();
+        $branches = $th->getBranches();
+        $agency = $th->getAgency();
         $convert = new \App\Http\Controllers\convertString();
 
         $apps = $th->getApp($id);
 
-        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert,"tags"=>$tags));
+        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
 	}
 	public function getDetailApp($id,$name)
 	{
@@ -46,11 +48,13 @@ class AppController extends Controller
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
         $tags = $th->getTags();
+        $branches = $th->getBranches();
+        $agency = $th->getAgency();
         $convert = new \App\Http\Controllers\convertString();
 
         $detailapp = $th->getDetailApp($id);
 
-        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert,"tags"=>$tags));
+        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
 	}	
 }
 

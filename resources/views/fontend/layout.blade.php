@@ -3,9 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="content-language" content="vi" />
-  <link href="{{Asset('')}}public/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+  <link href="{{Asset('')}}public/img/favicon.png" rel="shortcut icon" type="image/vnd.microsoft.icon" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield("title")
+  @yield("description")
+   @yield("keywords")
   @yield("meta")
   <link rel="canonical" href='/' />
   <link rel="alternate" media="handheld" href='/' />

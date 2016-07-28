@@ -25,9 +25,11 @@ class SearchController extends Controller
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
         $tags = $th->getTags();
+        $branches = $th->getBranches();
+        $agency = $th->getAgency();
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.product.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags));
+        return View("fontend.product.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
 	}
 }
 

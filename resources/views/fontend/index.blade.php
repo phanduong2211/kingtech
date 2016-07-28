@@ -1,11 +1,33 @@
 @extends('fontend.layout')
 @section('title')
-<title>kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth </title>
+<title>
+  @foreach($website as $tile)
+    @if($tile->name=="title")
+      <?php echo $tile->content; ?>
+    @endif
+  @endforeach
+</title>
 @endsection
-@section('meta')
-<meta name='description' content='KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất ' >
-  <meta name='keywords' content='kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth | Pin du phong | bo phat wifi' >
-  
+
+@section("description")
+<meta name='description' content='
+@foreach($website as $tile)
+    @if($tile->name=="meta_description")
+      <?php echo $tile->content; ?>
+    @endif
+  @endforeach'>
+  @endsection
+
+@section("keywords")
+  <meta name='keywords' content='
+@foreach($website as $tile)
+    @if($tile->name=="meta_keywords")
+      <?php echo $tile->content; ?>
+    @endif
+  @endforeach
+  ' >
+    @endsection
+    @section('meta')
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
   <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />

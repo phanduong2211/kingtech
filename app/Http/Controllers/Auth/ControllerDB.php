@@ -205,6 +205,11 @@ class ControllerDB extends BaseController
         $agencys = Agency::where("branch_id",$id)->get();
         return $agencys;
     }
+    public function getAgency()
+    {
+        $agency = Agency::where("display_footer",1)->get();
+        return $agency;
+    }
     public function getBranche($id)
     {
         $branche = Branch::where("id",$id)->get();

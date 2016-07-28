@@ -24,11 +24,12 @@ class DaiLyController extends Controller
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
             $tags = $th->getTags();
+            $agency = $th->getAgency();
             $convert = new \App\Http\Controllers\convertString();
 
             $branches = $th->getBranches();
-
-        return View("fontend.branches.branches",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"branches"=>$branches,"convert"=>$convert,"tags"=>$tags));
+            
+        return View("fontend.branches.branches",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"branches"=>$branches,"convert"=>$convert,"tags"=>$tags,"agency"=>$agency));
         }
         public function getAgencys($id,$name)
         {
@@ -45,6 +46,7 @@ class DaiLyController extends Controller
             $productSelling = $th->getProductSelling();
             $cateApps = $th->getCateApp();
             $tags = $th->getTags();
+            $agency = $th->getAgency();
             $convert = new \App\Http\Controllers\convertString();
 
             $agencys = $th->getAgencys($id);
@@ -52,7 +54,7 @@ class DaiLyController extends Controller
             if(count($agencys)>0)
                 $branche = $th->getBranche($agencys[0]->branch_id);
 
-        return View("fontend.branches.agencys",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"agencys"=>$agencys,"convert"=>$convert,"branche"=>$branche,"tags"=>$tags));
+        return View("fontend.branches.agencys",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"agencys"=>$agencys,"convert"=>$convert,"branche"=>$branche,"tags"=>$tags,"agency"=>$agency));
         }
 }
 
