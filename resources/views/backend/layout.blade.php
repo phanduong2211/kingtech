@@ -25,7 +25,8 @@
 <body>
 
     <div id="wrapper" class="clearfix">
-
+        <div id="userrolesdata" style="display:none"><!--role data-->
+                </div>
         <!--col left-->
        <div id="col-left">
             <header id="left_header">
@@ -46,8 +47,7 @@
                     <div class="clearfix"></div>
                    <small style="color:white">Lần truy cập cuối: </small>
                 </div>
-                <div id="userrolesdata" style="display:none"><!--role data-->
-                </div>
+                
                 <nav id="menu">
                     <li id="menu_home">
                         <a href="{{url('admin')}}">
@@ -182,7 +182,6 @@
                     </li>
                     
                 </nav>
-
             </div>
             <footer id="footer-colleft">
                 <div class="row">

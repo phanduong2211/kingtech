@@ -1,8 +1,10 @@
-﻿function eventSubMenu(th) {
+﻿
+function eventSubMenu(th) {
    
     var top = th.offset().top - $(window).scrollTop();
     var a = th.parent().toggleClass("show").find("ul").css("top", top).slideToggle();
     $("#areasubmenu").css("top", top).html(a.html()).toggleClass('showsub');
+    
 }
 $(document).ready(function () {
     $("#togglemenu").click(function () {
@@ -16,9 +18,9 @@ $(document).ready(function () {
     $("#menu li.dropdownmenu > a").click(function () {
        
         eventSubMenu($(this));
-        
         return false;
     });
+
 
     /*$('#content-col-left').css('overflow','hidden').bind('mousewheel', function (e) {
         if (e.originalEvent.wheelDelta / 120 > 0) {

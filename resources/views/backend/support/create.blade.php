@@ -49,7 +49,7 @@
         <div class="col-sm-6">
             <div class="row">
               <div class="col-sm-4">
-                <label>Skype:</label>
+                <label>Id Skype:</label>
               </div>
               <div class="col-sm-8">
                 <input type="text" name="skype" value="{{old('skype')}}" class="form-control" />
@@ -63,7 +63,7 @@
         <div class="col-sm-6">
             <div class="row">
               <div class="col-sm-4">
-                <label>Yahoo:</label>
+                <label>Id Yahoo:</label>
               </div>
               <div class="col-sm-8">
                 <input type="text" name="yahoo" value="{{old('yahoo')}}" class="form-control" />

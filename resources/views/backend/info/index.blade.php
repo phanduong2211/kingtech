@@ -94,7 +94,8 @@ function showImage($path){
 				<div class="col-md-4">
 					<label>Địa chỉ:</label>
 				</div>
-				<div class="col-md-8">
+				<div class="col-md-8 required">
+					<span class="red">*</span>
 					<textarea rows="3" class="form-control" name="address">{{$data['address']}}</textarea>
 					<span class="desc">Địa chỉ website</span>
 				</div>
@@ -265,8 +266,7 @@ function showImage($path){
 				<div class="col-md-4">
 					<label>Giờ mở cửa:</label>
 				</div>
-				<div class="col-md-8 required">
-					<div class="red">*</div>
+				<div class="col-md-8">
 					<textarea rows="4" class="form-control" name="open_time">{{$data['open_time']}}</textarea>
 					<span class="desc">.</span>
 				</div>
@@ -298,7 +298,7 @@ function showImage($path){
 </div><!--//Thông Tin ban hang-->
 
 
-<div>
+<div id="logofavicon">
 <h4>
 	Logo & Favicon
 	 
@@ -333,7 +333,6 @@ function showImage($path){
 					<input type="file" name="favicon" class="hide" id="favicon" />
 					</label>
 					<br /><br />
-					<br /><br />
 					<br />
 					<span class="desc">Kích thước chuẩn: 16x16.</span>
 
@@ -347,4 +346,96 @@ function showImage($path){
 </div><!--//Logo và favicon-->
 
 
+@endsection
+
+@section('script')
+<script src="{{Asset('public/js/validate.js')}}" ></script>
+<script type="text/javascript">
+var asset_path="{{Asset('public')}}/";
+function isImage(file) {
+    file = file.split(".").pop();
+    switch (file) {
+        case "jpg": case "png": case "gif": case "bimap": case "jpeg": case "ico":
+            return true;
+        default:
+            return false;
+    }
+    return false;
+}
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			if(isImage(input.files[0].name)){
+				var reader = new FileReader();
+				reader.onload = function (e) {
+					$(input).parent().find(".img-thumbnail").attr("src",e.target.result);
+				}
+				reader.readAsDataURL(input.files[0]);
+			}else{
+				alert("vui lòng chọn 1 hình ảnh");
+			}
+		}
+		else {
+			$(input).parent().find(".img-thumbnail").attr("src",  $(input).val());
+		}
+	}
+
+$(document).ready(function(){
+
+	$("#frm-all").kiemtra([
+		{
+			'name':'title',
+			'trong':true
+		},{
+			'name':'address',
+			'trong':true
+		}
+
+	]);
+
+	$("#frm-contact").kiemtra([
+		{
+			'name':'hotline',
+			'trong':true
+		},{
+			'name':'phone',
+			'trong':true
+		},{
+			'name':'email',
+			'email':true
+		}
+
+	]);
+
+	$("#frm-banhang").kiemtra([
+		{
+			'name':'sdt_mua_hang_tu_xa',
+			'trong':true
+		},{
+			'name':'sdt_trung_tam_bh',
+			'trong':true
+		},{
+			'name':'sdt_dai_ly',
+			'trong':true
+		}
+
+	]);
+
+		$("label.uploadimg .hide").change(function(){
+			if(this.files){
+			readURL(this);
+		}
+			$(this).parent().parent().find(".disabled").removeClass("disabled").removeAttr("disabled");
+		});
+		$("#logofavicon form input[type='reset']").click(function(){
+			var img=$(this).parent().find(".img-thumbnail");
+			img.attr("src",asset_path+"images/"+img.attr("data-old"));
+			var file = $(this).parent().find("input[type='file']");
+			file.replaceWith(file.val('').clone(true));
+
+			$(this).parent().find("input[type='submit']").addClass("disabled").attr("disabled","disabled");
+			$(this).addClass("disabled").attr("disabled","disabled");
+		});
+});
+
+</script>
 @endsection
