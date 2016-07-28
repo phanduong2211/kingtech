@@ -22,6 +22,7 @@ use App\Branch;
 use App\Video;
 use App\Agency;
 use App\Tag;
+use App\Support;
 use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
@@ -219,6 +220,11 @@ class ControllerDB extends BaseController
     {
         $tags = Tag::where("display",1)->orderby("index","asc")->get();
         return $tags;
+    }
+    public function getSupport()
+    {
+        $support = Support::where("display",1)->get();
+        return $support;
     }
 
 }

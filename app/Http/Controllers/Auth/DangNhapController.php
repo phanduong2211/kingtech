@@ -28,9 +28,10 @@ class DangNhapController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
         }
 	public function getUser()
 	{

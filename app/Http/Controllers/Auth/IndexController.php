@@ -31,6 +31,7 @@ class IndexController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $newproducts = $th->getNewProduct();
@@ -40,7 +41,7 @@ class IndexController extends Controller
         
         
         //return $productSelling;
-        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
     }
     public function getProdctCateID($cate_id)
     {

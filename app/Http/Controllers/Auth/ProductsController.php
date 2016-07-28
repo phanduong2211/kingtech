@@ -21,11 +21,12 @@ class ProductsController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $productdeal = $th->getProductDeal();
 
-        return View("fontend.product.productdeal",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.product.productdeal",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 	public function getCategory($id,$name)
 	{
@@ -40,11 +41,12 @@ class ProductsController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $products = $th->getProductWhereCategoryID($id,$name);
 
-        return View("fontend.product.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.product.product",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 
 	}
 	public function getProduct($id,$name)
@@ -60,6 +62,7 @@ class ProductsController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $products = $th->getProductWhereID($id,$name);
@@ -67,7 +70,7 @@ class ProductsController extends Controller
         if(count($products)>0)
         	$productsRefer = $th->getProductRefer($products[0]->cate_id,$id);
 
-        return View("fontend.product.detailproduct",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"productsRefer"=>$productsRefer,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.product.detailproduct",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"productsRefer"=>$productsRefer,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 }
 

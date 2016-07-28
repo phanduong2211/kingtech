@@ -24,9 +24,10 @@ class NewsCateController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 
 	public function getNews()
@@ -45,9 +46,10 @@ class NewsCateController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.news.newscate",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 	public function getDetailNews($catename,$id,$name)
 	{
@@ -72,9 +74,10 @@ class NewsCateController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.news.news",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"detailnews"=>$detailnews,"NewsCate"=>$NewsCate,"newsRefer"=>$newsRefer,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 }
 

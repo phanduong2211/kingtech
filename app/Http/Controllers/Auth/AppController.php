@@ -27,11 +27,12 @@ class AppController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $apps = $th->getApp($id);
 
-        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.app.cateapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"apps"=>$apps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}
 	public function getDetailApp($id,$name)
 	{
@@ -50,11 +51,12 @@ class AppController extends Controller
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
+        $support = $th->getSupport();
         $convert = new \App\Http\Controllers\convertString();
 
         $detailapp = $th->getDetailApp($id);
 
-        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency));
+        return View("fontend.app.detailapp",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"detailapp"=>$detailapp,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
 	}	
 }
 

@@ -14,46 +14,72 @@
                   <div class="hotro_support">
                     <label>Hỗ trợ trực truyến</label>
                     <ul>
+                    @foreach($website as $web)
+                    @if($web->name=="hotline")
+                      <?php $isSp = true;
+                            $hotline = $web->content;
+                       ?>
+                    @elseif($web->name=="email")
+                    <?php 
+                            $email = $web->content;
+                       ?>
+                       @elseif($web->name=="facebook")
+                    <?php 
+                            $facebook = $web->content;
+                       ?>
+                       @elseif($web->name=="google")
+                    <?php 
+                            $google = $web->content;
+                       ?>
+                       @elseif($web->name=="twitter")
+                    <?php 
+                            $twitter = $web->content;
+                       ?>
+                    @endif
+                    @endforeach
+                    @if($isSp)                    
                       <li> Để được hỗ trợ tư vấn tốt hơn các bạn có thể liên hệ qua hotline: </li>
-                      <li> <strong>0862.788.788 -0907.9988.38</strong> </li>
+                      <li> <strong>{{$hotline}}</strong> </li>
                       <li> Hoặc email: </li>
-                      <li> <strong>minhnhat@kingtech.com.vn</strong> </li>
+                      <li> <strong>{{$email}}</strong> </li>
                       <li> Bạn cũng có thể để lại tin nhắn trên tường Fanpage, Google+, Youtube của kingtech.com.vn dể được hỗ trợ tốt nhất : </li>
-                      <li> <a href="https://facebook.com/kingtechdotcom" target="_blank">
+                      <li> <a href="{{$facebook}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_face.png"></figure>
-                        </a> <a href="" target="_blank">
+                        </a> <a href="{{$google}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_google.png"></figure>
-                        </a> <a href="" target="_blank">
+                        </a> <a href="{{$twitter}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_twitter.png"></figure>
-                        </a> </li>
+                        </a> </li>      
+                    @endif        
                     </ul>
                   </div>
                   <div class="hotro_div">
                     <figure> <img src="{{Asset('')}}public/kingtech/images/icon_support_1.png" alt="Hỗ trợ trực tuyến"> </figure>
                     <label>Phân phối</label>
                     <ul>
-                                              <li> <strong>Phân phối sỉ</strong> <big>0938.99.88.37 -
-                                                          <a href="ymsgr:sendIM?bansikingtech"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
-                                                          <a href="skype:minhnhatdigital?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
+                    @foreach($support as $sp)
+                      @if($sp->group==1)
+                                              <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
+                                                          <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
+                                                          <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
                                                       </big> </li>
-                                              <li> <strong>Hotline Phân Phối SỈ Và Lẻ</strong> <big>09079988388 -
-                                                          <a href="ymsgr:sendIM?kingtech1"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
-                                                          <a href="skype:minhnhatdigital?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
-                                                      </big> </li>
+                                              <li>
+                        @endif
+                        @endforeach
                                           </ul>
                   </div>
                   <div class="hotro_div">
                     <figure> <img src="{{Asset('')}}public/kingtech/images/icon_support_2.png" alt="Hỗ trợ trực tuyến"> </figure>
                     <label>Hỗ trợ kỹ thuật</label>
                     <ul>
-                                              <li> <strong>Tư vấn bán hàng</strong> <big>0862.722.722 -
-                                                          <a href="ymsgr:sendIM?hotro_kingtech"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
-                                                          <a href="skype:hotro_kingtech?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
+                    @foreach($support as $sp)
+                      @if($sp->group==2)
+                                              <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
+                                                          <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
+                                                          <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
                                                       </big> </li>
-                                              <li> <strong>Hướng Dẫn Sử Dụng</strong> <big>0862788788 -
-                                                          <a href="ymsgr:sendIM?kythuatkingtech"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
-                                                          <a href="skype:minhnhatdigital?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
-                                                      </big> </li>
+                          @endif
+                        @endforeach
                                           </ul>
                   </div>
                 </aside>
