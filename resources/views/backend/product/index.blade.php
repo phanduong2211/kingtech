@@ -88,7 +88,7 @@ function showImage($path){
     </div>
     <!--.captiontable-->
   <div style="overflow-x:auto;">
-      <table style="min-width:750px">
+      <table style="min-width:1100px">
           <thead>
               <tr>
                   <th width="35px">
@@ -129,7 +129,7 @@ function showImage($path){
                         </div>
                       </span>
                                             <div class="row-action">
-                                                    <span title="Sửa thông tin"><a href="{{url('admin/news/'.$item->id)}}">Sửa</a>
+                                                    <span title="Sửa thông tin"><a href="{{url('admin/product/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
                                                     <span class="delete">
@@ -147,16 +147,16 @@ function showImage($path){
 
                                           <td>
                                           <div class="clearfix"> 
-                                            <b class="pull-left" style="width:65px">Giá:</b> {{number_format($item->price,0,',','.')}}<br />
-                                            <b class="pull-left" style="width:65px">Giá c.ty: </b> {{number_format($item->price_company,0,',','.')}}<br />
-                                            <b class="pull-left" style="width:65px">Giá sỉ: </b> {{number_format($item->price_origin,0,',','.')}}
+                                            <b class="pull-left" style="width:68px">Giá lẻ:</b> {{number_format($item->price,0,',','.')}}<br />
+                                            <b class="pull-left" style="width:68px">Giá sỉ: </b> {{number_format($item->price_company,0,',','.')}}<br />
+                                            <b class="pull-left" style="width:68px">Giá nhập: </b> {{number_format($item->price_origin,0,',','.')}}
                                             </div>
                                           </td>
                                           
                                           <td><span class="cate_id" data-id="{{$item->cate_id}}"></span></td>
                                           <td>
 
-                                          <span class="cutlength" max-length="50">{{$item->description}}</span>
+                                          <span class="cutlength" max-length="50">{!!$item->description!!}</span>
                                         </td>
 
 
@@ -203,7 +203,8 @@ function showImage($path){
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-	var currentPage = "#menu_menu";
+	var currentPage = "#menu_product";
+  var subPage='list';
   
 	$(document).ready(function(){
     

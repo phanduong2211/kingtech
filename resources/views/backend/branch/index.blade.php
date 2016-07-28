@@ -70,8 +70,8 @@
                    <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                    </th>
-                   <th class="tsort" width="100px">Sắp xếp</th>
-                   <th>Tên</th>
+                   <th class="tsort" width="80px">Sắp xếp</th>
+                   <th class="tsort">Tên</th>
                    <th>Khu mực</th>
                    <th>Tỉnh/Thành phố</th>
                 </tr>
@@ -85,7 +85,11 @@
                                               <i class="hidden">{{$item->index}}</i>
                                               <input type="text" class="inputTable" data-id="{{$item->id}}" value="{{$item->index}}" data-old="{{$item->index}}" />
                                             </span>
-                                            <div class="row-action">
+                                            
+                                          </td>
+                                <td>
+                                  <span>{{$item->name}}</span>
+                                  <div class="row-action">
                                                     <span title="Sửa thông tin"><a href="{{url('admin/branch/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
@@ -100,9 +104,6 @@
                                                                 href="#" title="Xóa chi nhánh này">Xóa</a>
                                                     </span>
                                                 </div>
-                                          </td>
-                                <td>
-                                  {{$item->name}}
                                 </td>
 
                                 <td>

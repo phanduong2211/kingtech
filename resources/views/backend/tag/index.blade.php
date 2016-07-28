@@ -57,7 +57,7 @@
                   <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                   </th>
-                  <th class="tsort" width="100px">Sắp Xếp</th>
+                  <th class="tsort" width="80px">Sắp Xếp</th>
                   <th width="250px">Tên</th>
                   <th>Url</th>
                   <th>Hiện thị</th>
@@ -72,7 +72,13 @@
                                               <i class="hidden">{{$item->index}}</i>
                                               <input type="text" class="inputTable" data-id="{{$item->id}}" value="{{$item->index}}" data-old="{{$item->index}}" />
                                             </span>
-                                            <div class="row-action">
+                                            
+                                          </td>
+                                         
+
+                                          <td>
+                                              <span>{{$item->name}}</span>
+                                                <div class="row-action">
                                                     <span title="Sửa thông tin"><a href="{{url('admin/tag/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
@@ -87,12 +93,6 @@
                                                                 href="#" title="Xóa ">Xóa</a>
                                                     </span>
                                                 </div>
-                                          </td>
-                                         
-
-                                          <td>
-                                              {{$item->name}}
-                                                
                                           </td>
                                           <td>
                                             {{$item->url}}

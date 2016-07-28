@@ -1,9 +1,9 @@
 @extends('backend.layout')
-@section('title','Thêm sản phẩm - ACP')
+@section('title','Sửa sản phẩm - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/product')}}">Sản phẩm</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 @section('css')
@@ -45,10 +45,18 @@
 
 
 @section('content')
+
+<?php 
+function showImage($path){
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
   
   @include('backend._message')
 
-    <form method="post" action="" id="frm">
+    <form method="post" action="{{url('admin/product/update')}}" id="frm">
       <div class="row">
 
             <div class="col-sm-6">
@@ -58,7 +66,7 @@
                     </div>
                     <div class="col-sm-8 required">
                         <span class="red">*</span>
-                        <input name="pro_code" class="form-control" value="{{old('pro_code')}}" />
+                        <input name="pro_code" class="form-control" value="{{$data->pro_code}}" />
                       <span class="desc">VD: BM-800</span>
                     </div>
                     <div class="col-sm-4">
@@ -66,7 +74,7 @@
                     </div>
                     <div class="col-sm-8 required">
                         <span class="red">*</span>
-                        <textarea name="name" rows="2" id="namec" class="form-control">{{old('name')}}</textarea>
+                        <textarea name="name" rows="2" id="namec" class="form-control">{{$data->name}}</textarea>
                     </div>
                     
                 </div><br />
@@ -79,7 +87,7 @@
                     </div>
                     <div class="col-md-8 required">
                         <span class="red">*</span>
-                        <textarea name="url" rows="2" id="urlc" class="form-control">{{old('url')}}</textarea>
+                        <textarea name="url" rows="2" id="urlc" class="form-control">{{$data->url}}</textarea>
                         <span class="desc">
                           Không dấu và mỗi từ cách nhau 1 dấu '-'. VD: gioi-thieu
                         </span>
@@ -89,7 +97,7 @@
                     </div>
                     <div class="col-md-8 required">
                         <span class="red">*</span>
-                        <select name="cate_id" class="form-control">
+                        <select name="cate_id" id="cate_id" class="form-control">
                   <option value="-1">-- Chọn loại sản phẩm --</option>
                   
                         <?php 
@@ -112,7 +120,7 @@
                                         }
                                     }
                                 }
-                            dequy(0,$data);
+                            dequy(0,$listCategory);
                             ?>
 
                 </select>
@@ -131,7 +139,7 @@
             <div class="col-sm-8 required">
               <span class="red">*</span>
               <div class="input-group">
-                <input type="text" name="price" value="{{old('price')}}" class="form-control" />
+                <input type="text" name="price" value="{{number_format($data->price,0,',','.')}}" class="form-control" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
               <span class="desc">
@@ -148,7 +156,7 @@
               <div class="col-sm-8 required">
                 <span class="red">*</span>
                 <div class="input-group">
-                  <input type="text" name="price_company" value="{{old('price_company')}}" class="form-control" />
+                  <input type="text" name="price_company" value="{{number_format($data->price_company,0,',','.')}}" class="form-control" />
                   <span class="input-group-addon">VNĐ</span>
                 </div>
                 <span class="desc">
@@ -168,7 +176,7 @@
             <div class="col-sm-8 required">
               <span class="red">*</span>
               <div class="input-group">
-                <input type="text" name="price_origin" value="{{old('price_origin')}}" class="form-control" />
+                <input type="text" name="price_origin" value="{{number_format($data->price_origin,0,',','.')}}" class="form-control" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
               <span class="desc">
@@ -184,7 +192,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <select name="status" class="form-control">
+                <select name="status" id="status" class="form-control">
                   <option value="-1">--Lựa chọn--</option>
                   @foreach(\App\Product::getStatus() as $key => $value)
                     <option value="{{$key}}">{{$value}}</option>
@@ -206,9 +214,9 @@
                     </div>
                     <div class="col-md-8 required boxupload">
                         <span class="red">*</span>
-                        <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
+                        <img src="{{showImage($data->image)}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" value="{{old('image')}}" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
                     </div>
                 </div><br />
             </div>
@@ -218,14 +226,14 @@
                         <label>Tính năng nổi bật:</label>
                     </div>
                     <div class="col-md-8">
-                       <textarea rows="3" name="description" class="form-control">{{old('description')}}</textarea>
+                       <textarea rows="3" name="description" class="form-control">{{str_replace("<br>","\n",$data->description)}}</textarea>
                         <span class="desc">Giới thiệu các tính năng nổi bật của sản phẩm. Khoảng 200 ký tự</span>
                     </div>
                     <div class="col-md-4">
                         <label>Từ khóa:</label>
                     </div>
                     <div class="col-md-8">
-                       <textarea rows="2" name="keywords" class="form-control">{{old('keywords')}}</textarea>
+                       <textarea rows="2" name="keywords" class="form-control">{{$data->keywords}}</textarea>
                         <span class="desc">Từ khóa tìm kiếm sản phẩm, dùng cho SEO</span>
                     </div>
                 </div><br />
@@ -240,6 +248,20 @@
                     </div>
                     <div class="col-md-10">
                       <div class="row">
+                        <?php 
+                        $images=explode(',', $data->images);
+                         ?>
+                         @foreach($images as $item)
+                         @if($item!='')
+                         <div class='col-xs-6 col-sm-4 col-md-4 itemimages'>
+                            <img src="{{showImage($item)}}" class="img-thumbnail showupload uploadimg" href="#imageschooseval" id="imgchoose" width="100px">
+                            <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
+                            <input type="text" class="form-control " name="images[]" id="imageschooseval" value="{{$item}}" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                            <i class="fa fa-times" title="xóa"></i>
+                          
+                          </div>
+                          @endif
+                         @endforeach
                           <div class='col-xs-6 col-sm-4 col-md-4' id="addnewimages">
                             <i class="fa fa-plus" title="Thêm hình"></i>
                           </div>
@@ -259,7 +281,7 @@
             </div>
             <div class="col-sm-8 required">
               <span class="red">*</span>
-              <input type="text" name="quantity" value="{{old('quantity')}}" class="form-control" />
+              <input type="text" name="quantity" value="{{$data->quantity}}" class="form-control" />
               <span class="desc">
                 Số lượng sản phẩm hiện có
               </span>
@@ -272,7 +294,7 @@
                 <label>Hiện thị trang chủ:</label>
               </div>
               <div class="col-sm-8">
-                <input type='checkbox' name="show_home" checked="checked" />
+                <input type='checkbox' id="show_home" name="show_home" />
                 <span class="desc">
                   Có hiện thị sản phẩm này ngoài trang chủ không?
                 </span>
@@ -288,7 +310,7 @@
                         <label>Tổng quan:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea style="width:100%;height:250px" name="overview" id="overview">{{old('overview')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="overview" id="overview">{!!$data->overview!!}</textarea>
                       <span class="desc">Bài viết đánh giá tổng quan về sản phẩm</span>
                     </div>
                 </div><br />
@@ -302,7 +324,7 @@
                         <label>Thông số kỹ thuật:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea style="width:100%;height:250px" name="specs" id="specs">{{old('specs')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="specs" id="specs">{!!$data->specs!!}</textarea>
                       <span class="desc">.</span>
                     </div>
                 </div><br />
@@ -316,7 +338,7 @@
                         <label>Khui hộp:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea style="width:100%;height:250px" name="accessories" id="accessories">{{old('accessories')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="accessories" id="accessories">{!!$data->accessories!!}</textarea>
                       <span class="desc">.</span>
                     </div>
                 </div><br />
@@ -330,7 +352,7 @@
                         <label>Khuyến mãi:</label>
                     </div>
                     <div class="col-md-10">
-                        <textarea style="width:100%;height:250px" name="promotion" id="promotion">{{old('promotion')}}</textarea>
+                        <textarea style="width:100%;height:250px" name="promotion" id="promotion">{!!$data->promotion!!}</textarea>
                       <span class="desc">.</span>
                     </div>
                 </div><br />
@@ -344,6 +366,7 @@
         </div>
       </div><br />
       <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+      <input type="hidden" name="id" value="{{$data->id}}"/>
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>
@@ -370,13 +393,23 @@
 
         if(idobjclick.indexOf('#imageschooseval')===0 || idobjclick.indexOf('#imagesschooseval')===0){
             var oo=$(idobjclick).val(path).parent().parent();
+            oo.find("img").attr("src",asset_path+"images/"+path);
            
         }else{
            $(idobjclick).val(path);
        }
    }
 }
+var cate_id="{{$data->cate_id}}";
+var status="{{$data->status}}";
+var isShowHome="{{$data->show_home}}";
     $(function(){
+
+      $("#cate_id").val(cate_id);
+      $("#status").val(status);
+      if(isShowHome=='1'){
+        $("#show_home").prop('checked',true);
+      }
     
     $("#imagekhac").on('click','.fa-times',function(){
       $(this).parent().remove();
@@ -452,7 +485,7 @@
 <script type="text/javascript">
   
   var currentPage = "#menu_product";
-  var subPage="new";
+  var subPage="list";
 
   function change_alias(alias)
   {

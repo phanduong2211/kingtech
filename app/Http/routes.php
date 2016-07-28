@@ -84,6 +84,21 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	
 	});
 
+	Route::group(['prefix'=>'page'],function(){
+		Route::get("/","PageController@index");
+		Route::get("create","PageController@create");
+		Route::post("create","PageController@postCreate");
+
+		Route::get("{id}","PageController@update")->where('id','[0-9]+');
+		Route::post("update","PageController@postUpdate");
+
+		Route::post("delete","PageController@postDelete");
+		Route::post("deletes","PageController@postDeletes");
+
+		Route::post("display","PageController@display");
+	
+	});
+
 	Route::group(['prefix'=>'app'],function(){
 		Route::get("/","AppController@index");
 		Route::get("create","AppController@create");
@@ -174,6 +189,13 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
     Route::post("ajax/createfolder","UploadController@createfolder");
     Route::post("ajax/loadonlyfolder","UploadController@loadonlyfolder");
 
+
+    Route::group(['prefix'=>'info'],function(){
+		Route::get("/","InfoController@index");
+		Route::post("postinfoall","InfoController@postinfoall");
+		Route::post("contact","InfoController@contact");
+		Route::post("banhang","InfoController@banhang");
+	});
 
     Route::group(['prefix'=>'tag'],function(){
 		Route::get("/","TagController@index");

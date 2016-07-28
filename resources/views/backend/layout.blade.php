@@ -101,6 +101,12 @@
                         </ul>
                     </li>
 
+                    <li id="menu_page">
+                        <a href="{{url('admin/page')}}">
+                            <i class="fa fa-bookmark"></i> <span>Quản lý trang</span>
+                        </a>
+                    </li>
+
                     <li id="menu_app" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>Quản lý ứng dụng</span>
@@ -167,6 +173,12 @@
                                 <a href="{{url('admin/user/create')}}" >Thêm mới</a>
                             </li>
                         </ul>
+                    </li>
+
+                    <li id="menu_info">
+                        <a href="{{url('admin/info')}}">
+                            <i class="fa fa-info-circle"></i> <span>Thông tin website</span>
+                        </a>
                     </li>
                     
                 </nav>

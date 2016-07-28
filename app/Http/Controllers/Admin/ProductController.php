@@ -53,6 +53,7 @@ class ProductController extends BaseController
 		$product->image=trim($request->image);
 
 		$product->description=str_replace("\"", "'", trim($request->description));
+		$product->description=str_replace("\n", "<br>",$product->description);
 		$product->keywords=str_replace("\"", "'", trim($request->keywords));
 		
 		$product->price=preg_replace("/(\.|-| |\,)*/", "", trim($request->price));
@@ -95,45 +96,75 @@ class ProductController extends BaseController
 
 	public function update($id){
 
-		if(!$this->checkPermission('news/update')){
-			return $this->ErrorPermission('Sửa tin tức');
+		if(!$this->checkPermission('product/update')){
+			return $this->ErrorPermission('Sửa sản phẩm');
 		}
 
 		$data=array();
-		$data['data']=News::find((int)$id);
+		$data['data']=Product::find((int)$id);
 		if($data['data']==null)
-			return redirect()->to('admin/news')->with(['message'=>'Tin tức không tồn tại.','message_type'=>'danger']);
-		$data['listNewsCate']=NewsCate::select('id','name')->get();
-		return view('backend.news.update',$data);
+			return redirect()->to('admin/product')->with(['message'=>'Sản phẩm không tồn tại.','message_type'=>'danger']);
+		$data['listCategory']=Category::select('id','name','parent')->get();
+		return view('backend.product.update',$data);
 	}
 
-	public function postUpdate(NewsRequest $request){
+	public function postUpdate(ProductRequest $request){
 
-		if(!$this->checkPermission('news/update')){
-			return $this->ErrorPermission('Sửa tin tức');
+		if(!$this->checkPermission('product/update')){
+			return $this->ErrorPermission('Sửa sản phẩm');
 		}
 
-		$news=News::find((int)$request->id);
-		if($news==null)
-			return redirect()->to('admin/news')->with(['message'=>'Tin tức không tồn tại.','message_type'=>'danger']);
+		$product=Product::find((int)$request->id);
+		if($product==null)
+			return redirect()->to('admin/product')->with(['message'=>'Sản phẩm không tồn tại.','message_type'=>'danger']);
 		
-		$news->title=str_replace("\"", "'", trim($request->title));
+		$product->name=str_replace("\"", "'", trim($request->name));
 
-		$news->url=$this->formatToUrl(trim($request->title));
-		if(News::select('id')->where('id','<>',(int)$request->id)->where('url',$news->url)->count()>0){
-			return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+		$product->url=$this->formatToUrl(trim($request->url));
+		if(Product::select('id')->where('id','<>',(int)$request->id)->where('url',$product->url)->count()>0){
+			return redirect()->to('admin/product/update')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		$news->cate_id=(int)$request->cate_id;
-		$news->image=$request->image;
-		$news->description=str_replace("\"", "'", trim($request->description));
-		$news->keywords=str_replace("\"", "'", trim($request->keywords));
-		$news->content=$request->content;
+		$product->pro_code=trim($request->pro_code);
+		$product->cate_id=$request->cate_id;
+
+		$product->image=trim($request->image);
+
+		$product->description=str_replace("\"", "'", trim($request->description));
+		$product->description=str_replace("\n", "<br>",$product->description);
+		$product->keywords=str_replace("\"", "'", trim($request->keywords));
 		
-		if($news->save()){
-			return redirect()->to('admin/news/'.$request->id)->with('message','Cập nhật thành công.');
+		$product->price=preg_replace("/(\.|-| |\,)*/", "", trim($request->price));
+
+		$product->price_company=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_company));
+
+		$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
+
+		$product->status=$request->status;
+		$product->quantity=$request->quantity;
+
+		$product->overview=$request->overview;
+		$product->specs=$request->specs;
+		$product->accessories=$request->accessories;
+		$product->promotion=$request->promotion;
+
+		$product->show_home=($request->show_home=='on')?1:0;
+		$images="";
+		foreach($request->images as $item){
+			if($item!=""){
+				$images.=$item.",";
+			}
 		}
-		return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+		if($images!=""){
+			$images=substr($images, 0,strlen($images)-1);
+		}
+
+		$product->images=$images;
+		
+		if($product->save()){
+			return redirect()->to('admin/product/'.$request->id)->with('message','Cập nhật thành công.');
+		}
+		return redirect()->to('admin/product/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
 	}
 
 	public function postDelete(){

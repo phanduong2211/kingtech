@@ -106,7 +106,17 @@
                                               <i class="hidden">{{$item->sort_home}}</i>
                                               <input type="text" class="inputTable" data-issorthome="true" data-id="{{$item->id}}" value="{{$item->sort_home}}" data-old="{{$item->sort_home}}" />
                                             </span>
-                                            <div class="row-action">
+                                            
+                                          </td>
+                                          <td>
+                                            <span class="hidden">{{$item->id}}</span>
+                                            <input type="text" class="inputTable" data-issortmenu="true" data-id="{{$item->id}}" value="{{$item->sort_menu}}" data-old="{{$item->sort_menu}}" />
+                                          </td>
+
+                                          <td>
+                                              <span>{{$text.' '.$item->name}}
+                                                </span>
+                                                <div class="row-action">
                                                     <span title="Sửa thông tin"><a href="{{url('admin/category/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
@@ -121,15 +131,6 @@
                                                                 href="#" title="Xóa loại sản phẩm này">Xóa</a>
                                                     </span>
                                                 </div>
-                                          </td>
-                                          <td>
-                                            <span class="hidden">{{$item->id}}</span>
-                                            <input type="text" class="inputTable" data-issortmenu="true" data-id="{{$item->id}}" value="{{$item->sort_menu}}" data-old="{{$item->sort_menu}}" />
-                                          </td>
-
-                                          <td>
-                                              {{$text.' '.$item->name}}
-                                                
                                           </td>
                                           <td>
                                             {{$item->url}}
