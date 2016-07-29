@@ -76,13 +76,15 @@ class ProductController extends BaseController
 
 		$product->show_home=($request->show_home=='on')?1:0;
 		$images="";
-		foreach($request->images as $item){
-			if($item!=""){
-				$images.=$item.",";
+		if($request->images!=null){
+			foreach($request->images as $item){
+				if($item!=""){
+					$images.=$item.",";
+				}
 			}
-		}
-		if($images!=""){
-			$images=substr($images, 0,strlen($images)-1);
+			if($images!=""){
+				$images=substr($images, 0,strlen($images)-1);
+			}
 		}
 
 		$product->images=$images;
@@ -150,13 +152,15 @@ class ProductController extends BaseController
 
 		$product->show_home=($request->show_home=='on')?1:0;
 		$images="";
-		foreach($request->images as $item){
-			if($item!=""){
-				$images.=$item.",";
+		if($request->images!=null){
+			foreach($request->images as $item){
+				if($item!=""){
+					$images.=$item.",";
+				}
 			}
-		}
-		if($images!=""){
-			$images=substr($images, 0,strlen($images)-1);
+			if($images!=""){
+				$images=substr($images, 0,strlen($images)-1);
+			}
 		}
 
 		$product->images=$images;

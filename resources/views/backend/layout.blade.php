@@ -113,6 +113,12 @@
                         </a>
                     </li>
 
+                    <li id="menu_ad">
+                        <a href="{{url('admin/ad')}}">
+                            <i class="fa fa-bullhorn"></i> <span>Quản lý quảng cáo</span>
+                        </a>
+                    </li>
+
                     <li id="menu_app" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>Quản lý ứng dụng</span>

@@ -108,7 +108,7 @@ class SupportController extends BaseController
 
 		$display=($display=='true')?1:0;
 
-		if(Support::where('id',$id)->update(['display'=>$display_footer])){
+		if(Support::where('id',$id)->update(['display'=>$display])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 

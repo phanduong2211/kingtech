@@ -1,10 +1,10 @@
 @extends('backend.layout')
-@section('title','Trang - ACP')
+@section('title','Quảng cáo - ACP')
 
 @section('breadcrumb')
-<h2>Trang</h2>
-<h3 class="trole" data-role="page/create">
-        <a href="{{url('admin/page/create')}}">Thêm Mới</a>
+<h2>Quảng cáo</h2>
+<h3 class="trole" data-role="ad/create">
+        <a href="{{url('admin/ad/create')}}">Thêm Mới</a>
     </h3>
 @endsection
 
@@ -13,7 +13,13 @@
 @endsection
 
 @section('content')
-
+<?php 
+function showImage($path){
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
 
 @include('backend._message')
 <div id="ttable" class="ttable">
@@ -27,7 +33,7 @@
         <div class="col-sm-8">
 
             <div class="group-action">
-                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/page/deletes')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} trang?" data-success-type="option">
+                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/ad/deletes')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} trang?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
                  
                     <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
@@ -61,9 +67,10 @@
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                    </th>
                    <th width="200px" class="tsort">Tiêu đề</th>
-                   <th>Xem</th>
-                   <th width="150px">Mô tả</th>
-                   <th width="150px">Từ khóa</th>
+               
+                   <th>Hình ảnh</th>
+                   <th width="200px">Link</th>
+                   <th>Vị trí H.Thị</th>
                    <th>H.Thị</th>
                    <th class="tsort">Ngày cập nhật</th>
                    <th class="tsort">Ngày tạo</th>
@@ -75,40 +82,57 @@
                   <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                   <td>
                       <span>
-                        <a href="{{url($item->url)}}" target="black">{{$item->title}}</a>
+                        {{$item->title}}
                         </span>
                                             <div class="row-action">
-                                                    <span title="Sửa thông tin"><a href="{{url('admin/page/'.$item->id)}}">Sửa</a>
+                                                    <span title="Sửa thông tin"><a href="{{url('admin/ad/'.$item->id)}}">Sửa</a>
                                                         <small>| </small>
                                                     </span>
                                                     <span class="delete">
                                                         <a class="event" 
                                                                 data-ajax="true" 
-                                                                data-href="{{url('admin/page/delete')}}"
+                                                                data-href="{{url('admin/ad/delete')}}"
                                                                  data-value="{{$item->id}}" 
                                                                 data-success-remove="true" 
                                                                 data-name="{{$item->title}}"
-                                                                data-confirm="Bạn có chắc muốn xóa trang <b>{{$item->title}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                                                data-confirm="Bạn có chắc muốn xóa quảng cáo <b>{{$item->title}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
                                                                 href="#" title="Xóa">Xóa</a>
                                                     </span>
                                                 </div>
                                           </td>
-                                     <td>{{$item->viewer}}</td>
-                                <td>
-                                  <span class="cutlength" max-length="50">{{$item->description}}</span>
+                                 <td>
+                                 <img src="{{showImage($item->image)}}" width="100px" />
                                 </td>
                                 <td>
-                                  <span class="cutlength" max-length="50">{{$item->keywords}}</span>
+                                  {{$item->url}}
+                                </td>
+                                <td>
+                                  <?php 
+                                    switch($item->position){
+                                      case 1:
+                                      echo "Bên trái web";
+                                      break;
+                                      case 2:
+                                      echo "Bên phải web";
+                                      break;
+                                      case 3:
+                                      echo "Bên khung quảng cáo";
+                                      break;
+                                      case 4:
+                                      echo "Loại sản phẩm";
+                                      break;
+                                    }
+                                   ?>
                                 </td>
                                 <td>
                                     <span class="ascheckbox checkboxblock {{$item->display==1?'checked':''}}"
                                                 data-background="none" 
                                                 data-ajax="true" 
-                                                data-href="{{url('admin/page/display')}}"
+                                                data-href="{{url('admin/ad/display')}}"
                                                 data-value="{{$item->id}}" 
                                                 data-name="{{$item->title}}"
                                                 data-success="display"
-                                                data-confirm="Bạn có chắc <b>{yes=hiện thị}</b><b>{no=ẩn}</b> trang <b>{name}</b>?"></span>
+                                                data-confirm="Bạn có chắc <b>{yes=hiện thị}</b><b>{no=ẩn}</b> quảng cáo <b>{name}</b>?"></span>
                                 </td>
                                 <td>
                                     {{date('d/m/Y H:i',strtotime($item->updated_at))}}
@@ -131,7 +155,7 @@
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-  var currentPage = "#menu_page";
+  var currentPage = "#menu_ad";
 
   $(document).ready(function(){
 

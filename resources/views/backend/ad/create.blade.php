@@ -1,8 +1,8 @@
 @extends('backend.layout')
-@section('title','Thêm slideshow - ACP')
+@section('title','Thêm quảng cáo - ACP')
 
 @section('breadcrumb')
-<h2><a href="{{url('admin/slide')}}">Slideshow</a></h2>
+<h2><a href="{{url('admin/ad')}}">Quảng cáo</a></h2>
     <span>Tạo mới</span>
 @endsection
 
@@ -18,11 +18,11 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-4">
-                        <label>Tiêu Đề Slide:</label>
+                        <label>Tiêu đề:</label>
                     </div>
                     <div class="col-md-8">
                         <textarea name="title" class="form-control">{{old('title')}}</textarea>
-                        <span class="desc">Nội dung hiển thị khi rê chuột vào slide</span>
+                        <span class="desc">Nội dung hiển thị khi rê chuột vào</span>
                     </div>
                 </div><br />
             </div>
@@ -34,7 +34,7 @@
                     <div class="col-md-8">
                         <input type="text" name="url" value="{{old('url')}}" class="form-control" />
                         <span class="desc">
-                          Link khi click vào slide sẽ chuyển đến?
+                          Link khi click vào quảng cáo sẽ chuyển đến?
                         </span>
                     </div>
                    
@@ -53,6 +53,28 @@
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
                         <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
                     </div>
+                </div><br />
+            </div>
+
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label>Vị trí:</label>
+                    </div>
+                    <div class="col-md-8 required">
+                      <span class="red">*</span>
+                        <select name="position" class="form-control">
+                          <option value="-1">-- Lựa chọn --</option>
+                          <option value="1">Bên trái web</option>
+                          <option value="2">Bên phải web</option>
+                          <option value="3">Khung quảng cáo</option>
+                          <option value="4">Loại sản phẩm</option>
+                        </select>
+                        <span class="desc">
+                          Nơi hiển thị quảng cáo này?
+                        </span>
+                    </div>
+                   
                 </div><br />
             </div>
          
@@ -94,6 +116,9 @@
             {
                 'name':'image',
                 'trong':true
+            },{
+              'name':'position',
+              'select':true
             }
       ]);
 
@@ -106,7 +131,7 @@
 
 <script type="text/javascript">
   
-  var currentPage = "#menu_slide";
+  var currentPage = "#menu_ad";
   
 
   $(document).ready(function(){

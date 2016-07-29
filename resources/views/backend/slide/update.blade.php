@@ -1,18 +1,26 @@
 @extends('backend.layout')
-@section('title','Thêm slideshow - ACP')
+@section('title','Sửa slideshow - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/slide')}}">Slideshow</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 
 
 @section('content')
   
+  <?php 
+function showImage($path){
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
+
   @include('backend._message')
 
-    <form method="post" action="" id="frm">
+    <form method="post" action="{{url('admin/slide/update')}}" id="frm">
       <div class="row">
 
             <div class="col-md-6">
@@ -21,7 +29,7 @@
                         <label>Tiêu Đề Slide:</label>
                     </div>
                     <div class="col-md-8">
-                        <textarea name="title" class="form-control">{{old('title')}}</textarea>
+                        <textarea name="title" class="form-control">{{$data->title}}</textarea>
                         <span class="desc">Nội dung hiển thị khi rê chuột vào slide</span>
                     </div>
                 </div><br />
@@ -32,7 +40,7 @@
                         <label>Link:</label>
                     </div>
                     <div class="col-md-8">
-                        <input type="text" name="url" value="{{old('url')}}" class="form-control" />
+                        <input type="text" name="url" value="{{$data->url}}" class="form-control" />
                         <span class="desc">
                           Link khi click vào slide sẽ chuyển đến?
                         </span>
@@ -49,9 +57,9 @@
                     </div>
                     <div class="col-md-8 required boxupload">
                         <span class="red">*</span>
-                        <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
+                        <img src="{{showImage($data->image)}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
                     </div>
                 </div><br />
             </div>
@@ -65,6 +73,7 @@
         </div>
       </div><br />
       <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+      <input type="hidden" name="id" value="{{$data->id}}"/>
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>

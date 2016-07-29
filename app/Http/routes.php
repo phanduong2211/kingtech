@@ -179,6 +179,39 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	
 	});
 
+	Route::group(['prefix'=>'slide'],function(){
+		Route::get("/","SlideController@index");
+		Route::get("create","SlideController@create");
+		Route::post("create","SlideController@postCreate");
+
+		Route::get("{id}","SlideController@update")->where('id','[0-9]+');
+		Route::post("update","SlideController@postUpdate");
+
+		Route::post("delete","SlideController@postDelete");
+		Route::post("deletes","SlideController@postDeletes");
+
+		Route::post("display","SlideController@display");
+
+		Route::post("sort","SlideController@sort");
+	
+	});
+
+	Route::group(['prefix'=>'ad'],function(){
+		Route::get("/","AdController@index");
+		Route::get("create","AdController@create");
+		Route::post("create","AdController@postCreate");
+
+		Route::get("{id}","AdController@update")->where('id','[0-9]+');
+		Route::post("update","AdController@postUpdate");
+
+		Route::post("delete","AdController@postDelete");
+		Route::post("deletes","AdController@postDeletes");
+
+		Route::post("display","AdController@display");
+
+	
+	});
+
 	Route::get("uploadimage","UploadController@upload");
     Route::post("uploadimage","UploadController@upload");
     Route::post("ajax/loadfolder","UploadController@loadfolder");
