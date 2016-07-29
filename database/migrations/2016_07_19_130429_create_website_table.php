@@ -80,6 +80,10 @@ class CreateWebsiteTable extends Migration
                     'content' => 'skype'
                 ],
                 [
+                    'name' => 'twitter',
+                    'content' => 'twitter'
+                ],
+                [
                     'name' => 'google',
                     'content' => 'google'
                 ],

@@ -92,12 +92,12 @@ function showImage($path){
 			<div class="row">
 				
 				<div class="col-md-4">
-					<label>Địa chỉ:</label>
+					<label>Slogan:</label>
 				</div>
 				<div class="col-md-8 required">
 					<span class="red">*</span>
-					<textarea rows="3" class="form-control" name="address">{{$data['address']}}</textarea>
-					<span class="desc">Địa chỉ website</span>
+					<textarea rows="3" class="form-control" name="slide_top">{{$data['slide_top']}}</textarea>
+					<span class="desc">Mỗi Slogan cách 1 hàng</span>
 				</div>
 			</div><br />
 		</div>
@@ -198,6 +198,21 @@ function showImage($path){
 			</div><br />
 		</div>
 	</div>
+
+	<div class="row margin">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Twitter:</label>
+				</div>
+				<div class="col-md-8">
+					<input type="text" class="form-control" name="twitter" value="{{$data['twitter']}}" />
+					<span class="desc">Link Twitter</span>
+				</div>
+			</div><br />
+		</div>
+		
+	</div>
 	
 
 
@@ -257,7 +272,17 @@ function showImage($path){
 				</div>
 			</div><br />
 		</div>
-		
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Địa chỉ:</label>
+				</div>
+				<div class="col-md-8">
+					<textarea rows="4" class="form-control" name="address">{{$data['address']}}</textarea>
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
 	</div>
 
 	<div class="row margin">
@@ -311,12 +336,12 @@ function showImage($path){
 				<form method="post" action="<?php echo Asset('admin/info/changelogo') ?>" id="frmchangelogo" enctype="multipart/form-data">
 				<label for="logo" class="uploadimg">
 					<div>
-						<img class="img-thumbnail" src="{{Asset('public/images/logo.png')}}" data-old="logo.png" />
+						<img class="img-thumbnail" src="{{Asset('public/images/logo.jpg')}}" data-old="logo.png" />
 					</div>
 					<br />
 					<input type="file" name="logo" class="hide" id="logo" />
 					</label>
-					<span class="desc">Kích thước chuẩn: 200x90</span>
+					<span class="desc">Kích thước chuẩn: 220x94</span>
 					<input type="submit" class="btn btn-success btn-xs disabled" disabled="disabled" value="Lưu Lại" />
 					<input type="reset"  disabled="disabled" class="btn btn-primary btn-xs disabled" value="Hủy Bỏ" />
 					<input type="hidden" name="_token" value="{{csrf_token()}}"/>
@@ -327,7 +352,7 @@ function showImage($path){
 				<form method="post" action="<?php echo Asset('admin/info/changefavicon') ?>"  enctype="multipart/form-data">
 				<label for="favicon" class="uploadimg">
 					<div>
-						<img class="img-thumbnail" src="{{Asset('public/img/favicon.png')}}" data-old="favicon.png" />
+						<img class="img-thumbnail" src="{{Asset('public/images/favicon.ico')}}" data-old="favicon.png" />
 					</div>
 					<br />
 					<input type="file" name="favicon" class="hide" id="favicon" />
@@ -352,6 +377,7 @@ function showImage($path){
 <script src="{{Asset('public/js/validate.js')}}" ></script>
 <script type="text/javascript">
 var asset_path="{{Asset('public')}}/";
+var currentPage = "#menu_info";
 function isImage(file) {
     file = file.split(".").pop();
     switch (file) {
@@ -386,7 +412,7 @@ $(document).ready(function(){
 			'name':'title',
 			'trong':true
 		},{
-			'name':'address',
+			'name':'slide_top',
 			'trong':true
 		}
 

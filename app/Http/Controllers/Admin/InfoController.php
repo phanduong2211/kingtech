@@ -16,8 +16,12 @@ class InfoController extends BaseController
 		$info=Website::get();
 		$data=array();
 		foreach ($info as $key => $value) {
-			$data[$value->name]=$value->content;
+			if(array_key_exists($value->name, $data)){
+				$data[$value->name].="\n".$value->content;
+			}else
+				$data[$value->name]=$value->content;
 		}
+
 		
 		return view("backend.info.index",array('data'=>$data));
 	}
@@ -32,8 +36,16 @@ class InfoController extends BaseController
 
 		$info->where('name','giay_phep')->update(array('content'=>trim(Input::get('giay_phep'))));
 
-		$info->where('name','address')->update(array('content'=>trim(Input::get('address'))));
+		try{
+			$info->where('name','slide_top')->delete();
+			$arr=explode("\n", trim(Input::get('slide_top')));
+			foreach($arr as $item){
+				if(trim($item)!="")
+				$info->insert(['name'=>'slide_top','content'=>trim($item)]);
+			}
+		}catch(\Expression $e){
 
+		}
 		return redirect('admin/info')->with(['message'=>'Cập nhật thành công thông tin chung.']);
 	}
 
@@ -48,22 +60,47 @@ class InfoController extends BaseController
 		$info->where('name','google')->update(array('content'=>trim(Input::get('google'))));
 
 		$info->where('name','email')->update(array('content'=>trim(Input::get('email'))));
+		$info->where('name','twitter')->update(array('content'=>trim(Input::get('twitter'))));
 
 		return redirect('admin/info')->with(['message'=>'Cập nhật thành công thông tin liên hệ.']);
 	}
 
 	public function banhang(){
 		$info=new Website();
-		$info->where('name','sdt_mua_hang_tu_xa')->update(array('content'=>str_replace("\"", "'", trim(Input::get('sdt_mua_hang_tu_xa')))));
-		$info->where('name','sdt_trung_tam_bh')->update(array('content'=>str_replace("\"", "'", trim(Input::get('sdt_trung_tam_bh')))));
+		$info->where('name','open_time')->update(array('content'=>str_replace("\"", "'", trim(Input::get('open_time')))));
+		$info->where('name','gio_bao_hanh')->update(array('content'=>str_replace("\"", "'", trim(Input::get('gio_bao_hanh')))));
 		$info->where('name','sdt_dai_ly')->update(array('content'=>str_replace("\"", "'", trim(Input::get('sdt_dai_ly')))));
-		$info->where('name','open_time')->update(array('content'=>trim(Input::get('open_time'))));
+		$info->where('name','sdt_mua_hang_tu_xa')->update(array('content'=>trim(Input::get('sdt_mua_hang_tu_xa'))));
 
 
-		$info->where('name','gio_bao_hanh')->update(array('content'=>trim(Input::get('gio_bao_hanh'))));
+		$info->where('name','sdt_trung_tam_bh')->update(array('content'=>trim(Input::get('sdt_trung_tam_bh'))));
+		$info->where('name','address')->update(array('content'=>trim(Input::get('address'))));
 
 
 		return redirect('admin/info')->with(['message'=>'Cập nhật thành công thông tin mua/ban hàng.']);
+	}
+
+
+	public function changelogo(){
+		if(Input::file()) {
+			$image = Input::file('logo');
+			if($image->move(public_path('images/'),"logo.jpg")){
+				return redirect('admin/info')->with(['message'=>'Cập nhật thành công logo. Do cơ chế save cache của trình duyệt, có thể phải mất vài phút logo mới được cập nhật.']);
+			}else{
+				return redirect('admin/info')->with(['message'=>'Cập nhật logo thất bại.']);
+			}
+		}
+	}
+
+	public function changefavicon(){
+		if(Input::file()) {
+			$image = Input::file('favicon');
+			if($image->move(public_path('images/'),"favicon.ico")){
+				return redirect('admin/info')->with(['message'=>'Cập nhật thành công favicon. Do cơ chế save cache của trình duyệt, có thể phải mất vài phút favicon mới được cập nhật.']);
+			}else{
+				return redirect('admin/info')->with(['message'=>'Cập nhật favicon thất bại.']);
+			}
+		}
 	}
 
 }

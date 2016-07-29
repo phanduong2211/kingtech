@@ -195,6 +195,8 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 		Route::post("postinfoall","InfoController@postinfoall");
 		Route::post("contact","InfoController@contact");
 		Route::post("banhang","InfoController@banhang");
+		Route::post("changefavicon","InfoController@changefavicon");
+		Route::post("changelogo","InfoController@changelogo");
 	});
 
     Route::group(['prefix'=>'tag'],function(){

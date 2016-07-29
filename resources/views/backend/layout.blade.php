@@ -107,6 +107,12 @@
                         </a>
                     </li>
 
+                    <li id="menu_slide">
+                        <a href="{{url('admin/slide')}}">
+                            <i class="fa fa-picture-o"></i> <span>Quản lý slide</span>
+                        </a>
+                    </li>
+
                     <li id="menu_app" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-th"></i> <span>Quản lý ứng dụng</span>
