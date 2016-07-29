@@ -13,7 +13,7 @@ class NewsCateController extends BaseController
 			return $this->ErrorPermission('Loại tin tức');
 		}
 
-		$data=NewsCate::all();
+		$data=NewsCate::orderBy('id','desc')->get();
 		
 		return view("backend.newscate.index",array('data'=>$data));
 	}
@@ -72,7 +72,7 @@ class NewsCateController extends BaseController
 
 		$newscate=NewsCate::find((int)$request->id);
 		if($newscate==null)
-			return redirect()->to('admin/news-category')->with(['message'=>'Loại ứng dụng không tồn tại.','message_type'=>'danger']);
+			return redirect()->to('admin/news-category')->with(['message'=>'Loại tin tức không tồn tại.','message_type'=>'danger']);
 		
 		$newscate->url=$this->formatToUrl(trim($request->url));
 		if(NewsCate::select('id')->where('id','<>',(int)$request->id)->where('url',$newscate->url)->count()>0){

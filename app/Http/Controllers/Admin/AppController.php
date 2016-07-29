@@ -43,7 +43,7 @@ class AppController extends BaseController
 
 		$app->name=str_replace("\"", "'", trim($request->name));
 
-		$app->url=$this->formatToUrl(trim($request->name));
+		$app->url=$this->formatToUrl(trim($request->url));
 		if(App::select('id')->where('url',$app->url)->count()>0){
 			return redirect()->to('admin/app/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
@@ -51,6 +51,7 @@ class AppController extends BaseController
 		$app->cate_id=(int)$request->cate_id;
 		$app->image=$request->image;
 		$app->description=str_replace("\"", "'", trim($request->description));
+		$app->description=str_replace("\n", "<br>", $app->description);
 		$app->keywords=str_replace("\"", "'", trim($request->keywords));
 		$app->content=$request->content;
 		$app->status=trim($request->status);
@@ -83,8 +84,8 @@ class AppController extends BaseController
 
 	public function postUpdate(AppRequest $request){
 
-		if(!$this->checkPermission('news/update')){
-			return $this->ErrorPermission('Sửa tin tức');
+		if(!$this->checkPermission('add/update')){
+			return $this->ErrorPermission('Sửa ứng dụng');
 		}
 
 		$app=App::find((int)$request->id);
@@ -98,6 +99,7 @@ class AppController extends BaseController
 		$app->cate_id=(int)$request->cate_id;
 		$app->image=$request->image;
 		$app->description=str_replace("\"", "'", trim($request->description));
+		$app->description=str_replace("\n", "<br>", $app->description);
 		$app->keywords=str_replace("\"", "'", trim($request->keywords));
 		$app->content=$request->content;
 		$app->status=trim($request->status);

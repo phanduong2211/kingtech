@@ -27,14 +27,19 @@ class InfoController extends BaseController
 	}
 
 	public function postinfoall(){
+
+		if(!$this->checkPermission('info/update')){
+			return $this->ErrorPermission('Cập nhật thông tin website');
+		}
+
 		$info=new Website();
 		$info->where('name','title')->update(array('content'=>str_replace("\"", "'", trim(Input::get('title')))));
 		$info->where('name','meta_description')->update(array('content'=>str_replace("\"", "'", trim(Input::get('meta_description')))));
 		$info->where('name','meta_keywords')->update(array('content'=>str_replace("\"", "'", trim(Input::get('meta_keywords')))));
-		$info->where('name','copyright')->update(array('content'=>trim(Input::get('copyright'))));
+		$info->where('name','copyright')->update(array('content'=>str_replace("\n","<br>",trim(Input::get('copyright')))));
 
 
-		$info->where('name','giay_phep')->update(array('content'=>trim(Input::get('giay_phep'))));
+		$info->where('name','giay_phep')->update(array('content'=>str_replace("\n","<br>",trim(Input::get('giay_phep')))));
 
 		try{
 			$info->where('name','slide_top')->delete();
@@ -50,6 +55,9 @@ class InfoController extends BaseController
 	}
 
 	public function contact(){
+		if(!$this->checkPermission('info/update')){
+			return $this->ErrorPermission('Cập nhật thông tin website');
+		}
 		$info=new Website();
 		$info->where('name','hotline')->update(array('content'=>str_replace("\"", "'", trim(Input::get('hotline')))));
 		$info->where('name','phone')->update(array('content'=>str_replace("\"", "'", trim(Input::get('phone')))));
@@ -66,15 +74,18 @@ class InfoController extends BaseController
 	}
 
 	public function banhang(){
+		if(!$this->checkPermission('info/update')){
+			return $this->ErrorPermission('Cập nhật thông tin website');
+		}
 		$info=new Website();
-		$info->where('name','open_time')->update(array('content'=>str_replace("\"", "'", trim(Input::get('open_time')))));
-		$info->where('name','gio_bao_hanh')->update(array('content'=>str_replace("\"", "'", trim(Input::get('gio_bao_hanh')))));
+		$info->where('name','open_time')->update(array('content'=>str_replace("\n","<br>",str_replace("\"", "'", trim(Input::get('open_time'))))));
+		$info->where('name','gio_bao_hanh')->update(array('content'=>str_replace("\n","<br>",str_replace("\"", "'", trim(Input::get('gio_bao_hanh'))))));
 		$info->where('name','sdt_dai_ly')->update(array('content'=>str_replace("\"", "'", trim(Input::get('sdt_dai_ly')))));
 		$info->where('name','sdt_mua_hang_tu_xa')->update(array('content'=>trim(Input::get('sdt_mua_hang_tu_xa'))));
 
 
 		$info->where('name','sdt_trung_tam_bh')->update(array('content'=>trim(Input::get('sdt_trung_tam_bh'))));
-		$info->where('name','address')->update(array('content'=>trim(Input::get('address'))));
+		$info->where('name','address')->update(array('content'=>str_replace("\n","<br>",trim(Input::get('address')))));
 
 
 		return redirect('admin/info')->with(['message'=>'Cập nhật thành công thông tin mua/ban hàng.']);

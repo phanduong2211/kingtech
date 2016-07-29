@@ -13,7 +13,7 @@ class MenuController extends BaseController
 			return $this->ErrorPermission('Menu');
 		}
 
-		$data=Menu::all();
+		$data=Menu::orderBy('id','desc')->get();
 		
 		return view("backend.menu.index",array('data'=>$data));
 	}

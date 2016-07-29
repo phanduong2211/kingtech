@@ -116,7 +116,7 @@ function showImage($path){
                                           </td>
                                           <td><span class="cate_id" data-id="{{$item->cate_id}}"></span></td>
                                 <td>
-                                  <span class="cutlength" max-length="50">{{$item->description}}</span>
+                                  <span class="cutlength" max-length="50">{!!$item->description!!}</span>
                                 </td>
                                 <td>
                                   <span class="cutlength" max-length="50">{{$item->keywords}}</span>

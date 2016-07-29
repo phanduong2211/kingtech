@@ -1,8 +1,8 @@
 @extends('backend.layout')
-@section('title','Sửa hộ trợ - ACP')
+@section('title','Sửa hỗ trợ - ACP')
 
 @section('breadcrumb')
-<h2><a href="{{url('admin/support')}}">Hộ trợ</a></h2>
+<h2><a href="{{url('admin/support')}}">hỗ trợ</a></h2>
     <span>Cập nhật</span>
 @endsection
 

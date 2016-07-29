@@ -9,8 +9,8 @@ class PageController extends BaseController
 {
 	public function index()
 	{
-		if(!$this->checkPermission('news/list')){
-			return $this->ErrorPermission('Tin tức');
+		if(!$this->checkPermission('page/list')){
+			return $this->ErrorPermission('Trang');
 		}
 
 		$data=Page::select('id','title','url','meta_description','meta_keywords','display','created_at','updated_at','viewer')->orderBy('id','desc')->get();
@@ -84,7 +84,7 @@ class PageController extends BaseController
 
 		$page->url=$this->formatToUrl(trim($request->url));
 		if(Page::select('id')->where('id','<>',(int)$request->id)->where('url',$page->url)->count()>0){
-			return redirect()->to('admin/page/update')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+			return redirect()->to('admin/page/'.$request->id)->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
 		$page->meta_description=str_replace("\"", "'", trim($request->meta_description));
@@ -99,7 +99,7 @@ class PageController extends BaseController
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('news/delete')){
+		if(!$this->checkPermission('page/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
@@ -113,7 +113,7 @@ class PageController extends BaseController
 
 	public function postDeletes(){
 
-		if(!$this->checkPermission('news/delete')){
+		if(!$this->checkPermission('page/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 

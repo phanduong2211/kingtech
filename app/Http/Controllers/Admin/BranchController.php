@@ -13,7 +13,7 @@ class BranchController extends BaseController
 			return $this->ErrorPermission('Chi nhánh');
 		}
 
-		$data=Branch::all();
+		$data=Branch::orderBy('id','desc')->get();
 		
 		return view("backend.branch.index",array('data'=>$data));
 	}
@@ -22,7 +22,6 @@ class BranchController extends BaseController
 		if(!$this->checkPermission('branch/create')){
 			return $this->ErrorPermission('Thêm chi nhánh');
 		}
-
 
 		return view("backend.branch.create");
 	}

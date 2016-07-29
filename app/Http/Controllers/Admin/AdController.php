@@ -68,8 +68,8 @@ class AdController extends BaseController
 
 	public function postUpdate(AdRequest $request){
 
-		if(!$this->checkPermission('slide/update')){
-			return $this->ErrorPermission('Sửa SlideShow');
+		if(!$this->checkPermission('ad/update')){
+			return $this->ErrorPermission('Sửa quảng cáo');
 		}
 
 		$ad=Ads::find((int)$request->id);

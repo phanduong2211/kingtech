@@ -69,7 +69,7 @@ function showImage($path){
 					<label>Copyright:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="3" class="form-control" name="copyright">{{$data['copyright']}}</textarea>
+					<textarea rows="3" class="form-control" name="copyright">{{str_replace("<br>","\n",$data['copyright'])}}</textarea>
 					<span class="desc">Thông tin bản quyền</span>
 				</div>
 			</div><br />
@@ -83,7 +83,7 @@ function showImage($path){
 					<label>Giấy phép:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="3" class="form-control" name="giay_phep">{{$data['giay_phep']}}</textarea>
+					<textarea rows="3" class="form-control" name="giay_phep">{{str_replace("<br>","\n",$data['giay_phep'])}}</textarea>
 					<span class="desc">Thông tin giấy phép kinh doanh</span>
 				</div>
 			</div><br />
@@ -278,8 +278,8 @@ function showImage($path){
 					<label>Địa chỉ:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="4" class="form-control" name="address">{{$data['address']}}</textarea>
-					<span class="desc">.</span>
+					<textarea rows="4" class="form-control" name="address">{{str_replace("<br>","\n",$data['address'])}}</textarea>
+					<span class="desc">Có thể viết mã HTML.</span>
 				</div>
 			</div><br />
 		</div>
@@ -292,7 +292,7 @@ function showImage($path){
 					<label>Giờ mở cửa:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="4" class="form-control" name="open_time">{{$data['open_time']}}</textarea>
+					<textarea rows="4" class="form-control" name="open_time">{{str_replace("<br>","\n",$data['open_time'])}}</textarea>
 					<span class="desc">.</span>
 				</div>
 			</div><br />
@@ -303,7 +303,7 @@ function showImage($path){
 					<label>Giờ bảo hành:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="4" class="form-control" name="gio_bao_hanh">{{$data['gio_bao_hanh']}}</textarea>
+					<textarea rows="4" class="form-control" name="gio_bao_hanh">{{str_replace("<br>","\n",$data['gio_bao_hanh'])}}</textarea>
 					<span class="desc">.</span>
 				</div>
 			</div><br />

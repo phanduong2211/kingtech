@@ -61,7 +61,7 @@ class UploadController extends BaseController
 	}
 
     public function removefolder(){
-        $path=public_path()."/image/".$_POST['file'];
+        $path=public_path()."/images/".$_POST['file'];
         if(file_exists($path)){
             $dir=scandir($path);
 

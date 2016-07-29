@@ -13,7 +13,7 @@ class TagController extends BaseController
 			return $this->ErrorPermission('Tag');
 		}
 
-		$data=Tag::all();
+		$data=Tag::orderBy('id','desc')->get();
 		
 		return view("backend.tag.index",array('data'=>$data));
 	}

@@ -357,6 +357,10 @@ h1 small{
 				<ul></ul>
 				<li data-value="ads"><i class="plusfolder"></i> Quảng Cáo</li>
 				<ul></ul>
+				<li data-value="video"><i class="plusfolder"></i> Video</li>
+				<ul></ul>
+				<li data-value="app"><i class="plusfolder"></i> Ứng Dụng</li>
+				<ul></ul>
 			</div>
 			
 		</div>

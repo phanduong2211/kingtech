@@ -34,6 +34,8 @@
                         <li id="fffnews" data-value="news">Tin Tức</li>
                         <li id="fffslide" data-value="slide">Slide</li>
                         <li id="fffads" data-value="ads">Quảng Cáo</li>
+                        <li id="fffvideo" data-value="video">Video</li>
+                        <li id="fffapp" data-value="app">Ứng dụng</li>
 
                        
                     </div>
@@ -57,6 +59,14 @@
                     </div>
 
                     <div id="adsfolder" data-value='{"folder":"ads"}' class="folderitem">
+                        Đang Tải...
+                    </div>
+
+                    <div id="videofolder" data-value='{"folder":"video"}' class="folderitem">
+                        Đang Tải...
+                    </div>
+
+                    <div id="appfolder" data-value='{"folder":"app"}' class="folderitem">
                         Đang Tải...
                     </div>
                 </div>

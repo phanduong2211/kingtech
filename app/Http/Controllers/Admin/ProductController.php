@@ -124,7 +124,7 @@ class ProductController extends BaseController
 
 		$product->url=$this->formatToUrl(trim($request->url));
 		if(Product::select('id')->where('id','<>',(int)$request->id)->where('url',$product->url)->count()>0){
-			return redirect()->to('admin/product/update')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+			return redirect()->to('admin/product/'.$request->id)->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
 		$product->pro_code=trim($request->pro_code);

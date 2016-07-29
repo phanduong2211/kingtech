@@ -13,7 +13,7 @@ class AppCateController extends BaseController
 			return $this->ErrorPermission('Loại ứng dụng');
 		}
 
-		$data=AppCate::all();
+		$data=AppCate::orderBy('id','desc')->get();
 		
 		return view("backend.appcate.index",array('data'=>$data));
 	}

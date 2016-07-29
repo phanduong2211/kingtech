@@ -14,7 +14,7 @@ class AgencyController extends BaseController
 			return $this->ErrorPermission('Đại lý');
 		}
 
-		$data=Agency::all();
+		$data=Agency::orderBy('id','desc')->get();
 
 		$listBranch=Branch::select('id','name')->get();
 		

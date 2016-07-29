@@ -73,7 +73,7 @@ function showImage($path){
                         <label>Giới thiệu:</label>
                     </div>
                     <div class="col-md-8">
-                        <textarea rows="6" class="form-control" name="description">{{$data->description}}</textarea>
+                        <textarea rows="6" class="form-control" name="description">{{str_replace("<br>","\n",$data->description)}}</textarea>
                         <span class="desc">Giới thiệu ngắn gọn về ứng dụng. VD: chức năng, công dụng,..</span>
                     </div>
                 </div><br />
@@ -170,7 +170,7 @@ function showImage($path){
                     </div>
                     <div class="col-md-8">
                         <input type="text" value="{{$data->require}}" name="require" class="form-control" />
-                        <span class="desc">VD: Android 4.1, dung lượng trống 20MB,...</span>
+                        <span class="desc">VD: Android 4.1 trở lên, dung lượng trống 20MB,...</span>
                     </div>
                 </div><br />
             </div>

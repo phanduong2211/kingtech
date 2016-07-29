@@ -45,7 +45,7 @@ class NewsController extends BaseController
 
 		$news->url=$this->formatToUrl(trim($request->url));
 		if(News::select('id')->where('url',$news->url)->count()>0){
-			return redirect()->to('admin/news/create')->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+			return redirect()->to('admin/news/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
 		$news->cate_id=(int)$request->cate_id;
@@ -91,7 +91,7 @@ class NewsController extends BaseController
 
 		$news->url=$this->formatToUrl(trim($request->url));
 		if(News::select('id')->where('id','<>',(int)$request->id)->where('url',$news->url)->count()>0){
-			return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Tin tức đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+			return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
 		$news->cate_id=(int)$request->cate_id;
@@ -115,9 +115,9 @@ class NewsController extends BaseController
 		$id=(int)\Input::get('data');
 
 		if(News::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công loại tin tức {name}"]);
+			return json_encode(["success"=>true,"message"=>"Xóa thành công tin tức {name}"]);
 		}
-		return json_encode(["success"=>false,"message"=>"Xóa loại tin tức {name} thất bại"]);
+		return json_encode(["success"=>false,"message"=>"Xóa tin tức {name} thất bại"]);
 	}
 
 	public function postDeletes(){

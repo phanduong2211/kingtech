@@ -30,7 +30,7 @@
         <!--col left-->
        <div id="col-left">
             <header id="left_header">
-                <a href="{{url('/')}}">ACP</a>
+                <a href="{{url('/')}}" target="_black">HOME</a>
             </header>
             <!--#left header-->
             <div id="content-col-left">
@@ -41,7 +41,8 @@
                     </div>
                     <div class="pull-left white">
                         <div>
-                            Admin
+                            Admin<br />
+                            <a href="{{url('admin/profile')}}" style="font-size:11px;color:#A9A9A9">Thông tin cá nhân</a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -187,10 +188,20 @@
                         </ul>
                     </li>
 
-                    <li id="menu_info">
-                        <a href="{{url('admin/info')}}">
-                            <i class="fa fa-info-circle"></i> <span>Thông tin website</span>
+                    <li id="menu_info" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-info-circle"></i> <span>Quản lý website</span>
+                             <small class="fa fa-chevron-down"></small>
                         </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="info">
+                                <a href="{{url('admin/info')}}">Thông tin website</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="setting"> 
+                                <a href="{{url('admin/setting')}}" >Cấu hình website</a>
+                            </li>
+                        </ul>
                     </li>
                     
                 </nav>

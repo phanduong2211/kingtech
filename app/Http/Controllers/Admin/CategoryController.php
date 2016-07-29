@@ -13,7 +13,7 @@ class CategoryController extends BaseController
 			return $this->ErrorPermission('Loại sản phẩm');
 		}
 
-		$data=Category::all();
+		$data=Category::orderBy('id','desc')->get();
 		
 		return view("backend.category.index",array('data'=>$data));
 	}
@@ -43,7 +43,7 @@ class CategoryController extends BaseController
 			return redirect()->to('admin/category/create')->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		$category->meta_description=trim($request->meta_description);
+		$category->meta_description=str_replace("\"","'",trim($request->meta_description));
 		$category->meta_keywords=trim($request->meta_keywords);
 		$category->name=trim($request->name);
 		$category->sort_home=0;
@@ -87,7 +87,7 @@ class CategoryController extends BaseController
 			return redirect()->to('admin/category/'.$request->id)->with(['message'=>'Url đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		$category->meta_description=trim($request->meta_description);
+		$category->meta_description=str_replace("\"","'",trim($request->meta_description));
 		$category->meta_keywords=trim($request->meta_keywords);
 		$category->name=trim($request->name);
 		$category->sort_home=0;

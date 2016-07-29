@@ -82,7 +82,7 @@
 <script type="text/javascript">
   
   var currentPage = "#menu_branch";
-  var subPage = 'new';
+  var subPage = 'list';
 var idZone="{{$data->zone}}";
   $(document).ready(function(){
     $("#idZone").val(idZone);

@@ -77,7 +77,7 @@ class SupportController extends BaseController
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('agency/delete')){
+		if(!$this->checkPermission('support/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
@@ -91,7 +91,7 @@ class SupportController extends BaseController
 
 	public function postDeletes(){
 
-		if(!$this->checkPermission('agency/delete')){
+		if(!$this->checkPermission('support/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
