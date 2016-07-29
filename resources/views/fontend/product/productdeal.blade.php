@@ -1,4 +1,7 @@
 @extends('fontend.layout_qc')
+@section("title")
+          <title>sản phẩm giá rẻ - kingtech.com.vn</title>
+@endsection
 @section('box_center')
 
     <div class="box_pro">

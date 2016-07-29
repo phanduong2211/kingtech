@@ -1,4 +1,23 @@
 @extends('fontend.layout_qc')
+@section("title")
+@if(count($detailnews)>0)
+<title>{{$detailnews[0]->title}}</title>
+@else
+          <title>Không tim thấy - kingtech.com.vn</title>
+@endif
+@endsection
+@section("description")
+@if(count($detailnews)>0)
+<meta name='description' content='
+{{$detailnews[0]->description}}'>
+  @endsection
+@section("keywords")
+
+<meta name='keywords' content='
+{{$detailnews[0]->keywords}}
+  ' >
+@endif
+@endsection
 @section('box_center')
 
           <div class="box_sales">

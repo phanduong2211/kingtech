@@ -1,4 +1,15 @@
 @extends('fontend.layout_qc')
+@section("title")
+  @if(count($apps)>0)
+@foreach($cateApps as $cateapp)
+          @if($cateapp->id == $apps[0]->cate_id)
+            <title>{{$cateapp->name}}</title>
+          @endif
+      @endforeach
+      @else
+          <title>Không tim thấy - kingtech.com.vn</title>
+  @endif
+@endsection
 @section('box_center')
 <div class="box_sales">
 	@if(count($apps)>0)

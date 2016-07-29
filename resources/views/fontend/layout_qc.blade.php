@@ -1,22 +1,5 @@
 @extends('fontend.layout')
-@section('title')
-<title>kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth </title>
-@endsection
-@section('meta')
-<meta name='description' content='KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất ' >
-  <meta name='keywords' content='kingtech | android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth | Pin du phong | bo phat wifi' >
-  
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="/" />
-  <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />
-  <meta property="og:description" content="KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất " />
-  <meta property="og:site_name" content="kingtech" />
-  <meta property="og:image" content="images/logo_jpg.jpg" />
-  <meta property="fb:app_id" content="1700293566862288" />
-  <meta name='robots' content='INDEX,FOLLOW' />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>  
-  <meta name='Search Engines' content='www.google.com, www.google.com.vn, www.yahoo.com' />
-@endsection
+
 <head>
   <style>
   .pagination

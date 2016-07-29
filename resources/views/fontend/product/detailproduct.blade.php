@@ -1,5 +1,24 @@
 
 @extends('fontend.layout_qc')
+@section("title")
+@if(count($products)>0)
+<title>{{$products[0]->name}}</title>
+@else
+          <title>Không tim thấy - kingtech.com.vn</title>
+@endif
+@endsection
+@if(count($products)>0)
+@section("description")
+<meta name='description' content='
+{{$products[0]->description}}'>
+  @endsection
+@section("keywords")
+
+<meta name='keywords' content='
+{{$products[0]->keywords}}
+  ' >
+@endif
+@endsection
 @section('box_center')
 @if(count($products)>0)
             <div class="box_sales">
@@ -98,16 +117,16 @@
                   
                   <!-- Tab panes -->
                   <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="tongquan">
+                    <div role="tabpanel" class="tab tab-pane active" id="tongquan">
                       <big>{{$products[0]->overview}}</big>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="thongso">
+                    <div role="tabpanel" class="tab tab-pane" id="thongso">
                       <big>{{$products[0]->specs}}</big>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="details">
+                    <div role="tabpanel" class="tab tab-pane" id="details">
                       <big>{{$products[0]->accessories}}</big>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="sales">
+                    <div role="tabpanel" class="tab tab-pane" id="sales">
                       <big>{{$products[0]->promotion}}</big>
                     </div>
                   </div>
@@ -120,5 +139,19 @@
           </div>
       </div>
       </div>
+      <script>
+        $('.nav-tabs>li').click(function(){
+          $(".tab").each(function(){
+            $(this).css("display","none");
+            
+          });
+          $(".nav-tabs>li").each(function(){
+            $(this).removeClass("active");
+          });
+          var content = (window.location.href.split('#')[1]);
+          $("#"+content+"").css("display","block");
+          $(this).addClass("active");
+        });
+      </script>
 @endif
 @endsection

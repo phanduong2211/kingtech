@@ -63,6 +63,10 @@ class ControllerDB extends BaseController
     public function getNewsWhereID($id)
     {
         $detailnews = News::where("id",$id)->get();
+        if(count($detailnews)>0) //update lượt view news
+            {
+                News::where("id",$id)->update(['viewer' => ($detailnews[0]->viewer+1)]);
+            }
         return $detailnews;
     }
     public function getNews_cateWhere()

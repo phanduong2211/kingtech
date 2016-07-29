@@ -1,5 +1,8 @@
 
 @extends('fontend.layout_qc')
+@section("title")
+<title>{{$txtSearch}}</title>
+@endsection
 @section('box_center')
 
         <div class="box_sales">

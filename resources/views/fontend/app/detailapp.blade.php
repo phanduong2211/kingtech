@@ -1,4 +1,12 @@
 @extends('fontend.layout_qc')
+@section("title")
+@if(count($detailapp)>0)
+<title>{{$detailapp[0]->name}}</title>
+@else
+          <title>Không tim thấy - kingtech.com.vn</title>
+@endif
+
+@endsection
 @section('box_center')
 <div class="box_sales">
 @if(count($detailapp)>0)

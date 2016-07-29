@@ -1,4 +1,11 @@
 @extends('fontend.layout_qc')
+@section("title")
+@if(count($video)>0)
+<title>{{$video[0]->name}}</title>
+@else
+          <title>Không tim thấy - kingtech.com.vn</title>
+@endif
+@endsection
 @section("box_center")
 <div class="box_sales">
     @if(count($video)>0)

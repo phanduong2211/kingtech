@@ -1,4 +1,11 @@
 @extends('fontend.layout_qc')
+@section("title")
+@if(count($page)>0)
+<title>{{$page[0]->title}}</title>
+@else
+          <title>Không tim thấy - kingtech.com.vn</title>
+@endif
+@endsection
 @section("box_center")
 <style>
     .title

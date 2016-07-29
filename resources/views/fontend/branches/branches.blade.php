@@ -1,4 +1,7 @@
 @extends('fontend.layout')
+@section("title")
+<title>Danh sách đại lý - kingtech.com.vn</title>
+@endsection
 @section("center")
 <style>
   .pagination
