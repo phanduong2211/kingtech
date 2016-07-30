@@ -72,9 +72,9 @@
                           <span>Miễn phí charge qua thẻ </span>
                           <img src="{{Asset('')}}public/kingtech/images/icon_visa.gif" alt="Miễn phí charge qua thẻ" /> 
                       </aside> 
-                      <aside class="chiase"> Chia sẽ
+                      <!-- <aside class="chiase"> Chia sẽ
                       <aside class="social"> <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> </aside>
-                      </aside> 
+                      </aside>  -->
                     </div>
                   </div>
                 </aside>
@@ -118,16 +118,16 @@
                   <!-- Tab panes -->
                   <div class="tab-content">
                     <div role="tabpanel" class="tab tab-pane active" id="tongquan">
-                      <big>{{$products[0]->overview}}</big>
+                      <big>{!!$products[0]->overview!!}</big>
                     </div>
                     <div role="tabpanel" class="tab tab-pane" id="thongso">
-                      <big>{{$products[0]->specs}}</big>
+                      <big>{!!$products[0]->specs!!}</big>
                     </div>
                     <div role="tabpanel" class="tab tab-pane" id="details">
-                      <big>{{$products[0]->accessories}}</big>
+                      <big>{!!$products[0]->accessories!!}</big>
                     </div>
                     <div role="tabpanel" class="tab tab-pane" id="sales">
-                      <big>{{$products[0]->promotion}}</big>
+                      <big>{!!$products[0]->promotion!!}</big>
                     </div>
                   </div>
                 </div>

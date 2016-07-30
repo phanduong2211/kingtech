@@ -85,7 +85,7 @@
                 </aside>
               </div>
             </div>
-            <div class="header_menu">
+            <!-- <div class="header_menu">
               <ul>
                 
                   <li><a href="/" class="active">Trang chủ</a></li>
@@ -93,9 +93,7 @@
                   @if($menus[$i]->show_menu_top==1)
                     
                     @if($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)=="hỗ trợ")
-                    <!--begin kiểm tra xem tồn tại menu con cho mục trở giúp không, 
-                    nếu có thì flag =true ngược lại bằng false-->
-                        <?php 
+                   <?php 
                             $flag=false;
                               for($ht=0;$ht < count($menus);$ht++)    
                               {     
@@ -108,8 +106,7 @@
                               }
 
                         ?>
-                        <!--end  kiểm tra xem tồn tại menu con cho mục trở giúp không-->
-                      <li class="menu_support">Hỗ trợ
+                        <li class="menu_support">Hỗ trợ
                             
                             @if($flag)
                               <ul>
@@ -148,7 +145,7 @@
                   @endif
                 @endfor
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
