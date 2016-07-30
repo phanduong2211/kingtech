@@ -36,17 +36,17 @@
             <div id="content-col-left">
                 <div class="logo">
                     <div class="pull-left profile">
-                        <img src="{{Asset('public/images/noavatar.png')}}" />
+                        <img src="{{Asset('public/images/avatar/'.$admin_info['id'].'.jpg')}}" />
                         <br />
                     </div>
                     <div class="pull-left white">
                         <div>
-                            Admin<br />
+                            {{$admin_info['name']}}<br />
                             <a href="{{url('admin/profile')}}" style="font-size:11px;color:#A9A9A9">Thông tin cá nhân</a>
                         </div>
                     </div>
                     <div class="clearfix"></div>
-                   <small style="color:white">Lần truy cập cuối: </small>
+                   <small style="color:white">Lần truy cập cuối: {{$admin_info['last_visit']}}</small>
                 </div>
                 
                 <nav id="menu">
@@ -178,6 +178,22 @@
                         </a>
                     </li>
 
+                    <li id="menu_admin" class="dropdownmenu">
+                        <a href="#">
+                            <i class="fa fa-gavel"></i> <span>Quản lý admin</span>
+                             <small class="fa fa-chevron-down"></small>
+                        </a>
+                        <ul>
+                            <li data-role="user/list" class="trole" data-action="list">
+                                <a href="{{url('admin/admin')}}">Danh sách</a>
+                            </li>
+
+                            <li data-role="user/create" class="trole" data-action="new"> 
+                                <a href="{{url('admin/admin/create')}}" >Thêm mới</a>
+                            </li>
+                        </ul>
+                    </li>
+
                     <li id="menu_account" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-user"></i> <span>Quản lý người dùng</span>
@@ -218,7 +234,7 @@
                        <a href="{{url('admin')}}" title="Trang chủ"><i class="fa fa-home"></i></a>
                     </div>
                     <div class="col-xs-4">
-                        <a href="{{url('admin/user/changepass')}}" title="Đổi mật khẩu"><i class="fa fa-key"></i></a>
+                        <a href="{{url('admin/changepass')}}" title="Đổi mật khẩu"><i class="fa fa-key"></i></a>
                     </div>
                     <div class="col-xs-4">
                         <a href="{{url('admin/logout')}}" title="Thoát" class="logout"><i class="fa fa-power-off"></i></a>
@@ -245,7 +261,7 @@
                     <!--.pull-left-->
                     <div class="pull-right">
 
-                        <li id="notification" class="dropdown">
+                        <!-- <li id="notification" class="dropdown">
                             <div class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="fa fa-envelope-o"></i>
                                 <span>0</span>
@@ -254,19 +270,19 @@
                                 <li class="dropdown-header"></li>
                                 
                             </ul>
-                        </li>
+                        </li> -->
                         <li id="userlogin" class="dropdown">
                             <div class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{Asset('public/images/noavatar.png')}}"  class="img-circle" width="30" height="30"  />
+                                <img src="{{Asset('public/images/avatar/'.$admin_info['id'].'.jpg')}}"  class="img-circle" width="30" height="30"  />
                                 
-                                Admin
+                                {{$admin_info['name']}}
                                 <span class="fa fa-angle-down"></span>
                             </div>
                             <ul class="dropdown-menu" style="width:180px">
-                                <li><a href="@Url.Content("~/user/profile")"><i class="fa fa-fw fa-user"></i> Thông tin cá nhân</a></li>
-                                <li><a href="@Url.Content("~/user/changepass")"><i class="fa fa-fw fa-key"></i> Đổi mật khẩu</a></li>
+                                <li><a href="{{url('admin/profile')}}"><i class="fa fa-fw fa-user"></i> Thông tin cá nhân</a></li>
+                                <li><a href="{{url('admin/changepass')}}"><i class="fa fa-fw fa-key"></i> Đổi mật khẩu</a></li>
                                 <div class="divider"></div>
-                                <li><a href="@Url.Content("~/logout")"><i class="fa fa-fw fa-power-off"></i> Thoát</a></li>
+                                <li><a href="{{url('admin/logout')}}"><i class="fa fa-fw fa-power-off"></i> Thoát</a></li>
                             </ul>
                         </li>
                     </div>
@@ -290,7 +306,7 @@
         <!--col main-->
 
         <footer id="footer">
-            Copyright &copy; 2016 | Lần truy cập trước của bạn <b></b> | <a href="javascript:void(0)" id="RemoveCookie">Xóa Cookie</a>
+            Copyright &copy; 2016 | Lần truy cập trước của bạn <b>{{$admin_info['last_visit']}}</b> | <a href="javascript:void(0)" id="RemoveCookie">Xóa Cookie</a>
         </footer>
 
     </div>

@@ -1,9 +1,9 @@
 @extends('backend.layout')
-@section('title','Thêm quản trị viên - ACP')
+@section('title','Sửa quản trị viên - ACP')
 
 @section('breadcrumb')
 <h2><a href="{{url('admin/admin')}}">Quản trị viên</a></h2>
-    <span>Tạo mới</span>
+    <span>Cập nhật</span>
 @endsection
 
 @section('css')
@@ -14,7 +14,7 @@
   
   @include('backend._message')
 
-    <form method="post" action="" id="frm" enctype="multipart/form-data">
+    <form method="post" action="{{url('admin/admin/update')}}" id="frm" enctype="multipart/form-data">
       <div class="row">
 
         <div class="col-sm-6">
@@ -24,7 +24,7 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <input type="text" name="name" class="form-control" value="{{old('name')}}" />
+                <input type="text" name="name" class="form-control" value="{{$data->name}}" />
                 <span class="desc">Tên hiển thị khi đăng nhập.</span>
               </div>
             </div>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-sm-8 required">
               <span class="red">*</span>
-              <input type="text" name="username" class="form-control" value="{{old('username')}}" />
+              <input type="text" name="username" class="form-control" value="{{$data->username}}" />
               <span class="desc">
                 Tên đăng nhập. Không dấu và không có ký tự đặc biệt
               </span>
@@ -49,18 +49,6 @@
 
       <div class="row margin">
 
-        <div class="col-sm-6">
-            <div class="row">
-              <div class="col-sm-4">
-                <label>Mật khẩu:</label>
-              </div>
-              <div class="col-sm-8 required">
-                <span class="red">*</span>
-                <input type="password" name="password" class="form-control" value="{{old('password')}}" />
-                <span class="desc">Mật khẩu đăng nhập.</span>
-              </div>
-            </div>
-        </div>
 
         <div class="col-sm-6">
           <div class="row">
@@ -68,11 +56,23 @@
               <label>Email:</label>
             </div>
             <div class="col-sm-8">
-              <input type="text" name="email" value="{{old('email')}}" class="form-control" />
+              <input type="text" name="email" value="{{$data->email}}" class="form-control" />
               <span class="desc">
                 .
               </span>
             </div>
+          </div>
+        </div>
+
+         <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4">
+                <label>Số điện thoại:</label>
+              </div>
+              <div class="col-sm-8">
+                <input type="text" name="phone" class="form-control" value="{{$data->phone}}" />
+                <span class="desc">.</span>
+              </div>
           </div>
         </div>
 
@@ -86,12 +86,12 @@
               <label>Avatar:</label>
             </div>
             <div class="col-sm-8">
-              <label for="avatar" class="uploadimg">
-                                <img src="{{Asset('public/images/uploadimg.png')}}" data-img="{{Asset('public/images/uploadimg.png')}}" />
-                                <input id="avatar" class="hide" type="file" name="avatar" />
-                                <i class="removefile" title="Xóa">&times;</i>
-                            </label>
-                            <span class="desc">Hình đại diện(<500 KB). Có thể đổi sau.<br />
+               <label for="avatar" class="uploadimg">
+                        <img src="{{url("public/images/avatar/".$data->id.".jpg")}}" data-img="{{url("public/images/avatar/".$data->id.".jpg")}}" />
+                        <input id="avatar" class="hide lockcontrol" type="file" name="avatar" />
+                        <i class="removefile">&times;</i>
+                    </label>
+                            <span class="desc">Hình đại diện(<500 KB).<br />
                                 Hỗ trợ file: jpg, png, gif, bimap, ico</span>
             </div>
           </div>
@@ -99,13 +99,7 @@
 
         <div class="col-sm-6">
             <div class="row">
-              <div class="col-sm-4">
-                <label>Số điện thoại:</label>
-              </div>
-              <div class="col-sm-8">
-                <input type="text" name="phone" class="form-control" value="{{old('phone')}}" />
-                <span class="desc">.</span>
-              </div>
+              
 
 
               <div class="col-sm-4">
@@ -113,9 +107,9 @@
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
-                <select class="form-control" name="group_id">
+                <select class="form-control" id="group_id" name="group_id">
                   <option value="-1">-- Lựa chọn --</option>
-                  @foreach($data as $item)
+                  @foreach($group as $item)
                   <option value="{{$item->id}}">{{$item->name}}</option>
                   @endforeach
 
@@ -139,8 +133,9 @@
     </div>
 
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+    <input type="hidden" name="id" value="{{$data->id}}" />
   
-
+<input type="hidden" name="password" value="{{$data->password}}" />
     </form>
 
   @endsection
@@ -151,9 +146,11 @@
 <script type="text/javascript">
   
   var currentPage = "#menu_admin";
-  var subPage = 'new';
+  var subPage = 'list';
+  var idGroup="{{$data->group_id}}";
 
   $(document).ready(function(){
+    $("#group_id").val(idGroup);
     
     $("#frm").kiemtra([
         {

@@ -47,9 +47,6 @@ class AdminController extends BaseController
 			return redirect()->to('admin/admin/create')->with(['message'=>'Username đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
 		}
 
-		if(Admin::select('id')->where('email',trim($request->email))->count()>0){
-			return redirect()->to('admin/admin/create')->with(['message'=>'Email đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
-		}
 
 		$admin=new Admin();
 
@@ -57,7 +54,7 @@ class AdminController extends BaseController
 		$admin->username=trim($request->username);
 		$admin->email=trim($request->email);
 		$admin->phone=trim($request->phone);
-		$admin->password=bcrypt(trim($admin->password));
+		$admin->password=bcrypt(trim($request->password));
 		$admin->group_id=$request->group_id;
 		$admin->block=0;
 
@@ -85,64 +82,98 @@ class AdminController extends BaseController
 
 	public function update($id){
 
-		if(!$this->checkPermission('user/update')){
-			return $this->ErrorPermission('Sửa người dùng');
+		if(!$this->checkPermission('admin/update')){
+			return $this->ErrorPermission('Sửa admin');
 		}
 
 		$data=array();
-		$data['data']=User::find((int)$id);
+		$data['data']=Admin::find((int)$id);
 		if($data['data']==null)
-			return redirect()->to('admin/user')->with(['message'=>'Người dùng không tồn tại.','message_type'=>'danger']);
-		
-		return view('backend.user.update',$data);
+			return redirect()->to('admin/admin')->with(['message'=>'Admin không tồn tại.','message_type'=>'danger']);
+		$data['group']=GroupAdmin::select('id','name')->get();
+		return view('backend.admin.update',$data);
 	}
 
-	public function postUpdate(UserRequest $request){
+	public function postUpdate(AdminRequest $request){
 
-		if(!$this->checkPermission('user/update')){
-			return $this->ErrorPermission('Sửa người dùng');
+		if(!$this->checkPermission('admin/update')){
+			return $this->ErrorPermission('Sửa admin');
 		}
 
-		$user=User::find((int)$request->id);
+		
 
-		$user->fill($request->all());
+		if(Admin::select('id')->where('id','<>',(int)$request->id)->where('username',trim($request->username))->count()>0){
+			return redirect()->to('admin/admin/'.$request->id)->with(['message'=>'Username đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+		}
 
-		$user->username=trim($request->username);
+		$admin=Admin::find((int)$request->id);
+
+		$admin->name=trim($request->name);
+		$admin->username=trim($request->username);
+		$admin->email=trim($request->email);
+		$admin->phone=trim($request->phone);
+		
+		$admin->group_id=$request->group_id;
 	
-		if(User::select('id')->where('id','<>',(int)$request->id)->where('username',$request->username)->count()>0){
-			return redirect()->to('admin/user/'.$request->id)->with(['message'=>'Username đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
-		}
 		
-		
-		if($user->save()){
-			return redirect()->to('admin/user/'.$request->id)->with('message','Cập nhật thành công.');
+		if($admin->save()){
+			$imagename = $request->id.".jpg";
+			try{
+				if ($request->hasFile('avatar'))
+			    {
+			        $file = $request->file('avatar');
+			        
+			        $file->move(public_path().'/images/avatar/', $imagename);
+			    }
+			}catch(\Exception $e){
+				
+			}
+			return redirect()->to('admin/admin/'.$request->id)->with('message','Cập nhật thành công.');
 		}
-		return redirect()->to('admin/user/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+		return redirect()->to('admin/admin/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
 	}
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('user/delete')){
+		if(!$this->checkPermission('admin/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=(int)\Input::get('data');
 
-		if(User::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công người dùng {name}"]);
+		if(Admin::destroy($id)){
+			try{
+				$filename=public_path().'/images/avatar/'.$id.".jpg";
+				if(\File::exists($filename)){
+					\File::delete($filename);
+				}
+			}catch(\Exception $e){
+
+			}
+			return json_encode(["success"=>true,"message"=>"Xóa thành công admin {name}"]);
 		}
-		return json_encode(["success"=>false,"message"=>"Xóa người dùng {name} thất bại"]);
+		return json_encode(["success"=>false,"message"=>"Xóa admin {name} thất bại"]);
 	}
 
 	public function postDeletes(){
 
-		if(!$this->checkPermission('user/delete')){
+		if(!$this->checkPermission('admin/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=explode(',',\Input::get('data'));
 
-		if(User::destroy($id)){
+		if(Admin::destroy($id)){
+			foreach($id as $i){
+				try{
+					$filename=public_path().'/images/avatar/'.$i.".jpg";
+					if(\File::exists($filename)){
+						\File::delete($filename);
+					}
+				}catch(\Exception $e){
+
+				}
+			}
 			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." người dùng."]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa người dùng thất bại"]);
@@ -178,12 +209,12 @@ class AdminController extends BaseController
 	}
 
 	public function postUnlocks(){
-		if(!$this->checkPermission('user/block')){
+		if(!$this->checkPermission('admin/block')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền mở khóa"]);
 		}
 		$data=explode(',',\Input::get('data'));
 		foreach($data as $item){
-			User::where('id',(int)$item)->update(['block'=>0]);
+			Admin::where('id',(int)$item)->update(['block'=>0]);
 		}
 
 
@@ -191,7 +222,7 @@ class AdminController extends BaseController
 	}
 
 	public function reset(){
-		if(!$this->checkPermission('user/reset')){
+		if(!$this->checkPermission('admin/reset')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền reset pass"]);
 		}
 
@@ -202,7 +233,7 @@ class AdminController extends BaseController
 			return json_encode(["success"=>false,"message"=>"Vui lòng nhập mật khẩu mới"]);
 		}
 
-		if(User::where('id',$id)->update(['password'=>\Hash::make($pass)])){
+		if(Admin::where('id',$id)->update(['password'=>bcrypt($pass)])){
 			return json_encode(["success"=>true,"message"=>"Cập nhật mật khẩu thành công"]);
 		}else{
 			return json_encode(["success"=>false,"message"=>"Cập nhật mật khẩu thất bại"]);

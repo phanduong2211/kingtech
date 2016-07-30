@@ -27,7 +27,7 @@
         <div class="col-sm-7 col-md-8">
 
             <div class="group-action">
-                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"@Url.Content("~/user/delete")","Khóa":"@Url.Content("~/user/block")","Mở Khóa":"@Url.Content("~/user/block")"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} người dùng?" data-success-type="option" data-ajax-value="ischeck">
+                <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/admin/deletes')}}","Khóa":"{{url('admin/admin/blocks')}}","Mở Khóa":"{{url('admin/admin/unlocks')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} admin?" data-success-type="option" data-ajax-value="ischeck">
                     <option value="-1" selected="selected">- Hành động -</option>
                     <option value="Khóa" data-success="blocks" class="trole" data-role="user/block">Khóa</option>
                     <option value="Mở Khóa" data-success="unlocks" class="trole" data-role="user/block">Mở Khóa</option>
@@ -101,7 +101,8 @@
                                         data-href="{{url('admin/admin/delete')}}"
                                          data-value="{{$item->id}}" 
                                         data-success-remove="true" 
-                                        data-confirm="Bạn có chắc muốn xóa admin <b>{{$item->username}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                        data-name="{{$item->name}}" 
+                                        data-confirm="Bạn có chắc muốn xóa admin <b>{{$item->name}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
                                         href="#" title="Xóa admin này">Xóa</a>
                                 <small>| </small>
                             </span>
@@ -140,11 +141,12 @@
                         data-success="block"
                         data-confirm="Bạn có chắc muốn <b>{yes=khóa}</b><b>{no=mở khóa}</b> admin {name}?"></span></td>
                     <td>
-                                    {{date('d/m/Y H:i',strtotime($item->updated_at))}}
-                                </td>
-                                <td>
                                     {{date('d/m/Y H:i',strtotime($item->created_at))}}
                                 </td>
+                    <td>
+                                    {{date('d/m/Y H:i',strtotime($item->updated_at))}}
+                                </td>
+                                
                                  <td>
                                     {{date('d/m/Y H:i',strtotime($item->after_last_visit))}}
                                 </td>
@@ -245,7 +247,7 @@ var _token="{{csrf_token()}}";
                 },
                 "block": function (target, result) {
                   target.parent().parent().attr('data-block',(target.hasClass('checked')?1:0));
-                    getAlert((target.hasClass('checked')?'Khóa':'Mở khóa')+' thành công người dùng '+target.attr('data-name'));
+                    getAlert((target.hasClass('checked')?'Khóa':'Mở khóa')+' thành công admin '+target.attr('data-name'));
                     target = target.parents(".ttable");
                     target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='1']").size() + ")");
                 },
@@ -253,7 +255,7 @@ var _token="{{csrf_token()}}";
                     getAlert(message);
                     target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
                         if ($(this).hasClass("checked")) {
-                            $(this).parents("tr").attr("data-block","1").find("td:eq(7) .checkboxblock").addClass("checked");
+                            $(this).parents("tr").attr("data-block","1").find("td:eq(6) .checkboxblock").addClass("checked");
                            
                         }
                     });
@@ -264,7 +266,7 @@ var _token="{{csrf_token()}}";
                     getAlert(message);
                     target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
                         if ($(this).hasClass("checked")) {
-                            $(this).parents("tr").attr("data-block", "0").find("td:eq(7) .checkboxblock").removeClass("checked");
+                            $(this).parents("tr").attr("data-block", "0").find("td:eq(6) .checkboxblock").removeClass("checked");
                         }
                     });
                     target = target.parents(".ttable");

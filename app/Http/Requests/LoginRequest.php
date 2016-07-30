@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AdminRequest extends Request
+class LoginRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +25,14 @@ class AdminRequest extends Request
     {
         return [
             'username'=>'required',
-            'password'=>'required',
-            'name'=>'required',
-            'group_id'=>'numeric|min:1'
+            'password'=>'required'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'username.required'=>'Vui lòng nhập tài username',
+            'password.required'=>'Vui lòng nhập password'
         ];
     }
 }

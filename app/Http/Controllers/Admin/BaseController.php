@@ -3,9 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Routing\Controller;
+use Auth;
 
 class BaseController extends Controller
 {
+	public function __construct(){
+		$user=Auth::user();
+		view()->share('admin_info',['id'=>$user->id,'name'=>$user->name,'last_visit'=>date('d/m/Y H:i',strtotime($user->last_visit))]);
+		$user=null;
+	}
 	protected function checkPermission($key)
 	{
 		return true;

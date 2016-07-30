@@ -11,7 +11,11 @@
 |
 */
 
-Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
+Route::get("admin/login","Admin\LoginController@index");
+Route::get("admin/logout","Admin\LoginController@logout");
+Route::post("admin/login","Admin\LoginController@login");
+
+Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],function(){
 	Route::get("/","IndexController@index");
 
 	Route::group(['prefix'=>'category'],function(){
