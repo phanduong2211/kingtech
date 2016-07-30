@@ -56,8 +56,7 @@
                   <div class="col-sm-4">
                         <label>Mã sản phẩm:</label>
                     </div>
-                    <div class="col-sm-8 required">
-                        <span class="red">*</span>
+                    <div class="col-sm-8">
                         <input name="pro_code" class="form-control" value="{{old('pro_code')}}" />
                       <span class="desc">VD: BM-800</span>
                     </div>
@@ -391,10 +390,6 @@
     });
 
     $("#frm").kiemtra([
-            {
-                'name':'pro_code',
-                'trong':true
-            },
             {
                 'name':'name',
                 'trong':true

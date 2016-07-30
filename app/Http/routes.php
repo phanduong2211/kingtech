@@ -196,6 +196,21 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	
 	});
 
+	Route::group(['prefix'=>'video'],function(){
+		Route::get("/","VideoController@index");
+		Route::get("create","VideoController@create");
+		Route::post("create","VideoController@postCreate");
+
+		Route::get("{id}","VideoController@update")->where('id','[0-9]+');
+		Route::post("update","VideoController@postUpdate");
+
+		Route::post("delete","VideoController@postDelete");
+		Route::post("deletes","VideoController@postDeletes");
+
+		Route::post("display","VideoController@display");
+	
+	});
+
 	Route::group(['prefix'=>'ad'],function(){
 		Route::get("/","AdController@index");
 		Route::get("create","AdController@create");
@@ -209,6 +224,25 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 
 		Route::post("display","AdController@display");
 
+	});
+
+	Route::group(['prefix'=>'user'],function(){
+		Route::get("/","UserController@index");
+		Route::get("create","UserController@create");
+		Route::post("create","UserController@postCreate");
+
+		Route::get("{id}","UserController@update")->where('id','[0-9]+');
+		Route::post("update","UserController@postUpdate");
+
+		Route::post("delete","UserController@postDelete");
+		Route::post("deletes","UserController@postDeletes");
+
+		Route::post("blocks","UserController@postBlocks");
+		Route::post("unlocks","UserController@postUnlocks");
+
+		Route::post("block","UserController@block");
+		
+		Route::post("reset","UserController@reset");
 	
 	});
 

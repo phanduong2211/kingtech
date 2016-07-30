@@ -140,6 +140,12 @@
                         </ul>
                     </li>
 
+                    <li id="menu_video">
+                        <a href="{{url('admin/video')}}">
+                            <i class="fa fa-youtube-play"></i> <span>Quản lý video</span>
+                        </a>
+                    </li>
+
                     <li id="menu_branch" class="dropdownmenu">
                         <a href="#">
                             <i class="fa fa-sitemap"></i> <span>Quản lý chi nhánh</span>

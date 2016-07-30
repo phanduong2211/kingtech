@@ -25,7 +25,6 @@ class ProductRequest extends Request
     {
         return [
             'name'=>'required',
-            'pro_code'=>'required',
             'url'=>'required',
             'image'=>'required',
             'price'=>'required',
@@ -39,7 +38,6 @@ class ProductRequest extends Request
     public function messages(){
         return [
             'name.required'=>'Vui lòng nhập tên sản phẩm',
-            'pro_code.required'=>'Vui lòng nhập mã sản phẩm',
             'url.required'=>'Vui lòng nhập url',
             'image.required'=>'Vui lòng chọn hình ảnh',
             'price.required'=>'Vui lòng chọn nhập giá sản phẩm',
