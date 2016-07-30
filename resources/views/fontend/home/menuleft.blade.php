@@ -1,7 +1,7 @@
 
-<link rel="stylesheet" type="text/css" href="public/kingtech/css/huyphu.css">
-<script type="text/javascript" src="public/kingtech/js/bootstrap.js"></script>
-<script type="text/javascript" src="public/kingtech/js/owl.carousel.js"></script>
+<link rel="stylesheet" type="text/css" href="{{Asset('')}}public/kingtech/css/huyphu.css">
+<script type="text/javascript" src="{{Asset('')}}public/kingtech/js/bootstrap.js"></script>
+<script type="text/javascript" src="{{Asset('')}}public/kingtech/js/owl.carousel.js"></script>
 <style type="text/css">
     #collapseOne
     {
@@ -80,7 +80,7 @@
                                 @if($category->parent==0)
                                 
                                         <li class="lileve1">
-                                            <i class="fa fa-desktop"></i><a href="/android-tv-box-gia-re.p1.html" title="Android TV Box">{{$category->name}}</a>
+                                            <i class="fa fa-desktop"></i><a href="{{Asset('category/'.$category->id.'-'.$category->url)}}" title="{{$category->name}}">{{$category->name}}</a>
                                                 <ul>
                                                 
                                                     <li>
@@ -95,7 +95,7 @@
                                                                 @foreach($categorys as $childcate)
                                                                 @if($category->id==$childcate->parent)
                                                                         <li>
-                                                                            <a href="/himedia.pb1.html">{{$childcate->name}}</a>
+                                                                            <a href="{{Asset('category/'.$childcate->id.'-'.$childcate->url)}}" title="{{$childcate->name}}">{{$childcate->name}}</a>
                                                                         </li>
                                                                 @endif
                                                                 @endforeach        
