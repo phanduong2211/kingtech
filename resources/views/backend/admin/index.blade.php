@@ -1,10 +1,10 @@
 @extends('backend.layout')
-@section('title','Người dùng - ACP')
+@section('title','Quản trị viên - ACP')
 
 @section('breadcrumb')
-<h2>Người dùng</h2>
-<h3 class="trole" data-role="user/create">
-        <a href="{{url('admin/user/create')}}">Thêm Mới</a>
+<h2>Quản trị viên</h2>
+<h3 class="trole" data-role="admin/create">
+        <a href="{{url('admin/admin/create')}}">Thêm Mới</a>
     </h3>
 @endsection
 
@@ -36,10 +36,11 @@
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>
             <div class="group-action">
-                <select id="filter-by-date" data-filter='{"type":"column","column":"select","filtertype":"^"}' data-group-filter="a">
-                    <option selected="selected" value="-1">- Lọc tất cả -</option>
-                    <option value="@DateTime.Now.ToString("dd/MM")" data-column="8">Truy cập hôm nay</option>
-                    <option value="@DateTime.Now.ToString("dd/MM")" data-column="6">Tạo hôm nay</option>
+                <select id="filter-by-date" data-filter='{"type":"attr","attr_name":"data-group"}' data-group-filter="a">
+                    <option selected="selected" data-id="-1" value="-1">- Tất cả nhóm -</option>
+                    @foreach($listGroup as $value)
+                    <option value="{{$value->id}}" data-id="{{$value->id}}">{{$value->name}}</option>
+                    @endforeach
                 </select>
                 <input type="button" class="button fleft" data-target="#filter-by-date" value="Lọc">
             </div>
@@ -67,22 +68,22 @@
                 <th width="35px">
                     <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                 </th>
-                <th class="tsort" width="200px">Username</th>
+                <th class="tsort" width="180px">Username</th>
           
-                <th>Tên</th>
+                <th width="70px">Tên</th>
                 <th>Số ĐT</th>
                 <th>Email</th>
-                <th width="150px">Địa chỉ</th>
-                <th>Giới tính</th>
+                <th>Nhóm</th>
                 <th width="70px">Khóa</th>
                 <th class="tsort">Ngày Tạo</th>
                 <th class="tsort">Ngày Cập Nhật</th>
+                <th class="tsort">Truy cập cuối</th>
             </tr>
         </thead>
         <tbody>
           <?php $IdUser=0; ?>
             @foreach ($data as $item)
-                <tr data-block="{{$item->block}}">
+                <tr data-block="{{$item->block}}" data-group="{{$item->group_id}}">
                     <td>
                         
                         <span class="ascheckbox center {{$item->id==$IdUser?"disabled":"checkboxb"}}" data-value="{{$item->id}}"></span>
@@ -90,50 +91,62 @@
                     <td>
                         <span>{{$item->username}}</span>
                         <div class="row-action">
-                            <span class="trole" data-role="user/update"><a href="{{url('admin/user/'.$item->id)}}" title="Sửa thông tin">Sửa</a>
+                            <span class="trole" data-role="user/update"><a href="{{url('admin/admin/'.$item->id)}}" title="Sửa thông tin">Sửa</a>
                                 <small>| </small>
                             </span>
                            <?php if($item->id!=$IdUser){ ?>
                             <span class="delete trole" data-role="user/delete">
                                 <a class="event" 
                                         data-ajax="true" 
-                                        data-href="{{url('admin/user/delete')}}"
+                                        data-href="{{url('admin/admin/delete')}}"
                                          data-value="{{$item->id}}" 
                                         data-success-remove="true" 
-                                        data-confirm="Bạn có chắc muốn xóa user <b>{{$item->username}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
-                                        href="#" title="Xóa user này">Xóa</a>
+                                        data-confirm="Bạn có chắc muốn xóa admin <b>{{$item->username}}</b>?<br /><small>Một khi xóa bạn sẽ không thể khôi phục lại được</small>"
+                                        href="#" title="Xóa admin này">Xóa</a>
                                 <small>| </small>
                             </span>
                            <?php } ?>
                                 <span class="trole" data-role="user/reset"><a class="event"
                                         data-ajax="true" 
-                                         data-href="{{url('admin/user/reset')}}"
+                                         data-href="{{url('admin/admin/reset')}}"
                                          data-value="{{$item->id}}" 
                                          data-success="resetpass"
                                         data-before="enterpass"
-                                        href="#" title="Cập nhật lại mật khẩu cho user">Reset pass</a>
+                                        href="#" title="Cập nhật lại mật khẩu cho admin">Reset pass</a>
                                 </span>
                         </div>
                     </td>
                    
-                    <td>{{$item->name}}</td>
+                    <td>
+<div class="text-center">
+                        <img width="50px" src="{{Asset('public/images/avatar/'.$item->id.'.jpg')}}" />
+                        <div style="margin-top:5px">{{$item->name}}</div></div>
+                    </td>
                     <td>{{$item->phone}}</td>
-                    <td>{{$item->email}}</td>
-                    <td>{{$item->address}}</td>
-                    <td>{{$item->gender}}</td>
-                    <td><span class="ascheckbox checkboxblock {{$item->block==1? "checked" : ""}} {{$item.id==$IdUser?"disabled":""}}" 
+                    <td>
+                        @if(strlen($item->email)<15)
+                            {{$item->email}}
+                        @else
+                            {!!substr($item->email,0,15).'<br>'.substr($item->email,15)!!}
+                        @endif
+                    </td>
+                    <td><span class="group_id" data-id="{{$item->group_id}}"></span></td>
+                    <td><span class="ascheckbox checkboxblock {{$item->block==1? "checked" : ""}} {{$item->id==$IdUser?"disabled":""}}" 
                         data-background="none" 
                         data-ajax="true" 
-                        data-href="{{url('admin/user/block')}}"
+                        data-href="{{url('admin/admin/block')}}"
                         data-value="{{$item->id}}" 
-                        data-name="{{$item->username}}"
+                        data-name="{{$item->name}}"
                         data-success="block"
-                        data-confirm="Bạn có chắc muốn <b>{yes=khóa}</b><b>{no=mở khóa}</b> người dùng {name}?"></span></td>
+                        data-confirm="Bạn có chắc muốn <b>{yes=khóa}</b><b>{no=mở khóa}</b> admin {name}?"></span></td>
                     <td>
                                     {{date('d/m/Y H:i',strtotime($item->updated_at))}}
                                 </td>
                                 <td>
                                     {{date('d/m/Y H:i',strtotime($item->created_at))}}
+                                </td>
+                                 <td>
+                                    {{date('d/m/Y H:i',strtotime($item->after_last_visit))}}
                                 </td>
                 </tr>
             @endforeach
@@ -186,10 +199,15 @@
 @section('script')
 <script type="text/javascript" src="{{Asset('public/js/t_table.js')}}"></script>
  <script type="text/javascript">
-   var currentPage = "#menu_account";
+   var currentPage = "#menu_admin";
         var subPage = 'list';
-
+var _token="{{csrf_token()}}";
   $(document).ready(function(){
+
+
+    if ($(window).width()>769 && !$("#col-left").hasClass("hidemenu")) {
+                $("#togglemenu").click();
+            }
 
      $("#enterpass .btn-success").click(function () {
                 var modal=$("#enterpass");
@@ -206,7 +224,7 @@
                     return false;
                 }
 
-                TRunAjax(modal.attr('data-href'), { "data": modal.attr('data-value'), "pass": pass }, function (result) {
+                TRunAjax(modal.attr('data-href'), { "data": modal.attr('data-value'), "pass": pass,"_token":_token }, function (result) {
                     getAlert(result.message);
                     modal.modal('hide');
                 });
@@ -226,41 +244,61 @@
                     modal.modal('show');
                 },
                 "block": function (target, result) {
+                  target.parent().parent().attr('data-block',(target.hasClass('checked')?1:0));
                     getAlert((target.hasClass('checked')?'Khóa':'Mở khóa')+' thành công người dùng '+target.attr('data-name'));
                     target = target.parents(".ttable");
-                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='True']").size() + ")");
+                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='1']").size() + ")");
                 },
                 "blocks": function (message, target, data, value, result) {
                     getAlert(message);
                     target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
                         if ($(this).hasClass("checked")) {
-                            $(this).parents("tr").attr("data-block","True").find("td:eq(4) .checkboxblock").addClass("checked");
+                            $(this).parents("tr").attr("data-block","1").find("td:eq(7) .checkboxblock").addClass("checked");
                            
                         }
                     });
                     target = target.parents(".ttable");
-                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='True']").size() + ")");
+                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='1']").size() + ")");
                 },
                 "unlocks": function (message, target, data, value, result) {
                     getAlert(message);
                     target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
                         if ($(this).hasClass("checked")) {
-                            $(this).parents("tr").attr("data-block", "False").find("td:eq(4) .checkboxblock").removeClass("checked");
+                            $(this).parents("tr").attr("data-block", "0").find("td:eq(7) .checkboxblock").removeClass("checked");
                         }
                     });
                     target = target.parents(".ttable");
-                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='True']").size() + ")");
+                    target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-block='1']").size() + ")");
 
                 },
                 "confirm": getConfirm,
                 "alert":getAlert,
+                "token":_token,
                 "showcount": function (obj, sumitem) {
 
                     obj.find(".subsubsub li:eq(0) .count").html('(' + sumitem + ')');
-                    var count = obj.find("table tbody tr[data-block='True']").size();
+                    var count = obj.find("table tbody tr[data-block='1']").size();
                     obj.find(".subsubsub li:eq(1) .count").html('(' + count + ')');
                 }
             });
+
+var bobj=$("#ttable table tbody .group_id");
+    $("#filter-by-date option").each(function(){
+      var id=$(this).attr('data-id');
+      if(id!=='-1'){
+        var name=$(this).html();
+        
+        var count=0;
+        bobj.each(function(){
+          if($(this).attr('data-id')==id){
+            count++;
+            $(this).html(name);
+          }
+        });
+
+        $(this).html(name+" ("+count+")");
+      }
+    });
 
   });
 

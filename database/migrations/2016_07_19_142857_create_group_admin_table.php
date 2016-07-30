@@ -20,7 +20,7 @@ class CreateGroupAdminTable extends Migration
         DB::table('group_admins')->insert(
             [
                 [
-                    'name' => 'Admintrantor'
+                    'name' => 'Administrator'
                 ]
             ]
         );

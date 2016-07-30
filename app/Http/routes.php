@@ -246,6 +246,26 @@ Route::group(['prefix'=>'admin','namespace' => 'Admin'],function(){
 	
 	});
 
+	Route::group(['prefix'=>'admin'],function(){
+		Route::get("/","AdminController@index");
+		Route::get("create","AdminController@create");
+		Route::post("create","AdminController@postCreate");
+
+		Route::get("{id}","AdminController@update")->where('id','[0-9]+');
+		Route::post("update","AdminController@postUpdate");
+
+		Route::post("delete","AdminController@postDelete");
+		Route::post("deletes","AdminController@postDeletes");
+
+		Route::post("blocks","AdminController@postBlocks");
+		Route::post("unlocks","AdminController@postUnlocks");
+
+		Route::post("block","AdminController@block");
+		
+		Route::post("reset","AdminController@reset");
+	
+	});
+
 	Route::get("uploadimage","UploadController@upload");
     Route::post("uploadimage","UploadController@upload");
     Route::post("ajax/loadfolder","UploadController@loadfolder");
