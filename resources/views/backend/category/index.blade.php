@@ -14,6 +14,16 @@
 
 @section('content')
 
+
+<?php 
+function showImage($path){
+
+        if(strpos($path, "http")===0)
+            return $path;
+        return Asset('public/images/'.$path);
+    }
+ ?>
+
 @include('backend._message')
 
     <div id="ttable" class="ttable">
@@ -75,11 +85,12 @@
                   </th>
                   <th class="tsort">S.Xếp Tr.Chủ</th>
                   <th class="tsort">S.Xếp menu</th>
-                  <th width="200px">Tên</th>
+                  <th width="150px">Tên</th>
                   <th width="150px">Url</th>
                   <th width="100px">Mô tả</th>
                   <th width="100px">Từ khóa</th>
-                  <th>H.Thị Tr.Chủ</th>
+                  <th width="80px">Q.Cáo</th>
+                  <th>H.Thị Tr.C</th>
                   <th>H.Thị menu</th>
               </tr>
           </thead>
@@ -114,7 +125,7 @@
                                           </td>
 
                                           <td>
-                                              <span>{{$text.' '.$item->name}}
+                                              <span><i class="fa {{$item->icon}}"></i> {{$text.' '.$item->name}}
                                                 </span>
                                                 <div class="row-action">
                                                     <span title="Sửa thông tin"><a href="{{url('admin/category/'.$item->id)}}">Sửa</a>
@@ -140,6 +151,11 @@
                                           </td>
                                           <td>
                                             <span class="cutlength" max-length="30">{{$item->meta_keywords}}</span>
+                                          </td>
+                                           <td>
+                                            @if($item->ads!="")
+                                            <img src="{{showImage($item->ads)}}" width="70px" />
+                                            @endif
                                           </td>
                                           <td>
                                                     <span class="ascheckbox checkboxblock {{$item->show_home==1?'checked':''}}"

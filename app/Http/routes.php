@@ -279,7 +279,12 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
     Route::post("ajax/count","IndexController@count");
     Route::post("ajax/createfolder","UploadController@createfolder");
     Route::post("ajax/loadonlyfolder","UploadController@loadonlyfolder");
+    
+    Route::get("profile","AdminController@profile");
+    Route::post("profile","AdminController@postProfile");
 
+    Route::get("changepass","AdminController@changepass");
+    Route::post("changepass","AdminController@postChange");
 
     Route::group(['prefix'=>'info'],function(){
 		Route::get("/","InfoController@index");

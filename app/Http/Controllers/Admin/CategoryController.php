@@ -46,6 +46,12 @@ class CategoryController extends BaseController
 		$category->meta_description=str_replace("\"","'",trim($request->meta_description));
 		$category->meta_keywords=trim($request->meta_keywords);
 		$category->name=trim($request->name);
+		if($request->icon=="khac"){
+			$category->icon=trim($request->iconkhac);
+		}else{
+			$category->icon=$request->icon;
+		}
+		$category->ads=$request->ads;
 		$category->sort_home=0;
 		$category->sort_menu=0;
 		$category->display=1;
@@ -90,9 +96,12 @@ class CategoryController extends BaseController
 		$category->meta_description=str_replace("\"","'",trim($request->meta_description));
 		$category->meta_keywords=trim($request->meta_keywords);
 		$category->name=trim($request->name);
-		$category->sort_home=0;
-		$category->sort_menu=0;
-		$category->display=1;
+		if($request->icon=="khac"){
+			$category->icon=trim($request->iconkhac);
+		}else{
+			$category->icon=$request->icon;
+		}
+		$category->ads=$request->ads;
 		$category->show_home=($request->show_home=='on')?1:0;
 		
 		if($category->save()){

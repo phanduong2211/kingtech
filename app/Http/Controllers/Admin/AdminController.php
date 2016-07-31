@@ -133,6 +133,80 @@ class AdminController extends BaseController
 		return redirect()->to('admin/admin/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
 	}
 
+	public function profile(){
+
+		$data=array();
+		$data['data']=Admin::find($this->idUser);
+		if($data['data']==null)
+			return redirect('admin')->with(['message'=>'Admin không tồn tại.','message_type'=>'danger']);
+	
+
+		return view('backend.admin.profile',$data);
+	}
+
+	public function postProfile(AdminRequest $request){
+
+		if(Admin::select('id')->where('id','<>',(int)$request->id)->where('username',trim($request->username))->count()>0){
+			return redirect()->to('admin/profile')->with(['message'=>'Username đã tồn tại.','message_type'=>'danger'])->withInput($request->all());
+		}
+
+		$admin=Admin::find((int)$request->id);
+
+		$admin->name=trim($request->name);
+		$admin->username=trim($request->username);
+		$admin->email=trim($request->email);
+		$admin->phone=trim($request->phone);
+	
+		
+		if($admin->save()){
+			$imagename = $request->id.".jpg";
+			try{
+				if ($request->hasFile('avatar'))
+			    {
+			        $file = $request->file('avatar');
+			        
+			        $file->move(public_path().'/images/avatar/', $imagename);
+			    }
+			}catch(\Exception $e){
+				
+			}
+			return redirect()->to('admin/profile')->with('message','Cập nhật thành công.');
+		}
+		return redirect()->to('admin/profile')->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+	}
+
+	public function changepass(){
+
+		return view('backend.admin.changepass');
+	}
+
+	public function postChange(\Illuminate\Http\Request $request){
+
+		if(trim($request->passwordold)=="" || trim($request->passwordnew=="")){
+			return redirect()->to('admin/changepass')->with(['message'=>'Vui lòng nhập đây đủ thông tin.','message_type'=>'danger']);
+		}
+
+		if(trim($request->passwordnew)!=trim($request->repassword)){
+			return redirect()->to('admin/changepass')->with(['message'=>'Nhập lại mật khẩu sai.','message_type'=>'danger']);
+		}
+
+		$admin=Admin::find($this->idUser);
+
+		if(\Hash::check(trim($request->passwordold),$admin->password)){
+			$admin->password=bcrypt(trim($request->passwordnew));
+
+			if($admin->save()){
+				return redirect()->to('admin/changepass')->with(['message'=>'Cập nhật mật khẩu thành công.']);	
+			}
+
+			return redirect()->to('admin/changepass')->with(['message'=>'Có lỗi. Cập nhật mật khẩu thất bại.','message_type'=>'danger']);	
+		}
+
+		return redirect()->to('admin/changepass')->with(['message'=>'Password cũ sai.','message_type'=>'danger']);	
+
+		
+	}
+
 	public function postDelete(){
 
 		if(!$this->checkPermission('admin/delete')){
@@ -140,6 +214,10 @@ class AdminController extends BaseController
 		}
 
 		$id=(int)\Input::get('data');
+
+		if($id==1){
+			return json_encode(["success"=>false,"message"=>"Không được phép xóa admin."]);
+		}
 
 		if(Admin::destroy($id)){
 			try{
@@ -162,9 +240,15 @@ class AdminController extends BaseController
 		}
 
 		$id=explode(',',\Input::get('data'));
+		$newId=array();
+		foreach($id as $i){
+			if($i!=1){
+				$newId[]=$i;
+			}
+		}
 
-		if(Admin::destroy($id)){
-			foreach($id as $i){
+		if(Admin::destroy($newId)){
+			foreach($newId as $i){
 				try{
 					$filename=public_path().'/images/avatar/'.$i.".jpg";
 					if(\File::exists($filename)){

@@ -7,9 +7,11 @@ use Auth;
 
 class BaseController extends Controller
 {
+	protected $idUser=0;
 	public function __construct(){
 		$user=Auth::user();
 		view()->share('admin_info',['id'=>$user->id,'name'=>$user->name,'last_visit'=>date('d/m/Y H:i',strtotime($user->last_visit))]);
+		$this->idUser=$user->id;
 		$user=null;
 	}
 	protected function checkPermission($key)

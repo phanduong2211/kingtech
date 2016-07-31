@@ -135,7 +135,7 @@
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
     <input type="hidden" name="id" value="{{$data->id}}" />
   
-<input type="hidden" name="password" value="{{$data->password}}" />
+<input type="hidden" name="password" value="111" />
     </form>
 
   @endsection

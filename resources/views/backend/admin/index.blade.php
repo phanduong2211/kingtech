@@ -81,7 +81,7 @@
             </tr>
         </thead>
         <tbody>
-          <?php $IdUser=0; ?>
+          <?php $IdUser=$admin_info['id']; ?>
             @foreach ($data as $item)
                 <tr data-block="{{$item->block}}" data-group="{{$item->group_id}}">
                     <td>

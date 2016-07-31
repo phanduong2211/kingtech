@@ -1,16 +1,20 @@
 @extends('backend.layout')
-@section('title','Sửa người dùng - ACP')
+@section('title','Thông Tin Cá Nhân - ACP')
 
 @section('breadcrumb')
-<h2><a href="{{url('admin/user')}}">Người dùng</a></h2>
+<h2>Thông Tin Cá Nhân</h2>
     <span>Cập nhật</span>
+@endsection
+
+@section('css')
+<link href="{{Asset('public/css/uploadimg.css')}}" rel="stylesheet" />
 @endsection
 
 @section('content')
   
   @include('backend._message')
 
-    <form method="post" action="{{url('admin/user/update')}}" id="frm">
+    <form method="post" action="" id="frm" enctype="multipart/form-data">
       <div class="row">
 
         <div class="col-sm-6">
@@ -18,9 +22,10 @@
               <div class="col-sm-4">
                 <label>Tên:</label>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-8 required">
+                <span class="red">*</span>
                 <input type="text" name="name" class="form-control" value="{{$data->name}}" />
-                
+                <span class="desc">Tên hiển thị khi đăng nhập.</span>
               </div>
             </div>
         </div>
@@ -44,19 +49,6 @@
 
       <div class="row margin">
 
-        <div class="col-sm-6">
-            <div class="row">
-              
-              <div class="col-sm-4">
-                <label>Giới tính:</label>
-              </div>
-              <div class="col-sm-8">
-                <label style="padding-right:10px"><input type="radio" name="gender" value="1" {{$data->gender==1?"checked='checked'":""}} /> Nam </label> 
-                <label><input type="radio" name="gender" value="0" {{$data->gender==0?"checked='checked'":""}} /> Nữ</label>
-                <span class="desc">.</span>
-              </div>
-            </div>
-        </div>
 
         <div class="col-sm-6">
           <div class="row">
@@ -72,36 +64,47 @@
           </div>
         </div>
 
-      </div><!--.row-->
-
-      <div class="row margin">
-
-        <div class="col-sm-6">
-            <div class="row">
-              <div class="col-sm-4">
+         <div class="col-sm-6">
+          <div class="row">
+            <div class="col-sm-4">
                 <label>Số điện thoại:</label>
               </div>
               <div class="col-sm-8">
                 <input type="text" name="phone" class="form-control" value="{{$data->phone}}" />
                 <span class="desc">.</span>
               </div>
-
-            </div>
+          </div>
         </div>
+
+      </div><!--.row-->
+
+      <div class="row margin">
 
         <div class="col-sm-6">
           <div class="row">
             <div class="col-sm-4">
-              <label>Địa chỉ:</label>
+              <label>Avatar:</label>
             </div>
             <div class="col-sm-8">
-              <textarea name="address" rows="3" class="form-control">{{$data->address}}</textarea>
-              <span class="desc">
-                .
-              </span>
+               <label for="avatar" class="uploadimg">
+                        <img src="{{url("public/images/avatar/".$data->id.".jpg")}}" data-img="{{url("public/images/avatar/".$data->id.".jpg")}}" />
+                        <input id="avatar" class="hide lockcontrol" type="file" name="avatar" />
+                        <i class="removefile">&times;</i>
+                    </label>
+                            <span class="desc">Hình đại diện(<500 KB).<br />
+                                Hỗ trợ file: jpg, png, gif, bimap, ico</span>
             </div>
           </div>
         </div>
+
+        <div class="col-sm-6">
+            <div class="row">
+              
+
+            </div>
+        </div>
+
+        
 
       </div><!--.row-->
 
@@ -115,18 +118,20 @@
 
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
     <input type="hidden" name="id" value="{{$data->id}}" />
-    <input type="hidden" name="password" value="111" />
-
+  
+<input type="hidden" name="password" value="111" />
+<input type="hidden" name="group_id" value="{{$data->group_id}}" />
     </form>
 
   @endsection
 
 @section('script')
 <script src="{{Asset('public/js/validate.js')}}" ></script>
+<script type="text/javascript" src="{{Asset('public/js/uploadimg.js')}}"></script>
 <script type="text/javascript">
   
-  var currentPage = "#menu_account";
-  var subPage = 'list';
+  var currentPage = "#menu_home";
+  
 
   $(document).ready(function(){
     
@@ -137,6 +142,10 @@
         },
         {
           'name':'password',
+          'trong':true
+        },
+        {
+          'name':'name',
           'trong':true
         }
       ]);
