@@ -7,6 +7,10 @@
     {
         background: white;
     }
+    .ulcap2:hover
+    {
+        display: block !important;
+    }
     #collapseOne li a
     {
         color: black;
@@ -44,6 +48,8 @@
         position: absolute;
         z-index: 999;
         font-weight: bold;
+        background: white;
+        border: 1px solid #333333;
 
     }
     .product a
@@ -72,9 +78,10 @@
 
 </style>
 
+
 <li class="product">
-<i style="color:white;padding-left:5px" class="fa fa-reorder"></i>
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed">Danh mục sản phẩm <i class="glyphicon glyphicon-triangle-bottom"></i></a>
+<i style="color:black;padding-left:5px" class="fa fa-reorder"></i>
+                                <a style="color:black" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" class="collapsed">Danh mục sản phẩm <i class="glyphicon glyphicon-triangle-bottom"></i></a>
                                 <ul id="collapseOne" class="panel-collapse collapse  fade-ul" aria-expanded="true">
                                 @foreach($categorys as $category)
                                 @if($category->parent==0)

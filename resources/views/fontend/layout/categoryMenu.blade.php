@@ -32,11 +32,12 @@
   }
   .ulcap1 .licap1:hover .ulcap2
   {
-    display: block;
+    display: block !important;
   }
   .ulcap2 .licap2 a
   {
      color: black;
+     padding-top:20px;
 
   }
   .ulcap2 .licap2:hover a
@@ -46,6 +47,10 @@
   .ulcap2 .licap2 i
   {
     color: green;
+  }
+  .menuungdung:hover
+  {
+    display: block !important;
   }
   .ulcap2
   {
@@ -62,6 +67,10 @@
   {
     margin-left: -137%;
 
+  }
+  .menuungdung ul a
+  {
+    padding-top: 20px;
   }
 </style>
 <div class="fl_section">
@@ -100,7 +109,7 @@
                               </ul>
                             @endif
                     </li>
-                    @elseif($menus[$i]->parent_id==0 && (strtolower($menus[$i]->name)=="ứng dụng" || strtolower($menus[$i]->name)=="kho ứng dụng"))
+                    @elseif($menus[$i]->parent_id==0 && (strtolower($menus[$i]->name)=="ứng dụng" || strtolower($menus[$i]->name)=="Ứng dụng" || strtolower($menus[$i]->name)=="Kho ứng dụng" || strtolower($menus[$i]->name)=="kho ứng dụng"))
                           @if(count($cateApps)>0)
                           <li class="menu_ungdung licap1">{{$menus[$i]->name}}
                             <aside class="menuungdung">

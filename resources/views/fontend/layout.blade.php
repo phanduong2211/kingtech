@@ -75,8 +75,17 @@
       });
     });
   </script>
-<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; top: -9999px; z-index: 100000;"><iframe id="_atssh290" title="AddThis utility frame" style="height: 1px; width: 1px; position: absolute; top: 0px; z-index: 100000; border: 0px; left: 0px;"></iframe></div><style id="service-icons-0"></style>
+<script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js"></script>
+
+
+<s></s>
 <script type="text/javascript" src="{{Asset('')}}public/kingtech/flexslider/slick.min.js"></script>
+<style>
+  body
+  {
+    height: auto !important;
+  }
+</style>
 <!-- <script type="text/javascript" src="{{Asset('')}}public/kingtech/bootstrap/js/bootstrap.min.js"></script> -->
 </body>
 </html>

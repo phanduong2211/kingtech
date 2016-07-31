@@ -19,7 +19,7 @@
             <li>
               <label class="fl_upercase fl_bold">BẢO HÀNH</label>
               <big>
-                `````````@foreach($website as $tile)
+                @foreach($website as $tile)
                               @if($tile->name=="gio_bao_hanh")
                                 <?php echo $tile->content; ?>
                               @endif

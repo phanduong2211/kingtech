@@ -1,18 +1,44 @@
-<script type="text/javascript" src="public/kingtech/js/jssor.slider.min.js"></script>
+
+    <script type="text/javascript" src="public/kingtech/js/jssor.slider.min.js"></script>
     <!-- use jssor.slider.debug.js instead for debug -->
     <script>
         jssor_1_slider_init = function() {
             
+            var jssor_1_SlideshowTransitions = [
+              {$Duration:1200,$Zoom:1,$Easing:{$Zoom:$Jease$.$InCubic,$Opacity:$Jease$.$OutQuad},$Opacity:2},
+              {$Duration:1000,$Zoom:11,$SlideOut:true,$Easing:{$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear},$Opacity:2},
+              {$Duration:1200,$Zoom:1,$Rotate:1,$During:{$Zoom:[0.2,0.8],$Rotate:[0.2,0.8]},$Easing:{$Zoom:$Jease$.$Swing,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$Swing},$Opacity:2,$Round:{$Rotate:0.5}},
+              {$Duration:1000,$Zoom:11,$Rotate:1,$SlideOut:true,$Easing:{$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InExpo},$Opacity:2,$Round:{$Rotate:0.8}},
+              {$Duration:1200,x:0.5,$Cols:2,$Zoom:1,$Assembly:2049,$ChessMode:{$Column:15},$Easing:{$Left:$Jease$.$InCubic,$Zoom:$Jease$.$InCubic,$Opacity:$Jease$.$Linear},$Opacity:2},
+              {$Duration:1200,x:4,$Cols:2,$Zoom:11,$SlideOut:true,$Assembly:2049,$ChessMode:{$Column:15},$Easing:{$Left:$Jease$.$InExpo,$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear},$Opacity:2},
+              {$Duration:1200,x:0.6,$Zoom:1,$Rotate:1,$During:{$Left:[0.2,0.8],$Zoom:[0.2,0.8],$Rotate:[0.2,0.8]},$Easing:{$Left:$Jease$.$Swing,$Zoom:$Jease$.$Swing,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$Swing},$Opacity:2,$Round:{$Rotate:0.5}},
+              {$Duration:1000,x:-4,$Zoom:11,$Rotate:1,$SlideOut:true,$Easing:{$Left:$Jease$.$InExpo,$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InExpo},$Opacity:2,$Round:{$Rotate:0.8}},
+              {$Duration:1200,x:-0.6,$Zoom:1,$Rotate:1,$During:{$Left:[0.2,0.8],$Zoom:[0.2,0.8],$Rotate:[0.2,0.8]},$Easing:{$Left:$Jease$.$Swing,$Zoom:$Jease$.$Swing,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$Swing},$Opacity:2,$Round:{$Rotate:0.5}},
+              {$Duration:1000,x:4,$Zoom:11,$Rotate:1,$SlideOut:true,$Easing:{$Left:$Jease$.$InExpo,$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InExpo},$Opacity:2,$Round:{$Rotate:0.8}},
+              {$Duration:1200,x:0.5,y:0.3,$Cols:2,$Zoom:1,$Rotate:1,$Assembly:2049,$ChessMode:{$Column:15},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Zoom:$Jease$.$InCubic,$Opacity:$Jease$.$OutQuad,$Rotate:$Jease$.$InCubic},$Opacity:2,$Round:{$Rotate:0.7}},
+              {$Duration:1000,x:0.5,y:0.3,$Cols:2,$Zoom:1,$Rotate:1,$SlideOut:true,$Assembly:2049,$ChessMode:{$Column:15},$Easing:{$Left:$Jease$.$InExpo,$Top:$Jease$.$InExpo,$Zoom:$Jease$.$InExpo,$Opacity:$Jease$.$Linear,$Rotate:$Jease$.$InExpo},$Opacity:2,$Round:{$Rotate:0.7}},
+              {$Duration:1200,x:-4,y:2,$Rows:2,$Zoom:11,$Rotate:1,$Assembly:2049,$ChessMode:{$Row:28},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Zoom:$Jease$.$InCubic,$Opacity:$Jease$.$OutQuad,$Rotate:$Jease$.$InCubic},$Opacity:2,$Round:{$Rotate:0.7}},
+              {$Duration:1200,x:1,y:2,$Cols:2,$Zoom:11,$Rotate:1,$Assembly:2049,$ChessMode:{$Column:19},$Easing:{$Left:$Jease$.$InCubic,$Top:$Jease$.$InCubic,$Zoom:$Jease$.$InCubic,$Opacity:$Jease$.$OutQuad,$Rotate:$Jease$.$InCubic},$Opacity:2,$Round:{$Rotate:0.8}}
+            ];
+            
             var jssor_1_options = {
+              $AutoPlay: true,
+              $SlideshowOptions: {
+                $Class: $JssorSlideshowRunner$,
+                $Transitions: jssor_1_SlideshowTransitions,
+                $TransitionsOrder: 1
+              },
               $ArrowNavigatorOptions: {
                 $Class: $JssorArrowNavigator$
               },
               $ThumbnailNavigatorOptions: {
                 $Class: $JssorThumbnailNavigator$,
-                $Cols: 15,
-                $SpacingX: 3,
-                $SpacingY: 3,
-                $Align: 455
+                $Rows: 2,
+                $Cols: 6,
+                $SpacingX: 14,
+                $SpacingY: 12,
+                $Orientation: 2,
+                $Align: 156
               }
             };
             
@@ -23,7 +49,8 @@
             function ScaleSlider() {
                 var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
                 if (refSize) {
-                    refSize = Math.min(refSize, 980);
+                    refSize = Math.min(refSize, 960);
+                    refSize = Math.max(refSize, 300);
                     jssor_1_slider.$ScaleWidth(refSize);
                 }
                 else {
@@ -40,70 +67,182 @@
 
     <style>
         
-        /* jssor slider arrow navigator skin 07 css */
+        /* jssor slider arrow navigator skin 05 css */
         /*
-        .jssora07l                  (normal)
-        .jssora07r                  (normal)
-        .jssora07l:hover            (normal mouseover)
-        .jssora07r:hover            (normal mouseover)
-        .jssora07l.jssora07ldn      (mousedown)
-        .jssora07r.jssora07rdn      (mousedown)
+        .jssora05l                  (normal)
+        .jssora05r                  (normal)
+        .jssora05l:hover            (normal mouseover)
+        .jssora05r:hover            (normal mouseover)
+        .jssora05l.jssora05ldn      (mousedown)
+        .jssora05r.jssora05rdn      (mousedown)
         */
-        .jssora07l, .jssora07r {
+        .jssora05l, .jssora05r {
             display: block;
             position: absolute;
             /* size of arrow element */
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             cursor: pointer;
-            background: url('public/kingtech/img/a07.png') no-repeat;
+            background: url('public/kingtech/img/a17.png') no-repeat;
             overflow: hidden;
         }
-        .jssora07l { background-position: -5px -35px; }
-        .jssora07r { background-position: -65px -35px; }
-        .jssora07l:hover { background-position: -125px -35px; }
-        .jssora07r:hover { background-position: -185px -35px; }
-        .jssora07l.jssora07ldn { background-position: -245px -35px; }
-        .jssora07r.jssora07rdn { background-position: -305px -35px; }
-/* jssor slider thumbnail navigator skin 04 css *//*.jssort04 .p            (normal).jssort04 .p:hover      (normal mouseover).jssort04 .pav          (active).jssort04 .pav:hover    (active mouseover).jssort04 .pdn          (mousedown)*/.jssort04 .p {    position: absolute;    top: 0;    left: 0;    width: 62px;    height: 32px;}.jssort04 .t {    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    border: none;}.jssort04 .w, .jssort04 .pav:hover .w {    position: absolute;    width: 60px;    height: 30px;    border: #0099FF 1px solid;    box-sizing: content-box;}.jssort04 .pdn .w, .jssort04 .pav .w {    border-style: dashed;}.jssort04 .c {    position: absolute;    top: 0;    left: 0;    width: 62px;    height: 32px;    background-color: #000;    filter: alpha(opacity=45);    opacity: .45;    transition: opacity .6s;    -moz-transition: opacity .6s;    -webkit-transition: opacity .6s;    -o-transition: opacity .6s;}.jssort04 .p:hover .c, .jssort04 .pav .c {    filter: alpha(opacity=0);    opacity: 0;}.jssort04 .p:hover .c {    transition: none;    -moz-transition: none;    -webkit-transition: none;    -o-transition: none;}* html .jssort04 .w {    width /**/: 62px;    height /**/: 32px;}
+        .jssora05l { background-position: -10px -40px; }
+        .jssora05r { background-position: -70px -40px; }
+        .jssora05l:hover { background-position: -130px -40px; }
+        .jssora05r:hover { background-position: -190px -40px; }
+        .jssora05l.jssora05ldn { background-position: -250px -40px; }
+        .jssora05r.jssora05rdn { background-position: -310px -40px; }
+
+        /* jssor slider thumbnail navigator skin 01 css */
+        /*
+        .jssort01-99-66 .p            (normal)
+        .jssort01-99-66 .p:hover      (normal mouseover)
+        .jssort01-99-66 .p.pav        (active)
+        .jssort01-99-66 .p.pdn        (mousedown)
+        */
+        .jssort01-99-66 .p {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 99px;
+            height: 66px;
+        }
+        
+        .jssort01-99-66 .t {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .jssort01-99-66 .w {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .jssort01-99-66 .c {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 95px;
+            height: 62px;
+            border: #000 2px solid;
+            box-sizing: content-box;
+            background: url('public/kingtech/img/t01.png') -800px -800px no-repeat;
+            _background: none;
+        }
+        
+        .jssort01-99-66 .pav .c {
+            top: 2px;
+            _top: 0px;
+            left: 2px;
+            _left: 0px;
+            width: 95px;
+            height: 62px;
+            border: #000 0px solid;
+            _border: #fff 2px solid;
+            background-position: 50% 50%;
+        }
+        
+        .jssort01-99-66 .p:hover .c {
+            top: 0px;
+            left: 0px;
+            width: 97px;
+            height: 64px;
+            border: #fff 1px solid;
+            background-position: 50% 50%;
+        }
+        
+        .jssort01-99-66 .p.pdn .c {
+            background-position: 50% 50%;
+            width: 95px;
+            height: 62px;
+            border: #000 2px solid;
+        }
+        
+        * html .jssort01-99-66 .c, * html .jssort01-99-66 .pdn .c, * html .jssort01-99-66 .pav .c {
+            /* ie quirks mode adjust */
+            width /**/: 99px;
+            height /**/: 66px;
+        }
         
     </style>
 
 
-    <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:400px;overflow:hidden;visibility:hidden;background:url('public/kingtech/img/main_bg.jpg') 50% 50% no-repeat;">
+    <div id="jssor_1" style="position: relative; margin: 0 auto; top: 0px; left: 0px; width: 960px; height: 480px; overflow: hidden; visibility: hidden; background-color: #24262e;">
         <!-- Loading Screen -->
         <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
             <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block; top: 0px; left: 0px; width: 100%; height: 100%;"></div>
             <div style="position:absolute;display:block;background:url('public/kingtech/img/loading.gif') no-repeat center center;top:0px;left:0px;width:100%;height:100%;"></div>
         </div>
-        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 0px; width: 980px; height: 400px; overflow: hidden;">
-
-          @for($i=0;$i< count($slides);$i++)
-            <div data-p="172.50" style="display: none;">
-                <div style="position: absolute; top: 10px; left: 10px; width: 480px; height: 300px; font-family: Arial, Verdana; font-size: 12px; text-align: left;"><br />
-                    <span style="display: block; line-height: 1em; text-transform: uppercase; font-size: 52px; color: #FFFFFF;">{{$slides[$i]->name}}</span><br /><br /><br />
-                    <span style="display: block; line-height: 1.1em; font-size: 2.5em; color: #FFFFFF;">
-                                                        {{$slides[$i]->title}}
-                                                    
-                    </span><br />
-                    <span style="display: block; line-height: 1.1em; font-size: 1.5em; color: #FFFFFF;">
-                                                        {{$slides[$i]->content}}
-                                                    
-                    </span><br /><br />
-                    <a href="{{$slides[$i]->url}}">
-                        <img border="0" alt="auction slider" width="215" height="50" src="public/kingtech/img/find-out-more-bt.png" />
-                    </a>
-                </div>
-                <img style="position: absolute; top: 23px; left: 480px; width: 500px; height: 300px;" src="{{$convert->showImage($slides[$i]->image)}}" />
-                <img data-u="thumb" src="{{$convert->showImage($slides[$i]->image)}}" />
+        <div data-u="slides" style="cursor: default; position: relative; top: 0px; left: 240px; width: 720px; height: 480px; overflow: hidden;">
+        @foreach($slides as $slide)
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="{{$convert->showImage($slide->image)}}" />
+                <img data-u="thumb" src="{{$convert->showImage($slide->image)}}" />
             </div>
-          @endfor
-
-           
-            
+        @endforeach
+            <!-- <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/02.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-02.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/03.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-03.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/04.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-04.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/05.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-05.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/06.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-06.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/07.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-07.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/08.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-08.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/09.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-09.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/10.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-10.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/11.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-11.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/12.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-12.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/13.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-13.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/14.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-14.jpg" />
+            </div> -->
+        
         </div>
         <!-- Thumbnail Navigator -->
-        <div data-u="thumbnavigator" class="jssort04" style="position:absolute;left:0px;bottom:0px;width:980px;height:60px;" data-autocenter="1">
+        <div data-u="thumbnavigator" class="jssort01-99-66" style="position:absolute;left:0px;top:0px;width:240px;height:480px;" data-autocenter="2">
             <!-- Thumbnail Item Skin Begin -->
             <div data-u="slides" style="cursor: default;">
                 <div data-u="prototype" class="p">
@@ -116,15 +255,9 @@
             <!-- Thumbnail Item Skin End -->
         </div>
         <!-- Arrow Navigator -->
-        <span data-u="arrowleft" class="jssora07l" style="top:0px;left:8px;width:50px;height:50px;" data-autocenter="2"></span>
-        <span data-u="arrowright" class="jssora07r" id="next" style="top:0px;right:8px;width:50px;height:50px;" data-autocenter="2"></span>
+        <span data-u="arrowleft" class="jssora05l" style="top:158px;left:248px;width:40px;height:40px;" data-autocenter="2"></span>
+        <span data-u="arrowright" class="jssora05r" style="top:158px;right:8px;width:40px;height:40px;" data-autocenter="2"></span>
     </div>
     <script>
         jssor_1_slider_init();
-        function explode(){
-          document.getElementById("next").click();
-          //alert("kdfl");
-          setTimeout(explode, 5000);
-        }
-        setTimeout(explode, 5000);
     </script>

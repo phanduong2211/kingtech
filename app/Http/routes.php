@@ -323,6 +323,8 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 
 });
 
+///////////////////////////////////////////////////////Route Views pages
+
 Route::get("test",function(){
 	return View('fontend.test');
 });
