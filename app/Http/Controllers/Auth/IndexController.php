@@ -39,7 +39,6 @@ class IndexController extends Controller
         $productCateIDIndex = $this;
 
         
-        
         //return $productSelling;
         return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
     }

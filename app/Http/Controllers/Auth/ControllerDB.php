@@ -118,12 +118,12 @@ class ControllerDB extends BaseController
     }
     public function getNewProduct()
     {
-        $newproducts = Product::orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("status",0)->take(10)->get();
+        $newproducts = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("status",0)->take(10)->get();
             return $newproducts;
     }
     public function getProductIndex($cate_id)
     {
-        $productsIndex = Product::orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("cate_id",$cate_id)->get();
+        $productsIndex = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("cate_id",$cate_id)->get();
             return $productsIndex;
     }
     public function getAds()
@@ -133,17 +133,17 @@ class ControllerDB extends BaseController
     }
     public function getProductSelling()
     {
-            $productSelling = Product::orderby("sold","desc")->where("display",1)->take(10)->get();
+            $productSelling = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("sold","desc")->where("display",1)->take(10)->get();
             return $productSelling;
     }
     public function getProductDeal()
     {
-        $productdeal = Product::orderby("price","asc")->where("display",1)->paginate(30);
+        $productdeal = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->paginate(30);
             return $productdeal;
     }
     public function getProductWhereCategoryID($id,$name)
     {
-        $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
+        $products = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
             return $products;
     }
     public function getCategoryMenuIndex()
@@ -153,7 +153,7 @@ class ControllerDB extends BaseController
     }
     public function getProductRefer($id,$idproduct)
     {
-        $products = Product::orderby("price","asc")->where("display",1)->where("cate_id",$id)->where('id','!=',$idproduct)->take(10)->get();
+        $products = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("cate_id",$id)->where('id','!=',$idproduct)->take(10)->get();
             return $products;
     }
     public function getProductWhereID($id,$name)

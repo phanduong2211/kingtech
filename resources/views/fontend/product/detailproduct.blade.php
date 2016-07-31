@@ -149,6 +149,8 @@
             $(this).removeClass("active");
           });
           var content = (window.location.href.split('#')[1]);
+              content = ($(this).children().attr('href').split('#')[1]);
+          //alert(content);
           $("#"+content+"").css("display","block");
           $(this).addClass("active");
         });
