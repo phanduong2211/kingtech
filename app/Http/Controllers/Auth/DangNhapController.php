@@ -29,9 +29,10 @@ class DangNhapController extends Controller
         $branches = $th->getBranches();
         $agency = $th->getAgency();
         $support = $th->getSupport();
+        $productCateIDIndex = $this;
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
+        return View("fontend.signin.signin",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex));
         }
 	public function getUser()
 	{
@@ -71,6 +72,11 @@ class DangNhapController extends Controller
                 return Redirect::to("dang-nhap.html");
             }
         }
+        public function getNewsWhereName($name)
+    {
+        $th = new ControllerDB();
+        return $th->getNewsWhereName($name);
+    }
 }
 
 ?>

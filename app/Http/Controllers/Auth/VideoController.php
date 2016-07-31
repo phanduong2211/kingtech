@@ -27,11 +27,12 @@ class VideoController extends Controller
             $branches = $th->getBranches();
             $agency = $th->getAgency();
             $support = $th->getSupport();
+            $productCateIDIndex = $this;
             $convert = new \App\Http\Controllers\convertString();
 
             $videos = $th->getVideos();
 
-        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
+        return View("fontend.video.video",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"videos"=>$videos,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex));
         }
 
         public function getDetailVideo($id,$name)
@@ -52,6 +53,7 @@ class VideoController extends Controller
             $branches = $th->getBranches();
             $agency = $th->getAgency();
             $support = $th->getSupport();
+            $productCateIDIndex = $this;
             $convert = new \App\Http\Controllers\convertString();
 
             $video = $th->getVideo($id,$name);
@@ -60,8 +62,13 @@ class VideoController extends Controller
                 $videosRefer = $th->getVideosRefer($video[0]->id);
 
 
-        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
+        return View("fontend.video.detail",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"video"=>$video,"videosRefer"=>$videosRefer,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex));
         }
+        public function getNewsWhereName($name)
+    {
+        $th = new ControllerDB();
+        return $th->getNewsWhereName($name);
+    }
 }
 
 ?>

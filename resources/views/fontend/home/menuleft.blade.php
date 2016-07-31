@@ -30,7 +30,7 @@
     }
     #collapseOne li:hover .mis li
     {
-        background: white;
+        background: #F2F2F2;
     }
      #collapseOne li:hover .mis li a
      {
@@ -59,7 +59,6 @@
     }
     #collapseOne li
     {
-        line-height: 40px;
         padding-left: 10px;
     }
     #collapseOne li a
@@ -75,6 +74,10 @@
         text-decoration: none;
 
     }
+    .firt ul li
+    {
+        line-height: 22px;
+    }
 
 </style>
 
@@ -87,7 +90,7 @@
                                 @if($category->parent==0)
                                 
                                         <li class="lileve1">
-                                            <i class="fa fa-desktop"></i><a href="{{Asset('category/'.$category->id.'-'.$category->url)}}" title="{{$category->name}}">{{$category->name}}</a>
+                                            <i class="fa {{$category->icon}}"></i><a href="{{Asset('category/'.$category->id.'-'.$category->url)}}" title="{{$category->name}}">{{$category->name}}</a>
                                                 <ul>
                                                 
                                                     <li>
@@ -117,23 +120,32 @@
                                                     </li>                                                
                                                     <li class="mis">
                                                         <ul>
+
                                                             <li class="quantam">
                                                                 <a style="color:#3d8b40;text-transform: uppercase;" href="void::javascript()">Có thể bạn quan tâm.</a>
                                                                 <ul>
-                                                                        <li><a href="/tin-tuc/ung-dung-hay/tong-hop-nhung-ung-dung-dac-sac-tren-android-tv-box.html">Tổng hợp những ứng dụng đặc sắc nhất trên Android TV Box</a>
+                                                                    @foreach(($productCateIDIndex->getNewsWhereName($category->name)) as $news)
+                                                                        @foreach($NewsCate as $cate)
+                                                                        @if($cate->id==$news->cate_id)
+                                                                        <li><a href="{{Asset('')}}tin-tuc/{{$cate->url.'/'.$news->id.'-'.$news->url}}">{{$news->title}}</a>
                                                                         </li>
+                                                                        @endif
+                                                                        @endforeach
+                                                                    @endforeach
                                                                         
                                                                 </ul>
                                                             </li>
+                                                            @if($category->ads!="")
                                                             <li class="panel">
-                                                                <a href="http://beta.huyphu.com/android-tv-box-gia-re.p1.html"><img src="http://ad.huyphu.com/ckfinder/upload/images/BANER%20android%20box%20123(2).jpg" style="max-height: 120px; max-width: 330px" alt="Biến tv thường thành tv thông minh"></a>
+                                                                <a href="{{Asset('')}}category/{{$category->id.'-'.$category->url}}"><img src="{{$convert->showImage($category->ads)}}" style="max-height: 120px; max-width: 330px" alt="Biến tv thường thành tv thông minh"></a>
                                                             </li>
+                                                            @endif
                                                         </ul>
                                                     </li>
                                                     
 
                                                     <li>
-                                                        <a href="http://huyphu.com/tay-cam-choi-game.html"><img src="http://media.huyphu.com/medias/images/promotion%20huy%20phu%20banner/baner%20phu%20kien%20sua%20lai.png" style="width: 200px; height: 332px; " alt="Tay cầm chơi game cho điện thoại chinh hãng giá re"></a>
+                                                        <a href="void::javascript()"><img src="{{Asset('')}}public/images/baner phu kien sua lai.png" style="width: 200px; height: 332px; " alt="Tay cầm chơi game cho điện thoại chinh hãng giá re"></a>
                                                     </li>
                                             
                                                 </ul>

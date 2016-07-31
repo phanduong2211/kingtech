@@ -111,9 +111,9 @@ class ControllerDB extends BaseController
         $newsCate = News::where("cate_id",$id)->paginate(10);
         return $newsCate;
     }
-    public function getNewsReferWhereCateID($id)
+    public function getNewsReferWhereCateID($cateID,$id)
     {
-        $newsRefer = News::where("cate_id",$id)->get();
+        $newsRefer = News::where("cate_id",$cateID)->where("id","!=",$id)->get();
         return $newsRefer;
     }
     public function getNewProduct()
@@ -235,6 +235,11 @@ class ControllerDB extends BaseController
     {
         $page = Page::where("display",1)->where("url","=",$url)->get();
         return $page;
+    }
+    public function getNewsWhereName($name)
+    {
+        $newsCategory = News::where("display","=",1)->where("title","like","%".$name."%")->take(4)->get();
+        return $newsCategory;
     }
 
 }

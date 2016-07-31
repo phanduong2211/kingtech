@@ -38,7 +38,7 @@ class IndexController extends Controller
         $categoryMenuIndex = $th->getCategoryMenuIndex();
         $productCateIDIndex = $this;
 
-        
+       // return $this->getNewsWhereName("kingtech");
         //return $productSelling;
         return View("fontend.index",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news_cate"=>$news_cate,"news"=>$news,"newsHot"=>$newsHot,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"newproducts"=>$newproducts,"categoryMenuIndex"=>$categoryMenuIndex,"productCateIDIndex"=>$productCateIDIndex,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support));
     }
@@ -46,6 +46,11 @@ class IndexController extends Controller
     {
         $th = new ControllerDB();
         return $th->getProductIndex($cate_id);
+    }
+    public function getNewsWhereName($name)
+    {
+        $th = new ControllerDB();
+        return $th->getNewsWhereName($name);
     }
 }
 

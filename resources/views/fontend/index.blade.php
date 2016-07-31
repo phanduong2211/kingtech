@@ -61,7 +61,7 @@
                 @for($i=0;$i< count($newsHot);$i++)
                   @for($j=0;$j < count($NewsCate);$j++)
                     @if($newsHot[$i]->cate_id==$NewsCate[$j]->id)
-                    <li style="margin-top: 0px;"><a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
+                    <li style="margin-top: 0px;"><a href="{{Asset('')}}tin-tuc/{{$NewsCate[$j]->url}}/{{$newsHot[$i]->id.'-'.$newsHot[$i]->url}}" title="{{$newsHot[$i]->title}}">{{$newsHot[$i]->title}}</a></li>
                     @endif
                   @endfor
                 @endfor

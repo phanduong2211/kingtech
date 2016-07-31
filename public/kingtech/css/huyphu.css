@@ -4369,7 +4369,7 @@ li.item:hover .fade-ul {
 
     #collapseOne > li > ul {
         position: absolute;
-        background-color: white;
+        background-color: #F2F2F2;
         left: 215px;
         width: 751px;
         top: 42px;
@@ -4411,7 +4411,7 @@ li.item:hover .fade-ul {
 
                 #collapseOne > li > ul > li.mis > ul {
                     width: 100%;
-                    background-color: white;
+                    background-color: #F2F2F2;
                 }
 
                     #collapseOne > li > ul > li.mis > ul img {

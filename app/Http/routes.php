@@ -353,7 +353,7 @@ Route::group(['namespace' => 'Auth'], function()
 	Route::group(['prefix'=>'tin-tuc'],function(){
 		Route::get("/","NewsCateController@getNews");
 		Route::get("{id}-{name}","NewsCateController@getNewsOfCate");
-		Route::get("{catename}/{id}-{name}.html","NewsCateController@getDetailNews");
+		Route::get("{catename}/{id}-{name}","NewsCateController@getDetailNews");
 	});
 	Route::group(["prefix"=>"category"],function(){
 		Route::get("{id}-{name}","ProductsController@getCategory");
