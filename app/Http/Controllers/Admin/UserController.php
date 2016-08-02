@@ -9,8 +9,8 @@ class UserController extends BaseController
 {
 	public function index()
 	{
-		if(!$this->checkPermission('video/list')){
-			return $this->ErrorPermission('Video');
+		if(!$this->checkPermission('user/list')){
+			return $this->ErrorPermission('Người dùng');
 		}
 
 		$data=User::orderBy('id','desc')->get();

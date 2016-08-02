@@ -109,7 +109,7 @@
                               </ul>
                             @endif
                     </li>
-                    @elseif($menus[$i]->parent_id==0 && (strtolower($menus[$i]->name)=="ứng dụng" || strtolower($menus[$i]->name)=="Ứng dụng" || strtolower($menus[$i]->name)=="Kho ứng dụng" || strtolower($menus[$i]->name)=="kho ứng dụng"))
+                    @elseif($menus[$i]->parent_id==0 && (mb_strtolower($menus[$i]->name)=="ứng dụng" || mb_strtolower($menus[$i]->name)=="kho ứng dụng"))
                           @if(count($cateApps)>0)
                           <li class="menu_ungdung licap1">{{$menus[$i]->name}}
                             <aside class="menuungdung">
@@ -129,7 +129,7 @@
                             </aside>
                           </li>
                           @endif
-                    @elseif($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)!="hỗ trợ")
+                    @elseif($menus[$i]->parent_id==0 && mb_strtolower($menus[$i]->name)!="hỗ trợ")
                         <li class="licap1"><a href="{{Asset($menus[$i]->url)}}">{{$menus[$i]->name}}</a></li>                      
                     @endif
                   @endif

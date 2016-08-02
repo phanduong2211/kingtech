@@ -15,9 +15,13 @@ Route::get("admin/login","Admin\LoginController@index");
 Route::get("admin/logout","Admin\LoginController@logout");
 Route::post("admin/login","Admin\LoginController@login");
 
+
+Route::get("error/account","Admin\ErrorController@account");
+Route::get("error/permission","Admin\ErrorController@permission");
+
 Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],function(){
 	Route::get("/","IndexController@index");
-
+	Route::get("removecookie","IndexController@removecookie");
 	Route::group(['prefix'=>'category'],function(){
 		Route::get("/","CategoryController@index");
 		Route::get("create","CategoryController@create");

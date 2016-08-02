@@ -24,7 +24,7 @@ class AppCateController extends BaseController
 			return $this->ErrorPermission('Thêm loại ứng dụng');
 		}
 
-		$data=AppCate::select('id','parent','name')->where('parent',0)->get();
+		$data=AppCate::select('id','parent','name')->get();
 
 		return view("backend.appcate.create",array('data'=>$data));
 	}
@@ -65,7 +65,7 @@ class AppCateController extends BaseController
 		if($data['data']==null)
 			return redirect()->to('admin/app-category')->with(['message'=>'Loại ứng dụng không tồn tại.','message_type'=>'danger']);
 		if($data['data']->parent!=0){
-			$data['listMenu']=AppCate::select('id','name','parent')->where('id','<>',$id)->where('parent',0)->get();
+			$data['listMenu']=AppCate::select('id','name','parent')->where('id','<>',$id)->where('parent','<>',$id)->get();
 		}
 		return view('backend.appcate.update',$data);
 	}

@@ -4,19 +4,60 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Routing\Controller;
 use Auth;
+use App\AdminGroupRole;
+use Cookie;
 
 class BaseController extends Controller
 {
 	protected $idUser=0;
+	private $idGroupAdmin=0;
 	public function __construct(){
 		$user=Auth::user();
-		view()->share('admin_info',['id'=>$user->id,'name'=>$user->name,'last_visit'=>date('d/m/Y H:i',strtotime($user->last_visit))]);
+		if($user->block==1){
+			header('Location: '.url('error/account'));
+			exit();
+		}
+		
 		$this->idUser=$user->id;
+
+		
+		$this->idGroupAdmin=$user->group_id;
+
+		$role_data="";
+
+		if(!Cookie::has('role_data')){
+			$role_data=$this->getRoleData();
+		}else{
+			$role_data=Cookie::get('role_data');
+		}
+
+		view()->share('admin_info',['id'=>$user->id,'name'=>$user->name,'last_visit'=>date('d/m/Y H:i',strtotime($user->last_visit)),'role'=>$role_data]);
+
 		$user=null;
+		$role_data=null;
 	}
 	protected function checkPermission($key)
 	{
-		return true;
+		return AdminGroupRole::select('admin_group_role.id')->join('roles','roles.id','=','admin_group_role.role_id')->where('admin_group_role.group_id',$this->idGroupAdmin)->where('roles.key',$key)->count()>0;
+	}
+
+	private function getRoleData(){
+		$data = AdminGroupRole::select('roles.key')->join('roles','roles.id','=','admin_group_role.role_id')->where('admin_group_role.group_id',$this->idGroupAdmin)->get();
+		$text="[";
+		foreach($data as $item){
+			$text .= "{\"data\":\"" . $item->key . "\"},";
+		}
+
+		if ($text != "[")
+        {
+            $text = substr($text, 0,strlen($text)-1);
+        }
+
+        $text .= "]";
+
+        Cookie::queue('role_data', $text,60);
+
+        return $text;
 	}
 
 	protected function ErrorPermission($page=''){

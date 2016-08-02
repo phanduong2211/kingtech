@@ -78,7 +78,7 @@ $(document).ready(function () {
         getConfirm("Bạn có chắc muốn xóa dữ liệu cookie của trang web này?", function (result) {
             if (result) {
                 ajaxrun.show();
-                $.get(base_url + "Login/RemoveCookie", function (r) {
+                $.get(base_url + "/removecookie", function (r) {
                     if (r === "ok") {
                         window.location.reload();
                     }

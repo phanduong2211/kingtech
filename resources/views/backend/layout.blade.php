@@ -26,7 +26,8 @@
 
     <div id="wrapper" class="clearfix">
         <div id="userrolesdata" style="display:none"><!--role data-->
-                </div>
+            {{$admin_info['role']}}
+        </div>
         <!--col left-->
        <div id="col-left">
             <header id="left_header">
@@ -62,21 +63,21 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="list">
+                            <li data-role="product/list" class="trole" data-action="list">
                                 <a href="{{url('admin/product')}}">Sản phẩm</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="new"> 
+                            <li data-role="product/create" class="trole" data-action="new"> 
                                 <a href="{{url('admin/product/create')}}" >Thêm mới</a>
                             </li>
 
-                            <li data-role="admin/category" class="trole" data-action="category"> 
+                            <li data-role="category/list" class="trole" data-action="category"> 
                                 <a href="{{url('admin/category')}}" >Loại sản phẩm</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li id="menu_menu">
+                    <li id="menu_menu" data-role="menu/list" class="trole">
                         <a href="{{url('admin/menu')}}">
                             <i class="fa fa-list"></i> <span>Quản lý menu</span>
                         </a>
@@ -88,33 +89,33 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="list">
+                            <li data-role="news/list" class="trole" data-action="list">
                                 <a href="{{url('admin/news')}}">Tin tức</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="new"> 
+                            <li data-role="news/create" class="trole" data-action="new"> 
                                 <a href="{{url('admin/news/create')}}" >Thêm mới</a>
                             </li>
 
-                            <li data-role="admin/category" class="trole" data-action="category"> 
+                            <li data-role="newscate/list" class="trole" data-action="category"> 
                                 <a href="{{url('admin/news-category')}}" >Loại tin tức</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li id="menu_page">
+                    <li id="menu_page" data-role="page/list" class="trole">
                         <a href="{{url('admin/page')}}">
                             <i class="fa fa-bookmark"></i> <span>Quản lý trang</span>
                         </a>
                     </li>
 
-                    <li id="menu_slide">
+                    <li id="menu_slide" data-role="slide/list" class="trole">
                         <a href="{{url('admin/slide')}}">
                             <i class="fa fa-picture-o"></i> <span>Quản lý slide</span>
                         </a>
                     </li>
 
-                    <li id="menu_ad">
+                    <li id="menu_ad" data-role="ad/list" class="trole">
                         <a href="{{url('admin/ad')}}">
                             <i class="fa fa-bullhorn"></i> <span>Quản lý quảng cáo</span>
                         </a>
@@ -126,21 +127,21 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="list">
+                            <li data-role="app/list" class="trole" data-action="list">
                                 <a href="{{url('admin/app')}}">Ứng dụng</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="new"> 
+                            <li data-role="app/create" class="trole" data-action="new"> 
                                 <a href="{{url('admin/app/create')}}" >Thêm mới</a>
                             </li>
 
-                            <li data-role="admin/category" class="trole" data-action="category"> 
+                            <li data-role="appcate/list" class="trole" data-action="category"> 
                                 <a href="{{url('admin/app-category')}}" >Loại ứng dụng</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li id="menu_video">
+                    <li id="menu_video" data-role="video/list" class="trole">
                         <a href="{{url('admin/video')}}">
                             <i class="fa fa-youtube-play"></i> <span>Quản lý video</span>
                         </a>
@@ -152,27 +153,27 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="list">
+                            <li data-role="branch/list" class="trole" data-action="list">
                                 <a href="{{url('admin/branch')}}">Chi nhánh</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="new"> 
+                            <li data-role="branch/create" class="trole" data-action="new"> 
                                 <a href="{{url('admin/branch/create')}}" >Thêm mới</a>
                             </li>
 
-                            <li data-role="admin/category" class="trole" data-action="agency"> 
+                            <li data-role="agency/list" class="trole" data-action="agency"> 
                                 <a href="{{url('admin/agency')}}" >Đại lý</a>
                             </li>
                         </ul>
                     </li>
 
-                    <li id="menu_support">
+                    <li id="menu_support" data-role="support/list" class="trole">
                         <a href="{{url('admin/support')}}">
                             <i class="fa fa-support"></i> <span>Quản lý hỗ trợ</span>
                         </a>
                     </li>
 
-                    <li id="menu_tag">
+                    <li id="menu_tag" data-role="tag/list" class="trole">
                         <a href="{{url('admin/tag')}}">
                             <i class="fa fa-tag"></i> <span>Quản lý tag</span>
                         </a>
@@ -184,12 +185,16 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="list">
+                            <li data-role="admin/list" class="trole" data-action="list">
                                 <a href="{{url('admin/admin')}}">Danh sách</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="new"> 
+                            <li data-role="admin/create" class="trole" data-action="new"> 
                                 <a href="{{url('admin/admin/create')}}" >Thêm mới</a>
+                            </li>
+
+                            <li data-role="groupadmin/create" class="trole" data-action="group"> 
+                                <a href="{{url('admin/group-admin')}}" >Nhóm Adminn</a>
                             </li>
                         </ul>
                     </li>
@@ -216,11 +221,11 @@
                              <small class="fa fa-chevron-down"></small>
                         </a>
                         <ul>
-                            <li data-role="user/list" class="trole" data-action="info">
+                            <li data-role="info/list" class="trole" data-action="info">
                                 <a href="{{url('admin/info')}}">Thông tin website</a>
                             </li>
 
-                            <li data-role="user/create" class="trole" data-action="setting"> 
+                            <li data-role="info/list" class="trole" data-action="setting"> 
                                 <a href="{{url('admin/setting')}}" >Cấu hình website</a>
                             </li>
                         </ul>
@@ -360,7 +365,7 @@
         var base_url = "{{url('admin')}}";
     </script>
     <script src="{{Asset("public/js/jquery.min.js")}}" type="text/javascript"></script>
-    <!--<script src="{{Asset("public/js/t_role.js")}}" type="text/javascript"></script>-->
+    <script src="{{Asset("public/js/t_role.js")}}" type="text/javascript"></script>
     <script src="{{Asset("public/js/bootstrap.min.js")}}" type="text/javascript"></script>
     <script src="{{Asset("public/js/js.js")}}" type="text/javascript"></script>
     <script src="{{Asset("public/js/menu.js")}}" type="text/javascript"></script>

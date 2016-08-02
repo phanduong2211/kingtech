@@ -48,6 +48,10 @@ class CategoryController extends BaseController
 		$category->name=trim($request->name);
 		if($request->icon=="khac"){
 			$category->icon=trim($request->iconkhac);
+			if(strpos($category->icon,"fa-")===0){
+			}else{
+				$category->icon="fa-".$category->icon;
+			}
 		}else{
 			$category->icon=$request->icon;
 		}
@@ -98,6 +102,10 @@ class CategoryController extends BaseController
 		$category->name=trim($request->name);
 		if($request->icon=="khac"){
 			$category->icon=trim($request->iconkhac);
+			if(strpos($category->icon,"fa-")===0){
+			}else{
+				$category->icon="fa-".$category->icon;
+			}
 		}else{
 			$category->icon=$request->icon;
 		}

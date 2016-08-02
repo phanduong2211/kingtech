@@ -31,13 +31,13 @@
         <div class="col-sm-6">
             <div class="row">
               <div class="col-sm-4">
-                <label>Url:</label>
+                <label>Link:</label>
               </div>
               <div class="col-sm-8 required">
                 <span class="red">*</span>
                 <input type="text" name="url" value="{{$data->url}}" class="form-control" />
                 <span class="desc">
-                  Url khi click vào tag
+                  Link khi click vào tag sẽ chuyển đến
                 </span>
               </div>
             </div>

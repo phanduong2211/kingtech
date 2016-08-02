@@ -59,7 +59,7 @@
                   </th>
                   <th class="tsort" width="80px">Sắp Xếp</th>
                   <th width="250px">Tên</th>
-                  <th>Url</th>
+                  <th>Link</th>
                   <th>Hiện thị</th>
               </tr>
           </thead>

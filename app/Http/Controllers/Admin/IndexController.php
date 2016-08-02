@@ -9,6 +9,11 @@ class IndexController extends BaseController
 	{
 		return view("backend.index");
 	}
+
+	public function removecookie(){
+		\Cookie::queue(\Cookie::forget('role_data'));
+		return "ok";
+	}
 }
 
 ?>

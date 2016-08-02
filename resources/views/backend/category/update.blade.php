@@ -337,6 +337,22 @@ function showImage($path){
       $("#iconkk").prop('checked',true);
     }
 
+    var isCheckKhac=false;
+
+    $("#frm input[name='icon']").change(function(){
+      if(this.value=="khac"){
+        $(this).parent().find("input[type='text']").removeClass('disabled').removeAttr('disabled').focus();
+        $('#ttttt').show();
+        isCheckKhac=true;
+      }else{
+        if(isCheckKhac){
+          $(this).parent().find("input[type='text']").addClass('disabled').attr('disabled','disabled');
+          $('#ttttt').hide();
+          isCheckKhac=false;
+        }
+      }
+    });
+
     $("#frm").kiemtra([
         {
           'name':'name',
