@@ -2,7 +2,7 @@
             <div class="box_trungtam_title">
               <label></label>
             </div>
-            <aside>
+            <aside style="padding-left:100px">
               <ul>
               @foreach($website as $support)
                 @if($support->name=="sdt_mua_hang_tu_xa")

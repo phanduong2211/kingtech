@@ -17,7 +17,7 @@
       </div>
       <div class="ungdungdetails fl_top30">
       	<div class="ungdung_img">
-        	<figure><img src="{{Asset('')}}public/kingtech/images/apps/{{$detailapp[0]->image}}" alt="{{$detailapp[0]->name}}"></figure>
+        	<figure><img src="{{$convert->showImage($detailapp[0]->image)}}" alt="{{$detailapp[0]->name}}"></figure>
             <aside>
             	<h2>{{$detailapp[0]->name}}</h2>
                 <table width="100%" border="1">

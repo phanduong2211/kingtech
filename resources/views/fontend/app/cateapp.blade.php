@@ -26,7 +26,7 @@
         <ul>
         	@foreach($apps as $app)
                 <li>
-	            <figure><a href="{{Asset('')}}app/detail/{{$app->id.'-'.$app->url}}" title="{{$app->name}}"><img src="{{Asset('')}}/public/kingtech/images/apps/{{$app->image}}" alt="{{$app->name}}"></a></figure>
+	            <figure><a href="{{Asset('')}}app/detail/{{$app->id.'-'.$app->url}}" title="{{$app->name}}"><img src="{{$convert->showImage($app->image)}}" alt="{{$app->name}}"></a></figure>
 	            <h2><a href="{{Asset('')}}app/detail/{{$app->id.'-'.$app->url}}" title="{{$app->name}}">{{$app->name}}</a></h2>
 	            <span>{{$app->developers}}</span>
 	            <label><a href="{{$app->app_url}}" target="_parent" title="{{$app->name}}" class="label-info">Tải về</a></label>

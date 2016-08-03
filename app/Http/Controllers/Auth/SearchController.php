@@ -24,6 +24,7 @@ class SearchController extends Controller
         $ads = $th->getAds();
         $productSelling = $th->getProductSelling();
         $cateApps = $th->getCateApp();
+        $NewsCate = $th->getNews_cate();
         $tags = $th->getTags();
         $branches = $th->getBranches();
         $agency = $th->getAgency();
@@ -31,7 +32,7 @@ class SearchController extends Controller
         $productCateIDIndex = $this;
         $convert = new \App\Http\Controllers\convertString();
 
-        return View("fontend.product.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"txtSearch"=>$txtSearch,"productCateIDIndex"=>$productCateIDIndex));
+        return View("fontend.product.resultsearch",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"products"=>$products,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"txtSearch"=>$txtSearch,"productCateIDIndex"=>$productCateIDIndex,"NewsCate"=>$NewsCate));
 	}
         public function getNewsWhereName($name)
     {
