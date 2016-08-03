@@ -48,7 +48,7 @@ class SettingController extends BaseController
 
 		$info->where('name','background_footer')->update(array('content'=>Input::get('background_footer')));
 
-		$info->where('name','background_menu')->update(array('content'=>Input::get('background_menu')));
+		$info->where('name','background_body')->update(array('content'=>Input::get('background_body')));
 
 		return redirect('admin/setting')->with(['message'=>'Cập nhật thành công.']);
 		

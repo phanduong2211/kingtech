@@ -457,8 +457,8 @@ class CreateUpdate5Table extends Migration
      */
     public function down()
     {
-        Schema::table('user', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('user', function (Blueprint $table) {
+        //     //
+        // });
     }
 }

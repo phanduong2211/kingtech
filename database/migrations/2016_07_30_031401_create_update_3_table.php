@@ -48,6 +48,6 @@ class CreateUpdate3Table extends Migration
      */
     public function down()
     {
-        Schema::drop('User');
+        //Schema::drop('User');
     }
 }

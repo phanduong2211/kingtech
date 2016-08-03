@@ -24,8 +24,8 @@ class CreateUpdate2Table extends Migration
      */
     public function down()
     {
-        Schema::table('aa', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('aa', function (Blueprint $table) {
+        //     //
+        // });
     }
 }
