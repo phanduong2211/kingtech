@@ -49,6 +49,7 @@ class DaiLyController extends Controller
             $cateApps = $th->getCateApp();
             $tags = $th->getTags();
             $agency = $th->getAgency();
+            $branches = $th->getBranches();
             $support = $th->getSupport();
             $productCateIDIndex = $this;
             $convert = new \App\Http\Controllers\convertString();
@@ -58,7 +59,9 @@ class DaiLyController extends Controller
             if(count($agencys)>0)
                 $branche = $th->getBranche($agencys[0]->branch_id);
 
-        return View("fontend.branches.agencys",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"agencys"=>$agencys,"convert"=>$convert,"branche"=>$branche,"tags"=>$tags,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex));
+            //return $branche;
+
+        return View("fontend.branches.agencys",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"news"=>$news,"NewsCate"=>$NewsCate,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"agencys"=>$agencys,"convert"=>$convert,"branche"=>$branche,"tags"=>$tags,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex,"branches"=>$branches));
         }
         public function getNewsWhereName($name)
     {

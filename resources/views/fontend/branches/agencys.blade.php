@@ -1,7 +1,7 @@
 @extends('fontend.layout')
 @section("title")
 @if(count($branche)>0)
-<title>Danh sách đại lý tại {{{{$branche[0]->city_name}}}}- kingtech.com.vn</title>
+<title>Danh sách đại lý tại {{$branche[0]->city_name}}- kingtech.com.vn</title>
 @else
           <title>Không tim thấy - kingtech.com.vn</title>
 @endif

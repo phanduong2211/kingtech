@@ -70,9 +70,9 @@
                 	<label>Miền Trung</label>
                 </aside>
                 <ul>
-                    <?php $i=0;?>
+                    <?php $i=1;?>
                 @foreach($branches as $branch)
-                @if($branch->zone==3)
+                @if($branch->zone==2)
                     <li>
 	                    <label>{{$i}}.</label>
 	                    <span>
@@ -87,13 +87,13 @@
                 	<label>Miền Nam</label>
                 </aside>
                 <ul>
-                   <?php $i=0;?>
+                   <?php $i=1;?>
                 @foreach($branches as $branch)
-                @if($branch->zone==2)
+                @if($branch->zone==3)
                     <li>
 	                    <label>{{$i}}.</label>
 	                    <span>
-	                    <a href="{{Asset('')}}dai-ly-phan-phoi/{{$convert->convertString($branch->name)}}.html" title="Đại lý phân phối tại {{$branch->name}}">{{$branch->name}} ({{$i}})</a></span>
+	                    <a href="{{Asset('')}}dai-ly-phan-phoi/{{$convert->convertString($branch->name)}}.html" title="Đại lý phân phối tại {{$branch->name}}">{{$branch->name}}</a></span>
 	                </li>
 	                <?php $i++;?>
 				 @endif
