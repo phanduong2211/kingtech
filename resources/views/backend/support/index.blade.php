@@ -27,7 +27,7 @@
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/support/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} đại lý?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="support/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>

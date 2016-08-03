@@ -194,7 +194,7 @@
                             </li>
 
                             <li data-role="groupadmin/create" class="trole" data-action="group"> 
-                                <a href="{{url('admin/group-admin')}}" >Nhóm Adminn</a>
+                                <a href="{{url('admin/group-admin')}}" >Nhóm Admin</a>
                             </li>
                         </ul>
                     </li>

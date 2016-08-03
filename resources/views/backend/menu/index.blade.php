@@ -19,8 +19,8 @@
     <div id="ttable" class="ttable">
     <ul class="subsubsub">
         <li><a data-filter="all" data-group-filter="a" data-subsubsub="true" href="#" class="current">Tất cả <span class="count"></span></a>|</li>
-        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showmenutop"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị ngoài trang chủ <span class="count"></span></a>|</li>
-        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showfooter"}' data-group-filter="a" data-subsubsub="true" href="#">Ẩn trên menu <span class="count"></span></a></li>
+        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showmenutop"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị menu <span class="count"></span></a>|</li>
+        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showfooter"}' data-group-filter="a" data-subsubsub="true" href="#">Hiển thị dưới footer <span class="count"></span></a></li>
        
     </ul>
     <!--.subsubsub-->

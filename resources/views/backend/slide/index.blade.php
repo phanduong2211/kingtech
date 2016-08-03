@@ -36,7 +36,7 @@ function showImage($path){
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/slide/deletes')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} trang?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
                  
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="slide/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>

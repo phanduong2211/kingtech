@@ -9,4 +9,6 @@ class GroupAdmin extends Model
     protected $table='group_admins';
 
     protected $fillable = ['name'];
+
+    public $timestamps=false;
 }

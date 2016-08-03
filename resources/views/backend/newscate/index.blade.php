@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
 <h2>Loại tin tức</h2>
-<h3 class="trole" data-role="agency/create">
+<h3 class="trole" data-role="newscate/create">
         <a href="{{url('admin/news-category/create')}}">Thêm Mới</a>
     </h3>
 @endsection
@@ -28,7 +28,7 @@
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{{url('admin/news-category/deletes')}}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} loại tin tức?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="newscate/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>

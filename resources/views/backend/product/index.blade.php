@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
 <h2>Sản phẩm</h2>
-<h3 class="trole" data-role="menu/create">
+<h3 class="trole" data-role="product/create">
         <a href="{{url('admin/product/create')}}">Thêm Mới</a>
     </h3>
 @endsection

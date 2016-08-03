@@ -274,6 +274,21 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 	
 	});
 
+	Route::group(['prefix'=>'group-admin'],function(){
+		Route::get("/","GroupAdminController@index");
+		Route::get("create","GroupAdminController@create");
+		Route::post("create","GroupAdminController@postCreate");
+
+		Route::get("{id}","GroupAdminController@update")->where('id','[0-9]+');
+		Route::post("update","GroupAdminController@postUpdate");
+
+		Route::post("delete","GroupAdminController@postDelete");
+		Route::post("deletes","GroupAdminController@postDeletes");
+
+		Route::post("display","GroupAdminController@display");
+
+	});
+
 	Route::get("uploadimage","UploadController@upload");
     Route::post("uploadimage","UploadController@upload");
     Route::post("ajax/loadfolder","UploadController@loadfolder");
@@ -297,6 +312,11 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 		Route::post("banhang","InfoController@banhang");
 		Route::post("changefavicon","InfoController@changefavicon");
 		Route::post("changelogo","InfoController@changelogo");
+	});
+
+	Route::group(['prefix'=>'setting'],function(){
+		Route::get("/","SettingController@index");
+		Route::post("update","SettingController@update");
 	});
 
     Route::group(['prefix'=>'tag'],function(){

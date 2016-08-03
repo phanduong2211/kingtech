@@ -41,15 +41,27 @@ class LoginController extends Controller
 				}catch(\Exception $e){
 
 				}
+				$this->removecookie();
 				$redirect=(Input::exists("redirect"))?('?redirect='.Input::get("redirect")):'';
 			   return redirect('admin'.$redirect);
 			}
 			return redirect()->to('admin/login')->with(['message'=>'Tài khoản hoặc mật khẩu sai']);
 	}
 
+	private function removecookie(){
+		try{
+			if(\Cookie::has('role_data'))
+				\Cookie::queue(\Cookie::forget('role_data'));
+		}catch(\Exception $e){
+
+		}
+	}
+
 	public function logout()
 	{
 		Auth::logout();
+		$this->removecookie();
+		
 		return redirect('admin/login');
 	}	
 }

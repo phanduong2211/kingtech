@@ -3,7 +3,7 @@
 
 @section('breadcrumb')
 <h2>Ứng dụng</h2>
-<h3 class="trole" data-role="news/create">
+<h3 class="trole" data-role="app/create">
         <a href="{{url('admin/app/create')}}">Thêm Mới</a>
     </h3>
 @endsection
@@ -36,9 +36,9 @@ function showImage($path){
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/app/deletes')}}","ẩn":"{{url('admin/app/hide')}}","hiện thị":"{{url('admin/app/show')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} ứng dụng?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="ẩn" data-success="hide" class="trole" data-role="user/block">Ẩn</option>
-                    <option value="hiện thị" data-success="show" class="trole" data-role="user/block">Hiển thị</option>
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="ẩn" data-success="hide">Ẩn</option>
+                    <option value="hiện thị" data-success="show">Hiển thị</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="app/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>

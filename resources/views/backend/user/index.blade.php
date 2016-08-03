@@ -219,6 +219,15 @@ var _token="{{csrf_token()}}";
             });
 
 
+     if ($("#bulk-action-selector-top option").size() == 1) {
+                $("#ttable table .ascheckbox").addClass("disabled");
+            } else {
+                if (!checkRole("user/block")) {
+                    $("#ttable table .ascheckbox.checkboxblock").addClass("disabled");
+                }
+            }
+
+
             new TTable($("#ttable"), {
                 "resetpass": function (message, target, data, value,result) {
                     getAlert(message);

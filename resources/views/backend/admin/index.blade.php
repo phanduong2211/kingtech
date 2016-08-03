@@ -29,9 +29,9 @@
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/admin/deletes')}}","Khóa":"{{url('admin/admin/blocks')}}","Mở Khóa":"{{url('admin/admin/unlocks')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} admin?" data-success-type="option" data-ajax-value="ischeck">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="Khóa" data-success="blocks" class="trole" data-role="user/block">Khóa</option>
-                    <option value="Mở Khóa" data-success="unlocks" class="trole" data-role="user/block">Mở Khóa</option>
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="Khóa" data-success="blocks" class="trole" data-role="admin/block">Khóa</option>
+                    <option value="Mở Khóa" data-success="unlocks" class="trole" data-role="admin/block">Mở Khóa</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="admin/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>
@@ -91,11 +91,11 @@
                     <td>
                         <span>{{$item->username}}</span>
                         <div class="row-action">
-                            <span class="trole" data-role="user/update"><a href="{{url('admin/admin/'.$item->id)}}" title="Sửa thông tin">Sửa</a>
+                            <span class="trole" data-role="admin/update"><a href="{{url('admin/admin/'.$item->id)}}" title="Sửa thông tin">Sửa</a>
                                 <small>| </small>
                             </span>
                            <?php if($item->id!=$IdUser){ ?>
-                            <span class="delete trole" data-role="user/delete">
+                            <span class="delete trole" data-role="admin/delete">
                                 <a class="event" 
                                         data-ajax="true" 
                                         data-href="{{url('admin/admin/delete')}}"
@@ -107,7 +107,7 @@
                                 <small>| </small>
                             </span>
                            <?php } ?>
-                                <span class="trole" data-role="user/reset"><a class="event"
+                                <span class="trole" data-role="admin/reset"><a class="event"
                                         data-ajax="true" 
                                          data-href="{{url('admin/admin/reset')}}"
                                          data-value="{{$item->id}}" 
@@ -233,6 +233,14 @@ var _token="{{csrf_token()}}";
 
                 return false;
             });
+
+            if ($("#bulk-action-selector-top option").size() == 1) {
+                $("#ttable table .ascheckbox").addClass("disabled");
+            } else {
+                if (!checkRole("admin/block")) {
+                    $("#ttable table .ascheckbox.checkboxblock").addClass("disabled");
+                }
+            }
 
 
             new TTable($("#ttable"), {

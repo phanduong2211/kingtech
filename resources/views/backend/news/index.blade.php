@@ -36,9 +36,9 @@ function showImage($path){
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='{"Xóa":"{{url('admin/news/deletes')}}","đặt là tin tiêu điểm":"{{url('admin/news/hots')}}","ẩn":"{{url('admin/news/displays')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} tin tức?" data-success-type="option">
                     <option value="-1" selected="selected">- Hành động -</option>
-                    <option value="đặt là tin tiêu điểm" data-success="hots" class="trole" data-role="user/block">Là tin tiêu điểm</option>
-                    <option value="ẩn" data-success="displays" class="trole" data-role="user/block">Ẩn</option>
-                    <option value="Xóa" data-success-removes="true" class="trole" data-role="user/delete">Xóa</option>
+                    <option value="đặt là tin tiêu điểm" data-success="hots">Là tin tiêu điểm</option>
+                    <option value="ẩn" data-success="displays" class="trole">Ẩn</option>
+                    <option value="Xóa" data-success-removes="true" class="trole" data-role="news/delete">Xóa</option>
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>
