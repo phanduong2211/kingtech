@@ -100,7 +100,7 @@
 
                                                             </li>
                                                             <li>
-                                                                <a style="color:#3d8b40;text-transform: uppercase;" href="void::javascript()">Hãng sản xuất</a>
+                                                                <a style="color:#3d8b40;text-transform: uppercase;" href="void::javascript()">Hãng mục</a>
                                                                 <ul>
                                                                 @foreach($categorys as $childcate)
                                                                 @if($category->id==$childcate->parent)
@@ -122,7 +122,7 @@
                                                         <ul>
 
                                                             <li class="quantam">
-                                                                <a style="color:#3d8b40;text-transform: uppercase;" href="void::javascript()">Có thể bạn quan tâm.</a>
+                                                                <a style="color:#3d8b40;text-transform: uppercase;" href="void::javascript()">Tin liên quan</a>
                                                                 <ul>
                                                                     @foreach(($productCateIDIndex->getNewsWhereName($category->name)) as $news)
                                                                         @foreach($NewsCate as $cate)

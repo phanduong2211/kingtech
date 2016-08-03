@@ -37,7 +37,7 @@
             <big>
               <div style="mso-element:para-border-div;border:none;    border-bottom:double windowtext 2.25pt;
                 padding:0in 0in 1.0pt 0in">
-                {{$detailnews[0]->title}}
+                {!!$detailnews[0]->content!!}
               </div>
             @endif
             </big>
