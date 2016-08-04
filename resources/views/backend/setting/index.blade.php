@@ -62,15 +62,60 @@
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-4">
-					<label>Màu footer:</label>
+					<label>Màu nền menu:</label>
 				</div>
 				<div class="col-md-8 required">
 					<span class="red">*</span>
-					<input type="color" name="background_footer" style="height:50px;width:100px" value="{{$data['background_footer']}}" />
+					<input type="color" name="background_color_menu" style="height:50px;width:100px" value="{{$data['background_color_menu']}}" />
 					<span class="desc">.</span>
 				</div>
 			</div><br />
 		</div>
+		
+	</div>
+
+	<div class="row margin">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Màu menu hover:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="color" name="background_hover_menu" style="height:50px;width:100px" value="{{$data['background_hover_menu']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Màu header:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="color" name="background_header" style="height:50px;width:100px" value="{{$data['background_header']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+		
+	</div>
+
+	<div class="row margin">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Màu header top:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="color" name="background_header_top" style="height:50px;width:100px" value="{{$data['background_header_top']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+		
 	</div>
 
 	<div class="row margin">
@@ -82,7 +127,19 @@
 				</div>
 				<div class="col-md-8 required">
 					<span class="red">*</span>
-					<input type="color" name="background_body" style="height:100px;width:100px" value="{{$data['background_body']=='#fff'?'#ffffff':$data['background_body']}}" />
+					<input type="color" name="background_body" style="height:50px;width:100px" value="{{$data['background_body']=='#fff'?'#ffffff':$data['background_body']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Màu footer:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="color" name="background_footer" style="height:50px;width:100px" value="{{$data['background_footer']}}" />
 					<span class="desc">.</span>
 				</div>
 			</div><br />

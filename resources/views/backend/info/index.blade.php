@@ -245,6 +245,24 @@ function showImage($path){
 				</div>
 			</div><br />
 		</div>
+
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Email mua hàng từ xa:</label>
+				</div>
+				<div class="col-md-8 required">
+					<div class="red">*</div>
+					<input type="text" class="form-control" name="email_mua_hang_tu_xa" value="{{$data['email_mua_hang_tu_xa']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+
+		
+	</div>
+
+	<div class="row margin">
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-4">
@@ -257,9 +275,23 @@ function showImage($path){
 				</div>
 			</div><br />
 		</div>
+		<div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Email trung tâm bảo hành:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="text" class="form-control" name="email_trung_tam_bao_hanh" value="{{$data['email_trung_tam_bao_hanh']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+		
 	</div>
 
-	<div class="row margin">
+	<div class="row">
+		
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-4">
@@ -270,6 +302,15 @@ function showImage($path){
 					<input type="text" class="form-control" name="sdt_dai_ly" value="{{$data['sdt_dai_ly']}}" />
 					<span class="desc">.</span>
 				</div>
+
+				<div class="col-md-4">
+					<label>Email đại lý:</label>
+				</div>
+				<div class="col-md-8 required">
+					<div class="red">*</div>
+					<input type="text" class="form-control" name="email_dai_ly" value="{{$data['email_dai_ly']}}" />
+					<span class="desc">.</span>
+				</div>
 			</div><br />
 		</div>
 		<div class="col-md-6">
@@ -278,11 +319,12 @@ function showImage($path){
 					<label>Địa chỉ:</label>
 				</div>
 				<div class="col-md-8">
-					<textarea rows="4" class="form-control" name="address">{{str_replace("<br>","\n",$data['address'])}}</textarea>
+					<textarea style="height:106px" class="form-control" name="address">{{str_replace("<br>","\n",$data['address'])}}</textarea>
 					<span class="desc">Có thể viết mã HTML.</span>
 				</div>
 			</div><br />
 		</div>
+		
 	</div>
 
 	<div class="row margin">
@@ -441,6 +483,15 @@ $(document).ready(function(){
 			'trong':true
 		},{
 			'name':'sdt_dai_ly',
+			'trong':true
+		},{
+			'name':'email_mua_hang_tu_xa',
+			'trong':true
+		},{
+			'name':'email_trung_tam_bao_hanh',
+			'trong':true
+		},{
+			'name':'email_dai_ly',
 			'trong':true
 		}
 

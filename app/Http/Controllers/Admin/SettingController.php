@@ -12,7 +12,16 @@ class SettingController extends BaseController
 			return $this->ErrorPermission('Cấu hình website');
 		}
 
-		$info=Website::where('name','background_image')->orWhere('name','background_color')->orWhere('name','background_menu')->orWhere('name','background_footer')->orWhere('name','background_body')->get();
+		$info=Website::where('name','background_image')
+		->orWhere('name','background_color')
+		->orWhere('name','background_menu')
+		->orWhere('name','background_footer')
+		->orWhere('name','background_body')
+		->orWhere('name','background_color_menu')
+		->orWhere('name','background_header')
+		->orWhere('name','background_hover_menu')
+		->orWhere('name','background_header_top')
+		->get();
 		$data=array();
 		foreach ($info as $key => $value) {
 			$data[$value->name]=$value->content;
@@ -49,6 +58,14 @@ class SettingController extends BaseController
 		$info->where('name','background_footer')->update(array('content'=>Input::get('background_footer')));
 
 		$info->where('name','background_body')->update(array('content'=>Input::get('background_body')));
+
+		$info->where('name','background_color_menu')->update(array('content'=>Input::get('background_color_menu')));
+
+		$info->where('name','background_header')->update(array('content'=>Input::get('background_header')));
+
+		$info->where('name','background_hover_menu')->update(array('content'=>Input::get('background_hover_menu')));
+
+		$info->where('name','background_header_top')->update(array('content'=>Input::get('background_header_top')));
 
 		return redirect('admin/setting')->with(['message'=>'Cập nhật thành công.']);
 		

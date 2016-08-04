@@ -83,6 +83,12 @@ class InfoController extends BaseController
 		$info->where('name','sdt_dai_ly')->update(array('content'=>str_replace("\"", "'", trim(Input::get('sdt_dai_ly')))));
 		$info->where('name','sdt_mua_hang_tu_xa')->update(array('content'=>trim(Input::get('sdt_mua_hang_tu_xa'))));
 
+		$info->where('name','email_dai_ly')->update(array('content'=>trim(Input::get('email_dai_ly'))));
+
+		$info->where('name','email_trung_tam_bao_hanh')->update(array('content'=>trim(Input::get('email_trung_tam_bao_hanh'))));
+
+		$info->where('name','email_mua_hang_tu_xa')->update(array('content'=>trim(Input::get('email_mua_hang_tu_xa'))));
+
 
 		$info->where('name','sdt_trung_tam_bh')->update(array('content'=>trim(Input::get('sdt_trung_tam_bh'))));
 		$info->where('name','address')->update(array('content'=>str_replace("\n","<br>",trim(Input::get('address')))));
