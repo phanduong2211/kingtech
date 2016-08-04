@@ -273,7 +273,7 @@ article {
 	float: left;
 	padding-bottom: 20px;
 	width: 100%;
-	background: url(../images/scroll.png);
+	background: url('{{Asset('')}}public/kingtech/images/scroll.png');
 }
 .body_pages {
 	float: left;

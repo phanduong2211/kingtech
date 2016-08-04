@@ -30,7 +30,7 @@
 @endforeach
 
  @include("fontend.layout.headerTop")
- <article style="background:url('{{$backNenImage}}') {{$backNen}} ">
+ <article style="background:url('{{Asset($backNenImage)}}') ">
     @include("fontend.layout.headMenu")
     @include("fontend.layout.categoryMenu")
     <section>

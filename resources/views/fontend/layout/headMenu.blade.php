@@ -1,5 +1,10 @@
+@foreach($website as $web)
+@if($web->name=="background_header")
+<?php $bghead = $web->content; ?>
+@endif
+@endforeach
 <section>
-      <div class="body_pages">
+      <div class="body_pages" style="background:{{$bghead}}">
         <div class="article_header">
           <div style="width:3%" class="logo">
             <figure><a href="{{Asset('')}}" title="kingtech"><img src="{{Asset('')}}public/images/logo.jpg" alt="kingtech"></a></figure>
@@ -62,7 +67,9 @@
                                               <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
                                                           <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
                                                           <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
-                                                      </big> </li>
+                                                      </big> 
+                                                      <p><strong>Email:</strong> {{$sp->email}}</p>
+                                                      </li>
                                               <li>
                         @endif
                         @endforeach
@@ -77,7 +84,9 @@
                                               <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
                                                           <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
                                                           <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
-                                                      </big> </li>
+                                                      </big> 
+                                                      <p><strong>Email:</strong> {{$sp->email}}</p>
+                                                      </li>
                           @endif
                         @endforeach
                                           </ul>

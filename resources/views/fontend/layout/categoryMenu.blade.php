@@ -1,3 +1,11 @@
+@foreach($website as $web)
+@if($web->name=="background_menu")
+<?php $bgMenu = $web->content; ?>
+@elseif($web->name=="background_hover_menu")
+<?php $bgMenuhover = $web->content; ?>
+@endif
+@endforeach
+
 <style type="text/css">
   .divleft
   {
@@ -19,10 +27,11 @@
   {
     color:white;
   }
+
   .divright .licap1:hover
   {
     cursor: pointer;
-    background: red;
+    background: {{$bgMenuhover}};
   }
   .ulcap2 .licap2
   {
@@ -73,11 +82,7 @@
     padding-top: 20px;
   }
 </style>
-@foreach($website as $web)
-@if($web->name=="background_menu")
-<?php $bgMenu = $web->content; ?>
-@endif
-@endforeach
+
 <div class="fl_section">
       <nav class="">
         <ul class="ulkingtech ulcap1" style="background:url('{{Asset($bgMenu)}}')">

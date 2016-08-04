@@ -1,3 +1,9 @@
+<style type="text/css">
+  .slick-dots
+  {
+    display: none !important;
+  }
+</style>
 <div class="box_pages_left">
       <div class="box_left_title"  id="list_1">
         <label>Sản phẩm bán chạy</label>

@@ -1,6 +1,10 @@
-
+@foreach($website as $web)
+@if($web->name=="background_header_top")
+<?php $bgheadtop = $web->content; ?>
+@endif
+@endforeach
  <header>
-    <div id="header_top">
+    <div id="header_top" style="background:{{$bgheadtop}}">
       <section>
         <div class="header_top">
           <div class="hotline">
