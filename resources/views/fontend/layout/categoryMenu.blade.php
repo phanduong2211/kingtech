@@ -73,9 +73,14 @@
     padding-top: 20px;
   }
 </style>
+@foreach($website as $web)
+@if($web->name=="background_menu")
+<?php $bgMenu = $web->content; ?>
+@endif
+@endforeach
 <div class="fl_section">
       <nav class="">
-        <ul class="ulkingtech ulcap1">
+        <ul class="ulkingtech ulcap1" style="background:url('{{Asset($bgMenu)}}')">
           <div class="divleft">@include("fontend.home.menuleft")</div>
                <div class="divright"> @for($i=0;$i< count($menus);$i++)
                   @if($menus[$i]->show_menu_top==1)

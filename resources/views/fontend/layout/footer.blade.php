@@ -1,4 +1,13 @@
-<footer>
+<?php $title=""; ?>
+@foreach($website as $tile)
+
+                              @if($tile->name=="open_time")
+                                <?php $title = $tile->content; ?>
+                              @elseif($tile->name=="background_footer")
+                                <?php $bg = $tile->content;?>
+                              @endif
+ @endforeach
+<footer style="background:{{$bg}}">
     <section>
       <div class="box_pages">
         <div class="box_static">
@@ -10,11 +19,7 @@
             <li>
               <label class="fl_upercase fl_bold">GIỜ MỞ CỬA</label>
               <big>
-                          @foreach($website as $tile)
-                              @if($tile->name=="open_time")
-                                <?php echo $tile->content; ?>
-                              @endif
-                            @endforeach
+                           <?php echo $title; ?>
                             </big> </li>
             <li>
               <label class="fl_upercase fl_bold">BẢO HÀNH</label>

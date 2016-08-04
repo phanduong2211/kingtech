@@ -4,7 +4,10 @@
   @foreach($website as $tile)
     @if($tile->name=="title")
       <?php echo $tile->content; ?>
+    @elseif($tile->name=="background_body")
+      <?php $bgbody = $tile->content; ?>
     @endif
+
   @endforeach
 </title>
 @endsection
@@ -50,7 +53,7 @@
     }
 </style>
 @section('center')
-      <div class="body_pages">
+      <div class="body_pages" style="background:{{$bgbody}}">
         <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
 
 @include("fontend.home.slide")

@@ -21,9 +21,16 @@
     <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+@foreach($website as $web)
+  @if($web->name=="background_image")
+    <?php $backNenImage = $web->content;?>
+  @elseif($web->name=="background_color")
+   <?php $backNen = $web->content;?>
+   @endif
+@endforeach
 
  @include("fontend.layout.headerTop")
- <article>
+ <article style="background:url('{{$backNenImage}}') {{$backNen}} ">
     @include("fontend.layout.headMenu")
     @include("fontend.layout.categoryMenu")
     <section>
