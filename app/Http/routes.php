@@ -285,8 +285,6 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 		Route::post("delete","GroupAdminController@postDelete");
 		Route::post("deletes","GroupAdminController@postDeletes");
 
-		Route::post("display","GroupAdminController@display");
-
 	});
 
 	Route::get("uploadimage","UploadController@upload");

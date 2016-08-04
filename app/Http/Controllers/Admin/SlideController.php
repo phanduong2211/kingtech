@@ -114,6 +114,9 @@ class SlideController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('slide/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 
@@ -127,6 +130,9 @@ class SlideController extends BaseController
 	}
 
 	public function sort(){
+		if(!$this->checkPermission('slide/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
 			SlideShow::where('id',$value)->update(['index'=>$data[$key]]);

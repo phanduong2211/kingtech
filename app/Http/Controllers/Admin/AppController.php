@@ -144,6 +144,9 @@ class AppController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('app/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 
@@ -157,6 +160,9 @@ class AppController extends BaseController
 	}
 
 	public function hide(){
+		if(!$this->checkPermission('app/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=explode(',',\Input::get('data'));
 		foreach($data as $item){
 			App::where('id',(int)$item)->update(['display'=>0]);
@@ -167,6 +173,9 @@ class AppController extends BaseController
 	}
 
 	public function show(){
+		if(!$this->checkPermission('app/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=explode(',',\Input::get('data'));
 		foreach($data as $item){
 			App::where('id',(int)$item)->update(['display'=>1]);

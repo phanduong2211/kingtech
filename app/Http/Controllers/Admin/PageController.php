@@ -126,6 +126,9 @@ class PageController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('page/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 

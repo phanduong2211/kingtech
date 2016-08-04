@@ -135,6 +135,9 @@ class NewsController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('news/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 
@@ -148,6 +151,9 @@ class NewsController extends BaseController
 	}
 
 	public function hot(){
+		if(!$this->checkPermission('news/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$hot=\Input::get('ischeck');
 
@@ -161,6 +167,9 @@ class NewsController extends BaseController
 	}
 
 	public function hots(){
+		if(!$this->checkPermission('news/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=explode(',',\Input::get('data'));
 		foreach($data as $item){
 			News::where('id',(int)$item)->update(['hot'=>1]);
@@ -171,6 +180,9 @@ class NewsController extends BaseController
 	}
 
 	public function displays(){
+		if(!$this->checkPermission('news/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=explode(',',\Input::get('data'));
 		foreach($data as $item){
 			News::where('id',(int)$item)->update(['display'=>0]);

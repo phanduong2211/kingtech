@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\GroupAdmin;
 use App\GroupRole;
 use App\Role;
+use App\Admin;
 use App\AdminGroupRole;
 use App\Http\Requests\GroupAdminRequest;
 
@@ -16,9 +17,9 @@ class GroupAdminController extends BaseController
 			return $this->ErrorPermission('Nhóm Admin');
 		}
 
-		$data=GroupAdmin::orderBy('id','desc')->get();
-
-		return view("backend.ad.index",array('data'=>$data));
+		$data=GroupAdmin::select('id','name',\DB::raw('(select count(id) from admins where group_id=group_admins.id) as count'))->orderBy('id','desc')->get();
+		
+		return view("backend.groupadmin.index",array('data'=>$data));
 	}
 
 
@@ -68,79 +69,106 @@ class GroupAdminController extends BaseController
 
 	public function update($id){
 
-		if(!$this->checkPermission('ad/update')){
-			return $this->ErrorPermission('Sửa quảng cáo');
+		if(!$this->checkPermission('groupadmin/update')){
+			return $this->ErrorPermission('Sửa nhóm admin');
 		}
 
 		$data=array();
-		$data['data']=Ads::find((int)$id);
+		$data['data']=GroupAdmin::find((int)$id);
 		if($data['data']==null)
-			return redirect()->to('admin/ad')->with(['message'=>'Quảng cáo không tồn tại.','message_type'=>'danger']);
+			return redirect()->to('admin/group-admin')->with(['message'=>'Nhóm admin không tồn tại.','message_type'=>'danger']);
+			
+		$data['grouprole']=GroupRole::all();
+		$data['roles']=Role::all();
+
+		$data['admingrouprole']=AdminGroupRole::select('role_id')->where('group_id',$id)->get()->toArray();
 		
-		return view('backend.ad.update',$data);
+		return view('backend.groupadmin.update',$data);
 	}
 
-	public function postUpdate(AdRequest $request){
+	public function postUpdate(GroupAdminRequest $request){
 
-		if(!$this->checkPermission('ad/update')){
-			return $this->ErrorPermission('Sửa quảng cáo');
+		if(!$this->checkPermission('groupadmin/update')){
+			return $this->ErrorPermission('Sửa nhóm admin');
 		}
 
-		$ad=Ads::find((int)$request->id);
-		$ad->title=str_replace("\"", "'", trim($request->title));
+		$group=GroupAdmin::find((int)$request->id);
 
-		
-		$ad->url=$request->url;
-		$ad->image=$request->image;
-		$ad->position=(int)$request->position;
-		
-		
-		if($ad->save()){
-			return redirect()->to('admin/ad/'.$request->id)->with('message','Cập nhật thành công.');
+		if($group==null){
+			return redirect()->to('admin/group-admin')->with(['message'=>'Nhóm admin không tồn tại.','message_type'=>'danger']);
 		}
-		return redirect()->to('admin/ad/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+
+		$group->name=str_replace("\"", "'", trim($request->name));
+
+		if($group->save()){
+
+			if((int)$request->id!=1){
+				AdminGroupRole::where('group_id',(int)$request->id)->delete();
+
+				if($request->has('CheckRoles')){
+					$arr=array();
+					foreach($request->CheckRoles as $item){
+						$a=array();
+						$a['group_id']=(int)$request->id;
+						$a['role_id']=$item;
+
+						$arr[]=$a;
+					}
+
+					AdminGroupRole::insert($arr);
+				}
+			}
+
+			return redirect()->to('admin/group-admin/'.$request->id)->with('message','Cập nhật thành công.');
+		}
+		return redirect()->to('admin/group-admin/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
+		
+		
 	}
 
 	public function postDelete(){
 
-		if(!$this->checkPermission('ad/delete')){
+		if(!$this->checkPermission('groupadmin/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=(int)\Input::get('data');
 
-		if(Ads::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công quảng cáo {name}"]);
+		if(Admin::select('id')->where('group_id',$id)->count()>0){
+			return json_encode(["success"=>false,"message"=>"Đã có thành viên trong nhóm. Không thể xóa"]);
 		}
-		return json_encode(["success"=>false,"message"=>"Xóa quảng cáo {name} thất bại"]);
+
+		AdminGroupRole::where('group_id',$id)->delete();
+		
+		if(GroupAdmin::destroy($id)){
+			return json_encode(["success"=>true,"message"=>"Xóa thành công nhóm {name}"]);
+		}
+		return json_encode(["success"=>false,"message"=>"Xóa nhóm {name} thất bại"]);
 	}
 
 	public function postDeletes(){
 
-		if(!$this->checkPermission('ad/delete')){
+		if(!$this->checkPermission('groupadmin/delete')){
 			return json_encode(["success"=>false,"message"=>"Bạn không có quyền xóa"]);
 		}
 
 		$id=explode(',',\Input::get('data'));
 
-		if(Ads::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." quảng cáo."]);
-		}
-		return json_encode(["success"=>false,"message"=>"Xóa quảng cáo thất bại"]);
-	}
+		$count=0;
 
-	public function display(){
-		$id=(int)\Input::get('data');
-		$display=\Input::get('ischeck');
-
-		$display=($display=='true')?1:0;
-
-		if(Ads::where('id',$id)->update(['display'=>$display])){
-			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+		foreach($id as $i){
+			try{
+				AdminGroupRole::where('group_id',$i)->delete();
+				if(GroupAdmin::destroy($i)){
+						$count++;
+					}
+			}catch(\Exception $e){}
 		}
 
-		return json_encode(["success"=>false,"message"=>"Thất bại"]);
+		return json_encode(["success"=>true,"message"=>"Xóa thành công ".$count." nhóm."]);
 	}
+
+	
 }
 
 ?>

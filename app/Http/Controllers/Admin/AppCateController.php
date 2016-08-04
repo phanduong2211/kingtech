@@ -115,6 +115,9 @@ class AppCateController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('appcate/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 
@@ -128,6 +131,9 @@ class AppCateController extends BaseController
 	}
 
 	public function sort(){
+		if(!$this->checkPermission('appcate/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
 			AppCate::where('id',$value)->update(['index'=>$data[$key]]);

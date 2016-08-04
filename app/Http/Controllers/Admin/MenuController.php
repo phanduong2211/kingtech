@@ -114,6 +114,9 @@ class MenuController extends BaseController
 	}
 
 	public function show_menu_top(){
+		if(!$this->checkPermission('menu/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$show_menu_top=\Input::get('ischeck');
 
@@ -127,6 +130,9 @@ class MenuController extends BaseController
 	}
 
 	public function show_footer(){
+		if(!$this->checkPermission('menu/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$show_footer=\Input::get('ischeck');
 
@@ -140,6 +146,9 @@ class MenuController extends BaseController
 	}
 
 	public function sort(){
+		if(!$this->checkPermission('menu/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
 			Menu::where('id',$value)->update(['index'=>$data[$key]]);

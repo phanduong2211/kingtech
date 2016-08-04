@@ -108,6 +108,9 @@ class AgencyController extends BaseController
 		return json_encode(["success"=>false,"message"=>"Xóa đại lý thất bại"]);
 	}
 	public function display_footer(){
+		if(!$this->checkPermission('agency/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display_footer=\Input::get('ischeck');
 

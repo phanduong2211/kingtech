@@ -1,5 +1,5 @@
 @extends('backend.layout')
-@section('title','Admin Control Panel')
+@section('title','Chi nhánh')
 
 @section('breadcrumb')
 <h2>Chi nhánh</h2>

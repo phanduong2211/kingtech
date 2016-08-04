@@ -117,6 +117,9 @@ class NewsCateController extends BaseController
 	}
 
 	public function display(){
+		if(!$this->checkPermission('newscate/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 
@@ -130,6 +133,9 @@ class NewsCateController extends BaseController
 	}
 
 	public function show_home(){
+		if(!$this->checkPermission('newscate/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$show_home=\Input::get('ischeck');
 
@@ -143,6 +149,9 @@ class NewsCateController extends BaseController
 	}
 
 	public function sort(){
+		if(!$this->checkPermission('newscate/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
 			AppCate::where('id',$value)->update(['index'=>$data[$key]]);

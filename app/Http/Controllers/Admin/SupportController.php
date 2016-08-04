@@ -103,6 +103,9 @@ class SupportController extends BaseController
 		return json_encode(["success"=>false,"message"=>"Xóa hỗ trợ thất bại"]);
 	}
 	public function display(){
+		if(!$this->checkPermission('support/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$id=(int)\Input::get('data');
 		$display=\Input::get('ischeck');
 

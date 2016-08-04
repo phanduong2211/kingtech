@@ -100,6 +100,9 @@ class BranchController extends BaseController
 		return json_encode(["success"=>false,"message"=>"Xóa chi nhánh thất bại"]);
 	}
 	public function sort(){
+		if(!$this->checkPermission('branch/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
 			Branch::where('id',$value)->update(['index'=>$data[$key]]);

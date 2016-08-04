@@ -44,7 +44,7 @@ function showImage($path){
                    <option value="1">Sắp xếp trang chủ</option>
                     <option value="2">Sắp xếp menu</option>
                 </select>
-                <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
+                <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Lưu">
             </div>
 
              
