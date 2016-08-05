@@ -59,7 +59,7 @@ function showImage($path){
                         <span class="red">*</span>
                         <img src="{{showImage($data->image)}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control" value="{{$data->image}}" name="image" id="imagechooseval" />Hoặc upload ảnh khác.</div>
                     </div>
                 </div><br />
             </div>

@@ -80,6 +80,10 @@ class BranchController extends BaseController
 
 		$id=(int)\Input::get('data');
 
+		if(\App\Agency::where('branch_id',$id)->count('id')>0){
+			return json_encode(["success"=>false,"message"=>"Đã có đại lý thuộc chi nhánh {name}. Không thể xóa."]);
+		}
+
 		if(Branch::destroy($id)){
 			return json_encode(["success"=>true,"message"=>"Xóa thành công chi nhánh {name}"]);
 		}
@@ -94,8 +98,16 @@ class BranchController extends BaseController
 
 		$id=explode(',',\Input::get('data'));
 
-		if(Branch::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." chi nhánh."]);
+		$arr_del=array();
+
+		foreach($id as $i){
+			if(\App\Agency::where('branch_id',$i)->count('id')==0){
+				$arr_del[]=$i;
+			}
+		}
+
+		if(Branch::destroy($arr_del)){
+			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($arr_del)." chi nhánh.","idSuccess"=>$arr_del]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa chi nhánh thất bại"]);
 	}

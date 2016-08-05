@@ -5248,9 +5248,6 @@ body > div.AppHome > div.body > div > div > div.right > div > div > div.top > as
 .header .mis .wrapper .search {
     height: 48px;
 }
-    .logo img {
-        display: none;
-    }
 
         .logo img.LogoOrder {
             display: inline-block;

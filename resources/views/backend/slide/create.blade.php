@@ -32,6 +32,7 @@
                         <label>Link:</label>
                     </div>
                     <div class="col-md-8">
+                     
                         <input type="text" name="url" value="{{old('url')}}" class="form-control" />
                         <span class="desc">
                           Link khi click vào slide sẽ chuyển đến?
@@ -51,7 +52,7 @@
                         <span class="red">*</span>
                         <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control " name="image" id="imagechooseval" />Hoặc upload ảnh khác. Kích thước chuẩn 720x480</div>
                     </div>
                 </div><br />
             </div>

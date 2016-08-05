@@ -90,7 +90,7 @@
 		<div class="col-md-6">
 			<div class="row">
 				<div class="col-md-4">
-					<label>Màu header:</label>
+					<label>Màu header / box trung tâm:</label>
 				</div>
 				<div class="col-md-8 required">
 					<span class="red">*</span>

@@ -104,8 +104,12 @@ class AppCateController extends BaseController
 
 		$id=(int)\Input::get('data');
 
-		if(AppCate::select('id')->where('parent',$id)->count()>0){
-			return json_encode(["success"=>false,"message"=>"Loại ứng dụng này đã có loại con. Không thể xóa."]);
+		if(AppCate::where('parent',$id)->count('id')>0){
+			return json_encode(["success"=>false,"message"=>"Loại ứng dụng {name} đã có loại con. Không thể xóa."]);
+		}
+
+		if(\App\App::where('cate_id',$id)->count('id')>0){
+			return json_encode(["success"=>false,"message"=>"Loại ứng dụng {name} đã có ứng dụng. Không thể xóa."]);
 		}
 
 		if(AppCate::destroy($id)){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 use App\SlideShow;
+use App\Page;
 use App\Http\Requests\SlideRequest;
 
 
@@ -23,8 +24,7 @@ class SlideController extends BaseController
 		if(!$this->checkPermission('slide/create')){
 			return $this->ErrorPermission('Thêm slide');
 		}
-
-
+		
 		return view("backend.slide.create");
 	}
 

@@ -96,6 +96,10 @@ class NewsCateController extends BaseController
 
 		$id=(int)\Input::get('data');
 
+		if(\App\News::where('cate_id',$id)->count('id')>0){
+				return json_encode(["success"=>false,"message"=>"Đã có tin tức thuộc loại tin {name}. Không thể xóa."]);
+			}
+
 		if(NewsCate::destroy($id)){
 			return json_encode(["success"=>true,"message"=>"Xóa thành công loại tin tức {name}"]);
 		}
@@ -110,8 +114,16 @@ class NewsCateController extends BaseController
 
 		$id=explode(',',\Input::get('data'));
 
-		if(NewsCate::destroy($id)){
-			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." loại tin tức."]);
+		$arr_del=array();
+
+		foreach($id as $i){
+			if(\App\News::where('cate_id',$i)->count('id')==0){
+				$arr_del[]=$i;
+			}
+		}
+
+		if(NewsCate::destroy($arr_del)){
+			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($arr_del)." loại tin tức.","idSuccess"=>$arr_del]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa loại tin tức thất bại"]);
 	}

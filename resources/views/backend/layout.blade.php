@@ -31,7 +31,7 @@
         <!--col left-->
        <div id="col-left">
             <header id="left_header">
-                <a href="{{url('/')}}" target="_black">HOME</a>
+                <a href="{{url('/')}}" target="_black">KINGTECH</a>
             </header>
             <!--#left header-->
             <div id="content-col-left">
@@ -103,12 +103,6 @@
                         </ul>
                     </li>
 
-                    <li id="menu_page" data-role="page/list" class="trole">
-                        <a href="{{url('admin/page')}}">
-                            <i class="fa fa-bookmark"></i> <span>Quản lý trang</span>
-                        </a>
-                    </li>
-
                     <li id="menu_slide" data-role="slide/list" class="trole">
                         <a href="{{url('admin/slide')}}">
                             <i class="fa fa-picture-o"></i> <span>Quản lý slide</span>
@@ -169,7 +163,13 @@
 
                     <li id="menu_support" data-role="support/list" class="trole">
                         <a href="{{url('admin/support')}}">
-                            <i class="fa fa-support"></i> <span>Quản lý hỗ trợ</span>
+                            <i class="fa fa-question-circle"></i> <span>Quản lý hỗ trợ</span>
+                        </a>
+                    </li>
+
+                    <li id="menu_page" data-role="page/list" class="trole">
+                        <a href="{{url('admin/page')}}">
+                            <i class="fa fa-bookmark"></i> <span>Quản lý trang</span>
                         </a>
                     </li>
 

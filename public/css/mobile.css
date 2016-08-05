@@ -1,0 +1,113 @@
+.box_trungtam aside ul li big{
+	line-height: normal;
+	margin-top: -2px;
+}
+@media(max-width: 1020px){
+	#header_top section{
+		padding:0px 5px;
+		width:100%;
+	}
+	#header_top .hotline,#header_top .header_share{
+		width:20%;
+	}
+	#header_top .header_slogan{
+		width:57%;
+		margin-left: 3%;
+	}
+	#header_top .header_share{
+		float: left
+	}
+	#header_top .header_share .header_social,#header_top .header_share .header_social figure{
+		float:right;
+	}
+	section{
+		width:100% !important;
+		overflow: hidden !important;
+	}
+	nav .ulkingtech{
+		width:100%;
+	}
+	nav{
+		width:100%;
+	}
+	.box_tieudem_title aside{
+		width:100%;
+	}
+	.slider_item .item{
+		width:40%;
+		margin-bottom: 10px
+	}
+	.line_input{
+		width:40%;
+	}
+	.line_select{
+		width:15%;
+	}
+	.span_right{
+		left:100%;
+	}
+	.box_item{
+		width:100%;
+	}
+	.box_trungtam .fl_w280{
+		width:33%;
+		margin-bottom: 10px;
+	}
+	.box_trungtam aside ul li span{
+		width: auto;
+	}
+	.box_trungtam aside ul li big,.box_trungtam aside ul li label{
+		width: 70%;
+	}
+	.box_trungtam aside {
+		padding-left: 0 !important;
+	}
+	.box_item .item_pro{
+		width:23% !important;
+		margin-bottom: 10px;
+	}
+	.header_cart .login{
+		margin-left: 20%;
+	}
+}
+@media(max-width: 810px){
+	.box_left{
+		display: none;
+	}
+	.box_pages_center{
+		width: 100%
+	}
+	.box_pages{
+		float: none;
+		width: 100%;
+	}
+	.box_trungtam .fl_w280{
+		width:50%;
+		margin-bottom: 10px;
+	}
+	.box_item .item_pro{
+		width:31% !important;
+		margin-bottom: 10px;
+	}
+	.box_item .item_pro figure{
+		width:100%;
+	}
+	.box_search{
+		display: none;
+	}
+}
+@media(max-width: 700px){
+	.box_item .item_pro{
+		width:46% !important;
+	}
+	.box_tieudem,.hidden_mobile,.fl_section{
+		display: none;
+	}
+	.box_trungtam .fl_w280{
+		width:100%;
+		margin-bottom: 10px;
+	}
+	.box_trungtam aside ul li span{
+		float: none;
+	}
+}

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="content-language" content="vi" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="{{Asset('')}}public/images/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
   @yield("title")
@@ -19,6 +19,7 @@
     <!-- <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"> -->
     <link href="{{Asset('')}}public/kingtech/flexslider/slick.css" rel="stylesheet" type="text/css" media="all">
     <link href="{{Asset('')}}public/kingtech/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="{{Asset('')}}public/css/mobile.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 @foreach($website as $web)

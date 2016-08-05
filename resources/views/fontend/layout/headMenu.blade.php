@@ -3,7 +3,7 @@
 <?php $bghead = $web->content; ?>
 @endif
 @endforeach
-<section>
+<section class="hidden_mobile">
       <div class="body_pages" style="background:{{$bghead}}">
         <div class="article_header">
           <div style="width:3%" class="logo">

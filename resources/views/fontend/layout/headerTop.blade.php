@@ -3,7 +3,7 @@
 <?php $bgheadtop = $web->content; ?>
 @endif
 @endforeach
- <header>
+ <header class="hidden_mobile">
     <div id="header_top" style="background:{{$bgheadtop}}">
       <section>
         <div class="header_top">

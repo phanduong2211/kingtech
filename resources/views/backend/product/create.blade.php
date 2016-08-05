@@ -207,7 +207,7 @@
                         <span class="red">*</span>
                         <img src="{{Asset('public/images/uploadimg.png')}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval" id="imgchoose" width="100px">
                         <br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>
-                        <input type="text" class="form-control " name="image" id="imagechooseval" value="{{old('image')}}" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div>
+                        <input type="text" class="form-control " name="image" id="imagechooseval" value="{{old('image')}}" />Hoặc upload ảnh khác. Kích thước chuẩn 168x120</div>
                     </div>
                 </div><br />
             </div>
@@ -386,7 +386,7 @@
       $(this).before('<div class="col-xs-6 col-sm-4 col-md-4 itemimages">'+
                             '<img src="'+asset_path+'images/uploadimg.png" class="img-thumbnail showupload uploadimg" href="#imageschooseval'+(slImages)+'" id="imgchoose" width="100px">'+
                             '<br><div class="text-left desc">Copy url image từ nơi khác và paste vào textbox bên dưới<br>'+
-                            '<input type="text" class="form-control " name="images[]" id="imageschooseval'+slImages+'" />Hoặc upload ảnh khác. Kích thước chuẩn 270x169</div><i class="fa fa-times" title="xóa"></i></div>');
+                            '<input type="text" class="form-control " name="images[]" id="imageschooseval'+slImages+'" />Hoặc upload ảnh khác.</div><i class="fa fa-times" title="xóa"></i></div>');
     });
 
     $("#frm").kiemtra([

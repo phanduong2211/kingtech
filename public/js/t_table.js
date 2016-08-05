@@ -181,9 +181,9 @@ function TRunAjax(url, dt, callback) {
 		},
 		error: function (e, e2, e3) {
 		    if(typeof ajaxrun!=='undefined')
-            ajaxrun.hide();
-		    alert("Lỗi "+e2+": "+e3);
-		   
+                ajaxrun.hide();
+		   var result={"success":false,"message":e2+" "+e.status+": "+e3};
+           callback(result);
 		}
 	});
 }
@@ -199,9 +199,8 @@ function tremoves(message, target,options,result) {
     } else {
         target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
             if ($(this).hasClass("checked")) {
-                var id = $(this).parents("tr").eq(0);
-                if ($.inArray(parseInt(id.attr('data-id')), result.idSuccess)!==-1) {
-                    id.remove();
+                if ($.inArray($(this).attr('data-value'), result.idSuccess)!==-1) {
+                    $(this).parents("tr").eq(0).remove();
                 }
             }
         });
@@ -302,7 +301,12 @@ function fdataajax(url, data, target, options, value) {
                 }
             }
         }
-        options.alert(result.message);
+        if(result.message.indexOf('{name}')!==-1){
+            result.message=result.message.replace('{name}',target.attr('data-name'));
+            options.alert(result.message);
+        }else{
+            options.alert(result.message);
+        }
     });
 
 }

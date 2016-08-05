@@ -189,14 +189,11 @@ if(isset($_POST['submit'])){
 						<div style="float:left;width:200px">
 							<select name="resize" style="padding:3px;width:100%">
 								<option value="">Gữi nguyên kích thước gốc</option>
-								<option value="458x458">458x458(Sản Phẩm)</option>
-								<option value="80x80">80x80(Sản Phẩm Khác Nhỏ)</option>
-								<option value="870x432">870x432(SlideShow)</option>
-								<option value="270x169">270x169(Tin Tức)</option>
-								<option value="130x50">130x50(Đối Tác)</option>
-								<option value="270x432">270x432(Quảng Cáo Vị Trí 1)</option>
-								<option value="770x243">770x243(Quảng Cáo Vị Trí 2)</option>
-								<option value="370x243">370x243(Quảng Cáo Vị Trí 3)</option>
+								<option value="168x120">168x120(Sản Phẩm)</option>
+								<option value="720x480">720x480(SlideShow)</option>
+								<option value="150x100">150x100(Tin Tức)</option>
+								<option value="160x120">160x120(Video)</option>
+								<option value="160x160">160x160(Ứng dụng)</option>
 							</select>
 						</div>
 					</div>

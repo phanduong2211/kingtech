@@ -134,7 +134,7 @@ class GroupAdminController extends BaseController
 
 		$id=(int)\Input::get('data');
 
-		if(Admin::select('id')->where('group_id',$id)->count()>0){
+		if(Admin::where('group_id',$id)->count('id')>0){
 			return json_encode(["success"=>false,"message"=>"Đã có thành viên trong nhóm. Không thể xóa"]);
 		}
 
