@@ -65,6 +65,7 @@
       </div>
 
       <div class="show_mobile clearfix" id="menufootermobile">
+        <div class="clearfix"></div>
         @foreach($menus as $menu)
          @if($menu->parent==0)
             <a href="{{Asset($menu->url)}}">{{$menu->name}}</a>
