@@ -46,3 +46,39 @@
       </section>
     </div>
   </header>
+  <div class="show_mobile">
+      <nav id="navbarmobile" class="navbar navbar-default" style="background-color:#EDEDED">
+        
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{url()}}">
+              <img alt="kingtech" src="{{Asset('public/images/logo.jpg')}}" width="120px" height="25px" />
+            </a>
+          </div>
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav clearfix">
+              @foreach($categorys as $category)
+                                @if($category->parent==0)
+                  <a href="{{url('category/'.$category->id.'-'.$category->url)}}">{{$category->name}} </a>
+                @endif
+              @endforeach
+              <a id="mgiasi" href="{{url('gia-si.html')}}">Xem giá sỉ</a>
+            </ul>
+          </div>
+      </nav>
+      <div id="seachmobile">
+        <form method="get" action="{{url('tim-kiem.html')}}">
+          <div class="clearfix">
+            <input type="text" name="txtSearch" value="" placeholder="Tên sản phẩm, máy tính bảng, phụ kiện...">
+            <i class="fa fa-search"></i>
+          </div>
+          <input type="hidden" name="ddStart" value="0" />
+          <input type="hidden" name="ddEnd" value="0" />
+        </form>
+      </div>
+  </div>

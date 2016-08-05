@@ -40,7 +40,7 @@
 <div class="body_pages">
        @include("fontend.home.search")
       <div class="box_pages fl_padding2">
-        <div class="daily_left">
+        <div class="daily_left hidden_mobile">
                   <div class="box_pages_left">
               <div class="box_quangcao">
                 <figure><img src="http://dangcapdigital.com/images/map.gif" alt=""></figure>

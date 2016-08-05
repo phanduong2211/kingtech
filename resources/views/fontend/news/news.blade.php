@@ -32,7 +32,7 @@
               </aside>
             </div>
             @if(count($detailnews)>0)
-            <div class="box_about">
+            <div class="box_about"><br />
             	<h2>{{$detailnews[0]->title}}</h2>
             <big>
               <div style="mso-element:para-border-div;border:none;    border-bottom:double windowtext 2.25pt;
