@@ -44,15 +44,15 @@
                             @endforeach
                           </div></big>
                       </aside>
-          <code>
+          <code class="hidden_mobile">
           @foreach($website as $tile)
             @if($tile->name=="copyright")
               <?php echo $tile->content; ?>
             @endif
           @endforeach<br>
             <a href="http://lovadweb.com" title="Thiết kế website" target="_blank">Thiết kế website bởi lovadweb.com</a></code> </div>
-        <div class="footer_line"></div>
-        <div class="footer_about">
+        <div class="footer_line hidden_mobile"></div>
+        <div class="footer_about hidden_mobile">
           <label class="fl_upercase fl_bold">KINGTECH</label>
           <ul>
           @foreach($menus as $menu)
@@ -62,6 +62,14 @@
           @endforeach
           </ul>
         </div>
+      </div>
+
+      <div class="show_mobile clearfix" id="menufootermobile">
+        @foreach($menus as $menu)
+         @if($menu->parent==0)
+            <a href="{{Asset($menu->url)}}">{{$menu->name}}</a>
+      @endif
+          @endforeach
       </div>
      
       <div class="box_pages fl_wfull">

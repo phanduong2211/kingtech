@@ -14,7 +14,10 @@
   }
 </style>
 @if(count($newproducts)>0)
+<div id="slidemobileaa">
 <div class="slider_croll">
+
+  <span class="span_right span_right_mobile"><a href="" id="slider-nav-next" onClick="return false" > <img src="public/kingtech/images/next.png"></a> </span>
       <div class="box_title">
         <aside>
           <label>Sản phẩm mới</label>
@@ -38,5 +41,7 @@
         @endfor
 
                 <span class="span_right"><a href="" id="slider-nav-next" onClick="return false" > <img src="public/kingtech/images/next.png"></a> </span> </div >
+   
     </div>
+  </div>
 @endif

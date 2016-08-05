@@ -78,8 +78,9 @@
                     </div>
                   </div>
                 </aside>
-                
+            
         <div class="slider_croll fl_top30">
+      
         @if(count($productsRefer)>0)
           <div class="box_title">
             <aside>
@@ -103,9 +104,10 @@
             @endfor
             @endif
             <span class="span_right"><a href="" id="slider-nav-next" onClick="return false" > <img src="{{Asset('')}}public/kingtech/images/next.png"></a> </span> </div >
+      
         @endif
 
-        </div>                
+        </div>           
                 <div role="tabpanel" class="box_tabs"> 
                   <!-- Nav tabs -->
                   <ul class="nav nav-tabs" role="tablist">
