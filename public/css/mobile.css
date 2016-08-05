@@ -11,6 +11,9 @@
 .slider_item .item h2{
 	margin-top: 0px;
 }
+.h1, .h2, .h3, h1, h2, h3{
+	margin-top: 0px !important;
+}
 @media(max-width: 1020px){
 	#header_top section{
 		padding:0px 5px;
@@ -226,6 +229,7 @@
 	}
 	.ungdungdetails .ungdung_img figure{
 		width: 100%;
+		margin-bottom: 15px;
 	}
 	.ungdungdetails .ungdung_img figure img{
 		width: 86%;
@@ -233,5 +237,8 @@
 	.ungdungdetails .ungdung_img aside{
 		width: 95%;
 		float:none;
+	}
+	.box_prodetails .aside_details h2{
+		margin-top: 20px !important;
 	}
 }
