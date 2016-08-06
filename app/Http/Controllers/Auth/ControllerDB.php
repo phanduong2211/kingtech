@@ -184,8 +184,11 @@ class ControllerDB extends BaseController
     }
     public function getUser($username,$pass)
     {
-        $user = User::where("username",$username)->where("password",$pass)->get();
-        return $user;
+        $user = User::where("username",$username)->first();
+        if($user && \Hash::check($pass, $user->password)){
+            return $user;
+        }
+        return array();
     }
     public function getVideos()
     {
