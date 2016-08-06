@@ -62,11 +62,115 @@
           </div>
            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav clearfix">
-              @foreach($categorys as $category)
-                                @if($category->parent==0)
-                  <a href="{{url('category/'.$category->id.'-'.$category->url)}}">{{$category->name}} </a>
-                @endif
-              @endforeach
+
+              <?php 
+              function cloneArray($arr){
+                $a=array();
+
+                foreach($arr as $aa){
+                  $a[]=$aa;
+                }
+                return $a;
+              }
+               ?>
+
+              <?php 
+
+              function dequyCategory($parentid,$data,$cc='category'){
+                $arr=array();
+                foreach($data as $key => $d){
+                  if($d->parent==$parentid){
+                    $arr[]=$d;
+
+                    unset($data[$key]);
+                  }
+                }
+
+                if($arr){
+                  ?>
+                      <ul class="subdropdown">
+                        <?php 
+                          foreach($arr as $a){
+                            ?>
+                               <li class="itemdropdown">
+                                <div class="itemdropclick">
+                                  <a href="{{url($cc."/".$a->id.'-'.$a->url)}}">{{$a->name}}</a>
+                                  <span class="caret"></span>
+                                </div>
+                                <?php dequyCategory($a->id,$data); ?>
+                              </li>
+                            <?php 
+
+                          }
+                         ?>
+                      </ul>
+                  <?php  
+                }
+              }
+               ?>
+
+               <?php 
+
+              function dequyMenu($parentid,$data,$cateApps){
+                $arr=array();
+                foreach($data as $key => $d){
+                  if($d->parent_id==$parentid){
+                    $arr[]=$d;
+
+                    unset($data[$key]);
+                  }
+                }
+
+                if($arr){
+                  ?>
+                      <ul class="subdropdown">
+                        <?php 
+                          foreach($arr as $a){
+                            if($a->show_menu_top==1){
+                            if(mb_strtolower($a->name)=="kho ứng dụng"){
+                                ?>
+                                <li class="itemdropdown">
+                                <div class="itemdropclick">
+                                  <a href="#">{{$a->name}}</a>
+                                  <span class="caret"></span>
+                                </div>
+                                <?php 
+                                    dequyCategory(0,$cateApps,'app');
+                                    $cateApps=null;
+                                }else{
+                                  ?>
+                                  <li class="itemdropdown">
+                                <div class="itemdropclick">
+                                  <a href="{{url($a->url)}}">{{$a->name}}</a>
+                                  <span class="caret"></span>
+                                </div>
+                                  <?php 
+                                  dequyMenu($a->id,$data,$cateApps);
+                                } ?>
+                              </li>
+                            <?php 
+                          }
+                          }
+                         ?>
+                      </ul>
+                  <?php  
+                }
+              }
+               ?>
+
+              <div id="tdropdown">
+                <li class="itemdropdown">
+                    <div class="itemdropclick">
+                      <a href="#">Danh mục sản phẩm</a>
+                      <span class="caret"></span>
+                    </div>
+                     <?php $cccc=cloneArray($categorys);dequyCategory(0,$cccc); ?>
+                </li>
+
+                 <?php $mmm=cloneArray($menus);$caaaa=cloneArray($cateApps);dequyMenu(0,$mmm,$caaaa); ?>
+                
+              </div>
+             
               <a id="mgiasi" href="{{url('gia-si.html')}}">Xem giá sỉ</a>
             </ul>
           </div>
@@ -82,3 +186,43 @@
         </form>
       </div>
   </div>
+
+  <style type="text/css">
+    #tdropdown .itemdropdown .subdropdown{
+      display: none;
+      background-color: #fff;
+      padding-left: 10px;
+      border-left:1px solid #288ad6;
+    }
+    #tdropdown .itemdropdown{
+      position: relative;
+    }
+    #tdropdown .itemdropdown .caret{
+      position: absolute;
+      top:20px;
+      right: 10px;
+      color:#288ad6;
+    }
+    #tdropdown .itemdropdown a:hover{
+      color:#288ad6;
+    }
+    #tdropdown .itemdropdown .active a,#tdropdown .itemdropdown .active .caret{
+      color:red;
+    }
+  </style>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#tdropdown .itemdropdown").each(function(){
+      if(!$(this).find(".subdropdown:eq(0)").length){
+        $(this).find(".itemdropclick .caret").remove();
+        $(this).find(".itemdropclick").removeClass("itemdropclick");
+      }
+    });
+    $("#tdropdown .itemdropclick").click(function(){
+      $(this).parent().find(".subdropdown:eq(0)").slideToggle();
+      $(this).toggleClass('active');
+      return false;
+    });
+  });
+  </script>

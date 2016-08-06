@@ -12,10 +12,9 @@
       <div class="box_pages">
         <div class="box_static">
           <ul>
-            <!-- <li>
+            <li>
               <label class="fl_upercase fl_bold">Thống kê</label>
-              <big><strong>
-                  74                </strong> khách online và <strong>5,740,166</strong> lượt truy cập</big> </li> -->
+              <big><strong> {{$count_user_online['current']}} </strong> khách online và <strong>{{$count_user_online['total']}}</strong> lượt truy cập</big> </li>
             <li>
               <label class="fl_upercase fl_bold">GIỜ MỞ CỬA</label>
               <big>
@@ -67,7 +66,7 @@
       <div class="show_mobile clearfix" id="menufootermobile">
         <div class="clearfix"></div>
         @foreach($menus as $menu)
-         @if($menu->parent==0)
+         @if($menu->show_footer==1 && $menu->parent==0)
             <a href="{{Asset($menu->url)}}">{{$menu->name}}</a>
       @endif
           @endforeach

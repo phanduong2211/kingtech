@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
 class ControllerDB extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /* return table in database*/
     public function getCategoryMenu()
     {

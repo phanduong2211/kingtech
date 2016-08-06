@@ -356,7 +356,7 @@ Route::get("test",function(){
 	return View('fontend.test');
 });
 
-Route::group(['namespace' => 'Auth'], function()
+Route::group(['middleware'=>'count_user','namespace' => 'Auth'], function()
 {
 	Route::get('/',"IndexController@getIndex");
 	Route::get('deal.html','ProductsController@getProductSelling');
