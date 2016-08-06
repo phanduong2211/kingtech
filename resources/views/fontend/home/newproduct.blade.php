@@ -1,7 +1,6 @@
 <style>
   .slider-info-items .item_pro h2
   {
-    height: 18px !important;
     margin-top:auto;
   }
   .box_tieudem_title
@@ -31,7 +30,8 @@
             <h2><a href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}">{{$newproducts[$i]->name}}</a></h2>
             <span> 
               @if(Session::has("isuser"))
-                <code>{{number_format($newproducts[$i]->price_company)}} đ</code>
+                <code>{{number_format($newproducts[$i]->price_company)}} đ</code><br>
+                <code style="opacity: 0.5;color: black;text-decoration: line-through;">{{number_format($newproducts[$i]->price)}} đ</code>
               @elseif(!Session::has("isuser"))
                 <code>{{number_format($newproducts[$i]->price)}} đ
                 </code>

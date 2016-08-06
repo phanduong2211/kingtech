@@ -55,6 +55,7 @@
                       <h2>{{$products[0]->name}}</h2>
                       <aside class="code"><strong>Mã sản phẩm :</strong> {{$products[0]->pro_code}}</aside>
                                             <aside class="giadigital">Giá : <?php if(Session::has("isuser")) {?><strong>{{number_format($products[0]->price_company)}} vnđ</strong>
+                                              <strong style="opacity: 0.5;color: black;text-decoration: line-through;">{{number_format($products[0]->price)}} vnđ</strong>
                                               <?php }else {?> 
                                               <strong>{{number_format($products[0]->price)}} vnđ</strong><?php }?>
                                             </aside> 

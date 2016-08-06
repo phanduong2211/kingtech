@@ -23,6 +23,7 @@
                       <span>
                           @if(Session::has("isuser"))
                           <b>{{number_format($products[$i]->price_company)}} đ</b>
+                          <b style="opacity: 0.5;color: black;text-decoration: line-through;">{{number_format($products[$i]->price)}} đ</b>
                           @elseif(!Session::has("isuser"))
                             <b>{{number_format($products[$i]->price)}} đ</b>
                           @endif
