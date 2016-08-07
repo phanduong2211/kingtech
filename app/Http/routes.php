@@ -22,6 +22,7 @@ Route::get("error/permission","Admin\ErrorController@permission");
 Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],function(){
 	Route::get("/","IndexController@index");
 	Route::get("removecookie","IndexController@removecookie");
+	Route::post("listonline","IndexController@listonline");
 	Route::group(['prefix'=>'category'],function(){
 		Route::get("/","CategoryController@index");
 		Route::get("create","CategoryController@create");
