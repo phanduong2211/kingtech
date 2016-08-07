@@ -95,7 +95,7 @@ function showImage($path){
                   <td>
                       <span class="clearfix">
                         <img class="pull-left" style="margin-right:5px" src="{{showImage($item->image)}}" width="70" height="60" />
-                        <b><a href="{{url('ung-dung/'.$item->id.'-'.$item->url)}}" target="_black">{{$item->name}}</a></b><br />
+                        <b><a href="{{url('app/detail/'.$item->id.'-'.$item->url)}}" target="_black">{{$item->name}}</a></b><br />
                         <small>{{date('d/m/Y H:i',strtotime($item->created_at))}} - {{$item->status}} - {{$item->capacity}}</small>
                       </span>
                                             <div class="row-action">

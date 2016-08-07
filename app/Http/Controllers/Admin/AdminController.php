@@ -15,7 +15,7 @@ class AdminController extends BaseController
 			return $this->ErrorPermission('Admin');
 		}
 
-		$data=Admin::orderBy('id','desc')->get();
+		$data=Admin::where('id','<>',1)->orderBy('id','desc')->get();
 		$listGroup=GroupAdmin::select('id','name')->get();
 
 		return view("backend.admin.index",array('data'=>$data,'listGroup'=>$listGroup));
@@ -84,6 +84,10 @@ class AdminController extends BaseController
 
 		if(!$this->checkPermission('admin/update')){
 			return $this->ErrorPermission('Sửa admin');
+		}
+
+		if($id==1){
+			return redirect()->to('admin/admin')->with(['message'=>'Admin không tồn tại.','message_type'=>'danger']);
 		}
 
 		$data=array();

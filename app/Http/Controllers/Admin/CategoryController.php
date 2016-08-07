@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Requests\CategoryRequest;
+use Cache;
 
 
 class CategoryController extends BaseController
@@ -13,7 +14,15 @@ class CategoryController extends BaseController
 			return $this->ErrorPermission('Loại sản phẩm');
 		}
 
-		$data=Category::orderBy('id','desc')->get();
+		$data=null;
+
+		if(Cache::has('c_a_category')){
+			$data=Cache::get('c_a_category');
+		}else{
+			$data=Category::orderBy('id','desc')->get();
+
+			Cache::forever('c_a_category',$data);
+		}
 		
 		return view("backend.category.index",array('data'=>$data));
 	}
@@ -62,6 +71,8 @@ class CategoryController extends BaseController
 		$category->show_home=($request->show_home=='on')?1:0;
 
 		if($category->save()){
+			if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 			return redirect()->to('admin/category/create')->with('message','Thêm thành công.');
 		}
 		return redirect()->to('admin/category/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
@@ -113,6 +124,8 @@ class CategoryController extends BaseController
 		$category->show_home=($request->show_home=='on')?1:0;
 		
 		if($category->save()){
+			if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 			return redirect()->to('admin/category/'.$request->id)->with('message','Cập nhật thành công.');
 		}
 		return redirect()->to('admin/category/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
@@ -131,6 +144,8 @@ class CategoryController extends BaseController
 		}
 
 		if(Category::destroy($id)){
+			if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công loại sản phẩm {name}"]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa loại sản phẩm {name} thất bại"]);
@@ -146,6 +161,8 @@ class CategoryController extends BaseController
 		$show_home=($show_home=='true')?1:0;
 
 		if(Category::where('id',$id)->update(['show_home'=>$show_home])){
+			if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -162,6 +179,8 @@ class CategoryController extends BaseController
 		$display=($display=='true')?1:0;
 
 		if(Category::where('id',$id)->update(['display'=>$display])){
+			if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -175,8 +194,12 @@ class CategoryController extends BaseController
 		$data=\Input::get('data');
 		$column=\Input::get('column');
 		foreach(\Input::get('id') as $key=>$value){
+			
 			Category::where('id',$value)->update([$column=>$data[$key]]);
 		}
+
+		if(Cache::has('c_a_category'))
+				Cache::forget('c_a_category');
 
 		return json_encode(["success"=>true]);
 	}

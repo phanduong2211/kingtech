@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Product;
 use App\Category;
 use App\Http\Requests\ProductRequest;
-
+use Cache;
 
 class ProductController extends BaseController
 {
@@ -14,9 +14,26 @@ class ProductController extends BaseController
 			return $this->ErrorPermission('Sản phẩm');
 		}
 
-		$data=Product::orderBy('id','desc')->get();
+		$data=null;
+		$listCategory=null;
 
-		$listCategory=Category::select('id','name')->get();
+
+		if(Cache::has('c_a_product')){
+			$data=Cache::get('c_a_product');
+		}else{
+
+			$data=Product::select('id','pro_code','cate_id','name','url','image','price','price_company','price_origin','description','keywords','status','quantity','viewer','display','show_home','index_home','created_at','updated_at')->orderBy('id','desc')->get();
+			Cache::add('c_a_product',$data,5);
+		}
+
+		if(Cache::has('c_a_category')){
+			$listCategory=Cache::get('c_a_category');
+		}else{
+			$listCategory=Category::orderBy('id','desc')->get();
+
+			Cache::forever('c_a_category',$listCategory);
+		}
+
 		
 		return view("backend.product.index",array('data'=>$data,'listCategory'=>$listCategory));
 	}
@@ -91,6 +108,8 @@ class ProductController extends BaseController
 
 
 		if($product->save()){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			return redirect()->to('admin/product/create')->with('message','Thêm thành công.');
 		}
 		return redirect()->to('admin/product/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
@@ -166,6 +185,8 @@ class ProductController extends BaseController
 		$product->images=$images;
 		
 		if($product->save()){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			return redirect()->to('admin/product/'.$request->id)->with('message','Cập nhật thành công.');
 		}
 		return redirect()->to('admin/product/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
@@ -180,6 +201,8 @@ class ProductController extends BaseController
 		$id=(int)\Input::get('data');
 
 		if(Product::destroy($id)){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công sản phẩm {name}"]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa sản phẩm {name} thất bại"]);
@@ -195,6 +218,8 @@ class ProductController extends BaseController
 		$display=($display=='true')?1:0;
 
 		if(Product::where('id',$id)->update(['display'=>$display])){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -211,6 +236,8 @@ class ProductController extends BaseController
 		$show_home=($show_home=='true')?1:0;
 
 		if(Product::where('id',$id)->update(['show_home'=>$show_home])){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -223,6 +250,8 @@ class ProductController extends BaseController
 		}
 		$data=\Input::get('data');
 		foreach(\Input::get('id') as $key=>$value){
+			if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
 			Product::where('id',$value)->update(['index_home'=>$data[$key]]);
 		}
 

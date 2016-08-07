@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\News;
 use App\NewsCate;
 use App\Http\Requests\NewsRequest;
-
+use Cache;
 
 class NewsController extends BaseController
 {
@@ -14,7 +14,15 @@ class NewsController extends BaseController
 			return $this->ErrorPermission('Tin tức');
 		}
 
-		$data=News::orderBy('id','desc')->get();
+		$data=null;
+
+		if(Cache::has('c_a_news')){
+			$data=Cache::get('c_a_news');
+		}else{
+
+			$data=News::select('id','cate_id','title','url','image','hot','description','keywords','display','created_at','updated_at','viewer')->orderBy('id','desc')->get();
+			Cache::add('c_a_news',$data,5);
+		}
 
 		$listNewsCate=NewsCate::select('id','name')->get();
 		
@@ -58,6 +66,8 @@ class NewsController extends BaseController
 		$news->viewer=0;
 
 		if($news->save()){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return redirect()->to('admin/news/create')->with('message','Thêm thành công.');
 		}
 		return redirect()->to('admin/news/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
@@ -101,6 +111,8 @@ class NewsController extends BaseController
 		$news->content=$request->content;
 		
 		if($news->save()){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return redirect()->to('admin/news/'.$request->id)->with('message','Cập nhật thành công.');
 		}
 		return redirect()->to('admin/news/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
@@ -115,6 +127,8 @@ class NewsController extends BaseController
 		$id=(int)\Input::get('data');
 
 		if(News::destroy($id)){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công tin tức {name}"]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa tin tức {name} thất bại"]);
@@ -129,6 +143,8 @@ class NewsController extends BaseController
 		$id=explode(',',\Input::get('data'));
 
 		if(News::destroy($id)){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." tin tức."]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa tin tức thất bại"]);
@@ -144,6 +160,8 @@ class NewsController extends BaseController
 		$display=($display=='true')?1:0;
 
 		if(News::where('id',$id)->update(['display'=>$display])){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -160,6 +178,8 @@ class NewsController extends BaseController
 		$hot=($hot=='true')?1:0;
 
 		if(News::where('id',$id)->update(['hot'=>$hot])){
+			if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -175,7 +195,8 @@ class NewsController extends BaseController
 			News::where('id',(int)$item)->update(['hot'=>1]);
 		}
 
-
+		if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 
@@ -188,7 +209,8 @@ class NewsController extends BaseController
 			News::where('id',(int)$item)->update(['display'=>0]);
 		}
 
-
+		if(Cache::has('c_a_news'))
+				Cache::forget('c_a_news');
 		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 }

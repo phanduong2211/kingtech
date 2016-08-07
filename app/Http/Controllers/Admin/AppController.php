@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\App;
 use App\AppCate;
 use App\Http\Requests\AppRequest;
-
+use Cache;
 
 class AppController extends BaseController
 {
@@ -15,6 +15,16 @@ class AppController extends BaseController
 		}
 
 		$data=App::orderBy('id','desc')->get();
+
+		$data=null;
+
+		if(Cache::has('c_a_app')){
+			$data=Cache::get('c_a_app');
+		}else{
+
+			$data=App::select('id','cate_id','name','url','description','keywords','image','status','capacity','require','version','developers','display','created_at','updated_at')->orderBy('id','desc')->get();
+			Cache::add('c_a_app',$data,5);
+		}
 
 		$listAppCate=AppCate::select('id','name')->get();
 		
@@ -63,6 +73,8 @@ class AppController extends BaseController
 		$app->display=1;
 
 		if($app->save()){
+			if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 			return redirect()->to('admin/app/create')->with('message','Thêm thành công.');
 		}
 		return redirect()->to('admin/app/create')->with(['message'=>'Có lỗi. Thêm thất bại','message_type'=>'danger']);
@@ -110,6 +122,8 @@ class AppController extends BaseController
 		$app->app_url=trim($request->app_url);
 		
 		if($app->save()){
+			if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 			return redirect()->to('admin/app/'.$request->id)->with('message','Cập nhật thành công.');
 		}
 		return redirect()->to('admin/app/'.$request->id)->with(['message'=>'Có lỗi. Cập nhật thất bại','message_type'=>'danger']);
@@ -124,6 +138,8 @@ class AppController extends BaseController
 		$id=(int)\Input::get('data');
 
 		if(App::destroy($id)){
+			if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công ứng dụng {name}"]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa ứng dụng {name} thất bại"]);
@@ -138,6 +154,8 @@ class AppController extends BaseController
 		$id=explode(',',\Input::get('data'));
 
 		if(App::destroy($id)){
+			if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 			return json_encode(["success"=>true,"message"=>"Xóa thành công ".count($id)." ứng dụng."]);
 		}
 		return json_encode(["success"=>false,"message"=>"Xóa ứng dụng thất bại"]);
@@ -153,6 +171,8 @@ class AppController extends BaseController
 		$display=($display=='true')?1:0;
 
 		if(App::where('id',$id)->update(['display'=>$display])){
+			if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 			return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 		}
 
@@ -168,7 +188,8 @@ class AppController extends BaseController
 			App::where('id',(int)$item)->update(['display'=>0]);
 		}
 
-
+		if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 
@@ -181,7 +202,8 @@ class AppController extends BaseController
 			App::where('id',(int)$item)->update(['display'=>1]);
 		}
 
-
+		if(Cache::has('c_a_app'))
+				Cache::forget('c_a_app');
 		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 }

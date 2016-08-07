@@ -27,7 +27,7 @@ function showImage($path){
        <ul class="subsubsub">
             <li><a data-filter="all" data-group-filter="a" data-subsubsub="true"  href="#" class="current">Tất cả <span class="count"></span></a>|</li>
             <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang ẩn <span class="count"></span></a>|</li>
-            <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-hot"}' data-group-filter="a" data-subsubsub="true" href="#">Tin hot <span class="count"></span></a></li>
+            <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-hot"}' data-group-filter="a" data-subsubsub="true" href="#">Tin tiêu điểm <span class="count"></span></a></li>
        </ul>
        <!--.subsubsub-->
        <div class="row captiontable">
@@ -93,7 +93,7 @@ function showImage($path){
                   <td>
                       <span class="clearfix">
                         <img class="pull-left" style="margin-right:5px;margin-top:2px" src="{{showImage($item->image)}}" width="70" height="60" />
-                        <b><a href="{{url('n/'.$item->id.'-'.$item->url)}}" target="_black">{{$item->title}}</a></b><br />
+                        <b>{{$item->title}}</b><br />
                         <small>{{date('d/m/Y H:i',strtotime($item->created_at))}} - {{$item->viewer}} lượt xem</small>
                       </span>
                                             <div class="row-action">

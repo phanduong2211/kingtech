@@ -124,7 +124,7 @@ function showImage($path){
                         <img class="pull-left" style="margin-right:5px;margin-top:2px" src="{{showImage($item->image)}}" width="80" height="70" />
                         <div class="pull-left" style="width:150px">
                           <small>Mã SP: {{$item->pro_code}}</small><br />
-                          <b><a href="{{url('n/'.$item->id.'-'.$item->url)}}" target="_black">{{$item->name}}</a></b><br />
+                          <b><a href="{{url('product/'.$item->id.'-'.$item->url)}}" target="_black">{{$item->name}}</a></b><br />
                           <small>{{date('d/m/Y H:i',strtotime($item->created_at))}} <br />  status: {{$arr_status[$item->status]}}</small>
                         </div>
                       </span>
