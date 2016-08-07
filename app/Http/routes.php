@@ -351,6 +351,10 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 
 });
 
+Route::get("nojavascript.html",function(){
+    return view('backend.noscript');
+});
+
 ///////////////////////////////////////////////////////Route Views pages
 
 Route::get("test",function(){

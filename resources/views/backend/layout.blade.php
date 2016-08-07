@@ -2,7 +2,7 @@
 <html>
 <head>
      <noscript>
-        <meta http-equiv="refresh" content="0; URL=@Url.Content("~/Error/Script")" />
+        <meta http-equiv="refresh" content="0; URL={{url("nojavascript.html")}}" />
     </noscript>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="{{Asset("public/images/ApplicationIcon.bmp")}}" rel="icon" />

@@ -79,12 +79,41 @@
 				<input type="hidden" name="_token" value="{{csrf_token()}}"/>
 			</form>
 		</div>
-		<br /><span>Nếu quyên mật khẩu, vui lòng liên hệ admin để reset lại.</span>
-		<br /><br />
-		<a href='{{Asset('')}}'><< Trở về trang chủ</a>
+		 <br />
+		 <div>
+			 <div style="float:left">
+			 	<a href='{{Asset('')}}'><< Trở về trang chủ</a>
+			 </div>
+			 <div style="float:right">
+			 	<a href="#" id="quyenmatkhau">Bạn quyên mật khẩu?</a>
+		        
+			 </div>
+			 <div style="clear:both"></div>
+		</div>
+		<br />
+		<div id="qmk" style="display:none">
+		            <p>+ Nếu bạn là <strong>Quản trị viên</strong>. Vui lòng liên hệ <a href="http://lovadweb.com" style="color:blue">lovadweb</a> để được hỗ trợ.</p>
+		            <p>+ Nếu bạn là <b>Người dùng</b>. Vui lòng liên hệ admin để reset lại mật khẩu.</p>
+		            
+		        </div>
+        
 	</div>
 	<script type="text/javascript">
 	document.frm.username.focus();
+
+	 window.onload = function () {
+            document.getElementById("quyenmatkhau").onclick = function () {
+                var box = document.getElementById("qmk");
+
+                if (box.style.display == "none") {
+                    box.style.display = "block";
+                } else {
+                    box.style.display = "none";
+                }
+
+                return false;
+            }
+        }
 	</script>
 </body>
 </html>
