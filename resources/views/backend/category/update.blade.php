@@ -335,6 +335,7 @@ function showImage($path){
     if(!flag){
       $("#frm input[name='iconkhac']").removeClass('disabled').removeAttr('disabled').val(iconId);
       $("#iconkk").prop('checked',true);
+      $('#ttttt').show();
     }
 
     var isCheckKhac=false;

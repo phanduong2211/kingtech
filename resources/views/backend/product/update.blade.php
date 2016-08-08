@@ -172,14 +172,13 @@ function showImage($path){
             <div class="col-sm-4">
               <label>Giá nhập:</label>
             </div>
-            <div class="col-sm-8 required">
-              <span class="red">*</span>
+            <div class="col-sm-8">
               <div class="input-group">
-                <input type="text" name="price_origin" value="{{number_format($data->price_origin,0,',','.')}}" class="form-control" />
+                <input type="text" name="price_origin" value="{{$data->price_origin!=0?number_format($data->price_origin,0,',','.'):""}}" class="form-control" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
               <span class="desc">
-                .
+                Để trống nếu không có
               </span>
             </div>
           </div>
@@ -434,10 +433,6 @@ var isShowHome="{{$data->show_home}}";
             ,
             {
                 'name':'price',
-                'gia':true
-            },
-            {
-                'name':'price_origin',
                 'gia':true
             },
             {

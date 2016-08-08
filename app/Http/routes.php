@@ -70,6 +70,11 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 		Route::post("display","ProductController@display");
 
 		Route::post("sort","ProductController@sort");
+
+		Route::post("hides","ProductController@hides");
+		Route::post("displays","ProductController@displays");
+		Route::post("showhomes","ProductController@showhomes");
+		Route::post("hidehomes","ProductController@hidehomes");
 		
 	
 	});

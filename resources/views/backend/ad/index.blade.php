@@ -40,6 +40,19 @@ function showImage($path){
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
             </div>
+
+            <div class="group-action">
+                 <select id="filter-by-status" data-filter='{"type":"attr","attr_name":"data-position"}'>
+                    <option selected="selected" value="-1" data-id="-1">- Tất cả vị trí -</option>
+                    
+                    <option value="1">Bên trái web</option>
+                          <option value="2">Bên phải web</option>
+                          <option value="3">Khung quảng cáo</option>
+                          <option value="4">Loại sản phẩm</option>
+                          <option value="5">Box khuyến mãi</option>
+                </select>
+                <input type="button" class="button fleft" data-target="#filter-by-status" value="Lọc">
+            </div>
   
          
             <div class="clearfloat"></div>
@@ -78,7 +91,7 @@ function showImage($path){
              </thead>
              <tbody>
                 @foreach($data as $item)
-                <tr data-display="{{$item->display}}">
+                <tr data-display="{{$item->display}}" data-position="{{$item->position}}">
                   <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                   <td>
                       <span>

@@ -69,6 +69,7 @@
                           <option value="2">Bên phải web</option>
                           <option value="3">Khung quảng cáo</option>
                           <option value="4">Loại sản phẩm</option>
+                          <option value="5">Box khuyến mãi</option>
                         </select>
                         <span class="desc">
                           Nơi hiển thị quảng cáo này?

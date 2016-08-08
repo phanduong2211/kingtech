@@ -29,7 +29,6 @@ class ProductRequest extends Request
             'image'=>'required',
             'price'=>'required',
             'price_company'=>'required',
-            'price_origin'=>'required',
             'quantity'=>'required|numeric',
             'cate_id'=>'required|numeric'
         ];
@@ -42,7 +41,6 @@ class ProductRequest extends Request
             'image.required'=>'Vui lòng chọn hình ảnh',
             'price.required'=>'Vui lòng chọn nhập giá sản phẩm',
             'price_company.required'=>'Vui lòng chọn nhập giá công ty',
-            'price_origin.required'=>'Vui lòng chọn nhập giá sỉ',
             'quantity.required'=>'Vui lòng chọn nhập số lượng',
             'quantity.numeric'=>'Vui lòng chọn nhập số lượng',
             'cate_id.required'=>'Vui lòng chọn chọn loại sp',

@@ -164,14 +164,13 @@
             <div class="col-sm-4">
               <label>Giá nhập:</label>
             </div>
-            <div class="col-sm-8 required">
-              <span class="red">*</span>
+            <div class="col-sm-8">
               <div class="input-group">
-                <input type="text" name="price_origin" value="{{old('price_origin')}}" class="form-control" />
+                <input type="text" name="price_origin" value="" class="form-control" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
               <span class="desc">
-                .
+                Để trống nếu không có
               </span>
             </div>
           </div>
@@ -401,10 +400,6 @@
             ,
             {
                 'name':'price',
-                'gia':true
-            },
-            {
-                'name':'price_origin',
                 'gia':true
             },
             {
