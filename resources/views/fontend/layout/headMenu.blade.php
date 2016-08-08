@@ -94,67 +94,7 @@
                 </aside>
               </div>
             </div>
-            <!-- <div class="header_menu">
-              <ul>
-                
-                  <li><a href="/" class="active">Trang chủ</a></li>
-                @for($i=0;$i< count($menus);$i++)
-                  @if($menus[$i]->show_menu_top==1)
-                    
-                    @if($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)=="hỗ trợ")
-                   <?php 
-                            $flag=false;
-                              for($ht=0;$ht < count($menus);$ht++)    
-                              {     
-                                    //echo  $menus[$ht]->parent_id."=".$menus[$i]->id."-";                 
-                                    if($menus[$ht]->parent_id!=0 && $menus[$ht]->parent_id==$menus[$i]->id)
-                                    {
-                                        $flag = true;
-                                        break;
-                                    }
-                              }
-
-                        ?>
-                        <li class="menu_support">Hỗ trợ
-                            
-                            @if($flag)
-                              <ul>
-                                @for($j=0;$j< count($menus);$j++)
-                                  @if($menus[$j]->parent_id!=0 && $menus[$j]->parent_id==$menus[$i]->id)
-                                            <li><a href="{{Asset($menus[$j]->url)}}" title="{{$menus[$j]->name}}"><i class="fa fa-caret-right"></i> {{$menus[$j]->name}}</a></li>
-                                  @endif
-                                @endfor
-                              </ul>
-                            @endif
-                    </li>
-                    @elseif($menus[$i]->parent_id==0 && (strtolower($menus[$i]->name)=="ứng dụng" || strtolower($menus[$i]->name)=="kho ứng dụng"))
-                          @if(count($cateApps)>0)
-                          <li class="menu_line"></li>
-                          <li class="menu_ungdung">{{$menus[$i]->name}}
-                            <aside>
-                              
-                              @for($j=0;$j< count($cateApps);$j++)
-                                @if($cateApps[$j]->parent==0)
-                                  <ul>
-                                      <label><a href="{{Asset('')}}app/{{$cateApps[$j]->id.'-'.$cateApps[$j]->url}}" title="{{$cateApps[$j]->name}}">{{$cateApps[$j]->name}}</a></label>
-                                        @for($l=0;$l< count($cateApps);$l++)
-                                          @if($cateApps[$l]->parent!=0 && $cateApps[$l]->parent==$cateApps[$j]->id)
-                                            <li><a href="{{Asset('')}}app/{{$cateApps[$l]->id.'-'.$cateApps[$l]->url}}" title="{{$cateApps[$l]->name}}"> <i class="fa fa-caret-right"></i>{{$cateApps[$l]->name}}</a></li>
-                                        @endif
-                                      @endfor
-                                  </ul>
-                                  @endif
-                                  @endfor                                     
-                            </aside>
-                          </li>
-                          @endif
-                    @elseif($menus[$i]->parent_id==0 && strtolower($menus[$i]->name)!="hỗ trợ")
-                        <li><a href="{{Asset($menus[$i]->url)}}">{{$menus[$i]->name}}</a></li>                      
-                    @endif
-                  @endif
-                @endfor
-              </ul>
-            </div> -->
+           
           </div>
         </div>
       </div>

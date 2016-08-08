@@ -69,10 +69,10 @@
                         <strong>Tình trạng :Hàng mới</strong>
                         @endif
                       </aside>
-                      <aside class="charge"> 
+                     <!--  <aside class="charge"> 
                           <span>Miễn phí charge qua thẻ </span>
                           <img src="{{Asset('')}}public/kingtech/images/icon_visa.gif" alt="Miễn phí charge qua thẻ" /> 
-                      </aside> 
+                      </aside>  -->
                       <!-- <aside class="chiase"> Chia sẽ
                       <aside class="social"> <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> </aside>
                       </aside>  -->

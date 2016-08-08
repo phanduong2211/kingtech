@@ -1,9 +1,14 @@
-<div class="box_trungtam">
+@foreach($website as $web)
+@if($web->name=="background_header")
+<?php $bghead = $web->content; ?>
+@endif
+@endforeach
+<div class="box_trungtam" style="background:{{$bghead}}">
             <div class="box_trungtam_title">
               <label></label>
             </div>
-            <aside style="padding-left:100px">
-              <ul>
+            <aside style="padding-left:100px; background:{{$bghead}}">
+              <ul style="background:{{$bghead}}">
               @foreach($website as $support)
                 @if($support->name=="sdt_mua_hang_tu_xa")
                   <?php $sdt_mua_hang_tu_xa = $support->content;?>

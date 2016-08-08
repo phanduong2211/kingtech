@@ -145,37 +145,7 @@
                   @endif
                 @endfor
                 </div>
-          <!-- <div class="divleft">@include("fontend.home.menuleft")</div>
-          <div class="divright">
-          @for($i=0;$i<count($menus);$i++)
-            @if($menus[$i]->parent==0)
-            begin kiểm tra xem có category con không 
-                      <?php
-                          $flag = false;
-                          for($k=0;$k<count($menus);$k++)
-                          { 
-                            if($menus[$k]->parent!=0 && $menus[$k]->parent==$menus[$i]->id)
-                              $flag=true;
-                          }
-                       ?>
-              <!-- end kiểm tra xem có category con không 
-
-                      <li class="licap1"><a href="{{Asset($menus[$i]->url)}}" title="{{$menus[$i]->name}}">{{$menus[$i]->name}}                                  
-                      <?php if($flag) echo '<i class="fa fa-caret-down"></i>';?>
-                              </a>
-                              @if($flag)
-                              <ul class="ulcap2 left">
-                                  @for($j=0;$j<count($menus);$j++)
-                                    @if($menus[$j]->parent!=0 && $menus[$j]->parent==$menus[$i]->id)
-                                      <li class="licap2"><i class="fa fa-circle"></i> <a href="{{Asset('')}}category/{{$menus[$j]->id.'-'.$menus[$j]->url}}" title="{{$menus[$j]->name}}">{{$menus[$j]->name}}</a></li>
-                                    @endif
-                                  @endfor
-                              </ul>
-                              @endif
-                          </li>
-            @endif
-          @endfor 
-          </div>  -->
+          
         </ul>
       </nav>
     </div>
