@@ -1,13 +1,4 @@
-<?php $title=""; ?>
-@foreach($website as $tile)
-
-                              @if($tile->name=="open_time")
-                                <?php $title = $tile->content; ?>
-                              @elseif($tile->name=="background_footer")
-                                <?php $bg = $tile->content;?>
-                              @endif
- @endforeach
-<footer style="background:{{$bg}}">
+<footer style="background:{{$website['background_footer']}}">
     <section>
       <div class="box_pages">
         <div class="box_static">
@@ -18,16 +9,12 @@
             <li>
               <label class="fl_upercase fl_bold">GIỜ MỞ CỬA</label>
               <big>
-                           <?php echo $title; ?>
+                           <?php echo $website['open_time']; ?>
                             </big> </li>
             <li>
               <label class="fl_upercase fl_bold">BẢO HÀNH</label>
               <big>
-                @foreach($website as $tile)
-                              @if($tile->name=="gio_bao_hanh")
-                                <?php echo $tile->content; ?>
-                              @endif
-                            @endforeach
+                {!!$website['gio_bao_hanh']!!}
               </big> </li>
           </ul>
         </div>
@@ -36,19 +23,11 @@
           <aside>
             <label class="fl_upercase fl_bold">TRUNG TÂM KINGTECH</label>
                           <big class="fl_size14"><div>
-                            @foreach($website as $tile)
-                              @if($tile->name=="address")
-                                <?php echo $tile->content; ?>
-                              @endif
-                            @endforeach
+                            {!!$website['address']!!}
                           </div></big>
                       </aside>
           <code class="hidden_mobile">
-          @foreach($website as $tile)
-            @if($tile->name=="copyright")
-              <?php echo $tile->content; ?>
-            @endif
-          @endforeach<br>
+          {!!$website['copyright']!!}<br>
             <a href="http://lovadweb.com" title="Thiết kế website" target="_blank">Thiết kế website bởi lovadweb.com</a></code> </div>
         <div class="footer_line hidden_mobile"></div>
         <div class="footer_about hidden_mobile">
@@ -81,11 +60,7 @@
         </div>
         
         <div class="box_coppy"> 
-        @foreach($website as $tile)
-          @if($tile->name=="giay_phep")
-            <?php echo $tile->content; ?>
-          @endif
-        @endforeach
+       {!!$website['giay_phep']!!}
         </em> </div>
       </div>
     </section>

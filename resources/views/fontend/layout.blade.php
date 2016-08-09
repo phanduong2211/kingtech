@@ -22,16 +22,9 @@
     <link href="{{Asset('')}}public/css/mobile.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-@foreach($website as $web)
-  @if($web->name=="background_image")
-    <?php $backNenImage = $web->content;?>
-  @elseif($web->name=="background_color")
-   <?php $backNen = $web->content;?>
-   @endif
-@endforeach
 
  @include("fontend.layout.headerTop")
- <article style="background:url('{{Asset($backNenImage)}}') ">
+ <article style="background:url('{{Asset($website['background_image'])}}') ">
     @include("fontend.layout.headMenu")
     @include("fontend.layout.categoryMenu")
     <section>

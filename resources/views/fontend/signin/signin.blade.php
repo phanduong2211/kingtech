@@ -32,21 +32,15 @@
                     <big style="padding-top: 20px;padding-left: 10px;padding-right: 10px;width: calc(100% - 20px);">
                        <p>- Chào mừng bạn đến với kingtech.com.vn !</p>
                        <p>- Đăng ký với admin để được thấy giá sỉ</p>
-                       @foreach($website as $web)
-                       @if($web->name=="email")
-                        <?php $email= $web->content?>
-                        @elseif($web->name=="phone")
-                        <?php $phone= $web->content?>
-                        @endif
-                       @endforeach
+                      
                        
                        <p>- Vui lòng liên hệ email 
                        
-                       <strong>{{$email}}</strong>
+                       <strong>{{$website['email']}}</strong>
                        
                        hoặc số điện thoại 
                        
-                       <strong>{{$phone}}</strong> 
+                       <strong>{{$website['phone']}}</strong> 
                        để được cấp tài khoản truy cập</p>
                        
                        

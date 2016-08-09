@@ -1,10 +1,6 @@
-@foreach($website as $web)
-@if($web->name=="background_header")
-<?php $bghead = $web->content; ?>
-@endif
-@endforeach
+
 <section class="hidden_mobile">
-      <div class="body_pages" style="background:{{$bghead}}">
+      <div class="body_pages" style="background:{{$website['background_header']}}">
         <div class="article_header">
           <div style="width:3%" class="logo">
             <figure><a href="{{Asset('')}}" title="kingtech"><img src="{{Asset('')}}public/images/logo.jpg" alt="kingtech"></a></figure>
@@ -19,40 +15,18 @@
                   <div class="hotro_support">
                     <label>Hỗ trợ trực truyến</label>
                     <ul>
-                    @foreach($website as $web)
-                    @if($web->name=="hotline")
-                      <?php $isSp = true;
-                            $hotline = $web->content;
-                       ?>
-                    @elseif($web->name=="email")
-                    <?php 
-                            $email = $web->content;
-                       ?>
-                       @elseif($web->name=="facebook")
-                    <?php 
-                            $facebook = $web->content;
-                       ?>
-                       @elseif($web->name=="google")
-                    <?php 
-                            $google = $web->content;
-                       ?>
-                       @elseif($web->name=="twitter")
-                    <?php 
-                            $twitter = $web->content;
-                       ?>
-                    @endif
-                    @endforeach
+                   <?php $isSp = true; ?>
                     @if($isSp)                    
                       <li> Để được hỗ trợ tư vấn tốt hơn các bạn có thể liên hệ qua hotline: </li>
-                      <li> <strong>{{$hotline}}</strong> </li>
+                      <li> <strong>{{$website['hotline']}}</strong> </li>
                       <li> Hoặc email: </li>
-                      <li> <strong>{{$email}}</strong> </li>
+                      <li> <strong>{{$website['email']}}</strong> </li>
                       <li> Bạn cũng có thể để lại tin nhắn trên tường Fanpage, Google+, Youtube của kingtech.com.vn dể được hỗ trợ tốt nhất : </li>
-                      <li> <a href="{{$facebook}}" target="_blank">
+                      <li> <a href="{{$website['facebook']}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_face.png"></figure>
-                        </a> <a href="{{$google}}" target="_blank">
+                        </a> <a href="{{$website['google']}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_google.png"></figure>
-                        </a> <a href="{{$twitter}}" target="_blank">
+                        </a> <a href="{{$website['twitter']}}" target="_blank">
                           <figure><img src="{{Asset('')}}public/kingtech/images/icon_twitter.png"></figure>
                         </a> </li>      
                     @endif        

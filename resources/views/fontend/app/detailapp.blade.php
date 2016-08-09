@@ -56,7 +56,7 @@
 
             </aside>
             <big>
-            	{{$detailapp[0]->content}}            </big>
+            	{!!$detailapp[0]->content!!}            </big>
         </div>
       	<div class="ungdung_text">
                     </div>    

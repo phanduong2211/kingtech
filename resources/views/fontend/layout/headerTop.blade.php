@@ -1,44 +1,25 @@
-@foreach($website as $web)
-@if($web->name=="background_header_top")
-<?php $bgheadtop = $web->content; ?>
-@endif
-@endforeach
  <header class="hidden_mobile">
-    <div id="header_top" style="background:{{$bgheadtop}}">
+    <div id="header_top" style="background:{{$website['background_header_top']}}">
       <section>
         <div class="header_top">
           <div class="hotline">
             <figure class="overi_hotline"><img src="{{Asset('')}}public/kingtech/images/hotline.png" alt="Kingtech hotline"></figure>
-            @foreach($website as $phone)
-              @if($phone->name=="hotline")
-                <span>{{$phone->content}}</span> </div>
-              @endif
-            @endforeach
+           <span>{{$website['hotline']}}</span> </div>
           <div class="header_slogan up">
-            @foreach($website as $slide)
-              @if($slide->name=="slide_top")
-                <p>{{$slide->content}}</p>
-              @endif
+            @foreach($website['slide_top'] as $s)
+            <p>{!!$s!!}</p>
             @endforeach
           </div>
           <div class="header_share">
           
               <div class="header_social">
               <figure class="_social">
-              @foreach($website as $fb)
-                @if($fb->name=="facebook")
-                   <a href="{{$fb->content}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/icon_face.png" alt="Facebook"></a>
-                @endif
-                @if($fb->name=="twitter") 
-                  <a href="{{$fb->content}}" target="_blank">
+                <a href="{{$website['facebook']}}" target="_blank"><img src="{{Asset('')}}public/kingtech/images/icon_face.png" alt="Facebook"></a>
+                <a href="{{$website['twitter']}}" target="_blank">
                   <img src="{{Asset('')}}public/kingtech/images/icon_twitter.png" alt="Gucci"></a>
-                @endif 
-              
-                @if($fb->name=="google") 
-                  <a href="{{$fb->content}}" target="_blank">
+               <a href="{{$website['google']}}" target="_blank">
                   <img src="{{Asset('')}}public/kingtech/images/icon_google.png" alt="Google Plus"></a>
-                @endif
-              @endforeach
+              
                  </figure>
               </div>            
           </div>

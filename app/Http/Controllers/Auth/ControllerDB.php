@@ -49,7 +49,20 @@ class ControllerDB extends BaseController
     public function getWebsite()
     {
     	$website = Website::get();
-    	return $website;
+        $data=array();
+        $isSlideArray=false;
+        foreach ($website as $key => $value) {
+            if($value->name=="slide_top"){
+                if(!$isSlideArray){
+                     $data[$value->name]=array();
+                     $isSlideArray=true;
+                }
+
+                $data[$value->name][]=$value->content;
+            }else
+                $data[$value->name]=$value->content;
+        }
+    	return $data;
     }
     public function getNews()
     {

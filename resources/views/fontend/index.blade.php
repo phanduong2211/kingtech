@@ -1,40 +1,22 @@
 @extends('fontend.layout')
 @section('title')
 <title>
-  @foreach($website as $tile)
-    @if($tile->name=="title")
-      <?php echo $tile->content; ?>
-    @elseif($tile->name=="background_body")
-      <?php $bgbody = $tile->content; ?>
-    @endif
-
-  @endforeach
+  {!!$website['title']!!}
 </title>
 @endsection
 
 @section("description")
-<meta name='description' content='
-@foreach($website as $tile)
-    @if($tile->name=="meta_description")
-      <?php echo $tile->content; ?>
-    @endif
-  @endforeach'>
+<meta name='description' content='{!!$website['meta_description']!!}'>
   @endsection
 
 @section("keywords")
-  <meta name='keywords' content='
-@foreach($website as $tile)
-    @if($tile->name=="meta_keywords")
-      <?php echo $tile->content; ?>
-    @endif
-  @endforeach
-  ' >
+  <meta name='keywords' content='{!!$website['meta_keywords']!!}' >
     @endsection
     @section('meta')
   <meta property="og:type" content="website" />
   <meta property="og:url" content="/" />
-  <meta property="og:title" content="KINGTECH chuyên phân phối android tv box, loa bluetooth, camera the thao" />
-  <meta property="og:description" content="KINGTECH chuyên phân phối android tv box | loa bluetooth| camera the thao | but trinh chieu| ong nhom | camera hanh trinh | tai nghe bluetooth giá tốt nhất " />
+  <meta property="og:title" content="{!!$website['title']!!}" />
+  <meta property="og:description" content="{!!$website['meta_description']!!}" />
   <meta property="og:site_name" content="kingtech" />
   <meta property="og:image" content="images/logo-hao-huan.png" />
   <meta property="fb:app_id" content="1700293566862288" />
@@ -53,7 +35,7 @@
     }
 </style>
 @section('center')
-      <div class="body_pages" style="background:{{$bgbody}}">
+      <div class="body_pages" style="background:{{$website['background_body']}}">
         <link rel="stylesheet" href="public/kingtech/css/TweenMax.css" type="text/css">
 
 @include("fontend.home.slide")
