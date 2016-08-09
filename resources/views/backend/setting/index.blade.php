@@ -145,13 +145,76 @@
 			</div><br />
 		</div>
 	</div>
+
+
+	<div class="row margin">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Icon mua hàng từ xa:</label>
+                </div>
+                <div class="col-md-8 required boxupload">
+                    <span class="red">*</span>
+                    <img src="{{Asset($data['icon_mua_hang_tu_xa'])}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval10" id="imgchoose" width="60px">
+                    <br><div class="text-left desc">
+                    <input type="hidden" class="form-control" name="icon_mua_hang_tu_xa" id="imagechooseval10" value="{{$data['icon_mua_hang_tu_xa']}}" />Kích thước chuẩn 60x60</div>
+                </div>
+            </div><br />
+        </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Icon trung tâm bảo hành:</label>
+                </div>
+                <div class="col-md-8 required boxupload">
+                    <span class="red">*</span>
+                    <img src="{{Asset($data['icon_trung_tam_bao_hanh'])}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval11" id="imgchoose" width="60px">
+                    <br><div class="text-left desc">
+                    <input type="hidden" class="form-control" name="icon_trung_tam_bao_hanh" id="imagechooseval11" value="{{$data['icon_trung_tam_bao_hanh']}}" />Kích thước chuẩn 60x60</div>
+                </div>
+            </div><br />
+        </div>
+        
+    </div>
+
+    <div class="row margin">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-4">
+                    <label>Icon đại lý:</label>
+                </div>
+                <div class="col-md-8 required boxupload">
+                    <span class="red">*</span>
+                    <img src="{{Asset($data['icon_dai_ly'])}}" class="img-thumbnail showupload uploadimg" href="#imagechooseval12" id="imgchoose" width="60px">
+                    <br><div class="text-left desc">
+                    <input type="hidden" class="form-control" name="icon_dai_ly" id="imagechooseval12" value="{{$data['icon_dai_ly']}}" />Kích thước chuẩn 60x60</div>
+                </div>
+            </div><br />
+        </div>
+
+        <div class="col-md-6">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Màu trợ giúp trung tâm:</label>
+				</div>
+				<div class="col-md-8 required">
+					<span class="red">*</span>
+					<input type="color" name="background_center_support" style="height:50px;width:100px" value="{{$data['background_center_support']}}" />
+					<span class="desc">.</span>
+				</div>
+			</div><br />
+		</div>
+        
+    </div>
+
 	
 
 
 	<div class="row">
     		<div class="col-md-12 text-right">
     			<input type="submit" class="btn btn-success" value="Lưu Lại" />
-    			<input type="button" class="btn btn-default" value="Nhập Lại" />
+    			<input type="button" class="btn btn-default" value="Hủy bỏ" onclick="window.location.reload()" />
     		</div>
     	</div><br />
     	<input type="hidden" name="_token" value="{{csrf_token()}}"/>

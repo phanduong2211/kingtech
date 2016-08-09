@@ -21,6 +21,10 @@ class SettingController extends BaseController
 		->orWhere('name','background_header')
 		->orWhere('name','background_hover_menu')
 		->orWhere('name','background_header_top')
+		->orWhere('name','icon_trung_tam_bao_hanh')
+		->orWhere('name','icon_mua_hang_tu_xa')
+		->orWhere('name','icon_dai_ly')
+		->orWhere('name','background_center_support')
 		->get();
 		$data=array();
 		foreach ($info as $key => $value) {
@@ -31,27 +35,39 @@ class SettingController extends BaseController
 		return view("backend.setting.index",array('data'=>$data));
 	}
 
-	public function update(){
-		$back_img=Input::get('background_image');
+	private function convert($back_img){
+		
 
 		if(strpos($back_img, "/public/")===0){
 			
 		}else{
 			$back_img="/public/images/".$back_img;
 		}
+		return $back_img;
+	}
 
-		$back_menu=Input::get('background_menu');
+	public function update(){
+		$back_img=$this->convert(Input::get('background_image'));
 
-		if(strpos($back_menu, "/public/")===0){
-			
-		}else{
-			$back_menu="/public/images/".$back_menu;
-		}
+		$back_menu=$this->convert(Input::get('background_menu'));
+
+		$icon_mua_hang_tu_xa=$this->convert(Input::get('icon_mua_hang_tu_xa'));
+
+		$icon_dai_ly=$this->convert(Input::get('icon_dai_ly'));
+		$icon_trung_tam_bao_hanh=$this->convert(Input::get('icon_trung_tam_bao_hanh'));
+
+		
 
 		$info=new Website();
 		$info->where('name','background_image')->update(array('content'=>$back_img));
 
 		$info->where('name','background_menu')->update(array('content'=>$back_menu));
+
+		$info->where('name','icon_mua_hang_tu_xa')->update(array('content'=>$icon_mua_hang_tu_xa));
+
+		$info->where('name','icon_trung_tam_bao_hanh')->update(array('content'=>$icon_trung_tam_bao_hanh));
+
+		$info->where('name','icon_dai_ly')->update(array('content'=>$icon_dai_ly));
 
 		$info->where('name','background_color')->update(array('content'=>Input::get('background_color')));
 
@@ -66,6 +82,9 @@ class SettingController extends BaseController
 		$info->where('name','background_hover_menu')->update(array('content'=>Input::get('background_hover_menu')));
 
 		$info->where('name','background_header_top')->update(array('content'=>Input::get('background_header_top')));
+
+		$info->where('name','background_center_support')->update(array('content'=>Input::get('background_center_support')));
+
 
 		return redirect('admin/setting')->with(['message'=>'Cập nhật thành công.']);
 		

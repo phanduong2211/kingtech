@@ -351,7 +351,6 @@ function showImage($path){
 			</div><br />
 		</div>
 	</div>
-	
 
 
 	<div class="row">
@@ -417,9 +416,10 @@ function showImage($path){
 
 @section('script')
 <script src="{{Asset('public/js/validate.js')}}" ></script>
+
 <script type="text/javascript">
-var asset_path="{{Asset('public')}}/";
 var currentPage = "#menu_info";
+var asset_path="{{Asset('public')}}/";
 function isImage(file) {
     file = file.split(".").pop();
     switch (file) {
@@ -515,4 +515,5 @@ $(document).ready(function(){
 });
 
 </script>
+
 @endsection

@@ -127,7 +127,7 @@
                         <?php 
                           foreach($arr as $a){
                             if($a->show_menu_top==1){
-                            if(mb_strtolower($a->name)=="kho ứng dụng"){
+                            if(mb_strtolower($a->name)=="kho ứng dụng" || mb_strtolower($a->name)=="ứng dụng"){
                                 ?>
                                 <li class="itemdropdown">
                                 <div class="itemdropclick">

@@ -194,6 +194,8 @@ if(isset($_POST['submit'])){
 								<option value="150x100">150x100(Tin Tức)</option>
 								<option value="160x120">160x120(Video)</option>
 								<option value="160x160">160x160(Ứng dụng)</option>
+								<option value="60x60">60x60(Icon box trung tâm)</option>
+								<option value="600x400">600x400(Box khuyến mãi)</option>
 							</select>
 						</div>
 					</div>
