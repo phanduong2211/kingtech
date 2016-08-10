@@ -83,7 +83,7 @@ class CountUserOnline
         }
 
         $total=StatisticsOnline::sum('quantity');
-        $current=UserOnline::whereRaw("TIMESTAMPDIFF(MINUTE,last_visit,NOW())<6")->count('id');
+        $current=UserOnline::whereRaw("TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),'-12:00','+10:00'))<6")->count('id');
 
         \View::share('count_user_online',["current"=>$current,"total"=>$total]);
 

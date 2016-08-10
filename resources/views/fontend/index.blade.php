@@ -79,7 +79,7 @@
 <script src="public/kingtech/js/jquery.newsTicker.js"></script> 
 <script>
 var adscenter="{{$adscenter==null?"":$convert->showImage($adscenter->image)}}";
-var urladscenter="{{$adscenter->url}}";
+var urladscenter="{{$adscenter==null?"":$adscenter->url}}";
 
                 var nt_title = $('#nt-title').newsTicker({
 

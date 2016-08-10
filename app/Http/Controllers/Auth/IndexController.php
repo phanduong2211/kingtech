@@ -68,6 +68,9 @@ class IndexController extends Controller
             $data=json_decode(\Cookie::get('uon'));
             $page=trim(\Input::get("page"));
             $url=\Input::get('url');
+
+            if($page=="")
+                $page="Trang chủ";
                 
             \App\UserOnline::where('id2',$data->id)->update(['position'=>$page]);
         }
