@@ -20,11 +20,16 @@ class IndexController extends BaseController
 			(select count(id) from pages) as page,
 			(select count(id) from apps) as ungdung'))
 		->first();
+		try{
+			UserOnline::whereRaw('TIMESTAMPDIFF(MINUTE,last_visit,NOW())>30')->delete();
+		}catch(\Exception $e){
+
+		}
 		return view("backend.index",array('data'=>$data));
 	}
 
 	public function listonline(){
-		return json_encode(UserOnline::select('last_visit','ip')->whereRaw("TIMESTAMPDIFF(MINUTE,last_visit,NOW())<6")->get());
+		return json_encode(UserOnline::select('last_visit','ip','position')->whereRaw("TIMESTAMPDIFF(MINUTE,last_visit,NOW())<6")->get());
 	}
 
 	public function removecookie(){

@@ -62,6 +62,16 @@ class IndexController extends Controller
         $th = new ControllerDB();
         return $th->getNewsWhereName($name);
     }
+
+    public function position_user(){
+       if(\Cookie::has("uon")){
+            $data=json_decode(\Cookie::get('uon'));
+            $page=trim(\Input::get("page"));
+            $url=\Input::get('url');
+                
+            \App\UserOnline::where('id2',$data->id)->update(['position'=>$page]);
+        }
+    }
 }
 
 ?>

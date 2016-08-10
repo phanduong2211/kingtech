@@ -366,6 +366,9 @@ Route::get("test",function(){
 	return View('fontend.test');
 });
 
+Route::post("position_user","Auth\IndexController@position_user");
+
+
 Route::group(['middleware'=>'count_user','namespace' => 'Auth'], function()
 {
 	Route::get('/',"IndexController@getIndex");

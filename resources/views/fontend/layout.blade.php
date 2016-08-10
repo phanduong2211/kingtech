@@ -44,6 +44,21 @@
   <script>
     jQuery(document).ready(function()
     {
+      var urlpuser="{{url('position_user')}}";
+      var _token="{{csrf_token()}}";
+      jQuery.ajax({
+        type: "POST",
+        url: urlpuser,
+        dataType: 'json',
+        data: {"page":document.title,"_token":_token,"url":urlpuser},
+        success: function (result) {
+            
+
+        },
+        error: function (e, e2, e3) {
+            
+        }
+    });
       var offset = 10;
       var duration = 500;
       jQuery(window).scroll(function()
