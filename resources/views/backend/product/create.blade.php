@@ -291,7 +291,7 @@
                     <div class="col-md-2">
                         <label>Tổng quan:</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10" id="tNicEdit" data-height="250">
                         <textarea style="width:100%;height:250px" name="overview" id="overview">{{old('overview')}}</textarea>
                       <span class="desc">Bài viết đánh giá tổng quan về sản phẩm</span>
                     </div>
@@ -351,6 +351,14 @@
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>
+
+<style type="text/css">
+  .nicEdit-panelContain.on{
+    position: fixed;
+    top: 50px;
+    z-index: 9999;
+  }
+</style>
   @endsection
 
 @section('script')
@@ -444,6 +452,8 @@
         new nicEditor({ fullPanel: true }).panelInstance("promotion");
     });
 </script>
+
+<script src="{{Asset('public/js/t_nicEdit.js')}}" ></script>
 
 <script type="text/javascript">
   

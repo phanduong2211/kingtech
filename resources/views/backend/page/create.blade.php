@@ -69,7 +69,7 @@
                     <div class="col-md-2">
                         <label>Nội Dung:</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10" id="tNicEdit" data-height="250">
                         <textarea style="width:100%;height:250px" name="content" id="content">{{old('content')}}</textarea>
                     </div>
                 </div><br />
@@ -88,7 +88,13 @@
 
 
     </form>
-
+<style type="text/css">
+  .nicEdit-panelContain.on{
+    position: fixed;
+    top: 50px;
+    z-index: 9999;
+  }
+</style>
   @endsection
 
 @section('script')
@@ -149,5 +155,5 @@ var asset_path="{{Asset('public')}}/";
   });
 
   </script>
-
+<script src="{{Asset('public/js/t_nicEdit.js')}}" ></script>
 @endsection

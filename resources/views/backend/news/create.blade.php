@@ -93,7 +93,7 @@
                     <div class="col-md-1">
                         <label>Nội Dung:</label>
                     </div>
-                    <div class="col-md-11">
+                    <div class="col-md-11" id="tNicEdit" data-height="250">
                         <textarea style="width:100%;height:250px" name="content" id="content">{{old('content')}}</textarea>
                     </div>
                 </div><br />
@@ -109,6 +109,13 @@
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>
+<style type="text/css">
+  .nicEdit-panelContain.on{
+    position: fixed;
+    top: 50px;
+    z-index: 9999;
+  }
+</style>
   @endsection
 
 @section('script')
@@ -161,6 +168,8 @@
         new nicEditor({ fullPanel: true }).panelInstance("content");
     });
 </script>
+
+<script src="{{Asset('public/js/t_nicEdit.js')}}" ></script>
 
 <script type="text/javascript">
   

@@ -244,7 +244,7 @@ function showImage($path){
                     <div class="col-md-2">
                         <label>Bài viết về ứng dụng:</label>
                     </div>
-                    <div class="col-md-10">
+                    <div class="col-md-10" id="tNicEdit" data-height="250">
                         <textarea style="width:100%;height:250px" name="content" id="content">{{$data->content}}</textarea>
                     </div>
                 </div><br />
@@ -266,6 +266,14 @@ function showImage($path){
     </form>
 @include('backend.upload')
 <a class="nicupload showupload" href="#nicupload">Upload</a>
+
+<style type="text/css">
+  .nicEdit-panelContain.on{
+    position: fixed;
+    top: 50px;
+    z-index: 9999;
+  }
+</style>
   @endsection
 
 @section('script')
@@ -381,5 +389,7 @@ function showImage($path){
         new nicEditor({ fullPanel: true }).panelInstance("content");
     });
 </script>
+
+<script src="{{Asset('public/js/t_nicEdit.js')}}" ></script>
 
 @endsection
