@@ -27,7 +27,8 @@ function showImage($path){
     <div id="ttable" class="ttable">
     <ul class="subsubsub">
         <li><a data-filter="all" data-group-filter="a" data-subsubsub="true" href="#" class="current">Tất cả <span class="count"></span></a>|</li>
-        <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang ẩn<span class="count"></span></a></li>
+        <li><a data-filter='{"type":"attr","value":"0","attr_name":"data-display"}' data-group-filter="a" data-subsubsub="true" href="#">Đang ẩn <span class="count"></span></a>|</li>
+        <li><a data-filter='{"type":"attr","value":"1","attr_name":"data-showhome"}' data-group-filter="a" data-subsubsub="true" href="#">Hiện thị trang chủ <span class="count"></span></a></li>
        
        
     </ul>
@@ -37,11 +38,22 @@ function showImage($path){
             ?>
     <!--.subsubsub-->
     <div class="row captiontable">
-        <div class="col-sm-6 col-md-7">
+        <div class="col-sm-7 col-md-8">
+
+          <div class="group-action">
+                <select id="bulk-action-selector-top" style="width:115px" class="fleft" data-ajax=".checkboxb.checked" data-href='{"hiện":"{{url('admin/product/displays')}}","ẩn":"{{url('admin/product/hides')}}","hiện thị trang chủ":"{{url('admin/product/showhomes')}}","ẩn trang chủ":"{{url('admin/product/hidehomes')}}"}' data-confirm="Bạn có chắc muốn <b>{value}</b> {item} sản phẩm?" data-success-type="option">
+                    <option value="-1" selected="selected">- Hành động -</option>
+                    <option value="hiện" data-success="displays">Hiện</option>
+                    <option value="ẩn" data-success="hides">Ẩn</option>
+                    <option value="hiện thị trang chủ" data-success="displayhomes">Hiện trang chủ</option>
+                    <option value="ẩn trang chủ" data-success="hidehomes">Ẩn trang chủ</option>
+                </select>
+                <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Áp dụng">
+            </div>
 
             <div class="group-action">
                 <select id="bulk-action-selector-top" class="fleft" data-ajax=".checkboxb.checked" data-href='' data-before="action">
-                    <option value="1" selected="selected">Lưu sắp xếp</option>
+                    <option value="1" selected="selected">Lưu s.xếp</option>
                     
                 </select>
                 <input type="button" class="button fleft" data-target="#bulk-action-selector-top" value="Lưu">
@@ -49,7 +61,7 @@ function showImage($path){
 
              
             <div class="group-action">
-                 <select id="filter-by-date" data-filter='{"type":"column","column":"select","filtertype":"="}'>
+                 <select style="width:120px" id="filter-by-date" data-filter='{"type":"column","column":"select","filtertype":"="}'>
                     <option selected="selected" value="-1" data-id="-1">- Tất cả loại -</option>
                     
                     @foreach($listCategory as $item)
@@ -60,7 +72,7 @@ function showImage($path){
             </div>
 
             <div class="group-action">
-                 <select id="filter-by-status" data-filter='{"type":"attr","attr_name":"data-status"}'>
+                 <select style="width:120px" id="filter-by-status" data-filter='{"type":"attr","attr_name":"data-status"}'>
                     <option selected="selected" value="-1" data-id="-1">- Tất cả status -</option>
                     
                     @foreach($arr_status as $key => $value)
@@ -73,7 +85,7 @@ function showImage($path){
             <div class="clearfloat"></div>
         </div>
         <!--col left-->
-        <div class="col-sm-6 col-md-5 captionright">
+        <div class="col-sm-5 col-md-4 captionright">
             <div class="gsearchtable">
                 <input type="button" class="button fright" data-target="#filter-by-search" value="Tìm kiếm" />
                 <div class="searchicon">
@@ -110,7 +122,7 @@ function showImage($path){
            
             @foreach($data as $item)
             
-                                            <tr data-display="{{$item->display}}" data-status="{{$item->status}}">
+                                            <tr data-display="{{$item->display}}" data-status="{{$item->status}}" data-showhome="{{$item->show_home}}">
                                           <td><span class="checkboxb ascheckbox center" data-value="{{$item->id}}"></span></td>
                                           <td>
                                             <span>
@@ -149,7 +161,9 @@ function showImage($path){
                                           <div class="clearfix"> 
                                             <b class="pull-left" style="width:68px">Giá lẻ:</b> {{number_format($item->price,0,',','.')}}<br />
                                             <b class="pull-left" style="width:68px">Giá sỉ: </b> {{number_format($item->price_company,0,',','.')}}<br />
+                                            @if($item->price_origin!=0)
                                             <b class="pull-left" style="width:68px">Giá nhập: </b> {{number_format($item->price_origin,0,',','.')}}
+                                            @endif
                                             </div>
                                           </td>
                                           
@@ -219,7 +233,8 @@ function showImage($path){
         obj.find(".subsubsub li:eq(0) .count").html('(' + item + ')');
               var count = obj.find("table tbody tr[data-display='0']").size();
               obj.find(".subsubsub li:eq(1) .count").html('(' + count + ')');
-
+              count = obj.find("table tbody tr[data-showhome='1']").size();
+              obj.find(".subsubsub li:eq(2) .count").html('(' + count + ')');
              
           },
         'action':function(href,arr,target){
@@ -258,6 +273,48 @@ function showImage($path){
         },
         'show_home':function(target, result){
 
+        },
+        "displays": function (message, target, data, value, result) {
+            
+            target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
+                if ($(this).hasClass("checked")) {
+                    $(this).parents("tr").eq(0).attr("data-display","1").find("td:eq(8) .checkboxblock").addClass("checked");
+                   
+                }
+            });
+            target = target.parents(".ttable").eq(0);
+            target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-display='0']").size() + ")");
+        },
+        "hides": function (message, target, data, value, result) {
+            target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
+                if ($(this).hasClass("checked")) {
+                    $(this).parents("tr").eq(0).attr("data-display","0").find("td:eq(8) .checkboxblock").removeClass("checked");
+                   
+                }
+            });
+            target = target.parents(".ttable").eq(0);
+            target.find(".subsubsub li:eq(1) span.count").html("(" + target.find("table tbody tr[data-display='0']").size() + ")");
+        },
+        "displayhomes": function (message, target, data, value, result) {
+            target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
+                if ($(this).hasClass("checked")) {
+                    $(this).parents("tr").eq(0).attr("data-showhome","1").find("td:eq(9) .checkboxblock").addClass("checked");
+                   
+                }
+            });
+            target = target.parents(".ttable").eq(0);
+            target.find(".subsubsub li:eq(2) span.count").html("(" + target.find("table tbody tr[data-showhome='1']").size() + ")");
+        }
+        ,
+        "hidehomes": function (message, target, data, value, result) {
+            target.parents(".ttable").find("table tbody tr .checkboxb").each(function () {
+                if ($(this).hasClass("checked")) {
+                    $(this).parents("tr").eq(0).attr("data-showhome","0").find("td:eq(9) .checkboxblock").removeClass("checked");
+                   
+                }
+            });
+            target = target.parents(".ttable").eq(0);
+            target.find(".subsubsub li:eq(2) span.count").html("(" + target.find("table tbody tr[data-showhome='1']").size() + ")");
         }
       });
 

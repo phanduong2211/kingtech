@@ -150,7 +150,7 @@
             }
       ]);
 
-        $("#valiapp").show().find("input[type='submit']").removeAttr("disabled");
+    
   });
 </script>
 

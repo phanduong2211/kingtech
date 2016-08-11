@@ -70,6 +70,11 @@ Route::group(['middleware'=>'auth','prefix'=>'admin','namespace' => 'Admin'],fun
 		Route::post("display","ProductController@display");
 
 		Route::post("sort","ProductController@sort");
+
+		Route::post("hides","ProductController@hides");
+		Route::post("displays","ProductController@displays");
+		Route::post("showhomes","ProductController@showhomes");
+		Route::post("hidehomes","ProductController@hidehomes");
 		
 	
 	});
@@ -360,6 +365,9 @@ Route::get("nojavascript.html",function(){
 Route::get("test",function(){
 	return View('fontend.test');
 });
+
+Route::post("position_user","Auth\IndexController@position_user");
+
 
 Route::group(['middleware'=>'count_user','namespace' => 'Auth'], function()
 {

@@ -43,6 +43,7 @@
             </big>
                 <aside>
                 	<label>Các tin khác</label>
+                  @if($newsRefer!=null)
                   @for($i=0;$i< count($newsRefer);$i++)
                     @for($j=0;$j< count($NewsCate);$j++)
                       @if($newsRefer[$i]->cate_id==$NewsCate[$j]->id)
@@ -52,6 +53,7 @@
                       @endif
                     @endfor
                   @endfor            
+                  @endif
                  </aside>
             </div>
           </div>

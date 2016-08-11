@@ -321,10 +321,10 @@ var currentPage="#menu_home";
 
 function loadUserOnline(callback){
 	RunAjax(base_url+"/listonline",{"_token":token},function(result){
-			var html="<table class='table'><tr bgcolor='#f5f5f5'><th width='30%'>IP</th><th width='30%'>Truy Cập Lúc</th><th width='40%'>Quốc gia</th></tr>";
+			var html="<table class='table'><tr bgcolor='#f5f5f5'><th width='20%'>IP</th><th width='25%'>Truy Cập Lúc</th><th width='30%'>Vị trí</th><th width='25%'>Quốc gia</th></tr>";
 
 			for(var i=0;i<result.length;i++){
-				html+="<tr><td>"+result[i].ip+"</td><td>"+result[i].last_visit+"</td><td><a href='#' data-ip='"+result[i].ip+"'>Xem</a></td></tr>";
+				html+="<tr><td>"+result[i].ip+"</td><td>"+result[i].last_visit+"</td><td>"+result[i].position+"</td><td><a href='#' data-ip='"+result[i].ip+"'>Xem</a></td></tr>";
 			}
 			html+="</table>";
 			$("#ModalOnline .modal-body").html(html);

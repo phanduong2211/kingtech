@@ -187,7 +187,58 @@
                 <img data-u="thumb" src="{{$convert->showImage($slide->image)}}" />
             </div>
         @endforeach
-           
+            <!-- <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/02.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-02.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/03.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-03.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/04.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-04.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/05.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-05.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/06.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-06.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/07.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-07.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/08.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-08.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/09.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-09.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/10.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-10.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/11.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-11.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/12.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-12.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/13.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-13.jpg" />
+            </div>
+            <div data-p="150.00" style="display: none;">
+                <img data-u="image" src="public/kingtech/img/14.jpg" />
+                <img data-u="thumb" src="public/kingtech/img/thumb-14.jpg" />
+            </div> -->
         
         </div>
         <!-- Thumbnail Navigator -->

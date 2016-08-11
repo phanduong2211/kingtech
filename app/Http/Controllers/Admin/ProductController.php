@@ -77,8 +77,11 @@ class ProductController extends BaseController
 
 		$product->price_company=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_company));
 
-		$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
-
+		if(trim($request->price_origin)!=""){
+			$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
+		}else{
+			$product->price_origin=0;
+		}
 		$product->status=$request->status;
 		$product->quantity=$request->quantity;
 		$product->viewer=0;
@@ -159,8 +162,11 @@ class ProductController extends BaseController
 
 		$product->price_company=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_company));
 
-		$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
-
+		if(trim($request->price_origin)!=""){
+			$product->price_origin=preg_replace("/(\.|-| |\,)*/", "", trim($request->price_origin));
+		}else{
+			$product->price_origin=0;
+		}
 		$product->status=$request->status;
 		$product->quantity=$request->quantity;
 
@@ -256,6 +262,62 @@ class ProductController extends BaseController
 		}
 
 		return json_encode(["success"=>true]);
+	}
+
+	public function displays(){
+		if(!$this->checkPermission('product/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			Product::where('id',(int)$item)->update(['display'=>1]);
+		}
+
+		if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+	}
+
+	public function hides(){
+		if(!$this->checkPermission('product/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			Product::where('id',(int)$item)->update(['display'=>0]);
+		}
+
+		if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+	}
+
+	public function showhomes(){
+		if(!$this->checkPermission('product/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			Product::where('id',(int)$item)->update(['show_home'=>1]);
+		}
+
+		if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
+	}
+
+	public function hidehomes(){
+		if(!$this->checkPermission('product/update')){
+			return json_encode(["success"=>false,"message"=>"Bạn không có quyền chỉnh sửa"]);
+		}
+		$data=explode(',',\Input::get('data'));
+		foreach($data as $item){
+			Product::where('id',(int)$item)->update(['show_home'=>0]);
+		}
+
+		if(Cache::has('c_a_product'))
+				Cache::forget('c_a_product');
+		return json_encode(["success"=>true,"message"=>"Cập nhật thành công"]);
 	}
 }
 

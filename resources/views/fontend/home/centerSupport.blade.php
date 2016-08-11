@@ -1,41 +1,22 @@
-@foreach($website as $web)
-@if($web->name=="background_header")
-<?php $bghead = $web->content; ?>
-@endif
-@endforeach
-<div class="box_trungtam" style="background:{{$bghead}}">
+<div class="box_trungtam">
             <div class="box_trungtam_title">
               <label></label>
             </div>
-            <aside style="padding-left:100px; background:{{$bghead}}">
-              <ul style="background:{{$bghead}}">
-              @foreach($website as $support)
-                @if($support->name=="sdt_mua_hang_tu_xa")
-                  <?php $sdt_mua_hang_tu_xa = $support->content;?>
-                @endif
-                @if($support->name=="sdt_trung_tam_bh")
-                  <?php $sdt_trung_tam_bh = $support->content;?>
-                @endif
-                @if($support->name=="sdt_dai_ly")
-                  <?php $sdt_dai_ly = $support->content;?>
-                @endif
-                @if($support->name=="email")
-                  <?php $email = $support->content;?>
-                @endif
-              @endforeach
+            <aside style="padding-left:100px">
+              <ul>
 
                             <li class="fl_w280">
-                  <figure><img src="{{Asset('')}}public/kingtech/images/icon/1-trung-tam.png" alt="Mua hàng từ xa"></figure>
+                  <figure><img src="{{Asset($website['icon_mua_hang_tu_xa'])}}" alt="Mua hàng từ xa"></figure>
                   <label class="fl_bold fl_top5 fl_upercase fl_size13">Mua hàng từ xa</label>
-                   <big class="fl_top5"><span>{{$sdt_mua_hang_tu_xa}}</span><br>{{$email}}</big> </li>
+                   <big class="fl_top5"><span>{{$website['sdt_mua_hang_tu_xa']}}</span><br>{{$website['email_mua_hang_tu_xa']}}</big> </li>
                             <li class="fl_w280">
-                  <figure><img src="{{Asset('')}}public/kingtech/images/icon/2-trung-tam.png" alt="Trung tâm bảo hành"></figure>
+                  <figure><img src="{{Asset($website['icon_trung_tam_bao_hanh'])}}" alt="Trung tâm bảo hành"></figure>
                   <label class="fl_bold fl_top5 fl_upercase fl_size13">Trung tâm bảo hành</label>
-                   <big class="fl_top5"><span>{{$sdt_trung_tam_bh}}</span><br>{{$email}}</big> </li>
+                   <big class="fl_top5"><span>{{$website['sdt_trung_tam_bh']}}</span><br>{{$website['email_trung_tam_bao_hanh']}}</big> </li>
                             <li class="fl_w280">
-                  <figure><img src="{{Asset('')}}public/kingtech/images/icon/3-trung-tam.png" alt="Đại lý, buôn bán"></figure>
+                  <figure><img src="{{Asset($website['icon_dai_ly'])}}" alt="Đại lý, buôn bán"></figure>
                   <label class="fl_bold fl_top5 fl_upercase fl_size13">Đại lý, buôn bán</label>
-                   <big class="fl_top5"><span>{{$sdt_dai_ly}}</span><br>{{$email}}</big> </li>
+                   <big class="fl_top5"><span>{{$website['sdt_dai_ly']}}</span><br>{{$website['email_dai_ly']}}</big> </li>
                 
                 
               </ul>

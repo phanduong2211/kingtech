@@ -130,12 +130,14 @@
             <div class="col-sm-8 required">
               <span class="red">*</span>
               <div class="input-group">
-                <input type="text" name="price" value="{{old('price')}}" class="form-control" />
+                <input type="text" name="price" value="{{old('price')}}" class="form-control formatprice" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
+              
               <span class="desc">
-                Giá bán lẻ của sản phẩm. VD: 1.000.000 hoặc 1,000,000
+                Giá bán lẻ của sản phẩm. VD: 1.000.000 hoặc 1,000,000 hoặc 1000000
               </span>
+              <span class="pricetext"></span>
             </div>
           </div>
         </div>
@@ -147,12 +149,14 @@
               <div class="col-sm-8 required">
                 <span class="red">*</span>
                 <div class="input-group">
-                  <input type="text" name="price_company" value="{{old('price_company')}}" class="form-control" />
+                  <input type="text" name="price_company" value="{{old('price_company')}}" class="form-control formatprice" />
                   <span class="input-group-addon">VNĐ</span>
                 </div>
+                
                 <span class="desc">
                   Giá sỉ khi đăng nhập vào sẽ thấy
                 </span>
+                <span class="pricetext"></span>
               </div>
             </div>
         </div>
@@ -164,15 +168,16 @@
             <div class="col-sm-4">
               <label>Giá nhập:</label>
             </div>
-            <div class="col-sm-8 required">
-              <span class="red">*</span>
+            <div class="col-sm-8">
               <div class="input-group">
-                <input type="text" name="price_origin" value="{{old('price_origin')}}" class="form-control" />
+                <input type="text" name="price_origin" value="" class="form-control formatprice" />
                 <span class="input-group-addon">VNĐ</span>
               </div>
+              
               <span class="desc">
-                .
+                Để trống nếu không có
               </span>
+              <span class="pricetext"></span>
             </div>
           </div>
         </div>
@@ -404,10 +409,6 @@
                 'gia':true
             },
             {
-                'name':'price_origin',
-                'gia':true
-            },
-            {
                 'name':'price_company',
                 'gia':true
             },
@@ -468,6 +469,26 @@
       return str;
   }
 
+  function removeMemony(m){
+    return m.replace(/\./gi,"").replace(/\,/gi,"").replace(/ /gi,"").replace(/-/gi,"");
+  }
+
+  var DOCSO=function(){
+    var t=["không","một","hai","ba","bốn","năm","sáu","bảy","tám","chín"],r=function(r,n){
+      var o="",
+      a=Math.floor(r/10),
+      e=r%10;
+      return a>1?(o=" "+t[a]+" mươi",1==e&&(o+=" mốt")):1==a?(o=" mười",1==e&&(o+=" một")):n&&e>0&&(o=" lẻ"),5==e&&a>=1?o+=" lăm":4==e&&a>=1?o+=" tư":(e>1||1==e&&0==a)&&(o+=" "+t[e]),o},n=function(n,o){
+        var a="",
+        e=Math.floor(n/100),n=n%100;
+        return o||e>0?(a=" "+t[e]+" trăm",a+=r(n,!0)):a=r(n,!1),a},
+        o=function(t,r){
+          var o="",
+        a=Math.floor(t/1e6),t=t%1e6;a>0&&(o=n(a,r)+" triệu",r=!0);
+        var e=Math.floor(t/1e3),t=t%1e3;return e>0&&(o+=n(e,r)+" ngàn",r=!0),t>0&&(o+=n(t,r)),o};return{doc:function(r){
+          if(0==r)return t[0];var n="",a="";do ty=r%1e9,r=Math.floor(r/1e9),n=r>0?o(ty,!0)+a+n:o(ty,!1)+a+n,a=" tỷ";while(r>0);return n.trim()
+        }}}();
+
   $(document).ready(function(){
     var urlc=$("#urlc");
     var isChange=true;
@@ -482,6 +503,19 @@
       isChange=false;
       $(this).off('keyup');
     });
+
+
+    $(".formatprice").on('keyup',function(){
+      var text=$.trim($(this).val());
+
+      if(text!=""){
+        text=parseInt(removeMemony(text));
+        $(this).parent().parent().find(".pricetext").html(DOCSO.doc(text));
+      }else{
+        $(this).parent().parent().find(".pricetext").html("");
+      }
+    });
+
   
 
   });

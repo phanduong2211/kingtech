@@ -49,7 +49,20 @@ class ControllerDB extends BaseController
     public function getWebsite()
     {
     	$website = Website::get();
-    	return $website;
+        $data=array();
+        $isSlideArray=false;
+        foreach ($website as $key => $value) {
+            if($value->name=="slide_top"){
+                if(!$isSlideArray){
+                     $data[$value->name]=array();
+                     $isSlideArray=true;
+                }
+
+                $data[$value->name][]=$value->content;
+            }else
+                $data[$value->name]=$value->content;
+        }
+    	return $data;
     }
     public function getNews()
     {
@@ -119,7 +132,7 @@ class ControllerDB extends BaseController
     }
     public function getNewProduct()
     {
-        $newproducts = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("index_home","asc")->where("display",1)->where("show_home",1)->where("status",0)->take(10)->get();
+        $newproducts = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("index_home","asc")->where("display",1)->where("show_home",1)->take(10)->get();
             return $newproducts;
     }
     public function getProductIndex($cate_id)

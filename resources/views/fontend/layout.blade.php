@@ -22,16 +22,9 @@
     <link href="{{Asset('')}}public/css/mobile.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-@foreach($website as $web)
-  @if($web->name=="background_image")
-    <?php $backNenImage = $web->content;?>
-  @elseif($web->name=="background_color")
-   <?php $backNen = $web->content;?>
-   @endif
-@endforeach
 
  @include("fontend.layout.headerTop")
- <article style="background:url('{{Asset($backNenImage)}}') ">
+ <article style="background:url('{{Asset($website['background_image'])}}') ">
     @include("fontend.layout.headMenu")
     @include("fontend.layout.categoryMenu")
     <section>
@@ -51,6 +44,21 @@
   <script>
     jQuery(document).ready(function()
     {
+      var urlpuser="{{url('position_user')}}";
+      var _token="{{csrf_token()}}";
+      jQuery.ajax({
+        type: "POST",
+        url: urlpuser,
+        dataType: 'json',
+        data: {"page":document.title,"_token":_token,"url":urlpuser},
+        success: function (result) {
+            
+
+        },
+        error: function (e, e2, e3) {
+            
+        }
+    });
       var offset = 10;
       var duration = 500;
       jQuery(window).scroll(function()
