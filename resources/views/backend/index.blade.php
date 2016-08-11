@@ -6,6 +6,7 @@
 @endsection
 
 @section('css')
+<link rel="stylesheet" type="text/css" href="{{Asset('public/css/morris.css')}}" />
 
 @endsection
 
@@ -278,6 +279,30 @@
 	<!--//box-->
 
 
+	<div class="col-md-12">
+		<hr />
+		<div>
+			<form method="get" action="" class="pull-right">
+				<select name="thang"  style="height:28px">
+					<?php 
+					for($i=1;$i<=12;$i++){ ?>
+					<option <?php echo ($i==$currentMonth?"selected='selected'":'') ?> value="<?php echo $i ?>">Tháng <?php echo $i ?></option>
+					<?php } ?>
+				</select>
+				<select name="nam" style="height:28px">
+					<?php 
+					for($i=2016;$i<=$year;$i++){ ?>
+					<option <?php echo ($i==$currentYear?"selected='selected'":'') ?> value="<?php echo $i ?>">Năm <?php echo $i ?></option>
+					<?php } ?>
+				</select>
+				<input type="submit" value="Xem" class="button s1" />
+			</form>
+		</div>
+		<br />
+		<div id="morris-area-chart"></div>
+		<div class="text-center">Biểu đồ truy cập website tháng <?php echo $currentMonth ?> năm <?php echo $currentYear ?></div><br />
+
+	</div><!--//Biểu Đồ-->
 
 </div>
 
@@ -315,6 +340,8 @@
 
 @section('script')
 <script type="text/javascript" src="{{asset('public/js/RunAjax.js')}}"></script>
+<script src="{{Asset('public/js/moris/morris.min.js')}}"></script>
+<script src="{{Asset('public/js/moris/raphael-min.js')}}"></script>
 <script type="text/javascript">
 var token="{{csrf_token()}}";
 var currentPage="#menu_home";
@@ -371,6 +398,42 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+
+	$(".side-nav li").eq(0).addClass("active");
+
+						Morris.Area({
+							element: 'morris-area-chart',
+							data: [
+							<?php foreach ($thongke as $itk) {?>
+								{
+									day: "<?php echo $itk['d'] ?>",
+									sl:<?php echo $itk['sl'] ?>
+								},
+								<?php } ?>
+								],
+								xkey: 'day',
+								ykeys: ['sl'],
+								labels: ['Lượt truy cập'],
+								pointSize: 2,
+								hideHover: 'auto',
+								resize: true,
+								parseTime: false,
+								smooth: false
+							});
+
+						$("#viewUserOnline").click(function(){
+							if(!$(this).hasClass("success")){
+								LoadJson(base_url_admin+'ajax/loaduseronline',{},function(result){
+									var html="<table class='table'><tr bgcolor='#f5f5f5'><th>Lần Truy Cập Cuối</th><th>IP</th></tr>";
+
+									for(var i=0;i<result.length;i++){
+										html+="<tr><td>"+result[i].last_visit+"</td><td>"+result[i].ip+"</td></tr>";
+									}
+									html+="</table>";
+									$("#ModalOnline .modal-body").html(html);
+								});
+							}
+						});
 });
 </script>
 
