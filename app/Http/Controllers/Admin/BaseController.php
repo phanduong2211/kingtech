@@ -17,7 +17,6 @@ class BaseController extends Controller
 			header('Location: '.url('error/account'));
 			exit();
 		}
-		
 		$this->idUser=$user->id;
 
 		
