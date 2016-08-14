@@ -19,7 +19,7 @@ class CountUserOnline
      */
     public function handle($request, Closure $next)
     {
-
+        $total=1000;
         try{
             $now=Carbon::now();
             //user online
@@ -34,11 +34,16 @@ class CountUserOnline
                     $phut=($now->minute+60)-$data->minutes;
                 }
                 if($phut>=5){
+                    $total=StatisticsOnline::sum('quantity');
                     $data->minutes=$now->minute;
                     $data->hours=$now->hour;
+                    $data->total=$total;
+                    
                     Cookie::queue('uon', json_encode($data),20);
                     
-                    UserOnline::where('id2',$data->id)->update(['last_visit'=>$now->toDateTimeString()]);
+                    UserOnline::where('id2',$data->id)->update(['last_visit'=>$now->toDateTimeString()]);   
+                }else{
+                    $total=$data->total;
                 }
             }else{
                 if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
@@ -49,16 +54,17 @@ class CountUserOnline
                     $ip = $_SERVER['REMOTE_ADDR'];
                 }
                 $id= $now->day.$now->month.$now->year.$now->hour.$now->minute.$now->second.rand(0,9);
-                    
+                $total=StatisticsOnline::sum('quantity');
                 $usero=new UserOnline();
                 $usero->id2=$id;
                 $usero->last_visit=$now->toDateTimeString();
                 $usero->ip=$ip;
                 $usero->position="";
-               
+                
                 
                 if($usero->save()){ 
-                    $data=array('id'=>$id,'minutes'=>$now->minute,'hours'=>$now->hour);
+
+                    $data=array('id'=>$id,'minutes'=>$now->minute,'hours'=>$now->hour,'total'=>$total);
                     Cookie::queue('uon', json_encode($data),20);
 
 
@@ -82,7 +88,6 @@ class CountUserOnline
 
         }
 
-        $total=StatisticsOnline::sum('quantity');
         $current=UserOnline::whereRaw("TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),'-12:00','+10:00'))<6")->count('id');
 
         \View::share('count_user_online',["current"=>$current,"total"=>$total]);

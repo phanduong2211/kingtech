@@ -39,9 +39,6 @@
   border:1px solid #999;
   cursor: pointer;
 }
-#product_images{
-  overflow: hidden;
-}
 
   .large {
     width: 175px; height: 175px;
@@ -58,6 +55,14 @@
      
     /*hide the glass by default*/
     display: none;
+}
+.aside_img figure img{
+  max-width: 230px;
+  max-height: 230px;
+}
+.aside_img figure{
+  height: 230px;
+  width:230px;
 }
 </style>
 
@@ -108,7 +113,6 @@
                                               <?php }else {?> 
                                               <strong>{{number_format($products[0]->price)}} vnđ</strong><?php }?>
                                             </aside> 
-                      <aside class="details"></aside>
                       <aside class="code">
                         <strong>Tình trạng:</strong> {{\App\Product::getStatus()[$products[0]->status]}}
                        
@@ -116,10 +120,11 @@
                       <aside class="code">
                           <strong>Lượt xem:</strong> {{$products[0]->viewer}}
                       </aside>
-                      <!-- <aside class="charge"> 
-                          <span>Miễn phí charge qua thẻ </span>
-                          <img src="{{Asset('')}}public/kingtech/images/icon_visa.gif" alt="Miễn phí charge qua thẻ" /> 
-                      </aside>  -->
+                      <aside class="details">
+                        {!!$products[0]->description!!}
+                       
+                      </aside>
+                      
                       <!-- <aside class="chiase"> Chia sẽ
                       <aside class="social"> <a class="addthis_button_google_plusone" g:plusone:size="medium"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> </aside>
                       </aside>  -->
@@ -215,29 +220,34 @@ $(document).ready(function(){
  
     //Now the mousemove function
     $(".magnify").mousemove(function(e){
-       imageurl=$(".small").attr("src");
+       
         //When the user hovers on the image, the script will first calculate
         //the native dimensions if they don't exist. Only after the native dimensions
         //are available, the script will show the zoomed version.
-        if(!native_width && !native_height)
-        {
-            //This will create a new image object with the same image as that in .small
-            //We cannot directly get the dimensions from .small because of the
-            //width specified to 200px in the html. To get the actual dimensions we have
-            //created this image object.
-            var image_object = new Image();
-            image_object.src = $(".small").attr("src");
+        // if(!native_width && !native_height)
+        // {
+        //     //This will create a new image object with the same image as that in .small
+        //     //We cannot directly get the dimensions from .small because of the
+        //     //width specified to 200px in the html. To get the actual dimensions we have
+        //     //created this image object.
+        //     var image_object = new Image();
+        //     image_object.src = $(".small").attr("src");
 
 
              
-            //This code is wrapped in the .load function which is important.
-            //width and height of the object would return 0 if accessed before
-            //the image gets loaded.
+        //     //This code is wrapped in the .load function which is important.
+        //     //width and height of the object would return 0 if accessed before
+        //     //the image gets loaded.
+        //     native_width = image_object.width;
+        //     native_height = image_object.height;
+        // }
+        // else
+        // {
+            imageurl=$(".small").attr("src");
+            var image_object = new Image();
+            image_object.src = imageurl;
             native_width = image_object.width;
             native_height = image_object.height;
-        }
-        else
-        {
             //x/y coordinates of the mouse
             //This is the position of .magnify with respect to the document.
             var magnify_offset = $(this).offset();
@@ -275,7 +285,7 @@ $(document).ready(function(){
                  
                 //If you hover on the image now, you should see the magnifying glass in action
                 $(".large").css({left: px, top: py, backgroundPosition: bgp,"background-image":"url('"+imageurl+"')"});
-            }
+           // }
         }
     }).mouseout(function(){
       $(".large").hide();
@@ -290,18 +300,15 @@ $(document).ready(function(){
         $("#imagesp .small").attr("src",this.src);
       }
     }).size();
-    if(sizeimage==1){
-      $("#contentimages img").hide();
-    }else{
-      var width=sizeimage*33;
-      if(width>250)
-        width=250;
-      $("#contentimages").css("width",width);
-    }
+    var width=sizeimage*33;
+    if(width>250)
+      width=250;
+    $("#contentimages").css("width",width);
 
    
 
 })
 </script>
+
 @endif
 @endsection

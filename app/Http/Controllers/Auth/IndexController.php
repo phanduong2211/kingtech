@@ -69,6 +69,22 @@ class IndexController extends Controller
             $page=trim(\Input::get("page"));
             $url=\Input::get('url');
 
+            if(strpos($url, '/product/')!==false){
+                $page='Sản phẩm: '.$page;                
+            }else{
+                if(strpos($url, '/tin-tuc/')!==false){
+                    $page='Xem tin tức: '.$page;                
+                }else{
+                    if(strpos($url, '/video/')!==false){
+                        $page='Xem video: '.$page;                
+                    }else{
+                        if(strpos($url, '/app/')!==false){
+                            $page='Ứng dụng: '.$page;                
+                        }   
+                    }   
+                }
+            }
+
             if($page=="")
                 $page="Trang chủ";
                 

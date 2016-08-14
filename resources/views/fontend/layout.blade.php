@@ -44,13 +44,13 @@
   <script>
     jQuery(document).ready(function()
     {
-      var urlpuser="{{url('position_user')}}";
+      var urlpuser="{{url()}}";
       var _token="{{csrf_token()}}";
       jQuery.ajax({
         type: "POST",
-        url: urlpuser,
+        url: urlpuser+'/position_user',
         dataType: 'json',
-        data: {"page":document.title,"_token":_token,"url":urlpuser},
+        data: {"page":document.title,"_token":_token,"url":window.location.href},
         success: function (result) {
             
 
