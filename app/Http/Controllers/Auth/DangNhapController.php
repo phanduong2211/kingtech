@@ -56,7 +56,10 @@ class DangNhapController extends Controller
                 $th = new ControllerDB();
                 $user = $th->getUser(trim($name),trim($pass));
                 if(count($user)>0)
+                {
+                    Session::put("userInfo",$user);
                         return true;
+                }
                 else
                         return false;
         }	

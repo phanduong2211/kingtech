@@ -377,6 +377,9 @@ Route::group(['middleware'=>'count_user','namespace' => 'Auth'], function()
 	Route::get("dang-nhap.html","DangNhapController@getView");
 	Route::post("dang-nhap.html","DangNhapController@getUser");
 	Route::get("gia-si.html","DangNhapController@checkPriceCompany");
+	Route::get("doi-mat-khau","AuthController@changepass");
+	Route::post("doi-mat-khau","AuthController@post_changepass");
+	Route::get("dang-xuat","AuthController@sigout");
 	
 
 	
@@ -408,6 +411,7 @@ Route::group(['middleware'=>'count_user','namespace' => 'Auth'], function()
 	});
 
 	Route::get("{name}","PageController@getPages");
+
 
 });
 

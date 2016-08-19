@@ -21,7 +21,19 @@
                   <img src="{{Asset('')}}public/kingtech/images/icon_google.png" alt="Google Plus"></a>
               
                  </figure>
-              </div>            
+              </div>
+              @if(Session::has("isuser"))
+              @if(Session::get("isuser")=="true") 
+              <div class="user-login">
+                  <ul class="user-info">
+                    <li><a href="{{Asset('doi-mat-khau')}}">Đổi mật khẩu</a></li>
+                    <li>|</li>  
+                    <li><a href="{{Asset('dang-xuat')}}">Đăng xuất</a></li>
+
+                  </ul>
+              </div>
+              @endif
+              @endif           
           </div>
         </div>
       </section>
@@ -189,6 +201,23 @@
     }
     #tdropdown .itemdropdown .active a,#tdropdown .itemdropdown .active .caret{
       color:red;
+    }
+    .user-login
+    {
+      float:left;
+
+    }
+    .user-info > li
+    {
+      float: left;
+      padding-left: 5px;
+      color: white;
+    }
+    .user-info > li >a
+    {
+      color: white;
+      text-decoration: underline;
+      font-weight: bold;
     }
   </style>
 

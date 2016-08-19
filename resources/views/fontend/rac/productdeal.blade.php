@@ -22,17 +22,16 @@
   .pagination
   {
     margin:auto;
-    width:24%;
+    width:100% !important;
+    margin-left: 30% !important;
   }
     .pagination li
     {
       float:left;
       list-style: none;
-      width:5px;
-      height: 5px;
+      width:36px;
+      height: 30px;
       padding:12px;
-      border:1px solid gray;
-      box-shadow: 5px 5px 16px -5px;
     }
     .overi_hotline
     {

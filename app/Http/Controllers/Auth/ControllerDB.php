@@ -147,17 +147,17 @@ class ControllerDB extends BaseController
     }
     public function getProductSelling()
     {
-            $productSelling = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("sold","desc")->where("display",1)->take(10)->get();
+            $productSelling = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("sold","desc")->where("display",1)->where("show_home",1)->take(12)->get();
             return $productSelling;
     }
     public function getProductDeal()
     {
-        $productdeal = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->paginate(30);
+        $productdeal = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->paginate(20);
             return $productdeal;
     }
     public function getProductWhereCategoryID($id,$name)
     {
-        $products = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(30);
+        $products = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(20);
             return $products;
     }
     public function getCategoryMenuIndex()
@@ -202,6 +202,15 @@ class ControllerDB extends BaseController
             return $user;
         }
         return array();
+    }
+    public function updateUser($username,$pass,$passnew)
+    {
+         $user = User::where("username",$username)->first();
+        if($user && \Hash::check($pass, $user->password)){
+            User::where('id',$user->id)->update(['password' => \Hash::make($passnew)]);
+            return true;
+        }
+        return false;
     }
     public function getVideos()
     {

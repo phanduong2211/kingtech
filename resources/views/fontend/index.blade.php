@@ -33,6 +33,7 @@
     {
       margin-top: 13px;
     }
+    
 </style>
 @section('center')
       <div class="body_pages" style="background:{{$website['background_body']}}">
@@ -153,5 +154,16 @@ var urladscenter="{{$adscenter==null?"":$adscenter->url}}";
         color:#333;
         cursor: pointer;
       }
+      .box_title aside {
+      border-bottom: 2px {{$website['background_center_support']}} solid;
+    }
+    .box_title aside label {
+      background: {{$website['background_center_support']}};
+     
+    }
+    .box_title aside span {
+      background: {{$website['background_center_support']}};
+      border-radius: 0px 30px 0px 0px;
+    }
       </style>
 @endsection
