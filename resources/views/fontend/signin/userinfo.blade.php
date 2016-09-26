@@ -1,6 +1,6 @@
 @extends('fontend.layout_qc')
 @section("title")
-<title>Đăng nhập - kingtech.com.vn</title>
+<title>Đổi mật khẩu - kingtech.com.vn</title>
 @endsection
 @section("box_center")
 <div class="box_sales">

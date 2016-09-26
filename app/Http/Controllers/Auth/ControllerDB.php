@@ -71,7 +71,7 @@ class ControllerDB extends BaseController
     }
     public function getNewsWhere($newscate)
     {
-    	$newsShowHome = News::orderby("id","asc")->where("cate_id",$newscate)->take(3)->get();
+    	$newsShowHome = News::orderby("id","asc")->where("cate_id",$newscate)->where("display",1)->take(3)->get();
     	return $newsShowHome;
     }
     public function getNewsWhereID($id)
@@ -147,7 +147,7 @@ class ControllerDB extends BaseController
     }
     public function getProductSelling()
     {
-            $productSelling = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("sold","desc")->where("display",1)->where("show_home",1)->take(12)->get();
+            $productSelling = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("sold","desc")->where("display",1)->where("show_home",1)->where("status",2)->take(12)->get();
             return $productSelling;
     }
     public function getProductDeal()

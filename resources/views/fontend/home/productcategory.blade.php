@@ -12,7 +12,7 @@
       @for($j=0;$j< count($ProductCateID);$j++)
         <div class="item_pro">
           <figure><a href="{{Asset('')}}product/{{$ProductCateID[$j]->id.'-'.$ProductCateID[$j]->url}}" title="{{$ProductCateID[$j]->name}}"><img src="{{$convert->showImage($ProductCateID[$j]->image)}}" alt="{{$ProductCateID[$j]->name}}"></a></figure>
-          <h2><a href="{{Asset('')}}product/{{$ProductCateID[$j]->id.'-'.$ProductCateID[$j]->url}}" title="{{$ProductCateID[$j]->name}}">{{$ProductCateID[$j]->name}}</a></h2>
+          <h2><a style="color:#337ab7;font-weight:bold;font-size:15px" href="{{Asset('')}}product/{{$ProductCateID[$j]->id.'-'.$ProductCateID[$j]->url}}" title="{{$ProductCateID[$j]->name}}">{{$ProductCateID[$j]->name}}</a></h2>
           <span>
             @if(Session::has("isuser"))
               <code>{{number_format($ProductCateID[$j]->price_company)}} đ</code>

@@ -15,7 +15,7 @@
                 <ul>
                     <li>
                     <figure><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}"><img src="{{$convert->showImage($productSelling[$i]->image)}}" alt="{{$productSelling[$i]->name}}" /></a></figure>
-                    <h2><a href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}">{{$productSelling[$i]->name}}</a></h2>
+                    <h2><a style="color:#337ab7;font-weight:bold;font-size:15px" href="{{Asset('')}}product/{{$productSelling[$i]->id.'-'.$productSelling[$i]->url}}" title="{{$productSelling[$i]->name}}">{{$productSelling[$i]->name}}</a></h2>
                     </li>
                     @if(isset($productSelling[$i+1]))
                     <li>

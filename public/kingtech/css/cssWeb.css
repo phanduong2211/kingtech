@@ -131,7 +131,6 @@ header {
 	position: absolute;
 	width: 380px;
 	color: #F00;
-	font-weight: 16px;
 	font-weight: bold;
 	height: 40px;
 	line-height: 40px;
@@ -273,7 +272,7 @@ article {
 	float: left;
 	padding-bottom: 20px;
 	width: 100%;
-	background: url('{{Asset('')}}public/kingtech/images/scroll.png');
+	background: url(../images/scroll.png);
 }
 .body_pages {
 	float: left;
@@ -650,7 +649,10 @@ article {
 .menu_ungdung:hover > aside {
 	display: block;
 	position: absolute;
-	width: 500px;
+	top:30px;
+	padding-top:5px;
+	left:-207px;
+	width: 600px;
 	height: auto;
 	z-index: 9999;
 	-webkit-transition: all 2s linear;
@@ -668,7 +670,7 @@ article {
 .menu_ungdung aside ul
 {
 	float:left;
-	width:244px;
+	width:180px;
 	padding:5px 10px;
 	list-style:none;
 }
@@ -916,20 +918,13 @@ article {
 	height:40px;
 
 }
-nav .ulkingtech li
-{
-	/*list-style: none;
-	color: white;
-	font-weight: bold;
-	margin:auto;*/
-}
 nav {
 	margin:auto;
 	width: 1004px;
 	height: 40px;
 	line-height: 40px;
 }
-nav .ulkingtech {
+nav ul {
 	margin:auto;
 	width: 1004px;
 	list-style: none;
@@ -938,21 +933,21 @@ nav .ulkingtech {
 	background: url(../images/menu.png);
 }
 nav ul li {
-	/*float: left;
+	float: left;
 	color: #FFF;
 	font-size: .83em;
 	text-transform: uppercase;
 	padding-left: 11px;
 	padding-right: 11px;
 	cursor: pointer;
-	position: relative;*/
+	position: relative;
 }
 nav ul li a {
-	/*color: #FFF;
-	text-decoration: none;*/
+	color: #FFF;
+	text-decoration: none;
 }
 nav ul li:hover {
-	/*float: left;
+	float: left;
 	color: #FFF;
 	font-size: .83em;
 	text-transform: uppercase;
@@ -960,17 +955,17 @@ nav ul li:hover {
 	padding-right: 11px;
 	height: 40px;
 	line-height: 40px;
-	background: url(../images/menu_hover.png);*/
+	background: url(../images/menu_hover.png);
 }
 /*menu cap 2 */
 nav ul li ul {
-	/*display: none;
+	display: none;
 	-webkit-transition: all 2s linear;
 	-o-transition: all 2s linear;
 	-moz-transition: all 2s linear;
 	-ms-transition: all 2s linear;
 	-kthtml-transition: all 2s linear;
-	transition: all 2s linear;*/
+	transition: all 2s linear;
 }
 .left
 {
@@ -980,8 +975,8 @@ nav ul li ul {
 {
 	right: 0;
 }
-nav .divright li:hover > ul {
-	/*display: block;
+nav ul li:hover > ul {
+	display: block;
 	position: absolute;
 	padding-top: 5px;
 	padding-bottom: 10px;
@@ -999,10 +994,10 @@ nav .divright li:hover > ul {
 	-moz-box-shadow: 0px 6px 12px 0px rgba(102,102,102,0.8);
 	box-shadow: 0px 6px 12px 0px rgba(102,102,102,0.8);
 	border-bottom: 4px #f05922 solid;
-	background: #f6f6f6;*/
+	background: #f6f6f6;
 }
 nav ul li ul li {
-	/*float: left;
+	float: left;
 	font-family: tahoma;
 	background: none;
 	margin-left: 10px;
@@ -1015,20 +1010,18 @@ nav ul li ul li {
 	font-size: 14px !important;
 	padding: 0px !important;
 	text-transform: none;
-	font-weight: bold;*/
+	font-weight: bold;
 }
 nav ul li ul li i {
-	/*float: left;
+	float: left;
 	margin-top: 5px;
 	margin-right: 5px;
 	height: 8px;
 	font-size: 8px;
-	color: #8eb625;*/
-    
+	color: #8eb625;
 }
-
 nav ul li ul li:hover {
-	/*float: left;
+	float: left;
 	background: none;
 	margin-left: 10px;
 	width: calc(50% - 10px);
@@ -1039,15 +1032,15 @@ nav ul li ul li:hover {
 	text-align: left !important;
 	font-size: 14px !important;
 	padding: 0px !important;
-	text-transform: none;*/
+	text-transform: none;
 }
 nav ul li ul li a {
-	/*color: #000000;
-	text-decoration: none;*/
+	color: #000000;
+	text-decoration: none;
 }
 nav ul li ul li a:hover {
-	/*color: #FF0000;
-	text-decoration: none;*/
+	color: #FF0000;
+	text-decoration: none;
 }
 .header_nav
 {
@@ -1060,7 +1053,7 @@ nav ul li ul li a:hover {
 .box_banners {
 	float: left;
 	width: 1004px;
-	height:439px;
+	height:360px;
 }
 .box_banners img {
 	float: left;
@@ -1179,6 +1172,7 @@ nav ul li ul li a:hover {
 	padding-top: 10px;
 	padding-bottom: 10px !important;
 	width: 775px;
+	height: 300px;
 	position: relative;
 	overflow: hidden;
 	background: rgba(220,220,220,0.3);
@@ -1188,6 +1182,7 @@ nav ul li ul li a:hover {
 	margin-left: 8px;
 	margin-right: 8px;
 	width: 178px !important;
+	height: 280px !important;
 	margin-bottom: 10px;
 	overflow: hidden;
 	border: 1px;
@@ -1246,7 +1241,7 @@ nav ul li ul li a:hover {
 	position: absolute;
 	top: calc(50% - 15px);
 	left: 0px;
-	z-index: 4;
+	z-index: 9999;
 	width: 30px;
 	height: 30px;
 	border-radius: 20px;
@@ -1259,7 +1254,7 @@ nav ul li ul li a:hover {
 	position: absolute;
 	top: calc(50% - 15px);
 	right: 0px;
-	z-index: 4;
+	z-index: 9999;
 	width: 30px;
 	height: 30px;
 	border-radius: 20px;
@@ -1373,7 +1368,7 @@ nav ul li ul li a:hover {
 	font-size: 13px;
 	font-weight: normal;
 	padding: 4px;
-	height: 50px;
+	height: 40px;
 	width: calc(100% - 8px);
 }
 .box_item .item_pro h2 a{
@@ -2143,7 +2138,8 @@ nav ul li ul li a:hover {
 }
 .box_trungtam aside {
 	float: left;
-	background: white;
+	background: #e6e6e6;
+	padding: 10px;
 	width: calc(100% - 20px);
 }
 .box_trungtam aside ul {
@@ -3344,7 +3340,7 @@ footer {
 }
 .footer_daily {
 	float: left;
-	width: 310px;
+	width: 315px;
 }
 .daily_title {
 	float: left;
@@ -3466,7 +3462,25 @@ footer {
 	color: #FFF;
 	line-height: 16px;
 	font-size: 13px;
+	position: relative;
 }
+ .onpage
+ {
+	 position: absolute;
+	 left: 0px;
+	 top:5px;
+	 text-align: left;
+	 width:50%;
+	 color:#101010;
+	 font-size:8px;
+ }
+ .onpage h2 a
+ {
+	 color:#101010;
+	 text-decoration:none;
+	 font-size:8px;
+	 font-weight: normal;
+ }
 /* face and time*/
 
 .box_thoigian {
@@ -3693,7 +3707,8 @@ div.pagination span.disabled {
 	text-decoration: none;
 	color: #000000;
 	background: url(../images/top.png) no-repeat;
-	font-size: 1.2em padding: 1em;
+	font-size: 1.2em;
+	padding: 1em;
 	display: none;
 	z-index: 9999999;
 }

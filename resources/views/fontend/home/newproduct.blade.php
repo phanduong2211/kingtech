@@ -27,7 +27,7 @@
         @for($i=0;$i< count($newproducts);$i++)
           <div class="item_pro">
             <figure><a href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}"><img src="{{$convert->showImage($newproducts[$i]->image)}}" alt="{{$newproducts[$i]->name}}" /></a></figure>
-            <h2><a href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}">{{$newproducts[$i]->name}}</a></h2>
+            <h2><a style="color:#337ab7;font-weight:bold;font-size:15px" href="{{Asset('')}}product/{{$newproducts[$i]->id.'-'.$newproducts[$i]->url}}" title="{{$newproducts[$i]->name}}">{{$newproducts[$i]->name}}</a></h2>
             <span> 
               @if(Session::has("isuser"))
                 <code>{{number_format($newproducts[$i]->price_company)}} đ</code><br>
