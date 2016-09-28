@@ -299,7 +299,7 @@ article {
 .logo figure img {
 	float: left;
 	height: 80px;
-	width: 251px;
+	width: 210px;
 }
 .article_header_right {
 	float: right;
@@ -312,7 +312,7 @@ article {
 	margin-top: 10px;
 	font-weight: bold;
 	font-size: 20px;
-	width:720px;
+	width:95%;
 }
 .header_cart a
 {

@@ -1,6 +1,6 @@
 
 <style>
-  .ho-tro
+/*  .ho-tro
   {
     float: left;
     font-size: 12px;
@@ -19,6 +19,135 @@
   {
     cursor: pointer;
   }
+  .ho-tro ul i
+  {
+    background: url('public/images/icon_page.png') top no-repeat;
+    float: left;
+  }
+  .khuyen-mai
+  {
+
+    height: 33px;
+    width: 23px;
+    background-position: 0 -25px !important;
+  }
+  .khuyen-mai:hover
+  {
+    background-position: -75px -104px !important;
+  }
+  .giao-hang
+  {
+    margin-left:10px;
+    height: 31px;
+    width: 51px;
+    background-position:-31px -25px !important;
+    
+  }
+  .giao-hang:hover
+  {
+    background-position: -111px -105px !important;
+  }
+  .bao-hanh
+  {
+    margin-left:10px;
+    height: 33px;
+    width: 35px;
+    background-position: -89px -25px !important;
+  }
+  .bao-hanh:hover
+  {
+    background-position: -74px -143px !important;
+  }
+  .doi-tra
+  {
+    margin-left:10px;
+    background-position: -128px -25px !important;
+    height: 33px;
+    width: 22px;
+  }
+  .doi-tra:hover
+  {
+        background-position: -116px -142px !important;;
+  }*/
+  .box_services {
+    float: left;
+    margin-top: 25px;
+    width: 500px;
+    font: 12px Arial;
+  }
+  .box_services .box_content {
+    cursor: pointer;
+    float: left;
+    line-height: 16px;
+    margin-right: 10px;
+    width: 115px;
+}
+.box_services .box_content a {
+    color: #494949;
+}
+.box_services .box_content .icon {
+    float: left;
+    margin-right: 3px;
+}
+.icon.icon_camket {
+    background-position: 0 -25px;
+    height: 33px;
+    width: 23px;
+}
+.box_content:hover .icon.icon_camket {
+    background-position: -75px -104px !important;
+}
+.icon {
+    background: url("public/images/icon_page.png") repeat scroll 0 0 rgba(0,0,0,0);
+    display: inline-block;
+}
+.box_services .box_content a {
+    color: #494949;
+}
+.box_services .box_content {
+    cursor: pointer;
+    float: left;
+    line-height: 16px;
+    margin-right: 10px;
+    width: 115px;
+}
+#header_middle .box_services .box_content .icon {
+    float: left;
+    margin-right: 3px;
+}
+.icon.icon_giaohang {
+    background-position: -31px -25px;
+    height: 31px;
+    width: 51px;
+}
+.box_content:hover .icon.icon_giaohang {
+    background-position: -111px -105px !important;
+}
+#header_middle .box_services .box_content .icon {
+    float: left;
+    margin-right: 3px;
+}
+.icon.icon_thanhtoan {
+    background-position: -89px -25px;
+    height: 33px;
+    width: 35px;
+}
+.box_content:hover .icon.icon_thanhtoan {
+    background-position: -74px -143px !important;
+}
+
+#header_middle .box_services .box_content .icon {
+    float: left;
+    margin-right: 3px;
+}
+.icon.icon_doitra {
+    background-position: -128px -25px;
+    height: 33px;
+    width: 22px;
+}
+.box_content:hover .icon.icon_doitra{
+  background-position: -116px -142px !important;
+}
 </style>
 <section class="hidden_mobile">
       <div class="body_pages" style="background:{{$website['background_header']}}">
@@ -30,18 +159,44 @@
             <div class="header_cart">
               <!-- <div class="giohang">
                                 <a href="/gio-hang.html">GIỎ HÀNG <span class="fl_cart">0</span> SẢN PHẨM</a> </div> -->
-              <div class="ho-tro">
+              <div class="box_services">
+                        <div class="box_content">
+                            <a href="/tin-khuyen-mai">
+                                <i class="icon icon_camket"></i>
+                                <span class="services_text">Luôn có <br> khuyến mãi</span>
+                            </a>
+                        </div>
+                        <div class="box_content">
+                            <a href="/chinh-sach-giao-nhan">
+                                <i class="icon icon_giaohang"></i>
+                                <span class="services_text">Giao hàng Toàn quốc</span>
+                            </a>
+                        </div>
+                        <div class="box_content">
+                            <a href="/chinh-sach-bao-hanh">
+                                <i class="icon icon_thanhtoan"></i>
+                                <span class="services_text">Bảo hành tận nơi</span>
+                            </a>
+                        </div>
+                        <div class="box_content">
+                            <a href="/chinh-sach-doi-tra-san-pham">
+                                <i class="icon icon_doitra"></i>
+                                <span class="services_text">Đổi trả hàng trong 7 ngày</span>
+                            </a>
+                        </div>
+              </div>
+              <!-- <div class="ho-tro">
                 <ul>
-                  <i style="height: 37px;width: 29px;float: left;background: url('public/images/khuyenmai.jpg') top no-repeat;"></i>
+                  <i class="khuyen-mai"></i>
                   <li> Luôn có khuyến mãi</li>
-                  <i style="height: 40px;width: 58px;float: left;background: url('public/images/giao-hang.jpg') top no-repeat;"></i>
+                  <i class="giao-hang"></i>
                   <li>Giao hàng toàn quốc</li>
-                  <i style="height: 37px;width: 37px;float: left;background: url('public/images/bao-hanh.jpg') top no-repeat;"></i>
+                  <i class="bao-hanh"></i>
                   <li>Bảo hành tận nơi</li>
-                  <i style="height: 37px;width: 29px;float: left;background: url('public/images/doi-tra.jpg') top no-repeat;"></i>
+                  <i class="doi-tra"></i>
                   <li>Đổi trả hàng trong 7 ngày</li>
                 </ul>
-              </div>
+              </div> -->
               <div class="login"><a href="{{Asset('')}}gia-si.html"><span>Xem Giá Sỉ</span></a></div>
               <div class="hotro"> <img src="{{Asset('')}}public/kingtech/images/icon_support.png" alt="Hỗ trợ trực tuyến">
                 <aside>
