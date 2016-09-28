@@ -90,7 +90,7 @@
                                   <a href="{{url($cc."/".$a->id.'-'.$a->url)}}">{{$a->name}}</a>
                                   <span class="caret"></span>
                                 </div>
-                                <?php dequyCategory($a->id,$data); ?>
+                                <?php dequyCategory($a->id,$data,$cc); ?>
                               </li>
                             <?php 
 
@@ -134,7 +134,13 @@
                                   ?>
                                   <li class="itemdropdown">
                                 <div class="itemdropclick">
+								<?php $nameccc=trim(mb_strtolower($a->name));
+									if($nameccc!="hỗ trợ" && $nameccc!="kho ứng dụng" && $nameccc!="ứng dụng"){
+								?>
                                   <a href="{{url($a->url)}}">{{$a->name}}</a>
+								  <?php }else{ ?>
+								  <a href="#">{{$a->name}}</a>
+								  <?php } ?>
                                   <span class="caret"></span>
                                 </div>
                                   <?php 
@@ -163,8 +169,9 @@
                  <?php $mmm=cloneArray($menus);$caaaa=cloneArray($cateApps);dequyMenu(0,$mmm,$caaaa); ?>
                 
               </div>
-             
+             <li class="itemdropdown">
               <a id="mgiasi" href="{{url('gia-si.html')}}">Xem giá sỉ</a>
+			  </li>
             </ul>
           </div>
       </nav>
@@ -186,9 +193,13 @@
       background-color: #fff;
       padding-left: 10px;
       border-left:1px solid #288ad6;
+	  list-style:none;
     }
+	
     #tdropdown .itemdropdown{
       position: relative;
+	  padding-top:5px;
+	  padding-bottom:5px;
     }
     #tdropdown .itemdropdown .caret{
       position: absolute;
@@ -229,9 +240,9 @@
         $(this).find(".itemdropclick").removeClass("itemdropclick");
       }
     });
-    $("#tdropdown .itemdropclick").click(function(){
-      $(this).parent().find(".subdropdown:eq(0)").slideToggle();
-      $(this).toggleClass('active');
+    $("#tdropdown .itemdropclick .caret").click(function(){
+      $(this).parent().parent().find(".subdropdown:eq(0)").slideToggle();
+      $(this).parent().toggleClass('active');
       return false;
     });
   });

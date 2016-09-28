@@ -920,13 +920,13 @@ article {
 	height:40px;
 
 }
-nav {
+nav:not(#navbarmobile) {
 	margin:auto;
 	width: 1004px;
 	height: 40px;
 	line-height: 40px;
 }
-nav ul {
+nav:not(#navbarmobile) ul {
 	margin:auto;
 	width: 1004px;
 	list-style: none;
@@ -934,7 +934,7 @@ nav ul {
 	line-height: 40px;
 	background: url(../images/menu.png);
 }
-nav ul li {
+nav:not(#navbarmobile) ul li {
 	float: left;
 	color: #FFF;
 	font-size: .83em;
@@ -944,11 +944,11 @@ nav ul li {
 	cursor: pointer;
 	position: relative;
 }
-nav ul li a {
+nav:not(#navbarmobile) ul li a {
 	color: #FFF;
 	text-decoration: none;
 }
-nav ul li:hover {
+nav:not(#navbarmobile) ul li:hover {
 	float: left;
 	color: #FFF;
 	font-size: .83em;
@@ -960,7 +960,7 @@ nav ul li:hover {
 	background: url(../images/menu_hover.png);
 }
 /*menu cap 2 */
-nav ul li ul {
+nav:not(#navbarmobile) ul li ul {
 	display: none;
 	-webkit-transition: all 2s linear;
 	-o-transition: all 2s linear;
@@ -977,7 +977,7 @@ nav ul li ul {
 {
 	right: 0;
 }
-nav ul li:hover > ul {
+nav:not(#navbarmobile) ul li:hover > ul {
 	display: block;
 	position: absolute;
 	padding-top: 5px;
@@ -998,7 +998,7 @@ nav ul li:hover > ul {
 	border-bottom: 4px #f05922 solid;
 	background: #f6f6f6;
 }
-nav ul li ul li {
+nav:not(#navbarmobile) ul li ul li {
 	float: left;
 	font-family: tahoma;
 	background: none;
@@ -1014,7 +1014,7 @@ nav ul li ul li {
 	text-transform: none;
 	font-weight: bold;
 }
-nav ul li ul li i {
+nav:not(#navbarmobile) ul li ul li i {
 	float: left;
 	margin-top: 5px;
 	margin-right: 5px;
@@ -1022,7 +1022,7 @@ nav ul li ul li i {
 	font-size: 8px;
 	color: #8eb625;
 }
-nav ul li ul li:hover {
+nav:not(#navbarmobile) ul li ul li:hover {
 	float: left;
 	background: none;
 	margin-left: 10px;
@@ -1036,11 +1036,11 @@ nav ul li ul li:hover {
 	padding: 0px !important;
 	text-transform: none;
 }
-nav ul li ul li a {
+nav:not(#navbarmobile) ul li ul li a {
 	color: #000000;
 	text-decoration: none;
 }
-nav ul li ul li a:hover {
+nav:not(#navbarmobile) ul li ul li a:hover {
 	color: #FF0000;
 	text-decoration: none;
 }
