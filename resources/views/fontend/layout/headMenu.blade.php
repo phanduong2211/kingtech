@@ -1,4 +1,25 @@
 
+<style>
+  .ho-tro
+  {
+    float: left;
+    font-size: 12px;
+    margin-top: 17px;
+  }
+  .ho-tro ul li
+  {
+    float: left;
+    list-style: none;
+    height: 50px;
+    width: 73px;
+    padding-left:5px;
+    font-weight: 100;
+  }
+  .ho-tro ul li:hover
+  {
+    cursor: pointer;
+  }
+</style>
 <section class="hidden_mobile">
       <div class="body_pages" style="background:{{$website['background_header']}}">
         <div class="article_header">
@@ -9,6 +30,18 @@
             <div class="header_cart">
               <!-- <div class="giohang">
                                 <a href="/gio-hang.html">GIỎ HÀNG <span class="fl_cart">0</span> SẢN PHẨM</a> </div> -->
+              <div class="ho-tro">
+                <ul>
+                  <i style="height: 37px;width: 29px;float: left;background: url('public/images/khuyenmai.jpg') top no-repeat;"></i>
+                  <li> Luôn có khuyến mãi</li>
+                  <i style="height: 40px;width: 58px;float: left;background: url('public/images/giao-hang.jpg') top no-repeat;"></i>
+                  <li>Giao hàng toàn quốc</li>
+                  <i style="height: 37px;width: 37px;float: left;background: url('public/images/bao-hanh.jpg') top no-repeat;"></i>
+                  <li>Bảo hành tận nơi</li>
+                  <i style="height: 37px;width: 29px;float: left;background: url('public/images/doi-tra.jpg') top no-repeat;"></i>
+                  <li>Đổi trả hàng trong 7 ngày</li>
+                </ul>
+              </div>
               <div class="login"><a href="{{Asset('')}}gia-si.html"><span>Xem Giá Sỉ</span></a></div>
               <div class="hotro"> <img src="{{Asset('')}}public/kingtech/images/icon_support.png" alt="Hỗ trợ trực tuyến">
                 <aside>

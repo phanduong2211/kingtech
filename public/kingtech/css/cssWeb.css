@@ -285,7 +285,7 @@ article {
 .article_header {
 	float: left;
 	width: 100%;
-	height: 100px;
+	height: 120px;
 }
 .logo {
 	float: left;
@@ -299,6 +299,7 @@ article {
 .logo figure img {
 	float: left;
 	height: 80px;
+	width: 251px;
 }
 .article_header_right {
 	float: right;
@@ -311,7 +312,7 @@ article {
 	margin-top: 10px;
 	font-weight: bold;
 	font-size: 20px;
-	width:500px;
+	width:720px;
 }
 .header_cart a
 {
@@ -345,6 +346,7 @@ article {
 	 font-size: 15px;
 	 margin-top: 17px;
 	 cursor:pointer;
+	 padding-left: 30px;
  }
  .header_cart .login span{
 	 float: left;
