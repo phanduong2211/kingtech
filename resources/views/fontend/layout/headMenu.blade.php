@@ -161,25 +161,25 @@
                                 <a href="/gio-hang.html">GIỎ HÀNG <span class="fl_cart">0</span> SẢN PHẨM</a> </div> -->
               <div class="box_services">
                         <div class="box_content">
-                            <a href="/tin-khuyen-mai">
+                            <a href="javascript:void()">
                                 <i class="icon icon_camket"></i>
                                 <span class="services_text">Luôn có <br> khuyến mãi</span>
                             </a>
                         </div>
                         <div class="box_content">
-                            <a href="/chinh-sach-giao-nhan">
+                            <a href="javascript:void()">
                                 <i class="icon icon_giaohang"></i>
                                 <span class="services_text">Giao hàng Toàn quốc</span>
                             </a>
                         </div>
                         <div class="box_content">
-                            <a href="/chinh-sach-bao-hanh">
+                            <a href="javascript:void()">
                                 <i class="icon icon_thanhtoan"></i>
                                 <span class="services_text">Bảo hành tận nơi</span>
                             </a>
                         </div>
                         <div class="box_content">
-                            <a href="/chinh-sach-doi-tra-san-pham">
+                            <a href="javascript:void()">
                                 <i class="icon icon_doitra"></i>
                                 <span class="services_text">Đổi trả hàng trong 7 ngày</span>
                             </a>
