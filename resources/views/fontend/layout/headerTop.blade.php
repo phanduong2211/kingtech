@@ -88,7 +88,7 @@
                                <li class="itemdropdown">
                                 <div class="itemdropclick">
                                   <a href="{{url($cc."/".$a->id.'-'.$a->url)}}">{{$a->name}}</a>
-                                  <span class="caret"></span>
+                                  <b class="parentcarret"><span class="caret"></span></b>
                                 </div>
                                 <?php dequyCategory($a->id,$data,$cc); ?>
                               </li>
@@ -125,7 +125,7 @@
                                 <li class="itemdropdown">
                                 <div class="itemdropclick">
                                   <a href="#">{{$a->name}}</a>
-                                  <span class="caret"></span>
+                                  <b class="parentcarret"><span class="caret"></span></b>
                                 </div>
                                 <?php 
                                     dequyCategory(0,$cateApps,'app');
@@ -141,7 +141,7 @@
 								  <?php }else{ ?>
 								  <a href="#">{{$a->name}}</a>
 								  <?php } ?>
-                                  <span class="caret"></span>
+                                  <b class="parentcarret"><span class="caret"></span></b>
                                 </div>
                                   <?php 
                                   dequyMenu($a->id,$data,$cateApps);
@@ -161,7 +161,7 @@
                 <li class="itemdropdown">
                     <div class="itemdropclick">
                       <a href="#">Danh mục sản phẩm</a>
-                      <span class="caret"></span>
+                      <b class="parentcarret"><span class="caret"></span></b>
                     </div>
                      <?php $cccc=cloneArray($categorys);dequyCategory(0,$cccc); ?>
                 </li>
@@ -201,11 +201,12 @@
 	  padding-top:5px;
 	  padding-bottom:5px;
     }
-    #tdropdown .itemdropdown .caret{
+    #tdropdown .itemdropdown .parentcarret{
       position: absolute;
-      top:20px;
-      right: 10px;
+      top:-1px;
+      right: 0px;
       color:#288ad6;
+      padding: 20px;
     }
     #tdropdown .itemdropdown a:hover{
       color:#288ad6;
@@ -240,7 +241,7 @@
         $(this).find(".itemdropclick").removeClass("itemdropclick");
       }
     });
-    $("#tdropdown .itemdropclick .caret").click(function(){
+    $("#tdropdown .itemdropclick .parentcarret").click(function(){
       $(this).parent().parent().find(".subdropdown:eq(0)").slideToggle();
       $(this).parent().toggleClass('active');
       return false;
