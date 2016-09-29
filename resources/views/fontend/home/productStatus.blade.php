@@ -21,7 +21,7 @@
                     <li>
 
                     <figure><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}"><img src="{{$convert->showImage($productSelling[$i+1]->image)}}" alt="{{$productSelling[$i+1]->name}}" /></a></figure>
-                    <h2><a href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}">{{$productSelling[$i+1]->name}}</a></h2>
+                    <h2><a style="color:#337ab7;font-weight:bold;font-size:15px" href="{{Asset('')}}product/{{$productSelling[$i+1]->id.'-'.$productSelling[$i+1]->url}}" title="{{$productSelling[$i+1]->name}}">{{$productSelling[$i+1]->name}}</a></h2>
                     </li>
                     @endif
             </ul>

@@ -2,7 +2,7 @@
     <div class="box_trungtam_title" style="background-color: {{$website['background_center_support']}}">
       <label></label>
     </div>
-    <aside style="padding-left:100px">
+    <aside style="">
       <ul>
 
                     <li class="fl_w280">

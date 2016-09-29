@@ -30,6 +30,29 @@ class ProductsController extends Controller
 
         return View("fontend.product.productdeal",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productdeal,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex,"NewsCate"=>$NewsCate));
 	}
+    public function getProductKM()
+    {
+
+        $th = new ControllerDB();   
+        $getCategorys = $th->getCategoryMenu();
+        $NewsCate = $th->getNews_cate();
+        $menus = $th->getMenu();
+        $slides =$th->getSlideShow();
+        $website = $th->getWebsite();
+        $ads = $th->getAds();
+        $productSelling = $th->getProductSelling();
+        $cateApps = $th->getCateApp();
+        $tags = $th->getTags();
+        $branches = $th->getBranches();
+        $agency = $th->getAgency();
+        $support = $th->getSupport();
+        $productCateIDIndex = $this;
+        $convert = new \App\Http\Controllers\convertString();
+
+        $productKM = $th->getProductKM();
+
+        return View("fontend.product.promotion",array("categorys"=>$getCategorys,"menus"=>$menus,"slides"=>$slides,"website"=>$website,"productdeal"=>$productKM,"ads"=>$ads,"productSelling"=>$productSelling,"cateApps"=>$cateApps,"convert"=>$convert,"tags"=>$tags,"branches"=>$branches,"agency"=>$agency,"support"=>$support,"productCateIDIndex"=>$productCateIDIndex,"NewsCate"=>$NewsCate));
+    }
 	public function getCategory($id,$name)
 	{
 		$th = new ControllerDB();	

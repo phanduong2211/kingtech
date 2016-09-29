@@ -155,6 +155,11 @@ class ControllerDB extends BaseController
         $productdeal = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->paginate(20);
             return $productdeal;
     }
+    public function getProductKM()
+    {
+        $productdeal = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("status",1)->paginate(20);
+            return $productdeal;
+    }
     public function getProductWhereCategoryID($id,$name)
     {
         $products = Product::select("name","id","url","price","image","price_company","cate_id")->orderby("price","asc")->where("display",1)->where("cate_id",$id)->paginate(20);

@@ -1,0 +1,108 @@
+#header_top_new {
+	float: left;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	background: #000;
+}
+.header_top_new {
+	float: left;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+}
+
+.hotline_new {
+	float: left;
+	height: 40px;
+	line-height: 40px;
+}
+.hotline_new figure {
+	float: left;
+	width: 59px;
+	height: 40px;
+	line-height: 35px;
+}
+.hotline_new figure img {
+	width: 59px;
+}
+.hotline_new span {
+	float: left;
+	margin-left: 5px;
+	color: #FFCC00;
+	font-size: 16px;
+	height: 40px;
+	line-height: 40px;
+}
+
+.header_slogan_new {
+	margin-left: 40px;
+	height: 40px;
+	line-height: 40px;
+	position: relative;
+	overflow: hidden;
+}
+.header_slogan_new p {
+	position: absolute;
+	width: 380px;
+	color: #F00;
+	font-weight: 16px;
+	font-weight: bold;
+	height: 40px;
+	line-height: 40px;
+	text-shadow: 1px 1px 0px #000;
+	filter: dropshadow(color=#000, offx=1, offy=1);
+	transform: translateX(100%);
+	-moz-transform: translateX(100%);
+	-webkit-transform: translateX(100%);
+}
+.header_slogan_new p:nth-child(1) {
+	animation: left-one 10s ease infinite;
+	-moz-animation: left-one 10s ease infinite;
+	-webkit-animation: left-one 10s ease infinite;
+}
+.header_slogan_new p:nth-child(2) {
+	animation: left-two 10s ease infinite;
+	-moz-animation: left-two 10s ease infinite;
+	-webkit-animation: left-two 10s ease infinite;
+}
+.header_slogan_new.up_new p {
+	transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+}
+.header_slogan_new.up_new p:nth-child(1) {
+	animation: up-one 10s ease infinite;
+	-moz-animation: up-one 10s ease infinite;
+	-webkit-animation: up-one 10s ease infinite;
+}
+.header_slogan_new.up_new p:nth-child(2) {
+	animation: up-two 10s ease infinite;
+	-moz-animation: up-two 10s ease infinite;
+	-webkit-animation: up-two 10s ease infinite;
+}
+.header_slogan_new.up_new p {
+	transform: translateY(100%);
+	-moz-transform: translateY(100%);
+	-webkit-transform: translateY(100%);
+}
+.header_slogan.up_new p:nth-child(1) {
+	animation: up-one 10s ease infinite;
+	-moz-animation: up-one 10s ease infinite;
+	-webkit-animation: up-one 10s ease infinite;
+}
+.header_slogan_new.up_new p:nth-child(2) {
+	animation: up-two 10s ease infinite;
+	-moz-animation: up-two 10s ease infinite;
+	-webkit-animation: up-two 10s ease infinite;
+}
+.header_share_new {
+	float: right;
+	height: 40px;
+	line-height: 20px;
+}
+
+.header_social
+{
+	/*//float:right;*/
+}
