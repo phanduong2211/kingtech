@@ -82,8 +82,7 @@
               <div class="col-sm-4">
                 <label>Email:</label>
               </div>
-              <div class="col-sm-8 required">
-                <span class="red">*</span>
+              <div class="col-sm-8">
                 <input type="text" name="email" value="{{old('email')}}" class="form-control" />
                 <span class="desc">
                   Email dùng cho hỗ trợ trức tuyến
@@ -139,11 +138,6 @@
         {
           'name':'phone',
           'sodt':true
-        }
-        ,
-        {
-          'name':'email',
-          'email':true
         },
         {
           'name':'group',

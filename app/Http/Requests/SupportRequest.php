@@ -26,8 +26,7 @@ class SupportRequest extends Request
         return [
             'name'=>'required',
             'phone'=>'required',
-            'group'=>'numeric|min:1',
-            'email'=>'required|email'
+            'group'=>'numeric|min:1'
         ];
     }
 
@@ -36,9 +35,7 @@ class SupportRequest extends Request
             'name.required'=>'Vui lòng nhập tên',
             'phone.required'=>'Vui lòng nhập số đt',
             'group.numeric'=>'Vui lòng chọn nhóm',
-            'group.min'=>'Vui lòng chọn nhóm',
-            'email.required'=>'Vui lòng nhập email',
-            'email.email'=>'Email sai định dạng'
+            'group.min'=>'Vui lòng chọn nhóm'
         ];
     }
 }
