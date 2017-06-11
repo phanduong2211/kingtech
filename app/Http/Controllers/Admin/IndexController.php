@@ -11,7 +11,7 @@ class IndexController extends BaseController
 	{
 		$now=Carbon::now();
 		$dt=array();
-		$dt['data']=Admin::select(\DB::raw('(select sum(quantity) from statistics_online where id2 like "%'.$now->month.$now->year.'") as omonth,(select quantity from statistics_online where id2='.$now->day.$now->month.$now->year.') as oday,(select count(id) from user_online where TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"-12:00","+10:00"))<6) as o,
+		$dt['data']=Admin::select(\DB::raw('(select sum(quantity) from statistics_online where id2 like "%'.$now->month.$now->year.'") as omonth,(select quantity from statistics_online where id2='.$now->day.$now->month.$now->year.') as oday,(select count(id) from user_online where TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"+07:00","+07:00"))<6) as o,
 			(select sum(quantity) from statistics_online) as s,(select count(id) from products) as sanpham,
 			(select count(id) from news) as tintuc,
 			(select count(id) from menus) as menu,
@@ -22,7 +22,7 @@ class IndexController extends BaseController
 			(select count(id) from apps) as ungdung'))
 		->first();
 		try{
-			UserOnline::whereRaw('TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"-12:00","+10:00"))>30')->delete();
+			UserOnline::whereRaw('TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"+07:00","+07:00"))>30')->delete();
 		}catch(\Exception $e){
 
 		}
@@ -51,7 +51,7 @@ class IndexController extends BaseController
 	}
 
 	public function listonline(){
-		return json_encode(UserOnline::select('last_visit','ip','position')->whereRaw('TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"-12:00","+10:00"))<6')->get());
+		return json_encode(UserOnline::select('last_visit','ip','position')->whereRaw('TIMESTAMPDIFF(MINUTE,last_visit,CONVERT_TZ(NOW(),"+07:00","+07:00"))<6')->get());
 	}
 
 	public function removecookie(){

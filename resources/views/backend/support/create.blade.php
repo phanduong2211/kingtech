@@ -33,8 +33,8 @@
               <div class="col-sm-4">
                 <label>Số điện thoại:</label>
               </div>
-              <div class="col-sm-8 required">
-                <span class="red">*</span>
+              <div class="col-sm-8">
+                <!-- <span class="red">*</span> -->
                 <input type="text" name="phone" value="{{old('phone')}}" class="form-control" />
                 <span class="desc">
                   .
@@ -82,7 +82,8 @@
               <div class="col-sm-4">
                 <label>Email:</label>
               </div>
-              <div class="col-sm-8">
+              <div class="col-sm-8 required">
+                <span class="red">*</span>
                 <input type="text" name="email" value="{{old('email')}}" class="form-control" />
                 <span class="desc">
                   Email dùng cho hỗ trợ trức tuyến
@@ -136,8 +137,13 @@
           'trong':true
         },
         {
-          'name':'phone',
-          'sodt':true
+          /*'name':'phone',
+          'sodt':true*/
+        }
+        ,
+        {
+          'name':'email',
+          'email':true
         },
         {
           'name':'group',

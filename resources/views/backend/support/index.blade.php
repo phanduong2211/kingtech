@@ -64,11 +64,11 @@
                    <th width="35px">
                       <span class="ascheckbox checkall center" data-target=".checkboxb"></span>
                    </th>
-                   <th class="tsort" width="150px">Tên</th>
-                   <th width="150px">Số ĐT</th>
+                   <th class="tsort" width="200px">Tên</th>
+                   <th>Số đt</th>
                    <th width="70px">Skype</th>
                    <th width="70px">Yahoo</th>
-                   <th width="250px">Email</th>
+                   <th>Email</th>
                    <th>Nhóm</th>
                    <th>Hiển thị</th>
                 </tr>
@@ -99,15 +99,9 @@
                                   {{$item->phone}}
                                 </td>
                                 <td>
-                                  @if($item->skype!="")
-                                  <a href="skype:{{$item->skype}}?chat"><i class="fa fa-skype"></i></a>
-                                  @endif
+                                  <a href="{{$item->skype}}"><i class="fa fa-skype"></i></a>
                                 </td>
-                                <td>
-                                  @if($item->yahoo!="")
-                                  <a href="ymsgr:sendim?{{$item->yahoo}}" mce_href="ymsgr:sendim?{{$item->yahoo}}" border="0"><img src="http://opi.yahoo.com/online?u={{$item->yahoo}}&t=1" mce_src="http://opi.yahoo.com/online?u={{$item->yahoo}}&t=1"></a>
-                                  @endif
-                                </td>
+                                <td><a href="{{$item->yahoo}}"><i class="fa fa-yahoo"></i></a></span></td>
                                 <td>
                                   {{$item->email}}
                                 </td>

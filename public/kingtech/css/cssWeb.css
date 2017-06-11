@@ -400,8 +400,8 @@ article {
 	float:left;
 	margin-top:60px;
 	padding:10px;
-	width:260px;
-	height:358px;
+	width:206px;
+	/*height:358px;*/
 	background:#FFF;
 }
 .hotro_support label
@@ -464,8 +464,8 @@ article {
 	margin-left:15px;
 	margin-top:60px;
 	padding:10px;
-	width:195px;
-	height:358px;
+	width:240px;
+	/*height:358px;*/
 	background:#FFF;
 	position:relative;
 }

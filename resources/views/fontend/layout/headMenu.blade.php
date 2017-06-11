@@ -98,7 +98,7 @@
     background-position: -75px -104px !important;
 }
 .icon {
-    background: url("public/images/icon_page.png") repeat scroll 0 0 rgba(0,0,0,0);
+    background: url("/public/images/icon_page.png") repeat scroll 0 0 rgba(0,0,0,0);
     display: inline-block;
 }
 .box_services .box_content a {
@@ -226,11 +226,15 @@
                     <ul>
                     @foreach($support as $sp)
                       @if($sp->group==1)
-                                              <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
+                                              <li> <strong>{!!$sp->name!!}</strong>
+                                              <?php $phone = explode(",",$sp->phone); 
+                                              foreach ($phone as $value){ echo '<big>'.$value.'</big>';}?>
+
+                                               <!-- <big>{!!$sp->phone!!}
                                                           <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
                                                           <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
-                                                      </big> 
-                                                      <p><strong>Email:</strong> {{$sp->email}}</p>
+                                                      </big>  -->
+                                                      <!-- <p><strong>Email:</strong> {{$sp->email}}</p> -->
                                                       </li>
                                               <li>
                         @endif
@@ -241,13 +245,18 @@
                     <figure> <img src="{{Asset('')}}public/kingtech/images/icon_support_2.png" alt="Hỗ trợ trực tuyến"> </figure>
                     <label>Hỗ trợ kỹ thuật</label>
                     <ul>
+                    
                     @foreach($support as $sp)
                       @if($sp->group==2)
-                                              <li> <strong>{{$sp->name}}</strong> <big>{{$sp->phone}}
+                                              <li> <strong>{{$sp->name}}</strong> 
+                                              <?php $phone = explode(",",$sp->phone); 
+                                              foreach ($phone as $value){ echo '<big>'.$value.'</big>';}?>
+
+                                              <!-- <big>{{$sp->phone}}
                                                           <a href="ymsgr:sendIM?{{$sp->yahoo}}"><img src="{{Asset('')}}public/kingtech/images/y.png" border="0"></a>
                                                           <a href="skype:{{$sp->skype}}?chat">&nbsp;<img src="{{Asset('')}}public/kingtech/images/s.png" border="0"></a>
                                                       </big> 
-                                                      <p><strong>Email:</strong> {{$sp->email}}</p>
+                                                     <!  <p><strong>Email:</strong> {{$sp->email}}</p> -->
                                                       </li>
                           @endif
                         @endforeach

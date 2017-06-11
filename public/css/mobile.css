@@ -154,7 +154,7 @@
 }
 @media(max-width: 700px){
 	.box_item .item_pro{
-		width:46% !important;
+		width:44% !important;
 	}
 	.box_tieudem,.hidden_mobile,.fl_section{
 		display: none;

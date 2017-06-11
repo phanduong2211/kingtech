@@ -118,14 +118,7 @@
                    
                     <td>{{$item->name}}</td>
                     <td>{{$item->phone}}</td>
-                    <td>
-                        @if(strlen($item->email)<=15)
-                        {{$item->email}}
-                        @else
-                        {{substr($item->email,0,15)}}<br />
-                        {{substr($item->email,15)}}
-                        @endif
-                    </td>
+                    <td>{{$item->email}}</td>
                     <td>{{$item->address}}</td>
                     <td>{{$item->gender==1?"Nam":"Nữ"}}</td>
                     <td><span class="ascheckbox checkboxblock {{$item->block==1? "checked" : ""}}" 
